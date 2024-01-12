@@ -1,5 +1,8 @@
 package com.mun9.product.vo;
 
+import lombok.Data;
+
+@Data
 public class ProductVO {
 
 	private int proCode;

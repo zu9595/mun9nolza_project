@@ -1,5 +1,8 @@
 package com.mun9.member.vo;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 
 	private String userId;

@@ -2,6 +2,9 @@ package com.mun9.orderlist.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class OrderListVO {
 
 	private int orderNo;

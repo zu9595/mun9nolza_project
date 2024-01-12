@@ -1,5 +1,8 @@
 package com.mun9.productimage.vo;
 
+import lombok.Data;
+
+@Data
 public class ProductImageVO {
 
 	private int imgNo;
