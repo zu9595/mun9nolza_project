@@ -52,8 +52,8 @@
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">
-                        <a href="">로그인</a>
-                        <a href="">회원가입</a>
+                        <a href="admin">로그인</a>
+                        <a href="addMemberForm.do">회원가입</a>
                         <div class="dropdown cart">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

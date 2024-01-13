@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
+import com.mun9.member.command.AdminFormControl;
 
 
 
@@ -38,6 +39,15 @@ public class FrontController extends HttpServlet {
 		map.put("/addMember.do", new AddMemberControl());
 		//회원가입페이지
 		map.put("/addMemberForm.do", new AddMemberFormControl());
+		
+		
+		
+		
+		
+		//admin 페이지
+		map.put("/adminForm.do", new AdminFormControl());
+		
+		
 		
 		
 	}

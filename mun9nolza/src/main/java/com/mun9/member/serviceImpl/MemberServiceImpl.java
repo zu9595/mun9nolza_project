@@ -16,7 +16,5 @@ public class MemberServiceImpl implements MemberService {
 	public boolean addMember(MemberVO vo) {
 		return mapper.insertMember(vo) == 1;
 	}
-
 	
-
 }

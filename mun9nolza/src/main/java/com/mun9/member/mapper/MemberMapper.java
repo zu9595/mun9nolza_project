@@ -6,6 +6,4 @@ public interface MemberMapper {
 	
 	public int insertMember(MemberVO vo);
 	
-	
-	
 }

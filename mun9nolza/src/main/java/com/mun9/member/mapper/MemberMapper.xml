@@ -10,7 +10,4 @@
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  </insert>
 	
-
-	
-
 </mapper>

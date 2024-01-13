@@ -1,42 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">»ç¿ëÀÚ</div>
+                            <div class="sb-sidenav-menu-heading">chart</div>
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                ¸ÞÀÎ Â÷Æ®
+                                ë©”ì¸ ì°¨íŠ¸
                             </a>
+                            <div class="sb-sidenav-menu-heading">user</div>
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                »ç¿ëÀÚ ¸ñ·Ï
+                                ì‚¬ìš©ìž ëª©ë¡
                             </a>
-                            <div class="sb-sidenav-menu-heading">»óÇ°</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                »óÇ°¸ñ·Ï -> »óÇ° µî·Ï/¼öÁ¤/»èÁ¦ °¡´É
+                            <div class="sb-sidenav-menu-heading">product</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                ìƒí’ˆ
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                »óÇ° °áÁ¦³»¿ª
-                            </a>
-                            
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">ìƒí’ˆëª©ë¡ -> ìƒí’ˆ ë“±ë¡/ìˆ˜ì •/ì‚­ì œ ê°€ëŠ¥</a>
+                                    <a class="nav-link" href="#">ìƒí’ˆ ê²°ì œë‚´ì—­</a>
+                                </nav>
+                            </div>
                             <div class="sb-sidenav-menu-heading">Q&A</div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                ÆòÁ¡ÀÌ ³·Àº ¼ø ¸®ºä
+                                í‰ì ì´ ë‚®ì€ ìˆœ ë¦¬ë·°
                             </a>
                             <a class="nav-link" href="tables.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                ¹®ÀÇ ³»¿ª -> ¹®ÀÇ ´äº¯´Þ±â
+                                ë¬¸ì˜ ë‚´ì—­ -> ë¬¸ì˜ ë‹µë³€ë‹¬ê¸°
                             </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">ÇöÀç °ü¸®ÀÚ ¾ÆÀÌµð:</div>
-                        °ü¸®ÀÚ ¾ÆÀÌµð
+                        <div class="small">í˜„ìž¬ ê´€ë¦¬ìž ì•„ì´ë””:</div>
+                        ê´€ë¦¬ìž ì•„ì´ë””
                     </div>
                 </nav>
             </div>
