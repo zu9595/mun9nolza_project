@@ -17,50 +17,43 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
+                            <li>
+                                <a class="nav-link" href="index.html">전체상품</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Shop
+                                    문구
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                    <a class="dropdown-item" href="category.html"> shop category</a>
-                                    <a class="dropdown-item" href="single-product.html">product details</a>
-                                    
+                                    <a class="dropdown-item" href="category.html"> 다이어리</a>
+                                    <a class="dropdown-item" href="single-product.html">캘린더</a>
+                                    <a class="dropdown-item" href="single-product.html">노트</a>
+                                    <a class="dropdown-item" href="single-product.html">일기장</a>
+                                    <a class="dropdown-item" href="single-product.html">가계부</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    pages
+                                    꾸미기용품
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="login.html"> login</a>
-                                    <a class="dropdown-item" href="tracking.html">tracking</a>
-                                    <a class="dropdown-item" href="checkout.html">product checkout</a>
-                                    <a class="dropdown-item" href="cart.html">shopping cart</a>
-                                    <a class="dropdown-item" href="confirmation.html">confirmation</a>
-                                    <a class="dropdown-item" href="elements.html">elements</a>
+                                    <a class="dropdown-item" href="checkout.html">메모지</a>
+                                    <a class="dropdown-item" href="login.html"> 스티커</a>
+                                    <a class="dropdown-item" href="tracking.html">테이프</a>
+                                    <a class="dropdown-item" href="cart.html">스템프</a>
+                                    <a class="dropdown-item" href="confirmation.html">엽서/카드</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_2"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    blog
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                    <a class="dropdown-item" href="blog.html"> blog</a>
-                                    <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                </div>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                           <li>
+                                <a class="nav-link" href="index.html">공지사항</a>
                             </li>
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">
-                        <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                        <a href=""><i class="ti-heart"></i></a>
+                        <a href="">로그인</a>
+                        <a href="">회원가입</a>
                         <div class="dropdown cart">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,6 +66,7 @@
                             </div> -->
                             
                         </div>
+                        <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                     </div>
                 </nav>
             </div>
