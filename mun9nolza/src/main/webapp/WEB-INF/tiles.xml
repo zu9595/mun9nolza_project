@@ -5,6 +5,9 @@
        
        
 <tiles-definitions>
+  
+
+	
   <definition name="Test" template="/WEB-INF/layout/template.jsp">
   	<put-attribute name="banner" value="/WEB-INF/layout/banner.jsp"></put-attribute> 
   	<put-attribute name="header" value="/WEB-INF/layout/header.jsp"></put-attribute>
@@ -19,5 +22,12 @@
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
   </definition>
   
+    <definition name="normalLayout" template="/WEB-INF/views/normalLayout.jsp">
+		<put-attribute name="NormalLayout" value="" />
+	</definition>
+		
+	<definition name="WILDCARD:no/*/*" extends="normalLayout">
+		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
   
 </tiles-definitions>

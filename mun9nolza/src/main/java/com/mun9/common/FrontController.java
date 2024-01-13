@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mun9.member.command.AddMemberControl;
+import com.mun9.member.command.AddMemberFormControl;
+
 
 
 public class FrontController extends HttpServlet {
@@ -27,11 +30,15 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출");
-//		map.put("/main.do", new MainControl());
-//		map.put("/sub.do", new SubControl());
 		
 		//게시판관련
 		map.put("/main.do",  new MainControl());
+		
+		//회원가입
+		map.put("/addMember.do", new AddMemberControl());
+		//회원가입페이지
+		map.put("/addMemberForm.do", new AddMemberFormControl());
+		
 		
 	}
 		

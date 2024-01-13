@@ -15,7 +15,6 @@
 		<url-pattern>*.tiles</url-pattern>
 	</servlet-mapping>
 	
-
 	<!-- 주석... frontcontroller의 url 등록 -->
 	<servlet>
 		<servlet-name>front</servlet-name>
