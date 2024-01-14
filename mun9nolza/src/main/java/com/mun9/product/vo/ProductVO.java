@@ -5,14 +5,25 @@ import lombok.Data;
 @Data
 public class ProductVO {
 
+//	private int proCode;
+//	private String proName;
+//	private String proDesc;
+//	private String proImage;
+//	private int proPrice;
+//	private int proDiscount;
+//	private int proSell;
+//	private int proStock;
+//	private String category;
+	
 	private int proCode;
+	private String category;
 	private String proName;
 	private String proDesc;
 	private String proImage;
-	private int proPrice;
-	private int proDiscount;
+	private int originPrice;
+	private int salePrice;
 	private int proSell;
 	private int proStock;
-	private String category;
+	//private Date proRegistDate;
 	
 }

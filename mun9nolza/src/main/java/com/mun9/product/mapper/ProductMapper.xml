@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mun9.product.mapper.ProductMapper">
+  
+  <select id="selectSaleProduct" resultType="product">
+    select * from ( select *
+            	    from product
+                	order by sale_price)
+	where not sale_price is null
+    and rownum between 1 and 4;
+  </select>
+  
+  
+  
+  <select id="selectBestProduct" resultType="product">
+  	select * from product where rownum between 1 and 8 order by pro_sell desc;
+  </select>
+
+</mapper>

@@ -2102,11 +2102,16 @@ ul {
 /**************menu part start*****************/
 /* line 2, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
 .main_menu {
-  position: absolute;
-  left: 0;
-  top: 0;
+  margin-top: 50px;
+  position: relative;
   width: 100%;
   z-index: 999;
+}
+
+.logo_container {
+	position: relative;
+    z-index: 999;
+    text-align: center;
 }
 
 /* line 9, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
@@ -2130,6 +2135,8 @@ ul {
   line-height: 12px;
   font-weight: 400;
 }
+
+
 
 /* line 29, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
 .main_menu .main-menu-item ul li .nav-link:hover {
@@ -2429,7 +2436,7 @@ ul {
 .banner_part .single_banner_slider .banner_text {
   display: table;
   width: 100%;
-  height: 820px;
+  height: 780px;
 }
 
 /* line 11, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
@@ -2539,7 +2546,6 @@ ul {
   right: -20%;
   bottom: 0;
   padding: 35px 80px;
-  background-color: #fff;
 }
 
 @media (max-width: 991px) {
@@ -2766,10 +2772,14 @@ ul {
   visibility: visible;
 }
 
-/***************** product list css *******************/
+/***************** product list css *****************************/
 /* line 3, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
 .product_list .section_tittle {
   text-align: left !important;
+}
+
+.main_title { /*New,Sale,Best*/
+	text-align: center
 }
 
 /* line 6, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
