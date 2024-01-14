@@ -15,6 +15,10 @@ import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
+import com.mun9.member.command.LoginControl;
+import com.mun9.member.command.LoginFormControl;
+import com.mun9.product.command.GetProductControl;
+import com.mun9.product.command.MyProductListControl;
 
 
 
@@ -37,13 +41,20 @@ public class FrontController extends HttpServlet {
 		//게시판관련
 		map.put("/main.do",  new MainControl());
 		
+		
 		//회원가입
 		map.put("/addMember.do", new AddMemberControl());
 		//회원가입페이지
 		map.put("/addMemberForm.do", new AddMemberFormControl());
+		//로그인
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do", new LoginControl());
+				
 		
-		
-		
+		//상품관련
+		map.put("/getProduct.do", new GetProductControl());
+		//장바구니 페이지
+		map.put("/myProductList.do", new MyProductListControl());
 		
 		
 		//admin 페이지

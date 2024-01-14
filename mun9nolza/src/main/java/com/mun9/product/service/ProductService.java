@@ -1,5 +1,7 @@
 package com.mun9.product.service;
 
-public interface ProductService {
+import com.mun9.product.vo.ProductVO;
 
+public interface ProductService {
+	public ProductVO getProduct(int pno);
 }
