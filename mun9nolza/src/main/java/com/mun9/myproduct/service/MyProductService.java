@@ -1,5 +1,10 @@
 package com.mun9.myproduct.service;
 
-public interface MyProductService {
+import java.util.List;
 
+import com.mun9.myproduct.vo.MyProductVO;
+
+public interface MyProductService {
+	public List<MyProductVO> myProductList();
+	
 }

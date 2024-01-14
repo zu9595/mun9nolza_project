@@ -3,7 +3,7 @@ package com.mun9.myproduct.vo;
 import lombok.Data;
 
 @Data
-public class MyproductVO {
+public class MyProductVO {
 
 	private int myproNo;
 	private String userId;
