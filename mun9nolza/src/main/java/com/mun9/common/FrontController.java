@@ -19,6 +19,8 @@ import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.product.command.GetProductControl;
 import com.mun9.product.command.MyProductListControl;
+import com.mun9.product.command.ProductListControl;
+import com.mun9.product.command.ProductPagingListControl;
 
 
 
@@ -55,7 +57,9 @@ public class FrontController extends HttpServlet {
 		map.put("/getProduct.do", new GetProductControl());
 		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
 		map.put("/myProductList.do", new MyProductListControl());
-		
+		//productlist 페이지 --수정필요
+		map.put("/productList.do", new ProductListControl());
+		map.put("/productPagingList.do", new ProductPagingListControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

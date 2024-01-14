@@ -10,5 +10,22 @@
   	select * from product where pro_code = #{pno}
   </select>
   
-  
+  <select id="selectProductList" resultType="product">
+    select * from product order by 1
+ </select>
+ 
+ <select id="productListPaging" resultType="product">
+	select b.* from
+	(select rownum rn, a.* from
+	(select * from product order by 1
+    ) a ) b
+    <![CDATA[
+	where b.rn > (#{page}-1)*5 and b.rn <= #{page}*5
+    ]]>
+	</select>
+	
+ <select id="selectCount" resultType="int" parameterType="int">
+	select count(*) from product order by 1
+ </select>
+ 
 </mapper>

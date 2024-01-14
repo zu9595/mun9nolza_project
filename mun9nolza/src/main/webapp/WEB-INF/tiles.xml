@@ -17,6 +17,16 @@
   	<put-attribute name="main" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
   </definition>
   
+  <definition name="productList" template="/WEB-INF/layouts/productList/productList_Template.jsp">
+  	<put-attribute name="header" value="/WEB-INF/layouts/productList/header.jsp"></put-attribute>
+  	<put-attribute name="body" value="/WEB-INF/layouts/productList/body.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/productList/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:productList/*" extends="productList">
+  	<put-attribute name="body" value="/WEB-INF/views/productList/{1}.jsp"></put-attribute>
+  </definition>
+  
   <definition name="product" template="/WEB-INF/layouts/product/template.jsp">
   	<put-attribute name="header" value="/WEB-INF/layouts/product/header.jsp"></put-attribute>
   	<put-attribute name="body" value="/WEB-INF/layouts/product/body.jsp"></put-attribute> 
