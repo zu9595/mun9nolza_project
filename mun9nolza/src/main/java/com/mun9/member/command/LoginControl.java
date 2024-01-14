@@ -34,8 +34,8 @@ public class LoginControl implements Control {
 			}
 		}else {
 			req.setAttribute("massage", "아이디와 비밀번호를 확인하세요");
-			
-			try {
+			//페이지 없음
+			try { 
 				req.getRequestDispatcher("member/logForm.tiles").forward(req, resp);
 			} catch (ServletException | IOException e) {
 				e.printStackTrace();

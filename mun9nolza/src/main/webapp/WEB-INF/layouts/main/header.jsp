@@ -110,7 +110,7 @@
     
     <!-- 검색 박스 -->
     <!-- 웹페이지가 작을때 스타일에 display='none' 처리 되있음 -> 클릭시 'black' 처리 / 아직 black 으로 안바뀜 수정필요 -->
-    <div class="search_input" id="search_input_box" style="display: block;">
+    <div class="search_input" id="search_input_box">
         <div class="container ">
             <form class="d-flex justify-content-between search-inner">
                 <input type="text" class="form-control" id="search_input" placeholder="Search Here">

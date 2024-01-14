@@ -13,6 +13,7 @@ public class LoginFormControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		try {
+			//페이지 없음
 			req.getRequestDispatcher("member/logForm.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

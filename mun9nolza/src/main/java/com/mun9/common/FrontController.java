@@ -46,14 +46,14 @@ public class FrontController extends HttpServlet {
 		map.put("/addMember.do", new AddMemberControl());
 		//회원가입페이지
 		map.put("/addMemberForm.do", new AddMemberFormControl());
-		//로그인
+		//로그인 --수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 				
 		
-		//상품관련
+		//상품관련	--수정필요
 		map.put("/getProduct.do", new GetProductControl());
-		//장바구니 페이지
+		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
 		map.put("/myProductList.do", new MyProductListControl());
 		
 		
