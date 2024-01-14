@@ -40,7 +40,9 @@ public class AddMemberControl implements Control {
 		
 		try {
 			if(svc.addMember(vo)) {				
-				resp.sendRedirect("loginBody.tiles"); //로그인화면으로 이동(확인하)			
+				resp.sendRedirect("loginBody.tiles"); //로그인화면으로 이동(로그인페이지 만들어지면 다시 확인하기)			
+			}else {
+				resp.sendRedirect("addMemberForm.do"); //실패시 다시 회원가입폼에 머물기
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
