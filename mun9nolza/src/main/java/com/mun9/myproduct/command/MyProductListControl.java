@@ -22,7 +22,7 @@ public class MyProductListControl implements Control {
 		
 		req.setAttribute("productList", list);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("views/product/myProductList.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("product/myProductList.tiles");
 			try {
 				rd.forward(req, resp);
 			} catch (ServletException | IOException e) {

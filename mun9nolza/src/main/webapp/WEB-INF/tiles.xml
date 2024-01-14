@@ -34,6 +34,20 @@
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
   </definition>
   
+      
+  <definition name="product" template="/WEB-INF/layouts/product/template.jsp">
+  	<put-attribute name="header" value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
+  	<put-attribute name="body" value="/WEB-INF/layouts/main/body.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/main/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:product/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
+  </definition>
+  <definition name="WILDCARD:product/*/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/product/{1}/{2}.jsp"></put-attribute>
+  </definition>
+  
 
     <definition name="normalLayout" template="/WEB-INF/views/normalLayout.jsp">
 		<put-attribute name="NormalLayout" value="" />

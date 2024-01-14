@@ -23,7 +23,7 @@ String pno = req.getParameter("pno");
 		
 		req.setAttribute("vo", vo);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("views/product/getProduct.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("product/getProduct.tiles");
 			try {
 				rd.forward(req, resp);
 			} catch (ServletException | IOException e) {
