@@ -1,5 +1,14 @@
 package com.mun9.product.mapper;
 
-public interface ProductMapper {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.mun9.product.vo.ProductVO;
+
+public interface ProductMapper {
+	
+	public List<ProductVO> selectProductList();
+	public List<ProductVO> productListPaging(@Param("page") int page);
+	int selectCount();
 }

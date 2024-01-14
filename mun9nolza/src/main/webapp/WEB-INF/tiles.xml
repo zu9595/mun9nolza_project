@@ -6,6 +6,16 @@
        
 <tiles-definitions>
 
+  <definition name="productList" template="/WEB-INF/layouts/productList/productList_Template.jsp">
+  	<put-attribute name="header" value="/WEB-INF/layouts/productList/header.jsp"></put-attribute>
+  	<put-attribute name="body" value="/WEB-INF/layouts/productList/body.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/productList/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:productList/*" extends="productList">
+  	<put-attribute name="body" value="/WEB-INF/views/productList/{1}.jsp"></put-attribute>
+  </definition>
+
   <definition name="admin" template="/WEB-INF/layouts/admin/template.jsp">
   	<put-attribute name="nav" value="/WEB-INF/layouts/admin/nav.jsp"></put-attribute> 
   	<put-attribute name="side" value="/WEB-INF/layouts/admin/side.jsp"></put-attribute>
@@ -34,7 +44,6 @@
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
   </definition>
   
-
     <definition name="normalLayout" template="/WEB-INF/views/normalLayout.jsp">
 		<put-attribute name="NormalLayout" value="" />
 	</definition>

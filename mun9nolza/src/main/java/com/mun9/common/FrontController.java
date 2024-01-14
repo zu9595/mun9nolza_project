@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
+import com.mun9.product.command.ProductListControl;
+import com.mun9.product.command.ProductPagingListControl;
 
 
 
@@ -47,7 +49,9 @@ public class FrontController extends HttpServlet {
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
 		
-		
+		//productlist 페이지
+		map.put("/productList.do", new ProductListControl());
+		map.put("/productPagingList.do", new ProductPagingListControl());
 		
 		
 	}

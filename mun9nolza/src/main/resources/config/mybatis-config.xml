@@ -12,7 +12,8 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias alias="member" type="com.mun9.member.vo.MemberVO" /> 
+		<typeAlias alias="member" type="com.mun9.Member.vo.MemberVO" />
+		<typeAlias alias="product" type="com.mun9.Product.vo.ProductVO" />
   	</typeAliases>
   
   <environments default="development">
@@ -28,5 +29,6 @@
   </environments>
   <mappers>
   	<mapper resource="com/mun9/member/mapper/MemberMapper.xml" />
+  	<mapper resource="com/mun9/product/mapper/ProductMapper.xml" />
   </mappers>
 </configuration>
