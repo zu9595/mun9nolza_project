@@ -10,6 +10,9 @@
 .form-contact .form-group .btn_1 {
   background-image: linear-gradient(to left, #fff 0%, #fff 51%, #fff 100%);
 }
+.able{
+	visibility: hidden;
+}
 
 /**************** extend css start ****************/
 /**************** common css start ****************/
@@ -2161,7 +2164,7 @@ ul {
   max-width: 1140px;
   z-index: 999;
   text-align: center;
-  background: #ff3368;
+  background: #A9C8DF;
 }
 
 /* line 60, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
@@ -2299,6 +2302,13 @@ ul {
 }
 
 @media (max-width: 991px) {
+  .unable{
+	  display: none;  
+  }
+  .able{
+	  visibility: visible;
+  }
+  
   /* line 194, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .main_menu {
     padding: 26px 0px;

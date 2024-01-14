@@ -1,136 +1,95 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<style>
-.bg-light {
-	height: 1053px;
-	padding-top: 55px;
-	padding-bottom: 75px;
-}
+        <html lang="ko">
 
-.flex-fill.mx-xl-5.mb-2 {
-	margin: 0 auto;
-	width: 700px;
-	padding-right: 7rem;
-	padding-left: 7rem;
-}
+        <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>회원가입</title>
 
-.container.py-4 {
-	margin: 0 auto;
-	width: 503px;
-}
+          <!-- Bootstrap CSS -->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <!-- 상대경로로 이동 -> 파일위치에서 폴더에서 나가주고 폴더를 들어가야함 -->
+          <link rel="stylesheet" href="../../css/membercss/signUp.css">
+        </head>
 
-.d-grid.gap-2 {
-	padding-top: 30px;
-}
+        <body>
+          <div class="container">
+            <div class="input-form-backgroud row">
+              <div class="input-form col-md-5 mx-auto">
+                <div class="img-logo">
+                  <a href="http://localhost/mun9nolza/">
+                    <img src="http://localhost/mun9nolza/img/logo.png" alt="logo">
+                  </a>
+                </div>
+                <!-- 서버로 정보전송 -->
+                <form action="addMember.do" class="validation-form" novalidate>
+                  <!-- <div class="row"> -->
 
-.bir_yy, .bir_mm, .bir_dd {
-	width: 160px;
-	display: table-cell;
-}
+                    <div class="col-xs-12 col-md-6 mb-3" style="margin-left:15px;">
+                      <br>
+                      <label for="id" style="margin-top: 5px;">아이디</label>
+                      <input type="text" class="form-control" required style="width: 380px;" id="id">
+                      <label for="pw" style="margin-top: 5px;">비밀번호</label>
+                      <input type="password" class="form-control" required style="width: 380px;" id="pw">
+                      <label for="pwCheck" style="margin-top: 5px;">비밀번호 확인</label>
+                      <input type="password" class="form-control" required style="width: 380px;" id="pwCheck">
+                      <br>
+                      <label for="name" style="margin-top: 5px;">이름</label>
+                      <input type="text" class="form-control" required style="width: 380px;" id="name">
+                      <label for="birth" style="margin-top: 5px;">생년월일</label>
+                      <input type="text" class="form-control" placeholder="8자리" required style="width: 380px;"
+                        id="birth">
+                      <br>
+                      <label for="gender" style="margin-top: 5px;" >성별</label>
+                      <br>
+                      <div class="genderBox">
+                      <label for="male">남성</label>
+                      <input type='radio' name='gender' value='male' id="male"/>
+                      <label for="female">여성</label>
+                      <input type='radio' name='gender' value='female' id="female" />
+                      </div>
 
-.bir_mm+.bir_dd, .bir_yy+.bir_mm {
-	padding-left: 10px;
-}
+                      <label for="phone" required style="margin-top: 20px;">휴대전화</label>
+                        <select class="form-control" style="width: 100px;">
+                          <option value="010" selected>010</option>
+                          <option value="011">011</option>
+                          <option value="016">016</option>
+                          <option value="017">017</option>
+                          <option value="018">018</option>
+                          <option value="019">019</option>
+                        </select>
+                        <span> - </span>
+                        <input type="tel" class="form-control" id="phone1" style="width: 100px;">
+                        <span> - </span>
+                        <input type="tel" class="form-control" id="phone2" style="width: 100px;">
+                        <br>
+                        <label for="email">이메일</label>
+                        <input type="email" class="form-control" style="width: 380px;" placeholder="you@mun9nolza.com" id="email">
+                    </div>
+                  <!-- </div> -->
+              <br>
+            
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="aggrement" required>
+              <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+            </div>
+            <div class="mb-4"></div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" >회원가입</button>
+            </form>
+          </div>
+          </div>
+          <footer class="my-3 text-center text-small">
+          </footer>
+          </div>
 
-
-</style>
-
-</head>
-<body>
-	<section class="bg-light">
-		<div class="container py-4">
-			<div class="row align-items-center justify-content-between">
-				<a class="navbar-brand h1 text-center" href="index.do"> <span
-					class="text-dark h4">도시</span> <span class="text-primary h4">거북</span>
-				</a>
-			</div>
-			<form action="addMember.do" method="post">
-				<div class="form-group">
-					<label for="exampleInputEmail1" class="form-label mt-4">아이디</label>
-					<input type="text" class="form-control" id="exampleInputEmail1"
-						aria-describedby="emailHelp">
-				</div>
-				<div class="form-group has-success">
-					<label class="form-label mt-4" for="inputValid">비밀번호</label> <input
-						type="password" class="form-control is-valid" id="inputValid">
-					<div class="valid-feedback"></div>
-				</div>
-
-				<div class="form-group has-danger">
-					<label class="form-label mt-4" for="inputInvalid">비밀번호 재확인</label>
-					<input type="password" class="form-control is-invalid"
-						id="inputInvalid">
-					<div class="invalid-feedback">비밀번호가 일치하지 않습니다</div>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail1" class="form-label mt-4">이름</label>
-					<input type="text" class="form-control" id="exampleInputEmail1"
-						aria-describedby="emailHelp">
-				</div>
-				<div class="bir_wrap">
-					<label class="form-label mt-4">생년월일</label>
-					<div class="bir_yy">
-						<span class="ps_box"> <input type="text"
-							class="form-control" id="yy" placeholder="년(4자)" maxlength="4">
-						</span>
-					</div>
-					<div class="bir_mm">
-						<span class="ps_box focus"> <select class="form-select"
-							id="mm" id="exampleSelect1">
-								<option>월</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								<option>6</option>
-								<option>7</option>
-								<option>8</option>
-								<option>9</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-						</select>
-						</span>
-					</div>
-					<div class="bir_dd">
-						<span class="ps_box"> <input type="text"
-							class="form-control" id="dd" placeholder="일" maxlength="2">
-						</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="exampleSelect1" class="form-label mt-4">성별</label> <select
-						class="form-select" id="exampleSelect1">
-						<option>남자</option>
-						<option>여자</option>
-						<option>거북</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail1" class="form-label mt-4">본인
-						확인 이메일</label> <input type="email" class="form-control"
-						id="exampleInputEmail1" aria-describedby="emailHelp"
-						placeholder="선택입력">
-				</div>
-				<div class="d-grid gap-2">
-					<button class="btn btn-primary btn-lg" type="reset">취소</button>
-					<button class="btn btn-primary btn-lg" type="submit">가입하기</button>
-				</div>
-
-			</form>
-		</div>
-	</section>
 </body>
 </html>

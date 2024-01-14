@@ -10,7 +10,7 @@
                                 메인 차트
                             </a>
                             <div class="sb-sidenav-menu-heading">user</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="adminMemberForm.do">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 사용자 목록
                             </a>

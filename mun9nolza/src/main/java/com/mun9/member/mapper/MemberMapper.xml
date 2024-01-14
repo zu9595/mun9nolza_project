@@ -9,5 +9,8 @@
     insert into member values (#{userId}, #{userPw}, #{userName}, #{userNickName}, 
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  </insert>
-	
+ 
+ <select id="selectList" resultType="member">
+    select * from member order by 1
+ </select>
 </mapper>
