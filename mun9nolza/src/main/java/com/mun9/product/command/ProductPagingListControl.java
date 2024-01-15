@@ -16,12 +16,12 @@ public class ProductPagingListControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		ProductService svc = new ProductServiceImpl();
 		
 		String page = req.getParameter("page");
 
-		ProductService svc = new ProductServiceImpl();
 		int total = svc.getTotalCnt();
-
+		
 		PageDTO dto = new PageDTO(Integer.parseInt(page), total);
 		Gson gson = new GsonBuilder().create();
 		

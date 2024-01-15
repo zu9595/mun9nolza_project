@@ -16,9 +16,17 @@
                                 <ul class="list">
                                     <li>
                                         <a href="#">다이어리</a>
+                                    </li>
+                                    <li>
                                         <a href="#">캘린더</a>
+                                    </li>
+                                    <li>
                                         <a href="#">노트</a>
+                                    </li>
+                                    <li>
                                         <a href="#">일기장</a>
+                                    </li>
+                                    <li>
                                         <a href="#">가계부</a>
                                     </li>
                                 </ul>
@@ -73,15 +81,16 @@
                         
                             <div class="product_top_bar d-flex justify-content-between align-items-center">
                                 <div class="single_product_menu">
-                                    <p>총 <span>??</span>개의 상품</p>
+                                    <p>총 <span id="totalcnt"></span>개의 상품</p>
                                 </div>
                                 <div class="single_product_menu d-flex">
                                     <h5>정렬 : </h5>
                                     <select>
-                                        <option data-display="이름순">이름순</option>
-                                        <option value="1">가격순</option>
-                                        <option value="2">최신순</option>
-                                        <option value="3">좋아요순</option>
+                                        <option id="sorting" data-display="선택">선택</option>
+                                        <option value="1">이름순</option>
+                                        <option value="2">가격순</option>
+                                        <option value="3">최신순</option>
+                                        <option value="4">좋아요순</option>
                                     </select>
                                 </div>
                                 
@@ -101,9 +110,8 @@
                         </div>
                     </div>
 	                
-                    <div class="row align-items-center latest_product_inner">
-                        <c:forEach var="vo" items="${productList }">
-                        <div class="col-lg-4 col-sm-6">
+                    <div class="row align-items-center latest_product_inner productlist" style="width: 720px; height: 640px;">
+                        <!-- <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <img src="${vo.proImage }" alt="이미지">
                                 <div class="single_product_text">
@@ -113,13 +121,12 @@
                                     <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
                                 </div>
                             </div>
-                        </div>
-                        </c:forEach>
+                        </div> -->
                         
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 listnumber" style="align-self: flex-end;">
                             <div class="pageination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center">
+                                <!-- <nav aria-label="Page navigation example"> -->
+                                    <!-- <ul class="pagination justify-content-center">
                                         <li class="page-item">
                                             <a class="page-link" href="#" aria-label="Previous">
                                                 <i class="ti-angle-double-left"></i>
@@ -133,8 +140,8 @@
                                                 <i class="ti-angle-double-right"></i>
                                             </a>
                                         </li>
-                                    </ul>
-                                </nav>
+                                    </ul> -->
+                                <!-- </nav> -->
                             </div>
                         </div>
                             
@@ -145,10 +152,11 @@
         </div>
     </section>
 <script>
-    let ul = document.querySelector('.row align-items-center latest_product_inner');
+ let products = document.querySelector('.productlist');
 	let pageInfo = 1;
-
+    let paging = document.querySelector('.pageination');
     showList(pageInfo); 
+	pagingList();
 
 	function pageList(e){
 		e.preventDefault();
@@ -157,14 +165,18 @@
 		pagingList(pageInfo);
 	}
     //Ajax호출.
-    function showList(page){
-        fetch('replyListJson.do?bno='+ bno + "&page=" + page)
+    function showList(page//, sort
+    ){
+        fetch('productList.do?page='+ page// + '&sorting' +sort
+        )
 		.then(str => str.json())
 		.then(result => {
-            ul.innerHTML = '';
-			result.forEach(reply => {
-				let li = makeLi(reply);
-				ul.appendChild(li);
+            console.log("ajax 호출");
+            $(".listnumber").siblings().remove();
+			result.forEach(product => {
+                console.log(product);
+                let li = makeLi(product);
+				products.insertAdjacentHTML('afterbegin',li);
 			})
 			console.log(result);
 		})
@@ -173,20 +185,87 @@
 	
 
 function makeLi(product = {}) {
-
-let li = document.createElement('li');
-let span = document.createElement('span');
-span.innerText = '글번호:' + product.replyNo;
-li.appendChild(span);
-
-span = document.createElement('span');
-span.innerText = ' 글내용: ' + reply.reply;
-li.appendChild(span);
-
-span = document.createElement('span');
-span.innerText = ' 작성자: ' + reply.name;
-li.appendChild(span);
-
+const li = `<div class="col-lg-4 col-sm-6 listsize">
+    <div class="single_product_item">
+    <img src="${product.proImage }" alt="이미지">
+    <div class="single_product_text">
+        <h4>${product.proName }</h4>
+        <h3>${product.proPrice }</h3>
+        <h3>할인가 ${product.proDiscount }</h3>
+        <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
+    </div>
+</div>
+</div>`
 return li;
 }
+
+	function pagingList(page = 1//, sort
+    ){
+        fetch('productPagingList.do?page='+ page//'&sorting='+sort
+        )
+		.then(str2 => str2.json())
+		.then(result => {
+            $("#totalcnt").html(result.totalCnt);
+            console.log(result);
+            console.log(result.totalCnt);
+            paging.innerHTML = '';
+            let ul = document.createElement('ul');
+            ul.className = 'pagination justify-content-center';
+            paging.appendChild(ul);
+			//이전.
+			if(result.prev)	{
+                let li = document.createElement('li');
+                li.className = "page-item";
+				let aTag = document.createElement('a');
+                aTag.className = "page-link";
+				aTag.href = result.startPage - 1;
+				let iTag = document.createElement('i');
+                iTag.className="ti-angle-double-left";
+				aTag.addEventListener('click', pageList);
+				ul.appendChild(li);
+				li.appendChild(aTag);
+				aTag.appendChild(iTag);
+			}
+			for (let p = result.startPage; p <= result.lastPage; p++){
+                let li = document.createElement('li');
+                li.className = "page-item";
+				let aTag = document.createElement('a');
+                aTag.className = "page-link";
+				aTag.href = p;
+				aTag.innerText = p;
+				aTag.addEventListener('click', pageList);
+				ul.appendChild(li);
+				li.appendChild(aTag);
+			}
+			// 다음.
+			if(result.next)	{
+                let li = document.createElement('li');
+                li.className = "page-item";
+				let aTag = document.createElement('a');
+                aTag.className = "page-link";
+				aTag.href = result.lastPage + 1;
+                let iTag = document.createElement('i');
+                iTag.className="ti-angle-double-right";
+				aTag.addEventListener('click', pageList);
+				ul.appendChild(li);
+				li.appendChild(aTag);
+				aTag.appendChild(iTag);
+			}
+		})
+        .catch(err => console.error(err));
+	} //end of pagingList.
+    // function showcategory(page, sort, category){
+    //     fetch('productList.do?page='+ page +'&sorting='+sort+'&category='+category)
+	// 	.then(str => str.json())
+	// 	.then(result => {
+    //         console.log("ajax 호출");
+    //         $(".listnumber").siblings().remove();
+	// 		result.forEach(product => {
+	// 			let li = makeLi(product);
+	// 			products.insertAdjacentHTML('afterbegin',li);
+	// 		})
+	// 		console.log(result);
+	// 	})
+	// 	.catch(reject => console.log(reject));
+    // }
 </script>

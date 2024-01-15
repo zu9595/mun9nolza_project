@@ -19,7 +19,7 @@
 	(select * from product order by 1
     ) a ) b
     <![CDATA[
-	where b.rn > (#{page}-1)*5 and b.rn <= #{page}*5
+	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
     ]]>
 	</select>
 	
