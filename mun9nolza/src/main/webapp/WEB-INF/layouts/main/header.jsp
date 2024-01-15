@@ -26,6 +26,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
+								<a href="myPage.do">마이페이지</a>
 								<a href="logout.do">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
