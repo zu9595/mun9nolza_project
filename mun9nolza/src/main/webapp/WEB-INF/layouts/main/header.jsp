@@ -56,7 +56,7 @@
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="index.html">전체상품</a>
+                                <a class="nav-link" href="ProductListForm.do">전체상품</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
