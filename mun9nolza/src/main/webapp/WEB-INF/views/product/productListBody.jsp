@@ -161,8 +161,10 @@
 	function pageList(e){
 		e.preventDefault();
 		pageInfo = this.getAttribute("href");
-		showList(pageInfo);
-		pagingList(pageInfo);
+        // console.log(pageInfo);
+        showList(pageInfo);
+        pagingList(pageInfo);
+
 	}
     //Ajax호출.
     function showList(page//, sort
@@ -178,24 +180,26 @@
                 let li = makeLi(product);
 				products.insertAdjacentHTML('afterbegin',li);
 			})
-			console.log(result);
+			// console.log(result);
 		})
 		.catch(reject => console.log(reject));
 	} // end of showList.
 	
 
 function makeLi(product = {}) {
+    
 const li = `<div class="col-lg-4 col-sm-6 listsize">
     <div class="single_product_item">
-    <img src="${product.proImage }" alt="이미지">
+    <img src="`+product.proImage+`" alt="이미지">
     <div class="single_product_text">
-        <h4>${product.proName }</h4>
-        <h3>${product.proPrice }</h3>
-        <h3>할인가 ${product.proDiscount }</h3>
+        <h4>`+product.proName+`</h4>
+        <h3>`+product.proPrice+`원</h3>
+        <h3>할인가 `+product.proDiscount+`원</h3>
         <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
     </div>
 </div>
 </div>`
+// console.log(product.proName);
 return li;
 }
 
@@ -206,8 +210,8 @@ return li;
 		.then(str2 => str2.json())
 		.then(result => {
             $("#totalcnt").html(result.totalCnt);
-            console.log(result);
-            console.log(result.totalCnt);
+            // console.log(result);
+            // console.log(result.totalCnt);
             paging.innerHTML = '';
             let ul = document.createElement('ul');
             ul.className = 'pagination justify-content-center';
@@ -254,11 +258,13 @@ return li;
 		})
         .catch(err => console.error(err));
 	} //end of pagingList.
-    // function showcategory(page, sort, category){
-    //     fetch('productList.do?page='+ page +'&sorting='+sort+'&category='+category)
-	// 	.then(str => str.json())
+    // function showcategory(page, category//, sort
+    // ){
+    //     fetch('productList.do?page='+ page +'&category='+category//+'&sorting='+sort
+    //     )
+	// 	.then(str3 => str3.json())
 	// 	.then(result => {
-    //         console.log("ajax 호출");
+    //         console.log("ajax 호출2");
     //         $(".listnumber").siblings().remove();
 	// 		result.forEach(product => {
 	// 			let li = makeLi(product);

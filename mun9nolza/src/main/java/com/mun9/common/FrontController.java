@@ -68,7 +68,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cartListForm.do", new CartListFormControl());
 		map.put("/cartList.do", new CartListControl());
 		//productlist 페이지 --수정필요
-		map.put("/ProductListForm.do", new ProductListFormControl());
+		map.put("/productListForm.do", new ProductListFormControl());
 		map.put("/productList.do", new ProductListControl());
 		map.put("/productPagingList.do", new ProductPagingListControl());
 		map.put("/getProduct.do", new GetProductControl());
