@@ -24,6 +24,11 @@
 								<a href="loginForm.do">로그인</a>
 								<a href="addMemberForm.do">회원가입</a>
 							</c:when>
+							<c:when test="${!empty logId and status eq 'admin'}">
+								<span>${logName } 님</span>
+								<a href="logout.do">로그아웃</a>
+								<a href="adminForm.do">관리자페이지</a>
+							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
 								<a href="logout.do">로그아웃</a>

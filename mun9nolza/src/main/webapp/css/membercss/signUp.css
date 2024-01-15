@@ -1,47 +1,60 @@
 @charset "UTF-8";
-	body {
-      min-height: 100vh;
 
-      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
-      background: -webkit-linear-gradient(bottom left, #92b5db 0%,#1d466c 100%);
-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+body {
+	min-height: 100vh;
+	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
+		to(#1d466c));
+	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
 
+	/* background-color: #e6d1ab; */
+}
 
-      /* background-color: #e6d1ab; */
-    }
+.img-logo {
+	padding-bottom: 20px;
+	text-align: center;
+}
 
-    .img-logo {
-      padding-bottom: 20px;
-    }
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
 
-    .input-form {
-      max-width: 680px;
+.genderBox {
+	border: 1.5px solid #cccccc;
+	border-radius: 5px;
+	width: 380px;
+	height: 42px;
+	padding: 10px;
+}
 
-      margin-top: 80px;
-      padding: 32px;
+.phone-control{
+	width: 380px;
+}
 
-      background: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-    }
+.phone-control .form-control{
+	width: 380px;
+	display: inline-block;
+}
 
+.phone-control p {
+	display: inline-block;
+	margin : 0 10px 0 10px;
+	font-size: large;
+}
 
-    .genderBox {
-      border: 1.5px solid #cccccc;
-      border-radius: 5px;
-      width: 380px;
-      height: 42px;
-      padding: 10px;
-    }
-
-    .btn-primary {
-      font-family: '맑은고딕';
-      font-weight: bolder;
-      color: #fff;
-    }
+.btn-primary {
+	font-family: '맑은고딕';
+	font-weight: bolder;
+	color: #fff;
+}

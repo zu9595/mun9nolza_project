@@ -26,15 +26,16 @@
 						</a>
 					</div>
 					<form action="login.do" method="post">
-						<span style="margin-top: 5px; margin-right: 16px">아이디</span> <input
-							type="text" name="userId" placeholder="아이디를 입력하세요" /> <br>
-						<span style="margin-top: 5px;">비밀번호</span> <input type="password"
-							name="userPw" placeholder="비밀번호를 입력하세요" />
+						<ul class="ul-form">
+							<li><span style="margin-top: 5px; margin-right: 17px">아이디</span>
+								<input type="text" name="userId" placeholder="아이디를 입력하세요" /></li>
+							<li><span style="margin-top: 5px;">비밀번호</span> <input
+								type="password" name="userPw" placeholder="비밀번호를 입력하세요" /></li>
 
-						<div class="mb-4"></div>
-						<button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
+							<li><div class="mb-4"></div>
+								<button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button></li>
+						</ul>
 					</form>
-					<br>
 					<div class="sns-box">
 						<a id="naverIdLogin_loginButton" href="#" role="button"> <img
 							src="https://mall.hanssem.com/resources/images/common/easy-log-1.png"
@@ -43,12 +44,10 @@
 							src="https://mall.hanssem.com/resources/images/common/easy-log-4.png"
 							width=50 height=50 alt="카카오 로그인 버튼" /></a>
 					</div>
-					<p>
-						기존 회원이 아닙니다. <a href="addMemberForm.do">회원가입</a>
-					</p>
-					<p>
-						아이디/비밀번호가 기억나지 않습니다. <a href="#">아이디찾기</a> / <a href="#">비밀번호찾기</a>
-					</p>
+					<div class="link-tag">
+						<a href="addMemberForm.do">회원가입</a> / <a href="#">아이디찾기</a> / <a
+							href="#">비밀번호찾기</a>
+					</div>
 				</div>
 			</div>
 		</div>
