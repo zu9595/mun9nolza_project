@@ -6,7 +6,7 @@
 <mapper namespace="com.mun9.product.mapper.ProductMapper">
   
   <select id="getProduct" resultType="product" parameterType="int">
-  	select * from product where pro_code = #{pno}
+  	select * from product where pro_code = #{pcode}
   </select>
   
   <select id="selectProductList" resultType="product">

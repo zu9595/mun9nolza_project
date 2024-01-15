@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mun9.cart.mapper.CartMapper">
+  	
+  <select id="selectList" resultType="cart" parameterType="String">
+  		select p.pro_image, p.pro_name, p.pro_price, c.mypro_cnt
+		from cart c join product p
+		on c.pro_code = p.pro_code
+		where c.user_id = #{userId} 		
+  	</select>
+  
+ 
+</mapper>
