@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  "https:c:/mybatis-3-config.dtd">
   
   
   
@@ -14,6 +14,7 @@
 	<typeAliases>
 		<typeAlias alias="member" type="com.mun9.member.vo.MemberVO" /> 
 		<typeAlias alias="product" type="com.mun9.product.vo.ProductVO" /> 
+		<typeAlias alias="myproduct" type="com.mun9.myproduct.vo.MyProductVO" /> 
   	</typeAliases>
   
   <environments default="development">
@@ -30,5 +31,6 @@
   <mappers>
   	<mapper resource="com/mun9/member/mapper/MemberMapper.xml" />
   	<mapper resource="com/mun9/product/mapper/ProductMapper.xml" />
+  	<mapper resource="com/mun9/cart/mapper/CartMapper.xml" />
   </mappers>
 </configuration>
