@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mun9.orderlist.mapper.OrderListMapper">
+
+ <!-- 마이페이지(주문내역조회): 로그인아이디-최근주문순 -->
+ <select id="selectMyOrderList" resultType="orderlist" parameterType="String">
+ 	select * from orderlist where user_id = #{userId} order by order_date desc;
+ </select>
+
+ 
+</mapper>

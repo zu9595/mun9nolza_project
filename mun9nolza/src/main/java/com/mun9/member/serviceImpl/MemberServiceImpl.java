@@ -29,5 +29,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(String userId, String userPw) {
 		return mapper.selectMember(userId, userPw);
 	}
+
+	@Override
+	public boolean delMember(String userId, String userPw) {
+		// TODO Auto-generated method stub
+		return mapper.deleteMember(userId, userPw) == 1;
+	}
 	
 }

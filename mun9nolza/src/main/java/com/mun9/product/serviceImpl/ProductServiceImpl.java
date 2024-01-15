@@ -15,9 +15,8 @@ public class ProductServiceImpl implements ProductService{
 	ProductMapper mapper = session.getMapper(ProductMapper.class);
 
 	@Override
-	public ProductVO getProduct(int pno) {
-		// TODO Auto-generated method stub
-		return mapper.getProduct(pno);
+	public ProductVO getProduct(int pcode) {
+		return mapper.getProduct(pcode);
 	}
 	
 	@Override

@@ -1,7 +1,9 @@
 package com.mun9.cart.mapper;
 
+import java.util.List;
+
 import com.mun9.cart.vo.CartVO;
 
 public interface CartMapper {
-	public CartVO getProduct(int pno);
+	List<CartVO> selectList(String userId);
 }
