@@ -17,7 +17,7 @@ public class ProductListFormControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		
-		RequestDispatcher rd = req.getRequestDispatcher("productList/productListBody.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("product/productListBody.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {

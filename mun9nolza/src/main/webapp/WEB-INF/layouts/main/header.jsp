@@ -35,11 +35,9 @@
 							</c:otherwise>
 						</c:choose>
 
-						<div class="dropdown cart">
-							<a class="dropdown-toggle" href="myProductList.do"
-								id="navbarDropdown3" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> <i
-								class="fas fa-cart-plus"></i>
+						<div class="cart">
+							<a href="cartListForm.do" role="button"> 
+								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
 						<!-- 검색 -->
@@ -77,7 +75,7 @@
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="main.do">Home</a>
 							</li>
-							<li><a class="nav-link" href="index.html">전체상품</a></li>
+							<li><a class="nav-link" href="productListForm.do">전체상품</a></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="blog.html"
 								id="navbarDropdown_1" role="button" data-toggle="dropdown"
@@ -115,11 +113,9 @@
 								<a href="logout.do">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
-						<div class="dropdown cart">
-							<a class="dropdown-toggle" href="myProductList.do"
-								id="navbarDropdown3" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false"> <i
-								class="fas fa-cart-plus"></i>
+						<div class="cart">
+							<a href="cartListForm.do" role="button"> 
+								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
 						<!-- 검색 -->

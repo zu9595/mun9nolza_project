@@ -27,6 +27,7 @@
         <property name="username" value="mun9nolza"/>
         <property name="password" value="0000"/>
 
+
       </dataSource>
     </environment>
   </environments>
