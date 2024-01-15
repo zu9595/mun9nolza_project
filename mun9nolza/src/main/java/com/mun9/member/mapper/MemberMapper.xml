@@ -8,11 +8,13 @@
 		userId=#{userId} and userPw=#{userPw}
 	</select>
 	
+	<!-- 회원등록기능 -->
  	<insert id="insertMember" parameterType="member">
-    	insert into member values (#{userId}, #{userPw}, #{userName}, #{userNickName}, 
+    	insert into member3 values (#{userId}, #{userPw}, #{userName}, 
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  	</insert>
  
+ 	<!-- 회원목록 -->
  	<select id="selectList" resultType="member">
     	select * from member order by 1
  	</select>
