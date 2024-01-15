@@ -29,6 +29,7 @@ public class LoginControl implements Control {
 			session.setAttribute("logId", vo.getUserId());
 			session.setAttribute("logPw", vo.getUserPw());
 			session.setAttribute("logName", vo.getUserName());
+			session.setAttribute("status", vo.getStatus());
 			RequestDispatcher rd = req.getRequestDispatcher("mainbody.tiles");
 			try {
 				rd.forward(req, resp);
