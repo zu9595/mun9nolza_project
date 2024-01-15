@@ -22,7 +22,6 @@ import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
 import com.mun9.product.command.GetProductControl;
-import com.mun9.product.command.GetProductListControl;
 import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
@@ -54,7 +53,6 @@ public class FrontController extends HttpServlet {
 		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
 		//마이페이지
 //		map.put("/myPage.do", new OrderListControl());
-		
 		
 		
 		//로그인 --수정필요
