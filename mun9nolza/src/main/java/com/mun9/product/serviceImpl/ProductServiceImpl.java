@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mun9.cart.vo.CartVO;
 import com.mun9.common.DataSource;
 import com.mun9.product.mapper.ProductMapper;
 import com.mun9.product.service.ProductService;
@@ -15,8 +16,10 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public ProductVO getProduct(int pno) {
+		// TODO Auto-generated method stub
 		return mapper.getProduct(pno);
 	}
+	
 	@Override
 	public List<ProductVO> productList() {
 		return mapper.selectProductList();

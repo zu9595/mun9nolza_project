@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.mun9.cart.vo.CartVO;
 import com.mun9.product.vo.ProductVO;
 
 public interface ProductMapper {

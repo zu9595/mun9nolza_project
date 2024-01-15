@@ -14,6 +14,7 @@
 	<typeAliases>
 		<typeAlias alias="member" type="com.mun9.member.vo.MemberVO" /> 
 		<typeAlias alias="product" type="com.mun9.product.vo.ProductVO" /> 
+		<typeAlias alias="cart" type="com.mun9.cart.vo.CartVO" /> 
   	</typeAliases>
   
   <environments default="development">
@@ -30,5 +31,6 @@
   <mappers>
   	<mapper resource="com/mun9/member/mapper/MemberMapper.xml" />
   	<mapper resource="com/mun9/product/mapper/ProductMapper.xml" />
+  	<mapper resource="com/mun9/cart/mapper/CartMapper.xml" />
   </mappers>
 </configuration>

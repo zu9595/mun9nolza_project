@@ -1,9 +1,9 @@
-package com.mun9.myproduct.vo;
+package com.mun9.cart.vo;
 
 import lombok.Data;
 
 @Data
-public class MyproductVO {
+public class CartVO {
 
 	private int myproNo;
 	private String userId;
