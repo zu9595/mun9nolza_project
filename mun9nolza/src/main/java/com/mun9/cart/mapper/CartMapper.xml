@@ -5,6 +5,7 @@
   
 <mapper namespace="com.mun9.cart.mapper.CartMapper">
 
+
   	
   <select id="selectList" resultType="cart" parameterType="String">
   		select p.pro_image, p.pro_name, p.pro_price, c.mypro_cnt
@@ -12,6 +13,7 @@
 		on c.pro_code = p.pro_code
 		where c.user_id = #{userId} 		
   	</select>
+
 
   
  

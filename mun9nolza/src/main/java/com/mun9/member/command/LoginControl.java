@@ -2,6 +2,7 @@ package com.mun9.member.command;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,7 @@ public class LoginControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		String userId = req.getParameter("userId");
-		String userPw = req.getParameter("userPw");
+		String userPw = req.getParameter("userPw");		
 		
 		MemberService svc = new MemberServiceImpl();
 		
@@ -26,17 +27,19 @@ public class LoginControl implements Control {
 		if(vo != null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("logId", vo.getUserId());
-			
+			session.setAttribute("logPw", vo.getUserPw());
+			session.setAttribute("logName", vo.getUserName());
+			RequestDispatcher rd = req.getRequestDispatcher("mainbody.tiles");
 			try {
-				resp.sendRedirect("main.do");
-			} catch (IOException e) {
+				rd.forward(req, resp);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else {
 			req.setAttribute("massage", "아이디와 비밀번호를 확인하세요");
 			//페이지 없음
 			try { 
-				req.getRequestDispatcher("member/logForm.tiles").forward(req, resp);
+				req.getRequestDispatcher("no/login/loginForm.tiles").forward(req, resp);
 			} catch (ServletException | IOException e) {
 				e.printStackTrace();
 			}
