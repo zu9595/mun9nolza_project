@@ -72,7 +72,7 @@
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="nav-link" href="main.do">Home</a>
 							</li>
-							<li><a class="nav-link" href="index.html">전체상품</a></li>
+							<li><a class="nav-link" href="productListForm.do">전체상품</a></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="blog.html"
 								id="navbarDropdown_1" role="button" data-toggle="dropdown"
