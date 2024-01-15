@@ -1,7 +1,7 @@
 /**
  * 
  */
-$(document).ready(cartList);
+$(document).ready(cartList());
 
 function cartList() {
     fetch("cartList.do", {
@@ -17,7 +17,7 @@ function cartList() {
 				let tr = $('<tr />').append($('<td />').text(cart.pro_image),
 					$('<td />').append($('<h5 />').text(cart.pro_name)),
 					$('<td />').text(cart.mypro_cnt),
-					$('<td />').text(cart.mypro_price)
+					$('<td />').text(cart.mypro_price),
 				);
 				$('#cartListTbody').append(tr);
 			})

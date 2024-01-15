@@ -25,12 +25,13 @@ public class CartListControl implements Control {
 		CartService svc = new CartServiceImpl();
 		List<CartVO> list = svc.cartList(userId);
 
-		req.setAttribute("cartList", list);
-
-		RequestDispatcher rd = req.getRequestDispatcher("cart/cartList.tiles");
+		resp.setContentType("text/json;charset=utf-8");
+		Gson gson = new GsonBuilder().create();
+		
 		try {
-			rd.forward(req, resp);
-		} catch (ServletException | IOException e) {
+			resp.getWriter().print(gson.toJson(list));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
