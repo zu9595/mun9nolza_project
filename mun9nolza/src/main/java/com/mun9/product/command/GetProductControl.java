@@ -16,12 +16,13 @@ public class GetProductControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String pno = req.getParameter("pno");
+		
+		int pcode = Integer.parseInt(req.getParameter("pcode"));
 		
 		ProductService svc = new ProductServiceImpl();
-		ProductVO vo = svc.getProduct(Integer.parseInt(pno));
+		ProductVO vo = svc.getProduct(pcode);
 		
-		req.setAttribute("vo", vo);
+		resp.setContentType("text/json;charset=utf-8");
 		
 		RequestDispatcher rd = req.getRequestDispatcher("product/getProduct.tiles");
 			try {
