@@ -8,5 +8,5 @@ public interface MemberService {
 	public MemberVO login(String userId, String userPw);
 	public boolean addMember(MemberVO vo);
 	public List<MemberVO> memberList();
-	
+	public boolean delMember(String userId, String userPw);
 }

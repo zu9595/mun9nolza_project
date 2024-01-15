@@ -15,6 +15,7 @@ import com.mun9.cart.command.CartListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
+import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
 import com.mun9.member.command.LoginControl;
@@ -70,7 +71,8 @@ public class FrontController extends HttpServlet {
 		map.put("/adminMemberForm.do", new AdminMemberFormControl());
 		//admin 사용자 목록 list
 		map.put("/memberList.do", new AdminMemberListControl());
-		
+		//admin 사용자 삭제
+		map.put("/memberDel.do", new AdminMemberDelControl());
 		
 		
 	}
