@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
+import com.mun9.cart.command.CartListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
@@ -56,6 +57,7 @@ public class FrontController extends HttpServlet {
 		//상품관련	--수정필요
 		map.put("/getProduct.do", new GetProductControl());
 		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
+		map.put("/cartListForm.do", new CartListFormControl());
 		map.put("/cartList.do", new CartListControl());
 		//productlist 페이지 --수정필요
 		map.put("/productList.do", new ProductListControl());
