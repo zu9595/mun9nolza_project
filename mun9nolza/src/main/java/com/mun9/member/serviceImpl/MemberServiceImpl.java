@@ -27,7 +27,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO login(String userId, String userPw) {
-		// TODO Auto-generated method stub
 		return mapper.selectMember(userId, userPw);
 	}
 	

@@ -18,6 +18,7 @@ import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
+import com.mun9.member.command.LogoutControl;
 import com.mun9.product.command.GetProductControl;
 import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductPagingListControl;
@@ -51,6 +52,7 @@ public class FrontController extends HttpServlet {
 		//로그인 --수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
 				
 		
 		//상품관련	--수정필요
