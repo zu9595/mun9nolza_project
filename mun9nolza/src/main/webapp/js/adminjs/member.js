@@ -1,9 +1,10 @@
 /**
  * 
  */
-$(document).ready(memberList);
-
-
+$(document).ready(function(){
+	memberList();
+	
+} );
 
 function memberList() {
     fetch("memberList.do", {
@@ -16,23 +17,28 @@ function memberList() {
             $(res).each((idx, member) => {
 				// tr생성. td생성
 
-				let tr = $('<tr />').addClass('del').append($('<td />').text(member.userId),
-					$('<td />').text(member.userPw),
+				let tr = $('<tr />').addClass('del').append($('<td />').attr('id','id').text(member.userId),
+					$('<td />').attr('id','pw').text(member.userPw),
 					$('<td />').text(member.userName),
-					$('<td />').append($('<button />').attr('id', 'delete').text('삭제'))
+					$('<td />').append($('<button />').addClass('delete').text('삭제'))
 				);
 				$('#list').append(tr);
 			})
+				$('.delete').on('click', function(e){
+					memberDel($(e.target).parent().prevAll('#id').text(),$(e.target).parent().prevAll('#pw').text());
+					console.log($(e.target).parent().prevAll('#id').text())
+				});
         })
         .catch(console.error);
 };
 
-function memberDel(userId, userPw) {
-    const promise = fetch("memberDel.do?userId=" + userId + "&userPw="+userPw)
-    const json = promise.json();
+async function memberDel(userId, userPw) {
+    const promise = await fetch("memberDel.do?userId=" + userId + "&userPw="+userPw)
+    const json = await promise.json();
     try{
 		if(json.retCode == 'OK'){
 			alert('삭제됨');
+			$('.del').remove();
 			memberList();
 						
 		}else if(json.retCode == 'NG'){

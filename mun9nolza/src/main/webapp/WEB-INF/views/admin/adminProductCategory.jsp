@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<script src="js/adminjs/member.js"></script>
 <main>
-    <h3>회원목록</h3>
+	<h3>상품목록</h3>
 	<table class="table">
 		<thead>
 			<tr>
