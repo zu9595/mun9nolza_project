@@ -6,7 +6,7 @@
 <mapper namespace="com.mun9.product.mapper.ProductMapper">
   
   <select id="getProduct" resultType="product" parameterType="int">
-  	select * from product where pro_code = #{pno}
+  	select * from product where pro_code = #{pcode}
   </select>
   
   <select id="selectProductList" resultType="product">
@@ -19,7 +19,7 @@
 	(select * from product order by 1
     ) a ) b
     <![CDATA[
-	where b.rn > (#{page}-1)*5 and b.rn <= #{page}*5
+	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
     ]]>
 	</select>
 	

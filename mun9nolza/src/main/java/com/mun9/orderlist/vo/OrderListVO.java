@@ -8,13 +8,13 @@ import lombok.Data;
 public class OrderListVO {
 
 	private int orderNo;
-	private String orderAddr;
 	private Date orderDate;
-	private int deliveryFee;
 	private String userId;
-	private int totalPrice;
 	private String orderRecipient;
-	private String orderPhone;
+	private String orderAddr;
 	private String detailAddr;
+	private String orderPhone;
+	private int totalPrice;
+	private int deliveryFee;
 	private String deliveryMemo;
 }
