@@ -13,8 +13,22 @@ function cartList() {
             console.log(res);
             $(res).each((idx, cart) => {
 				// tr생성-> 첫번째 td밑div2개 td 총5개
+				console.log(cart);			
+				let newTr = makeTr(cart);
+              	let cartListTbody = document.querySelector('.cartListTbody');
+				cartListTbody.insertAdjacentHTML('afterbegin', newTr);
+			})
+        })
+        .catch(console.error);
+};
 
-				let tr = `<tr>
+
+function makeTr(cart){
+	let newTr = `<tr>
+				<td>
+					<input type="checkbox" id="f-option" name="selector">
+				</td>
+				
                 <td>
                   <div class="media">
                     <div class="d-flex">
@@ -44,10 +58,6 @@ function cartList() {
                 <td>
                   <h5>$720.00</h5>
                 </td>
-              </tr>`;
-              	let cartListTbody = document.querySelector('.cartListTbody');
-				cartListTbody.insertAdjacentHTML('afterbegin', tr);
-			})
-        })
-        .catch(console.error);
-};
+              </tr>`
+              return newTr;
+}
