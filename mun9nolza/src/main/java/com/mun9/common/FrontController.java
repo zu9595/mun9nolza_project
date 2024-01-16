@@ -80,9 +80,11 @@ public class FrontController extends HttpServlet {
 		map.put("/cartList.do", new CartListControl());
 		map.put("/cartListJson.do", new CartListJson());
 		//productlist 페이지 --수정필요
-		map.put("/productListForm.do", new ProductListFormControl());
+
+		map.put("/getProduct.do", new GetProductControl());
+		map.put("/productListForm.do", new ProductListFormControl()); // 상품목록페이지 이동
 		map.put("/productList.do", new ProductListControl());
-		map.put("/productPagingList.do", new ProductPagingListControl());
+		map.put("/productPagingList.do", new ProductPagingListControl()); // 상품목록 및 분류
 		map.put("/productDetail.do", new ProductDetailControl());
 		
 		//admin 페이지
