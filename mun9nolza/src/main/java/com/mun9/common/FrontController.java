@@ -22,7 +22,7 @@ import com.mun9.member.command.AdminProductFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
-import com.mun9.product.command.GetProductControl;
+import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
@@ -63,7 +63,7 @@ public class FrontController extends HttpServlet {
 				
 		
 		//상품관련	--수정필요
-		map.put("/getProduct.do", new GetProductControl());
+		map.put("/getProduct.do", new ProductDetailControl());
 		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
 		map.put("/cartListForm.do", new CartListFormControl());
 		map.put("/cartList.do", new CartListControl());
@@ -71,7 +71,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productListForm.do", new ProductListFormControl());
 		map.put("/productList.do", new ProductListControl());
 		map.put("/productPagingList.do", new ProductPagingListControl());
-		map.put("/getProduct.do", new GetProductControl());
+		map.put("/productDetail.do", new ProductDetailControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

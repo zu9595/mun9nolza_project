@@ -8,7 +8,7 @@ import com.mun9.cart.vo.CartVO;
 import com.mun9.product.vo.ProductVO;
 
 public interface ProductMapper {
-	public ProductVO getProduct(int pcode);
+	public ProductVO getProductDetail(int pcode);
 	public List<ProductVO> selectProductList();
 	public List<ProductVO> productListPaging(@Param("page") int page);
 	int selectCount();
