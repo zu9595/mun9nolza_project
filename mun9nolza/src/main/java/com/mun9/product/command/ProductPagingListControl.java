@@ -24,8 +24,11 @@ public class ProductPagingListControl implements Control {
 		ProductService svc = new ProductServiceImpl();
 		String page = req.getParameter("page");
 		String category = req.getParameter("category");
+		
+		String proDiscnt = req.getParameter("proDiscount");
+		
 		page = page == null ? "1" : page;
-		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page), category);
+		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page), category, Integer.parseInt(proDiscnt));
 		
 		int total = svc.getTotalCnt(category);		
 		PageDTO dto = new PageDTO(Integer.parseInt(page), total);

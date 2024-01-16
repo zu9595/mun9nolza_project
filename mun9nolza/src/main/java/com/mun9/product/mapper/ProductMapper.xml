@@ -13,16 +13,22 @@
 	select b.* from
 	(select rownum rn, a.* from
 	(select * from product
-	<where>
-    <if test="category != null and category != ''">
+	<choose>
+    <when test="category != null and category != ''">
     category = #{category}
-    </if>
-    </where> 
-	order by pro_discount
-	) a ) b
-	<![CDATA[
+    order by pro_sell
+    <![CDATA[
 	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
     ]]>
+    </when>
+    
+    <when test="proDiscount != null and proDiscount != '' and category == null or category == ''">
+    pro_discount = #{proDiscount}
+    order by pro_discount
+    </when>
+    
+    </choose>
+    ) a ) b
  </select>
  <select id="selectCount" resultType="int">
 	select count(*) from product 

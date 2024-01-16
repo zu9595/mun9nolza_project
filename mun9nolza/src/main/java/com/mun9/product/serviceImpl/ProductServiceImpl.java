@@ -20,14 +20,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> productListPaging(int page, String category) {
-		return mapper.productListPaging(page, category);
+	public List<ProductVO> productListPaging(int page, String category, int proDiscount) { // 메인 할인상품목록, 상품목록탭 목록 및 페이징
+		return mapper.productListPaging(page, category, proDiscount);
 	}
 
 	@Override
 	public int getTotalCnt(String category) { // 상품 전체 및 상품 분류에 따른 총 상품 개수
 		return mapper.selectCount(category);
 	}
-
 	
 }

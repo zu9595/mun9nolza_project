@@ -31,8 +31,6 @@ import com.mun9.orderlist.command.OrderListJsonControl;
 
 import com.mun9.product.command.AdminProductListControl;
 
-import com.mun9.product.command.GetProductControl;
-import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 
@@ -77,14 +75,11 @@ public class FrontController extends HttpServlet {
 		//상품관련	--수정필요
 		map.put("/productDetail.do", new ProductDetailControl());
 		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
-    map.put("/cartListForm.do", new CartListFormControl());
 		map.put("/cartList.do", new CartListControl());
 		map.put("/cartListJson.do", new CartListJson());
 		//productlist 페이지 --수정필요
 
-		map.put("/getProduct.do", new GetProductControl());
 		map.put("/productListForm.do", new ProductListFormControl()); // 상품목록페이지 이동
-		map.put("/productList.do", new ProductListControl());
 		map.put("/productPagingList.do", new ProductPagingListControl()); // 상품목록 및 분류
 		map.put("/productDetail.do", new ProductDetailControl());
 		
