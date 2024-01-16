@@ -35,5 +35,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mapper.deleteMember(userId, userPw) == 1;
 	}
+
+	@Override
+	public MemberVO kakaologin(String email, String userName) {
+		// TODO Auto-generated method stub
+		return mapper.kakaoSelectMember(email, userName);
+	}
+
 	
 }

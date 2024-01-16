@@ -10,7 +10,7 @@
 	
 	<!-- 회원등록기능 -->
  	<insert id="insertMember" parameterType="member">
-    	insert into member3 values (#{userId}, #{userPw}, #{userName}, 
+    	insert into member values (#{userId}, #{userPw}, #{userName}, 
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  	</insert>
  
@@ -22,5 +22,10 @@
  	<delete id="deleteMember" parameterType="String">
  		delete from member where user_id=#{userId} and user_pw=#{userPw}
  	</delete>
+ 	
+ 	<select id="kakaoSelectMember" resultType="member" parameterType="String">
+		select * from member where
+		email=#{email} and user_name=#{userName}
+	</select>
  
 </mapper>

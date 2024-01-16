@@ -9,5 +9,5 @@ public interface MemberService {
 	public List<MemberVO> memberList();
 	public boolean addMember(MemberVO vo);
 	public boolean delMember(String userId, String userPw);
-
+	public MemberVO kakaologin(String email, String userName);
 }
