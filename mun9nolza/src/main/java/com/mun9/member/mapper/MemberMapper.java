@@ -12,4 +12,5 @@ public interface MemberMapper {
 	public int insertMember(MemberVO vo);
 	public List<MemberVO> selectList();
 	public int deleteMember(@Param("userId") String userId, @Param("userPw") String userPw);
+	public String selectId(@Param("userName") String userName, @Param("email") String email);
 }

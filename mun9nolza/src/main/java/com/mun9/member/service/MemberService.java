@@ -10,4 +10,6 @@ public interface MemberService {
 	public boolean addMember(MemberVO vo);
 	public boolean delMember(String userId, String userPw);
 
+	//아이디 찾기
+	public String findId(String userName, String email);
 }

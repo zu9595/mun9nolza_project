@@ -37,10 +37,6 @@ section {
 	margin-bottom: 10px;
 }
 
-.input-form ul li input{
-	width: 400px;
-}
-
 .ul-form {
 	margin: 0;
 }
@@ -64,9 +60,12 @@ section {
 }
 
 .sns-box a {
-	margin: 10px;
+	margin: 16px;
 }
 
 .link-tag {
 	text-align: center;
+}
+.modal-body .mr{
+	margin-right: 10px;
 }
