@@ -29,5 +29,17 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.selectCount(category);
 	}
 
+	@Override
+	public ProductVO getProduct(int pcode) {
+		// TODO Auto-generated method stub
+		return mapper.getProduct(pcode);
+	}
+
+	@Override
+	public List<ProductVO> productList() {
+		// TODO Auto-generated method stub
+		return mapper.selectProductList();
+	}
+
 	
 }

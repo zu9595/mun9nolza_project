@@ -5,6 +5,14 @@
   
 <mapper namespace="com.mun9.product.mapper.ProductMapper">
   
+  <select id="getProduct" resultType="product" parameterType="int">
+  	select * from product where pro_code = #{pcode}
+  </select>
+  
+  <select id="selectProductList" resultType="product">
+    select * from product order by 1
+ </select>
+  
   <select id="getProductDetail" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
