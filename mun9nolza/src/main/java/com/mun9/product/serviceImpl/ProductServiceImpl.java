@@ -18,19 +18,14 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO getProduct(int pcode) {
 		return mapper.getProduct(pcode);
 	}
-	
+
 	@Override
-	public List<ProductVO> productList() {
-		return mapper.selectProductList();
+	public List<ProductVO> productListPaging(int page, String category) {
+		return mapper.productListPaging(page, category);
 	}
 
 	@Override
-	public List<ProductVO> productListPaging(int page) {
-		return mapper.productListPaging(page);
-	}
-
-	@Override
-	public int getTotalCnt() {
-		return mapper.selectCount();
+	public int getTotalCnt(String category) { // 상품 전체 및 상품 분류에 따른 총 상품 개수
+		return mapper.selectCount(category);
 	}
 }
