@@ -17,42 +17,40 @@ public class SocialLoginControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		MemberService svc = new MemberServiceImpl();
-		String userId = req.getParameter("userId");
-		String userPw = req.getParameter("userPw");
-		MemberVO vo = new MemberVO();
-		vo = svc.login(userId, userPw);
-		if (vo == null) {
-			vo = new MemberVO();
-			String userName = req.getParameter("userName");
-			String email = req.getParameter("email");
-			String gender = req.getParameter("gender");
-			vo.setEmail(userName);
-			vo.setEmail(email);
-			vo.setGender(gender);
 
+		String userName = req.getParameter("userName");
+		String email = req.getParameter("email");
+		String gender = req.getParameter("gender");
+		MemberVO vo = null;
+		if (svc.kakaologin(email, userName) != null) {
+			vo = svc.kakaologin(email, userName);
+			
 			HttpSession session = req.getSession();
-			session.setAttribute("vo", vo);
-			RequestDispatcher rd = req.getRequestDispatcher("member/addMember.tiles");
+			session.setAttribute("logId", vo.getUserId());
+			session.setAttribute("logPw", vo.getUserPw());
+			session.setAttribute("logName", vo.getUserName());
+			session.setAttribute("status", vo.getStatus());
+			
+			RequestDispatcher rd = req.getRequestDispatcher("mainbody.tiles");
 			try {
 				rd.forward(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
-			HttpSession session = req.getSession();
-			session.setAttribute("userId", vo.getUserId());
-			session.setAttribute("userPw", vo.getUserPw());
-			session.setAttribute("userName", vo.getUserName());
-			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("gender", vo.getGender());
-			session.setAttribute("phoneNum", vo.getPhoneNum());
-			session.setAttribute("status", vo.getStatus());
-
+			vo = new MemberVO();
+			vo.setUserName(userName);
+			vo.setEmail(email);
+			vo.setGender(gender);
+			req.setAttribute("vo", vo);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("no/member/addMember.tiles");
 			try {
-				resp.sendRedirect("main.do");
-			} catch (IOException e) {
+				rd.forward(req, resp);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}
 	}
 

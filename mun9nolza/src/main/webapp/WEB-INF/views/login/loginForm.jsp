@@ -46,7 +46,7 @@
 					</div>
 					<div class="link-tag">
 						<a href="addMemberForm.do">회원가입</a> / <a href="#">아이디찾기</a> / <a
-							href="#">비밀번호찾기</a>
+							href="#">비밀번호찾기</a> / <a href="javascript:kakaoLogout()">카카오톡</a>
 					</div>
 				</div>
 			</div>

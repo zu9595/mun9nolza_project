@@ -14,8 +14,7 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <!-- 상대경로로 이동 -> 파일위치에서 폴더에서 나가주고 폴더를 들어가야함 -->
 <link rel="stylesheet" href="css/membercss/signUp.css">
@@ -69,14 +68,16 @@
 						<label for="gender" style="margin-top: 5px;">성별</label>
 						<br>
 						<div class="genderBox">
-						<c:if test="${vo.gender eq 'male' }">
+						<c:choose>
+						<c:when test="${vo.gender eq 'male' }">
 							<label for="gender">남성</label> 
-							<input type='radio' id='gender' name='gender' value='남' checked readonly/> 
-						</c:if>
-						<c:if test="${vo.gender eq 'female' }">
+							<input type='radio' class='gender' name='gender' value='남' checked/> 
+						</c:when>
+						<c:otherwise>
 							<label for="gender">여성</label> 
-							<input type='radio' id='gender' name='gender' value='여' checked readonly/>
-						</c:if>
+							<input type='radio' class='gender' name='gender' value='여' checked/>
+						</c:otherwise>
+						</c:choose>
 						</div>
 						</c:when>
 						<c:otherwise>
@@ -84,9 +85,9 @@
 						<br>
 						<div class="genderBox">
 							<label for="gender">남성</label> 
-							<input type='radio' id='gender' name='gender' value='남' /> 
+							<input type='radio' class='gender' name='gender' value='남' /> 
 							<label for="gender">여성</label> 
-							<input type='radio' id='gender' name='gender' value='여' />
+							<input type='radio' class='gender' name='gender' value='여' />
 						</div>
 						</c:otherwise>
 						</c:choose>
