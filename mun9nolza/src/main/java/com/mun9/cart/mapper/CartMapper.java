@@ -5,5 +5,5 @@ import java.util.List;
 import com.mun9.cart.vo.CartVO;
 
 public interface CartMapper {
-	List<CartVO> selectList(String userId);
+	List<CartVO> selectCartList(String userId);
 }

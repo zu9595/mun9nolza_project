@@ -12,7 +12,7 @@ import com.mun9.product.service.ProductService;
 import com.mun9.product.serviceImpl.ProductServiceImpl;
 import com.mun9.product.vo.ProductVO;
 
-public class GetProductControl implements Control {
+public class ProductDetailControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -20,11 +20,11 @@ public class GetProductControl implements Control {
 		int pcode = Integer.parseInt(req.getParameter("pcode"));
 		
 		ProductService svc = new ProductServiceImpl();
-		ProductVO vo = svc.getProduct(pcode);
+		ProductVO vo = svc.getProductDetail(pcode);
 		
-		resp.setContentType("text/json;charset=utf-8");
+		req.setAttribute("vo", vo);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("product/getProduct.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("product/productDetail.tiles");
 			try {
 				rd.forward(req, resp);
 			} catch (ServletException | IOException e) {

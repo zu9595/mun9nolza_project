@@ -38,7 +38,8 @@
 						</c:choose>
 
 						<div class="cart">
-							<a href="cartListForm.do" role="button">
+							<a href="cartList.do" role="button"> 
+
 								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
@@ -122,7 +123,7 @@
 							</c:otherwise>
 						</c:choose>
 						<div class="cart">
-							<a href="cartListForm.do" role="button"> 
+							<a href="cartList.do" role="button"> 
 								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
