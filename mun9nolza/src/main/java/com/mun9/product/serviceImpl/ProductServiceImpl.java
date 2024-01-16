@@ -15,8 +15,8 @@ public class ProductServiceImpl implements ProductService{
 	ProductMapper mapper = session.getMapper(ProductMapper.class);
 
 	@Override
-	public ProductVO getProduct(int pcode) {
-		return mapper.getProduct(pcode);
+	public ProductVO getProductDetail(int pcode) {
+		return mapper.getProductDetail(pcode);
 	}
 
 	@Override
@@ -28,4 +28,6 @@ public class ProductServiceImpl implements ProductService{
 	public int getTotalCnt(String category) { // 상품 전체 및 상품 분류에 따른 총 상품 개수
 		return mapper.selectCount(category);
 	}
+
+	
 }

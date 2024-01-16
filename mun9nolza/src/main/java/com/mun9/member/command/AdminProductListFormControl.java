@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.common.Control;
 
-public class AdminProductFormControl implements Control {
+public class AdminProductListFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		//페이지 이동(forward)
-			RequestDispatcher rd = req.getRequestDispatcher("admin/adminProduct.tiles");
+			RequestDispatcher rd = req.getRequestDispatcher("admin/adminProductList.tiles");
 			try {
 				rd.forward(req, resp);
 			} catch (ServletException | IOException e) {
