@@ -74,6 +74,8 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    <!-- kakao js -->
+    <script src="js/loginjs/kakao.js"></script>
 </body>
 
 </html>

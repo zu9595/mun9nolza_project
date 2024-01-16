@@ -26,14 +26,14 @@
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
-								<a href="logout.do">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 								<a href="adminForm.do">관리자페이지</a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
 								<!-- <a href="myOrderList.do" onClick="javascript:goPost()">마이페이지</a> -->
 								<a href="myOrderList.do?userId=${logId }&userPw=${logPw }">마이페이지</a>
-								<a href="logout.do">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 
@@ -113,13 +113,13 @@
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
-								<a href="logout.do">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 								<a href="adminForm.do">관리자페이지</a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
 								<a href="myOrderList.do">마이페이지</a>
-								<a href="logout.do">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 						<div class="cart">
