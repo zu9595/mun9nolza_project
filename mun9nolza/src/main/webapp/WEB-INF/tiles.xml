@@ -2,9 +2,10 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-       
-       
+
+
 <tiles-definitions>
+
 
   <definition name="admin" template="/WEB-INF/layouts/admin/template.jsp">
   	<put-attribute name="nav" value="/WEB-INF/layouts/admin/nav.jsp"></put-attribute> 
@@ -36,8 +37,6 @@
   	<put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>
   </definition>
   
-  
-  
   <definition name="main" template="/WEB-INF/layouts/main/template.jsp">
   	<put-attribute name="banner" value="/WEB-INF/layouts/main/banner.jsp"></put-attribute> 
   	<put-attribute name="header" value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
@@ -55,10 +54,11 @@
   <definition name="normalLayout" template="/WEB-INF/views/normalLayout.jsp">
 		<put-attribute name="NormalLayout" value="" />
 	</definition>
-		
+
 	<definition name="WILDCARD:no/*/*" extends="normalLayout">
-		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="NormalLayout"
+			value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
 
-    
+
 </tiles-definitions>
