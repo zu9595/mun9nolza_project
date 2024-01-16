@@ -18,10 +18,12 @@ import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
-import com.mun9.member.command.AdminProductFormControl;
+import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
+import com.mun9.member.command.SocialLoginControl;
+import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.GetProductControl;
 import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductListFormControl;
@@ -60,6 +62,7 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
+		map.put("/socialLogin.do", new SocialLoginControl());
 				
 		
 		//상품관련	--수정필요
@@ -81,8 +84,10 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new AdminMemberListControl());
 		//admin 사용자 삭제
 		map.put("/memberDel.do", new AdminMemberDelControl());
-		//admin Product 메인 이동
-		map.put("/adminProductForm.do", new AdminProductFormControl());
+		//admin Product List 이동
+		map.put("/adminProductListForm.do", new AdminProductListFormControl());
+		//admin Product List
+		map.put("/adminProductList.do", new AdminProductListControl());
 		
 		
 	}
