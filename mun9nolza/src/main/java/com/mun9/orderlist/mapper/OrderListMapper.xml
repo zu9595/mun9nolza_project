@@ -7,7 +7,11 @@
 
  <!-- 마이페이지(주문내역조회): 로그인아이디-최근주문순 -->
  <select id="selectMyOrderList" resultType="orderlist" parameterType="String">
- 	select * from orderlist where user_id = #{userId} order by order_date desc;
+ 	select o.order_date as "orderDate", o.order_no, p.pro_image, p.pro_name, od.de_pro_cnt, o.total_price
+	from orderlist o, product p, orderdetail od
+	where o.order_no = od.order_no
+	and o.pro_code = p.pro_code
+	and user_id= #{userId} order by order_date desc
  </select>
 
  

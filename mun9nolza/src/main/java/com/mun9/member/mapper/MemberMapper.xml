@@ -10,7 +10,7 @@
 	
 	<!-- 회원등록기능 -->
  	<insert id="insertMember" parameterType="member">
-    	insert into member3 values (#{userId}, #{userPw}, #{userName}, 
+    	insert into member values (#{userId}, #{userPw}, #{userName}, 
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  	</insert>
  
