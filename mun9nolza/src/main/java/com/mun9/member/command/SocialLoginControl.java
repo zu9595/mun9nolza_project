@@ -18,6 +18,7 @@ public class SocialLoginControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		MemberService svc = new MemberServiceImpl();
 
+
 		String userName = req.getParameter("userName");
 		String email = req.getParameter("email");
 		String gender = req.getParameter("gender");

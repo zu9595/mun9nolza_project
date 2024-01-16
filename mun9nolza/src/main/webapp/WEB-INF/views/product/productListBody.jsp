@@ -15,19 +15,19 @@
                             <div class="widgets_inner">
                                 <ul class="list">
                                     <li>
-                                        <a href="#">다이어리</a>
+                                        <a href="#" class="category">다이어리</a>
                                     </li>
                                     <li>
-                                        <a href="#">캘린더</a>
+                                        <a href="#" class="category">캘린더</a>
                                     </li>
                                     <li>
-                                        <a href="#">노트</a>
+                                        <a href="#" class="category">노트</a>
                                     </li>
                                     <li>
-                                        <a href="#">일기장</a>
+                                        <a href="#" class="category">일기장</a>
                                     </li>
                                     <li>
-                                        <a href="#">가계부</a>
+                                        <a href="#" class="category">가계부</a>
                                     </li>
                                 </ul>
                             </div>
@@ -110,7 +110,7 @@
                         </div>
                     </div>
 	                
-                    <div class="row align-items-center latest_product_inner productlist" style="width: 720px; height: 640px;">
+                    <div class="row align-items-center latest_product_inner productlist" style="width: 720px;">
                         <!-- <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <img src="${vo.proImage }" alt="이미지">
@@ -154,32 +154,54 @@
 <script>
  let products = document.querySelector('.productlist');
 	let pageInfo = 1;
+    let category = '';
+    // let sort = ''; // 정렬 텍스트 기본값, .current(html로 보면 나옴)값을 넣어줄 예정
     let paging = document.querySelector('.pageination');
-    showList(pageInfo); 
-	pagingList();
+    showList(pageInfo,'', ''); 
+
+    // function sorting(sort){ // 상품 정렬 기능 넣을 함수. 근데 이렇게 하는게 맞는지 모르겠음
+    //     // console.log($('.current').text());
+    //     switch(sort){
+    //         case "이름순":
+                
+    //         case "가격순":
+
+    //         default :
+    //     }
+    // }        
 
 	function pageList(e){
-		e.preventDefault();
+        e.preventDefault();
 		pageInfo = this.getAttribute("href");
         // console.log(pageInfo);
-        showList(pageInfo);
-        pagingList(pageInfo);
-
+        showList(pageInfo, category, sort);
 	}
+    
+    $('.category').on('click', () =>{            
+        
+        category = event.target.innerText;
+        console.log(category);
+        showList(1, category, sort);
+        pagingList(result);
+    });
+    
     //Ajax호출.
-    function showList(page//, sort
-    ){
-        fetch('productList.do?page='+ page// + '&sorting' +sort
-        )
+    function showList(page, category, sort){
+        fetch('productPagingList.do?page='+ page +'&category='+ category +'&sorting'+ sort)
 		.then(str => str.json())
 		.then(result => {
+            let ul = ``;
             console.log("ajax 호출");
-            $(".listnumber").siblings().remove();
-			result.forEach(product => {
-                console.log(product);
+            $(".listnumber").siblings().remove(); // 페이지 번호 클래스의 형제 태그들을 지우는 구문
+			result.list.forEach(product => {
+                // sort = $('.current').text(); // 정렬 텍스트 받아오는 구문
+                // sorting(sort);
                 let li = makeLi(product);
-				products.insertAdjacentHTML('afterbegin',li);
+                ul += li; // ul로 모아서 출력해야 제대로 나옴
 			})
+            // console.log(ul);
+            products.insertAdjacentHTML('afterbegin',ul); // 이 구문이 ul대신 li로 들어가면 하나씩 들어가서 순번이 이상하게 나옴
+            pagingList(result);
 			// console.log(result);
 		})
 		.catch(reject => console.log(reject));
@@ -203,26 +225,21 @@ const li = `<div class="col-lg-4 col-sm-6 listsize">
 return li;
 }
 
-	function pagingList(page = 1//, sort
-    ){
-        fetch('productPagingList.do?page='+ page//'&sorting='+sort
-        )
-		.then(str2 => str2.json())
-		.then(result => {
-            $("#totalcnt").html(result.totalCnt);
+	function pagingList(result){
+            paging.innerHTML = ''; // 페이지 번호들 지우는 구문. 원래는 지정된 페이지 번호가 선택됐다는 css가 나와야 하는데 지워져서 안나옴
+            $("#totalcnt").html(result.pageDTO.totalCnt);
             // console.log(result);
             // console.log(result.totalCnt);
-            paging.innerHTML = '';
             let ul = document.createElement('ul');
             ul.className = 'pagination justify-content-center';
             paging.appendChild(ul);
 			//이전.
-			if(result.prev)	{
+			if(result.pageDTO.prev)	{
                 let li = document.createElement('li');
                 li.className = "page-item";
 				let aTag = document.createElement('a');
                 aTag.className = "page-link";
-				aTag.href = result.startPage - 1;
+				aTag.href = result.pageDTO.startPage - 1;
 				let iTag = document.createElement('i');
                 iTag.className="ti-angle-double-left";
 				aTag.addEventListener('click', pageList);
@@ -230,7 +247,7 @@ return li;
 				li.appendChild(aTag);
 				aTag.appendChild(iTag);
 			}
-			for (let p = result.startPage; p <= result.lastPage; p++){
+			for (let p = result.pageDTO.startPage; p <= result.pageDTO.lastPage; p++){
                 let li = document.createElement('li');
                 li.className = "page-item";
 				let aTag = document.createElement('a');
@@ -242,12 +259,12 @@ return li;
 				li.appendChild(aTag);
 			}
 			// 다음.
-			if(result.next)	{
+			if(result.pageDTO.next)	{
                 let li = document.createElement('li');
                 li.className = "page-item";
 				let aTag = document.createElement('a');
                 aTag.className = "page-link";
-				aTag.href = result.lastPage + 1;
+				aTag.href = result.pageDTO.lastPage + 1;
                 let iTag = document.createElement('i');
                 iTag.className="ti-angle-double-right";
 				aTag.addEventListener('click', pageList);
@@ -255,23 +272,8 @@ return li;
 				li.appendChild(aTag);
 				aTag.appendChild(iTag);
 			}
-		})
-        .catch(err => console.error(err));
 	} //end of pagingList.
-    // function showcategory(page, category//, sort
-    // ){
-    //     fetch('productList.do?page='+ page +'&category='+category//+'&sorting='+sort
-    //     )
-	// 	.then(str3 => str3.json())
-	// 	.then(result => {
-    //         console.log("ajax 호출2");
-    //         $(".listnumber").siblings().remove();
-	// 		result.forEach(product => {
-	// 			let li = makeLi(product);
-	// 			products.insertAdjacentHTML('afterbegin',li);
-	// 		})
-	// 		console.log(result);
-	// 	})
-	// 	.catch(reject => console.log(reject));
-    // }
+	// <if test="proDiscount != null and proDiscount != ''">
+    // order by 
+    // </if>
 </script>

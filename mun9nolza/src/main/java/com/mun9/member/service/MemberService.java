@@ -9,5 +9,8 @@ public interface MemberService {
 	public List<MemberVO> memberList();
 	public boolean addMember(MemberVO vo);
 	public boolean delMember(String userId, String userPw);
+	//아이디 찾기
+	public String findId(String userName, String email);
 	public MemberVO kakaologin(String email, String userName);
+
 }
