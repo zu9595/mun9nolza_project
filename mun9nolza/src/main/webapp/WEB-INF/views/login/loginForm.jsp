@@ -96,11 +96,11 @@
 				function resultModal() {
 					let mname = $('.mname').val();
 					let memail = $('.memail').val();
-
+					console.log(mname);
+					console.log(memail);
 					fetch("findId.do", {
 						method: "post",
-						body: {"userName" : mname,
-							"email" : memail} //"userName=mname&email=memail"
+						body: "userName="+mname+"&email="+memail
 					})
 						.then(res => res.json())
 						.then(res => {
