@@ -10,6 +10,7 @@ public class OrderListVO {
 	private int orderNo;
 	private Date orderDate;
 	private String userId;
+	private int procode;
 	private String orderRecipient;
 	private String orderAddr;
 	private String detailAddr;
@@ -17,4 +18,9 @@ public class OrderListVO {
 	private int totalPrice;
 	private int deliveryFee;
 	private String deliveryMemo;
+	
+	private String proImage;
+	private String proName;
+	private int deProCnt;
 }
+

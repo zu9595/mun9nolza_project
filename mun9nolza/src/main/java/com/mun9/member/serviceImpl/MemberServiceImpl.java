@@ -38,5 +38,12 @@ public class MemberServiceImpl implements MemberService {
 	public String findId(String userName, String email) {
 		return mapper.selectId(userName, email);
 	}
+  
+  @Override
+	public MemberVO kakaologin(String email, String userName) {
+		// TODO Auto-generated method stub
+		return mapper.kakaoSelectMember(email, userName);
+	}
+
 	
 }

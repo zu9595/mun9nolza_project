@@ -11,20 +11,6 @@
 	</select>
 
 	<!-- 회원등록기능 -->
-	<insert id="insertMember" parameterType="member">
-		insert into member values (#{userId}, #{userPw}, #{userName},
-		#{gender}, #{phoneNum}, #{email}, #{status})
-	</insert>
-
-	<!-- 회원목록 -->
-	<select id="selectList" resultType="member">
-		select * from member order by 1
-	</select>
-
-	<delete id="deleteMember" parameterType="String">
-		delete from member where user_id=#{userId} and user_pw=#{userPw}
-	</delete>
-
 	<select id="selectId" parameterType="String" resultType="String">
 		select user_id
 		from member
@@ -32,4 +18,23 @@
 		and email = '#{email}'
 	</select>
 
+ 	<insert id="insertMember" parameterType="member">
+    	insert into member values (#{userId}, #{userPw}, #{userName}, 
+    						  #{gender}, #{phoneNum}, #{email}, #{status})
+ 	</insert>
+ 
+ 	<!-- 회원목록 -->
+ 	<select id="selectList" resultType="member">
+    	select * from member order by 1
+ 	</select>
+ 	
+ 	<delete id="deleteMember" parameterType="String">
+ 		delete from member where user_id=#{userId} and user_pw=#{userPw}
+ 	</delete>
+ 	
+ 	<select id="kakaoSelectMember" resultType="member" parameterType="String">
+		select * from member where
+		email=#{email} and user_name=#{userName}
+	</select>
+ 
 </mapper>

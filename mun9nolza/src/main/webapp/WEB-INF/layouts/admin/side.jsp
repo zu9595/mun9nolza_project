@@ -22,7 +22,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="adminProductForm.do">상품목록 -> 상품 등록/수정/삭제 가능</a>
+                                    <a class="nav-link" href="adminProductListForm.do">상품목록 -> 수정/삭제 가능</a>
+                                    <a class="nav-link" href="adminProductForm.do">상품 등록</a>
                                     <a class="nav-link" href="#">상품 결제내역</a>
                                 </nav>
                             </div>

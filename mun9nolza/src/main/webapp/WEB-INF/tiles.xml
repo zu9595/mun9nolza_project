@@ -6,66 +6,52 @@
 
 <tiles-definitions>
 
-	<definition name="admin"
-		template="/WEB-INF/layouts/admin/template.jsp">
-		<put-attribute name="nav"
-			value="/WEB-INF/layouts/admin/nav.jsp"></put-attribute>
-		<put-attribute name="side"
-			value="/WEB-INF/layouts/admin/side.jsp"></put-attribute>
-		<put-attribute name="main"
-			value="/WEB-INF/layouts/admin/main.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/layouts/admin/footer.jsp"></put-attribute>
-	</definition>
 
-	<definition name="WILDCARD:admin/*" extends="admin">
-		<put-attribute name="main"
-			value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
-	</definition>
-
-	<definition name="product"
-		template="/WEB-INF/layouts/product/template.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/layouts/main/body.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/layouts/main/footer.jsp"></put-attribute>
-	</definition>
-
-	<definition name="WILDCARD:product/*" extends="product">
-		<put-attribute name="body"
-			value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
-	</definition>
-
-	<definition name="WILDCARD:cart/*" extends="product">
-		<put-attribute name="body"
-			value="/WEB-INF/views/cart/{1}.jsp"></put-attribute>
-	</definition>
-
-	<definition name="main"
-		template="/WEB-INF/layouts/main/template.jsp">
-		<put-attribute name="banner"
-			value="/WEB-INF/layouts/main/banner.jsp"></put-attribute>
-		<put-attribute name="header"
-			value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/layouts/main/body.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/layouts/main/footer.jsp"></put-attribute>
-	</definition>
-
-	<definition name="WILDCARD:*" extends="main">
-		<put-attribute name="body"
-			value="/WEB-INF/views/{1}.jsp"></put-attribute>
-	</definition>
-	<definition name="WILDCARD:*/*" extends="main">
-		<put-attribute name="body"
-			value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
-	</definition>
-
-	<definition name="normalLayout"
-		template="/WEB-INF/views/normalLayout.jsp">
+  <definition name="admin" template="/WEB-INF/layouts/admin/template.jsp">
+  	<put-attribute name="nav" value="/WEB-INF/layouts/admin/nav.jsp"></put-attribute> 
+  	<put-attribute name="side" value="/WEB-INF/layouts/admin/side.jsp"></put-attribute>
+  	<put-attribute name="main" value="/WEB-INF/layouts/admin/main.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/admin/footer.jsp"></put-attribute>
+  </definition>
+  
+    <definition name="WILDCARD:admin/*" extends="admin">
+  	<put-attribute name="main" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="product" template="/WEB-INF/layouts/product/template.jsp">
+  	<put-attribute name="header" value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
+  	<put-attribute name="body" value="/WEB-INF/layouts/main/body.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/main/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:product/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/product/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:cart/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/cart/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <!-- 마이페이지(내주문내역바로) -->
+  <definition name="WILDCARD:mypage/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="main" template="/WEB-INF/layouts/main/template.jsp">
+  	<put-attribute name="banner" value="/WEB-INF/layouts/main/banner.jsp"></put-attribute> 
+  	<put-attribute name="header" value="/WEB-INF/layouts/main/header.jsp"></put-attribute>
+  	<put-attribute name="body" value="/WEB-INF/layouts/main/body.jsp"></put-attribute> 
+  	<put-attribute name="footer" value="/WEB-INF/layouts/main/footer.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="WILDCARD:*" extends="main">
+  	<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"></put-attribute>
+  </definition>
+  <definition name="WILDCARD:*/*" extends="main">
+  	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+  </definition>
+  
+  <definition name="normalLayout" template="/WEB-INF/views/normalLayout.jsp">
 		<put-attribute name="NormalLayout" value="" />
 	</definition>
 

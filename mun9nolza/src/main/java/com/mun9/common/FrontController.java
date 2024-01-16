@@ -11,19 +11,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
-import com.mun9.cart.command.CartListFormControl;
+import com.mun9.cart.command.CartListJson;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
-import com.mun9.member.command.AdminProductFormControl;
 import com.mun9.member.command.FindIdControl;
+import com.mun9.member.command.SocialLoginControl;
+import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
-import com.mun9.member.command.SocialLoginControl;
+
+import com.mun9.product.command.ProductDetailControl;
+import com.mun9.orderlist.command.OrderListControl;
+import com.mun9.orderlist.command.OrderListJsonControl;
+
+import com.mun9.product.command.AdminProductListControl;
+
 import com.mun9.product.command.GetProductControl;
 import com.mun9.product.command.ProductListControl;
 import com.mun9.product.command.ProductListFormControl;
@@ -44,36 +51,44 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출");
 
-		// 게시판관련
-		map.put("/main.do", new MainControl());
-
-		// 회원가입
-		map.put("/addMember.do", new AddMemberControl()); // 가입기능
-		map.put("/addMemberForm.do", new AddMemberFormControl()); // 가입화면만
-		// 마이페이지
-//		map.put("/myPage.do", new OrderListControl());
-
-		// 로그인 --수정필요
+		//게시판관련
+		map.put("/main.do",  new MainControl());
+		
+		
+		//회원가입
+		map.put("/addMember.do", new AddMemberControl()); //가입기능
+		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
+		
+		//마이페이지
+    map.put("/myOrderList.do", new OrderListControl());
+    //id값에 맞는 orderList 정보를 Json타입의 데이터로 묶어줌 
+    map.put("/myOrderListJson.do", new OrderListJsonControl());
+		
+		
+		//로그인 --수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/socialLogin.do", new SocialLoginControl());
-		
+
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
 
-		// 상품관련 --수정필요
-		map.put("/getProduct.do", new GetProductControl());
-		// 장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
-		map.put("/cartListForm.do", new CartListFormControl());
+		//상품관련	--수정필요
+		map.put("/productDetail.do", new ProductDetailControl());
+		//장바구니 페이지 --수정필요(mybatis-config.xml 파일도 수정해야함)
+    map.put("/cartListForm.do", new CartListFormControl());
 		map.put("/cartList.do", new CartListControl());
-		// productlist 페이지 --수정필요
-		map.put("/productListForm.do", new ProductListFormControl());
-		map.put("/productList.do", new ProductListControl());
-		map.put("/productPagingList.do", new ProductPagingListControl());
-		map.put("/getProduct.do", new GetProductControl());
+		map.put("/cartListJson.do", new CartListJson());
+		//productlist 페이지 --수정필요
 
-		// admin 페이지
+		map.put("/getProduct.do", new GetProductControl());
+		map.put("/productListForm.do", new ProductListFormControl()); // 상품목록페이지 이동
+		map.put("/productList.do", new ProductListControl());
+		map.put("/productPagingList.do", new ProductPagingListControl()); // 상품목록 및 분류
+		map.put("/productDetail.do", new ProductDetailControl());
+		
+		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
 		// admin 사용자 목록 이동
 		map.put("/adminMemberForm.do", new AdminMemberFormControl());
@@ -81,8 +96,10 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new AdminMemberListControl());
 		// admin 사용자 삭제
 		map.put("/memberDel.do", new AdminMemberDelControl());
-		// admin Product 메인 이동
-		map.put("/adminProductForm.do", new AdminProductFormControl());
+		//admin Product List 이동
+		map.put("/adminProductListForm.do", new AdminProductListFormControl());
+		//admin Product List
+		map.put("/adminProductList.do", new AdminProductListControl());
 
 	}
 

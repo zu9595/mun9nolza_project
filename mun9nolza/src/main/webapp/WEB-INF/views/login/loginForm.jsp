@@ -99,8 +99,7 @@
 
 					fetch("findId.do", {
 						method: "post",
-						body: {"userName" : mname,
-							"email" : memail} //"userName=mname&email=memail"
+						body: "userName="+mname+"&email="+memail
 					})
 						.then(res => res.json())
 						.then(res => {
@@ -113,98 +112,98 @@
 					let confirm = ``
 				} 
 			</script>
-			<!-- 네이버 스크립트 -->
-			<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-			<script>
-				var naverLogin = new naver.LoginWithNaverId({
-					clientId: "NoqCJJA8y8apy_2fhbFi", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-					callbackUrl: "http://localhost:8081/MiddleProject/naverLogin.do", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-					isPopup: false,
-					callbackHandle: true
-				});
-				naverLogin.init();
+	<!-- 네이버 스크립트 -->
+	<script
+		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+		charset="utf-8"></script>
+	<script>
+		var naverLogin = new naver.LoginWithNaverId({
+			clientId : "NoqCJJA8y8apy_2fhbFi", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+			callbackUrl : "http://localhost:8081/MiddleProject/naverLogin.do", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+			isPopup : false,
+			callbackHandle : true
+		});
+		naverLogin.init();
 
-				var testPopUp;
-				function openPopUp() {
-					testPopUp = window
-						.open("https://nid.naver.com/nidlogin.logout", "_blank",
+		var testPopUp;
+		function openPopUp() {
+			testPopUp = window
+					.open("https://nid.naver.com/nidlogin.logout", "_blank",
 							"toolbar=yes,scrollbars=yes,resizable=yes,width=1000,height=1000");
-				}
-				function closePopUp() {
-					testPopUp.close();
-				}
+		}
+		function closePopUp() {
+			testPopUp.close();
+		}
 
-				function naverLogout() {
-					openPopUp();
-					closePopUp();
-				}
-			</script>
+		function naverLogout() {
+			openPopUp();
+			closePopUp();
+		}
+	</script>
 
 
-			<!-- 카카오톡 스크립트 -->
-			<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-			<script>
-				Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
-				console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	<!-- 카카오톡 스크립트 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+		Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
+		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
-				//카카오로그인	
-				function kakaoLogin() {
-					Kakao.Auth
-						.login({
-							success: function (response) {
-								Kakao.API
+		//카카오로그인	
+		function kakaoLogin() {
+			Kakao.Auth
+					.login({
+						success : function(response) {
+							Kakao.API
 									.request({
-										url: '/v2/user/me',
-										success: function (response) {
+										url : '/v2/user/me',
+										success : function(response) {
 											console.log(response);
 											console
-												.log(response.kakao_account.profile.nickname);
-											location.href = "socialLogin.do?name="
-												+ response.kakao_account.profile.nickname
-												+ "&userId="
-												+ response.id
-												+ "&email="
-												+ response.kakao_account.email
-												+ "&gender="
-												+ response.kakao_account.gender;
+													.log(response.kakao_account.profile.nickname);
+											location.href = "socialLogin.do?userName="
+													+ response.kakao_account.profile.nickname
+													+ "&email="
+													+ response.kakao_account.email
+													+ "&gender="//male,female
+													+ response.kakao_account.gender;
 										},
-										fail: function (error) {
+										fail : function(error) {
 											console.log(error)
 										},
 									})
-							},
-							fail: function (error) {
-								console.log(error)
-							},
-						})
-				}
+						},
+						fail : function(error) {
+							console.log(error)
+						},
+					})
+		}
 
-				//카카오로그아웃  
-				function kakaoLogout() {
-					if (Kakao.Auth.getAccessToken()) {
-						Kakao.API.request({
-							url: '/v1/user/unlink',
-							success: function (response) {
-								console.log(response);
-								Kakao.Auth.logout(function (obj) {
-									if (obj == true) {
-									} else {
-									}
-									location.href = 'main.do';
-								});
-								deleteCookie();
-							},
-							fail: function (error) {
-								console.log(error)
-							},
-						})
-						Kakao.Auth.setAccessToken(undefined);
-					}
-				}
-				function deleteCookie() {
-					document.cookie = 'authorize-access-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-				}
-			</script>
-		</body>
+		//카카오로그아웃  
+		function kakaoLogout() {
+			if (Kakao.Auth.getAccessToken()) {
+				Kakao.API.request({
+					url : '/v1/user/unlink',
+					success : function(response) {
+						console.log(response);
+						Kakao.Auth.logout(function(obj) {
+							if (obj == true) {
+							} else {
+							}
+							location.href = 'main.do';
+						});
+						deleteCookie();
+					},
+					fail : function(error) {
+						console.log(error)
+					},
+				})
+				Kakao.Auth.setAccessToken(undefined);
+			}
+		}
+		function deleteCookie() {
+			document.cookie = 'authorize-access-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		}
+	</script>
+</body>
 
-		</html>
+</html>

@@ -5,26 +5,33 @@
   
 <mapper namespace="com.mun9.product.mapper.ProductMapper">
   
-  <select id="getProduct" resultType="product" parameterType="int">
+  <select id="getProductDetail" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
-  
-  <select id="selectProductList" resultType="product">
-    select * from product order by 1
- </select>
- 
+   
  <select id="productListPaging" resultType="product">
 	select b.* from
 	(select rownum rn, a.* from
-	(select * from product order by 1
-    ) a ) b
-    <![CDATA[
+	(select * from product
+	<where>
+    <if test="category != null and category != ''">
+    category = #{category}
+    </if>
+    </where> 
+	order by pro_discount
+	) a ) b
+	<![CDATA[
 	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
     ]]>
-	</select>
-	
- <select id="selectCount" resultType="int" parameterType="int">
-	select count(*) from product order by 1
+ </select>
+ <select id="selectCount" resultType="int">
+	select count(*) from product 
+	<where>
+    <if test="category != null and category != ''">
+    category = #{category}
+    </if>
+    </where> 
+	order by 1
  </select>
  
 </mapper>

@@ -12,9 +12,10 @@ import com.mun9.common.DataSource;
 public class CartServiceImpl implements CartService{
 	SqlSession session = DataSource.getInstance().openSession(true);
 	CartMapper mapper = session.getMapper(CartMapper.class);
+	
 	@Override
-	public List<CartVO> cartList(String userId) {
-		return mapper.selectList(userId);
+	public List<CartVO> selectCartList(String userId) {
+		return mapper.selectCartList(userId);
 	}
 	
 	
