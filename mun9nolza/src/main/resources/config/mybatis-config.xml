@@ -3,8 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
-  
-  
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -16,6 +14,7 @@
 		<typeAlias alias="product" type="com.mun9.product.vo.ProductVO" /> 
 		<typeAlias alias="cart" type="com.mun9.cart.vo.CartVO" /> 
 		<typeAlias alias="orderlist" type="com.mun9.orderlist.vo.OrderListVO" /> 
+		<typeAlias alias="require" type="com.mun9.inquire.vo.InquireVO" />
   	</typeAliases>
   
   <environments default="development">
@@ -26,7 +25,6 @@
         <property name="url" value="jdbc:oracle:thin:@192.168.0.40:1521:xe"/>
         <property name="username" value="mun9nolza"/>
         <property name="password" value="0000"/>
-
 
       </dataSource>
     </environment>

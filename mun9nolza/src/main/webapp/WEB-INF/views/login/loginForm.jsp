@@ -60,67 +60,196 @@
 					<div class="link-tag">
 						<a href="addMemberForm.do" style="color: black;">회원가입</a> / <a
 							href="#" style="color: black;" data-toggle="modal"
-							data-target="#exampleModalCenter">아이디찾기</a> / <a href="#"
-							style="color: black;">비밀번호찾기</a>
+							data-target="#modal_findid" onclick="resetIdInfo()">아이디찾기</a> / <a
+							href="#" style="color: black;" data-toggle="modal"
+							data-target="#modal_findpw" onclick="resetPwInfo()">비밀번호찾기</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
+	<!-- Find Id Modal -->
+	<div class="modal fade" id="modal_findid" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalCenterTitle">아이디 찾기</h5>
 					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+						aria-label="Close" onclick="resetIdInfo()">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<form method="POST">
-						<label style="margin-right: 16px;">이름</label> <input type="text"
-							name="userName" class="btn-name mname" placeholder="등록한 이름"
-							required> <br> <label>이메일</label> <input type="text"
-							name="email" class="btn-email memail" placeholder="등록한 이메일 입력"
-							required>
-					</form>
-				</div>
+				<div class="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary"
-						onclick="resultModal()">찾기</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						onclick="resultIdModal()">찾기</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Find Pw Modal -->
+	<div class="modal fade" id="modal_findpw" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenterTitle">비밀번호 찾기</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close" onclick="resetPwInfo()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">취소</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						onclick="resultPwModal()">찾기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Find Id Script -->
 	<script type="text/javascript">
-	
-				function resultModal() {
+				function resultIdModal() {
 					let mname = $('.mname').val();
 					let memail = $('.memail').val();
-					console.log(mname);
-					console.log(memail);
+					// console.log(mname);
+					// console.log(memail);
 					fetch("findId.do", {
 						method: "post",
 						headers: {
-						      //"Content-Type": "application/json",
-						  	 'Content-Type': 'application/x-www-form-urlencoded',
-						    },
+							// "Content-Type": "application/json",
+							'Content-Type': 'application/x-www-form-urlencoded',
+						},
 						body: "userName=" + mname + "&email=" + memail
 					})
 						.then(res => res.json())
 						.then(res => {
 							console.log(res);
-							
-							
+							$('.modal-body').empty();
+							$('.modal-footer').empty();
+							let fid = res;
+							let result_mbody = `<form name="idsearch" method="post">
+								<div class="container">`;
+							if (fid != null) {
+								result_mbody +=
+									`<div class="found-success">
+									<h4>회원님의 아이디는 "\${fid}" 입니다</h4>
+								</div>`;
+								let result_mfooter =
+									`<div class="found-login">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">로그인</button>
+								</div>`;
+								$('.modal-body').append(result_mbody);
+								$('.modal-footer').append(result_mfooter);
+							} else {
+								result_mbody +=
+									`<div class="found-fail">
+										<h4>등록된 정보가 없습니다</h4>
+									</div>`;
+								let result_mfooter =
+									`<div class="found-login" >
+										<input type="button" class="btn btn-primary" id="btnback" value="다시 찾기"
+											onClick="resetIdInfo()" /> <input type="button" id="btnjoin"
+											value="회원가입" class="btn btn-primary" onClick="location.href='addMemberForm.do'" />
+									</div >`;
+								$('.modal-body').append(result_mbody);
+								$('.modal-footer').append(result_mfooter);
+							}
+							$('.modal-body').append(`</div></form >`);
 						}).catch(console.error);
-				} 
+				}
+
+				function resetIdInfo() {
+					$('.modal-body').empty();
+					$('.modal-footer').empty();
+					let modal_body = `<form method = "POST" >
+								<label style="margin-right: 16px;">이름</label> <input type="text" name="userName"
+									class="btn-name mname" placeholder="등록한 이름" required> <br> <label>이메일</label> <input
+									type="text" name="email" class="btn-email memail" placeholder="등록한 이메일 입력" required>
+							</form>`;
+					let modal_footer = `<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" onclick="resultIdModal()">찾기</button>`;
+					$('.modal-body').append(modal_body);
+					$('.modal-footer').append(modal_footer);
+				}
+			</script>
+
+	<!-- Find Pw Script -->
+	<script type="text/javascript">
+				function resetPwInfo() {
+					$('#modal_findpw .modal-body').empty();
+					$('#modal_findpw .modal-footer').empty();
+					let modal_body = `<form method = "POST" >
+							<label style="margin-right: 16px;">아이디</label> <input type="text" name="userId"
+								class="btn-name pmid" placeholder="등록한 아이디" required> <br>
+							<label style="margin-right: 16px;">이름</label> <input type="text" name="userName"
+								class="btn-name pmname" placeholder="등록한 이름" required> <br> <label>이메일</label> <input
+								type="text" name="email" class="btn-email pmemail" placeholder="등록한 이메일 입력" required>
+						</form>`;
+					let modal_footer = `<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" onclick="resultPwModal()">찾기</button>`;
+					$('#modal_findpw .modal-body').append(modal_body);
+					$('#modal_findpw .modal-footer').append(modal_footer);
+				}
+				
+				function resultPwModal() {
+					let pmid = $('#modal_findpw .pmid').val();
+					let pmname = $('#modal_findpw .pmname').val();
+					let pmemail = $('#modal_findpw .pmemail').val();
+					console.log(pmid);
+					console.log(pmname);
+					console.log(pmemail);
+					fetch("findPw.do", {
+						method: "post",
+						headers: {
+							// "Content-Type": "application/json",
+							'Content-Type': 'application/x-www-form-urlencoded',
+						},
+						body: "userId=" + pmid + "&userName=" + pmname + "&email=" + pmemail
+					})
+						.then(res => res.json())
+						.then(res => {
+							console.log(res);
+							$('#modal_findpw .modal-body').empty();
+							$('#modal_findpw .modal-footer').empty();
+							let fpw = res;
+							let result_mbody = `<form name="pwsearch" method="post">
+								<div class="container">`;
+							if (fpw != null) {
+								result_mbody +=
+									`<div class="found-success">
+									<h4>회원님의 비밀번호는 "\${fpw}" 입니다</h4>
+								</div>`;
+								let result_mfooter =
+									`<div class="found-login">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">로그인</button>
+								</div>`;
+								$('#modal_findpw .modal-body').append(result_mbody);
+								$('#modal_findpw .modal-footer').append(result_mfooter);
+							} else {
+								result_mbody +=
+									`<div class="found-fail">
+										<h4>등록된 정보가 없습니다</h4>
+									</div>`;
+								let result_mfooter =
+									`<div class="found-login" >
+										<input type="button" id="btnback" class="btn btn-primary" value="다시 찾기"
+											onClick="resetPwInfo()" />
+									</div >`;
+								$('#modal_findpw .modal-body').append(result_mbody);
+								$('#modal_findpw .modal-footer').append(result_mfooter);
+							}
+							$('#modal_findpw .modal-body').append(`</div></form >`);
+						}).catch(console.error);
+				}
 			</script>
 
 	<!-- 네이버 스크립트 -->
@@ -155,68 +284,8 @@
 
 	<!-- 카카오톡 스크립트 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>
-				Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
-				console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	<script src="js/loginjs/kakao.js"></script>
 
-				//카카오로그인	
-				function kakaoLogin() {
-					Kakao.Auth
-						.login({
-							success: function (response) {
-								Kakao.API
-									.request({
-										url: '/v2/user/me',
-										success: function (response) {
-											console.log(response);
-											console
-												.log(response.kakao_account.profile.nickname);
-											location.href = "socialLogin.do?name="
-												+ response.kakao_account.profile.nickname
-												+ "&userId="
-												+ response.id
-												+ "&email="
-												+ response.kakao_account.email
-												+ "&gender="
-												+ response.kakao_account.gender;
-										},
-										fail: function (error) {
-											console.log(error)
-										},
-									})
-							},
-							fail: function (error) {
-								console.log(error)
-							},
-						})
-				}
-
-				//카카오로그아웃  
-				function kakaoLogout() {
-					if (Kakao.Auth.getAccessToken()) {
-						Kakao.API.request({
-							url: '/v1/user/unlink',
-							success: function (response) {
-								console.log(response);
-								Kakao.Auth.logout(function (obj) {
-									if (obj == true) {
-									} else {
-									}
-									location.href = 'main.do';
-								});
-								deleteCookie();
-							},
-							fail: function (error) {
-								console.log(error)
-							},
-						})
-						Kakao.Auth.setAccessToken(undefined);
-					}
-				}
-				function deleteCookie() {
-					document.cookie = 'authorize-access-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-				}
-			</script>
 </body>
 
 </html>

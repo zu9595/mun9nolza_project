@@ -9,6 +9,7 @@ public class PageDTO {
 	private boolean prev, next;
 	private int startPage, lastPage;
 	
+	
 	public PageDTO(int page, int totalCnt) {
 		this.currPage = page;
 		this.totalCnt = totalCnt;

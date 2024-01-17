@@ -15,22 +15,31 @@ public class ProductServiceImpl implements ProductService{
 	ProductMapper mapper = session.getMapper(ProductMapper.class);
 
 	@Override
+	public ProductVO getProductDetail(int pcode) {
+		return mapper.getProductDetail(pcode);
+	}
+
+	@Override
+	public List<ProductVO> productListPaging(int page, String category) {
+		return mapper.productListPaging(page, category);
+	}
+
+	@Override
+	public int getTotalCnt(String category) { // 상품 전체 및 상품 분류에 따른 총 상품 개수
+		return mapper.selectCount(category);
+	}
+
+	@Override
 	public ProductVO getProduct(int pcode) {
+		// TODO Auto-generated method stub
 		return mapper.getProduct(pcode);
 	}
-	
+
 	@Override
 	public List<ProductVO> productList() {
+		// TODO Auto-generated method stub
 		return mapper.selectProductList();
 	}
 
-	@Override
-	public List<ProductVO> productListPaging(int page) {
-		return mapper.productListPaging(page);
-	}
-
-	@Override
-	public int getTotalCnt() {
-		return mapper.selectCount();
-	}
+	
 }

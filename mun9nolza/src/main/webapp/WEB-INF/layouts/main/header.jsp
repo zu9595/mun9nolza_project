@@ -26,17 +26,20 @@
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
-								<a href="logout.do">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 								<a href="adminForm.do">관리자페이지</a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="logout.do">로그아웃</a>
+								<!-- <a href="myOrderList.do" onClick="javascript:goPost()">마이페이지</a> -->
+								<a href="myOrderList.do?userId=${logId }&userPw=${logPw }">마이페이지</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 
 						<div class="cart">
-							<a href="cartListForm.do" role="button"> 
+							<a href="cartList.do" role="button"> 
+
 								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
@@ -98,7 +101,7 @@
 										class="dropdown-item" href="cart.html">스템프</a> <a
 										class="dropdown-item" href="confirmation.html">엽서/카드</a>
 								</div></li>
-							<li><a class="nav-link" href="index.html">공지사항</a></li>
+							<li><a class="nav-link" href="inquireListForm.do">문의사항</a></li>
 						</ul>
 					</div>
 					<!-- 웹페이지가 작을때 스타일에 visibility='visible' / 기본 'hidden'  처리 -->
@@ -108,13 +111,19 @@
 								<a href="loginForm.do">로그인</a>
 								<a href="addMemberForm.do">회원가입</a>
 							</c:when>
+							<c:when test="${!empty logId and status eq 'admin'}">
+								<span>${logName } 님</span>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
+								<a href="adminForm.do">관리자페이지</a>
+							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="logout.do">로그아웃</a>
+								<a href="myOrderList.do">마이페이지</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
 						<div class="cart">
-							<a href="cartListForm.do" role="button"> 
+							<a href="cartList.do" role="button"> 
 								<i class="fas fa-cart-plus"></i>
 							</a>
 						</div>
@@ -141,4 +150,16 @@
 		</div>
 	</div>
 	<!-- 검색 박스 -->
+	
+<!-- 	<script type="text/javascript">
+	 function goPost(){
+		 let f = document.createElement('form');
+		 f.setAttribute('method', 'post');
+		 f.setAttribute('action', 'goPost.do');
+		 document.body.appendChild(f);
+		 f.submit();
+	 }
+	
+	</script> -->
+	
 </header>

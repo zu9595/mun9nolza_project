@@ -1,4 +1,4 @@
-package com.mun9.cart.command;
+package com.mun9.inquire.command;
 
 import java.io.IOException;
 
@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.common.Control;
 
-public class CartListFormControl implements Control {
+public class InquireListFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		//페이지 이동(forward)
-		RequestDispatcher rd = req.getRequestDispatcher("cart/cartList.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireListBody.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 

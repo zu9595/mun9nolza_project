@@ -20,7 +20,7 @@
                         <li><a class="dropdown-item" href="#!">설정</a></li>
                         <li><a class="dropdown-item" href="#!">관리자 접속기록</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">로그아웃</a></li>
+                        <li><a class="dropdown-item" href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a></li>
                     </ul>
                 </li>
             </ul>
