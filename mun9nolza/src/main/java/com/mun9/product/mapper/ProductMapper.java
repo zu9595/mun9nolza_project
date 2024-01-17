@@ -8,6 +8,6 @@ import com.mun9.product.vo.ProductVO;
 
 public interface ProductMapper {
 	public ProductVO getProduct(int pcode);
-	public List<ProductVO> productListPaging(@Param("page") int page, @Param("category") String category);
+	public List<ProductVO> productListPaging(ProductVO vo);
 	int selectCount(@Param("category") String category);
 }

@@ -6,6 +6,6 @@ import com.mun9.product.vo.ProductVO;
 
 public interface ProductService {
 	public ProductVO getProduct(int pcode);
-	public List<ProductVO> productListPaging(int page, String category);
+	public List<ProductVO> productListPaging(ProductVO vo);
 	int getTotalCnt(String category);
 }

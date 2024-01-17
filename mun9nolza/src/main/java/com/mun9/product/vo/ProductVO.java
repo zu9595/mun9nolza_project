@@ -14,5 +14,6 @@ public class ProductVO {
 	private int proSell;
 	private int proStock;
 	private String category;
+	private int page;
 	
 }

@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> productListPaging(int page, String category) {
-		return mapper.productListPaging(page, category);
+	public List<ProductVO> productListPaging(ProductVO vo) {
+		return mapper.productListPaging(vo);
 	}
 
 	@Override
