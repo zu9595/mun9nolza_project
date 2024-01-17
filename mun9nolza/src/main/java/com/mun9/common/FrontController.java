@@ -28,11 +28,12 @@ import com.mun9.member.command.LogoutControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
-
+import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
-
+import com.mun9.product.command.AdminProductModControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
+import com.mun9.product.command.mainBestProductList;
 
 public class FrontController extends HttpServlet {
 
@@ -51,6 +52,7 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
+		map.put("/mainBest.do", new mainBestProductList());
 		
 		
 		//회원가입
@@ -100,7 +102,13 @@ public class FrontController extends HttpServlet {
 		map.put("/adminProductListForm.do", new AdminProductListFormControl());
 		//admin Product List(Json)
 		map.put("/adminProductList.do", new AdminProductListControl());
-
+		// admin Product 삭제(Json)
+		map.put("/productDel.do", new AdminProductDelControl());
+		// admin Product 수정(Json)
+		map.put("/productMod.do", new AdminProductModControl());
+		
+		
+		
 	}
 
 	@Override
