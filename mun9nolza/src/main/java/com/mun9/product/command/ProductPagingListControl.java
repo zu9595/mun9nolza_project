@@ -22,10 +22,23 @@ public class ProductPagingListControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		resp.setContentType("text/json;charset=utf-8");
 		ProductService svc = new ProductServiceImpl();
-		String page = req.getParameter("page");
 		String category = req.getParameter("category");
+		String options = req.getParameter("options");
+		String page = req.getParameter("page");
+		
 		page = page == null ? "1" : page;
-		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page), category);
+		ProductVO vo = new ProductVO();
+		vo.setPage(Integer.parseInt(page));
+		vo.setCategory(category);
+		
+		if(options.equals("proName")) {
+			vo.setProName(options);
+		}else if(options.equals("proPrice")) {
+			vo.setProPrice(Integer.parseInt(options));
+		}else if(options.equals("proCode")) {
+			vo.setProCode(Integer.parseInt(options));
+		}
+		List<ProductVO> list = svc.productListPaging(vo);
 		
 		int total = svc.getTotalCnt(category);		
 		PageDTO dto = new PageDTO(Integer.parseInt(page), total);
