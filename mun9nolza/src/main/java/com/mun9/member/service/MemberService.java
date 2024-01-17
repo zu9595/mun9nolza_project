@@ -11,6 +11,7 @@ public interface MemberService {
 	public boolean delMember(String userId, String userPw);
 	//아이디 찾기
 	public String findId(String userName, String email);
+	public String findPw(String userId, String userName, String email);
 	public MemberVO kakaologin(String email, String userName);
 
 }

@@ -101,7 +101,7 @@
 										class="dropdown-item" href="cart.html">스템프</a> <a
 										class="dropdown-item" href="confirmation.html">엽서/카드</a>
 								</div></li>
-							<li><a class="nav-link" href="index.html">공지사항</a></li>
+							<li><a class="nav-link" href="inquireListForm.do">문의사항</a></li>
 						</ul>
 					</div>
 					<!-- 웹페이지가 작을때 스타일에 visibility='visible' / 기본 'hidden'  처리 -->

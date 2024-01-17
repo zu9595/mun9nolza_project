@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
+import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
@@ -19,6 +20,7 @@ import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
 import com.mun9.member.command.FindIdControl;
+import com.mun9.member.command.FindPwControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
@@ -60,6 +62,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
+		map.put("/findPw.do", new FindPwControl());
 		
 		
 		//마이페이지
@@ -89,6 +92,8 @@ public class FrontController extends HttpServlet {
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		map.put("/productDetail.do", new ProductDetailControl());
 		
+		//문의 페이지
+		map.put("/inquireListForm.do", new InquireListFormControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
