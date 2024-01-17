@@ -14,7 +14,15 @@
 		where c.user_id = #{userId}
   	</select>
 
+	<update id="changeCnt" parameterType="cart">
+		update cart set mypro_cnt = ''
+		where user_id = '' and pro_code = ''	
+	</update>
 
+	<delete id="deleteCart" parameterType="int">
+		delete cart
+		where user_id = '' and pro_code = ''
+	</delete>
   
  
 </mapper>

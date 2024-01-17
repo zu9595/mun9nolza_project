@@ -1,7 +1,7 @@
 /**
  * 
  */
-		Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
+		/*Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
 		//카카오로그인	
@@ -58,4 +58,4 @@
 		
 		function deleteCookie() {
 			document.cookie = 'authorize-access-token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-		}
+		}*/

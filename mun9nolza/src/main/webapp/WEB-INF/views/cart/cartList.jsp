@@ -14,20 +14,20 @@
           <table class="table">
             <thead>
               <tr>
-              	<th></th>
+              	<th><input type="checkbox" id="f-option" name="selector" class="allCheck"></th>
                 <th scope="col">상품</th>
                 <th scope="col">정가</th>
                 <th scope="col">할인가</th>
                 <th scope="col">수량</th>
-                <th scope="col">총 금액</th>
+                <th scope="col">금액</th>
               </tr>
             </thead>
             <tbody id="cartListTbody" class="cartListTbody">
               
               
               <tr>
-              	<td><input type="checkbox" id="f-option" name="selector"></td>
-                <td><a class="btn_1" href="#">선택 삭제</a></td>
+              	<td></td>
+                <td></td>
                 <td></td>
                 <td>
                 	<ul>
@@ -48,6 +48,9 @@
             </tbody>
           </table>
           
+          <div class="checkout_btn_inner float-left">
+          	<a class="btn_1" href="#" id="delChecked">선택 삭제</a>
+          </div>
           <div class="checkout_btn_inner float-right">
             <a class="btn_1" href="#">쇼핑 계속하기</a>
             <a class="btn_1 checkout_btn_1" href="#">주문하기</a>

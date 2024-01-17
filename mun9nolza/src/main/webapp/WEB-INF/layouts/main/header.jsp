@@ -38,7 +38,7 @@
 						</c:choose>
 
 						<div class="cart">
-							<a href="cartList.do" role="button"> 
+							<a href="cartList.do?userId=${logId }" role="button"> 
 
 								<i class="fas fa-cart-plus"></i>
 							</a>
