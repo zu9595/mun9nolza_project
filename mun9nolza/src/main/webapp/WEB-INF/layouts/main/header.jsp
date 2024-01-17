@@ -31,8 +31,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<!-- <a href="myOrderList.do" onClick="javascript:goPost()">마이페이지</a> -->
-								<a href="myOrderList.do?userId=${logId }&userPw=${logPw }">마이페이지</a>
+								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
@@ -118,7 +117,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do">마이페이지</a>
+								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
@@ -150,16 +149,6 @@
 		</div>
 	</div>
 	<!-- 검색 박스 -->
-	
-<!-- 	<script type="text/javascript">
-	 function goPost(){
-		 let f = document.createElement('form');
-		 f.setAttribute('method', 'post');
-		 f.setAttribute('action', 'goPost.do');
-		 document.body.appendChild(f);
-		 f.submit();
-	 }
-	
-	</script> -->
+
 	
 </header>
