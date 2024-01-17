@@ -78,6 +78,7 @@
     <script src="js/loginjs/kakao.js"></script>
     <!-- main js -->
     <script src="js/mainjs/mainBest.js"></script>
+    <script src="js/adminjs/adminSession.js"></script>
 </body>
 
 </html>

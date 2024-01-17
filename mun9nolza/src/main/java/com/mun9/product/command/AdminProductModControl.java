@@ -41,13 +41,20 @@ public class AdminProductModControl implements Control {
 		vo.setProStock(proStock);
 		vo.setCategory(category);
 		
-		//삭제
-		
 		Map<String,Object> map = new HashMap<String,Object>();
-		if(svc.modProduct(vo)) {
-			map.put("retCode", "OK");
-		}else {
-			map.put("retCode", "NG");
+		
+		if(req.getMethod().equals("GET")) {
+			if(svc.modProduct(vo)) {
+				map.put("retCode", "OK");
+			}else {
+				map.put("retCode", "NG");
+			}
+		}else if(req.getMethod().equals("POST")) {
+			if(svc.addProduct(vo)) {
+				map.put("retCode", "OK");
+			}else {
+				map.put("retCode", "NG");
+			}
 		}
 		
 		Gson gson = new GsonBuilder().create();

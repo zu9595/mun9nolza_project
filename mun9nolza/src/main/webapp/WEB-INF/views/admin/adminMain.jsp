@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    <script src="js/adminjs/chart.js"></script>
 <main>
- Ajax 차트넣을 예정
+    차트 필요
 </main>

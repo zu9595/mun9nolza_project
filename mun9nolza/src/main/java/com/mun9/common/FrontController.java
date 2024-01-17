@@ -30,12 +30,15 @@ import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
+import com.mun9.product.command.AdminProductAddControl;
+import com.mun9.product.command.AdminProductAddFormControl;
 import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.AdminProductModControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.mainBestProductList;
+import com.mun9.product.command.searchControl;
 
 
 public class FrontController extends HttpServlet {
@@ -55,6 +58,8 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
+		//상품 검색
+		map.put("/search.do",  new searchControl());
 		map.put("/mainBest.do", new mainBestProductList());
 		
 		
@@ -103,12 +108,16 @@ public class FrontController extends HttpServlet {
 		map.put("/memberDel.do", new AdminMemberDelControl());
 		//admin Product List 이동
 		map.put("/adminProductListForm.do", new AdminProductListFormControl());
+		//admin Product AddForm 이동
+		map.put("/adminProductAddForm.do", new AdminProductAddFormControl());
 		//admin Product List(Json)
 		map.put("/adminProductList.do", new AdminProductListControl());
 		// admin Product 삭제(Json)
 		map.put("/productDel.do", new AdminProductDelControl());
 		// admin Product 수정(Json)
 		map.put("/productMod.do", new AdminProductModControl());
+		// admin Product 추가
+		map.put("/productAdd.do", new AdminProductAddControl());
 		
 		
 		

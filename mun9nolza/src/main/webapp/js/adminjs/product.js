@@ -85,3 +85,6 @@ async function productMod(proCode,proName,proDesc,proImage,proPrice,proDiscount,
 	}
 };
 
+
+
+
