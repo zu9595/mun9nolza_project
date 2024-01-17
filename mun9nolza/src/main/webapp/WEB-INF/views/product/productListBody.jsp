@@ -157,7 +157,7 @@
     let category = '';
     // let sort = ''; // 정렬 텍스트 기본값, .current(html로 보면 나옴)값을 넣어줄 예정
     let paging = document.querySelector('.pageination');
-    showList(pageInfo,'', ''); 
+    showList(pageInfo, category); 
 
     // function sorting(sort){ // 상품 정렬 기능 넣을 함수. 근데 이렇게 하는게 맞는지 모르겠음
     //     // console.log($('.current').text());
@@ -174,24 +174,24 @@
         e.preventDefault();
 		pageInfo = this.getAttribute("href");
         // console.log(pageInfo);
-        showList(pageInfo, category, sort);
+        showList(pageInfo, category);
 	}
     
     $('.category').on('click', () =>{            
         
         category = event.target.innerText;
         console.log(category);
-        showList(1, category, sort);
-        pagingList(result);
+        showList(1, category);
     });
     
     //Ajax호출.
-    function showList(page, category, sort){
-        fetch('productPagingList.do?page='+ page +'&category='+ category +'&sorting'+ sort)
+    function showList(page, category){
+        fetch('productPagingList.do?page='+ page +'&category='+ category)
 		.then(str => str.json())
 		.then(result => {
             let ul = ``;
             console.log("ajax 호출");
+            console.log(result);
             $(".listnumber").siblings().remove(); // 페이지 번호 클래스의 형제 태그들을 지우는 구문
 			result.list.forEach(product => {
                 // sort = $('.current').text(); // 정렬 텍스트 받아오는 구문
@@ -273,7 +273,4 @@ return li;
 				aTag.appendChild(iTag);
 			}
 	} //end of pagingList.
-	// <if test="proDiscount != null and proDiscount != ''">
-    // order by 
-    // </if>
 </script>

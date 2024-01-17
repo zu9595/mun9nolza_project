@@ -9,10 +9,8 @@ import com.mun9.product.vo.ProductVO;
 public interface ProductMapper {
 	//충돌일어남
 	public ProductVO getProduct(int pcode);
-	public List<ProductVO> selectProductList();
 
-	
 	public ProductVO getProductDetail(int pcode);
-	public List<ProductVO> productListPaging(@Param("page") int page, @Param("category") String category);
+	public List<ProductVO> productListPaging(ProductVO vo);
 	int selectCount(@Param("category") String category);
 }

@@ -1,8 +1,10 @@
 package com.mun9.product.vo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor //기본 생성자
 public class ProductVO {
 
 	private int proCode;
@@ -14,5 +16,8 @@ public class ProductVO {
 	private int proSell;
 	private int proStock;
 	private String category;
+	
+	private int page;
+	private String saleyn;
 	
 }

@@ -19,17 +19,17 @@ public class AdminProductListControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		ProductService svc = new ProductServiceImpl();
 		
-		List<ProductVO> list = svc.productList();
+//		List<ProductVO> list = svc.productList();
 		
 		resp.setContentType("text/json;charset=utf-8");
 		Gson gson = new GsonBuilder().create();
 		
-		try {
-			resp.getWriter().print(gson.toJson(list));
-		} catch (IOException e) {
+//		try {
+//			resp.getWriter().print(gson.toJson(list));
+//		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//			e.printStackTrace();
+//		}
 
 	}
 
