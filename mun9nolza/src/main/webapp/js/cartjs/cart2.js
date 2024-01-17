@@ -1,46 +1,56 @@
 /**
  * cartList.js
  */
-function showCartList() {
 
-}
-fetch("cartListJson.do?memberNo=3")
-	.then(result => result.json())
-	.then(result => {
-		console.log(result);
-		let lastPrice = 0;
-		let totalPoint = 0;
-		result.forEach(item => {
-			console.log(item);
-			lastPrice += item.price;
-			totalPoint += item.addPoint;
-			const newtbody = maketr(item);
-			cartList.insertAdjacentHTML("beforeend", newtbody);
-		});
 
-		// 카트 삭제 이벤트 등록
-		const cartNos = result.forEach(item => {
-			cartNos.push(item.cartNo);
+showCart();
+
+
+function showCart() {
+	fetch("cartListJson.do?memberNo=3")
+		.then(result => result.json())
+		.then(result => {
+			console.log(result);
+			let lastPrice = 0;
+			let totalPoint = 0;
+			result.forEach(item => {
+				console.log(item);
+				lastPrice += item.price;
+				totalPoint += item.addPoint;
+				const newtbody = maketr(item);
+				cartList.insertAdjacentHTML("beforeend", newtbody);
+			});
+
+			// 토탈 출력
+			makeTotal();
+
+			// 카트 삭제 이벤트 등록
+			removeCartEvent();
+
+			// 플러스, 마이너스 버튼 이벤트 등록
+			btnEvent();
+
+			// 카트 수정 이벤트 등록
+			modifyCartEvent();
+
+			// 상품 체크박스 이벤트 등록
+			allCheckboxEvent();
+			selCheckboxEvent();
 		})
-		removeCartEvent();
+}
 
-		// 포인트 출력
-		let addPoint = document.getElementById("addPoint");
-		const addpoint = `<div class="cart_point_total" style="padding: 10px; text-align: right; border-bottom: 1px solid #aaa;"><span>적립 예정 포인트</span><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;${totalPoint}</span></div>
-			<div class="row">`;
-		addPoint.insertAdjacentHTML("beforeend", addpoint);
-		
-		// 토탈 출력
-		let totalAmount = document.getElementById("totalAmount");
-		const totalAmo = makeTotal(lastPrice);
-		totalAmount.insertAdjacentHTML("beforeend", totalAmo);
-
+function selCheckboxEvent() {
+	let selChecks = document.querySelectorAll(".selCheck");
+	selChecks.forEach(selCheck => {
+		selCheck.addEventListener("change", function () {
+			makeTotal();
+		})
 	})
-
+}
 
 function maketr(item) {
 	const newtbody = `<tr>
-			<td><input type="checkbox" checked></td>
+			<td><input type="checkbox" class="selCheck" checked></td>
 			<td class="image" data-title="No"><img src="${item.img}"
 					alt="#"></td>
 			<td>
@@ -51,12 +61,12 @@ function maketr(item) {
 			<td class="product-des" data-title="Description">
 				<p class="product-des">${item.putDate}</p>
 			</td>
-			<td class="price" data-title="Price"><span>${item.price}</span></td>
+			<td class="price" data-title="${item.price}"><span>${item.price}</span></td>
 			<td class="qty" data-title="Qty">
 				<!-- Input Order -->
 				<div class="input-group">
 					<div class="button minus">
-						<button type="button" class="btn btn-primary btn-number" disabled="disabled"
+						<button type="button" class="minusBtn btn btn-primary btn-number"
 							data-type="minus" data-field="quant[1]">
 							<i class="ti-minus"></i>
 						</button>
@@ -64,79 +74,217 @@ function maketr(item) {
 					<input type="text" name="quant[1]" class="input-number" data-min="1"
 						data-max="100" value="${item.quantity}">
 					<div class="button plus">
-						<button type="button" class="btn btn-primary btn-number" data-type="plus"
+						<button type="button" class="plusBtn btn btn-primary btn-number" data-type="plus"
 							data-field="quant[1]">
 							<i class="ti-plus"></i>
 						</button>
 					</div>
-					<div style="text-align: center; margin-top: 10px;"><button type="button" style="width: 100px; padding: 7px;">수정</button></div>
+					<div style="text-align: center; margin-top: 10px;"><button type="button" class="modBtn" data-memberno="${item.memberNo}" data-bookno="${item.bookNo}" data-quantity="${item.quantity}" data-cartno="${item.cartNo}" data-name="${item.name}" data-price="${item.price}" data-img="${item.img}" style="width: 100px; padding: 7px;">수정</button></div>
 				</div> <!--/ End Input Order -->
 			</td>
 			<td class="total-amount" data-title="Total"><span>${item.totalPrice}</span></td>
-			<td class="action" data-title="Remove"><i
-						class="ti-trash remove-icon"></i></td>
+			<td class="action"><a href="#" class="remBtn" data-cartno="${item.cartNo}"><i
+						class="ti-trash remove-icon"></i></a></td>
 		</tr>`
-		return newtbody;
+	return newtbody;
 }
 
-
-
-function removeCartEvent(cartNo) {
-	
-	console.log(cartNo);
-	let remCarts = document.querySelectorAll("#cartList td:last-child");
-	console.log(remCarts);
-	remCarts.forEach(remCart => {
-
-		remCart.addEventListener("click", function () {
-			fetch("removeCart.do?cartNo="+cartNo)
-			.then(result => result.json())
-			.then(result => {
-				if (result.retCode == "OK") {
-					alert('삭제됨.');
-					remCart.closest("tr").remove();
-				} else {
-					alert('삭제 중 오류발생.');
-				}
-			})
+const form = {
+	memberNo: '${}',
+	bookNo: '${}',
+	quantity: ''
+}
+function addCartEvent() {
+	$(".add_cart").on("click", function () {
+		form.quantity = $(".quantity_input").val();
+		$.ajax({
+			url: 'addCart.do',
+			type: 'POST',
+			data: form,
+			success: function (result) {
+				cartAlert(result);
+			}
 		})
 	})
 }
 
+function cartAlert(result) {
+	if (result == '0') {
+		alert("장바구니에 추가를 하지 못하였습니다.");
+	} else if (result == '1') {
+		alert("장바구니에 추가되었습니다.");
+	} else if (result == '2') {
+		alert("장바구니에 이미 추가되어져 있습니다.");
+	} else if (result == '5') {
+		alert("로그인이 필요합니다.");
+	}
+}
 
-function makeTotal(lastPrice) {
-		const totalAmo = `<div class="total-amount">
-			<div class="row">
-				<div class="col-lg-8 col-md-5 col-12">
-					<div class="left">
-						<div class="coupon">
-							<form action="#" target="_blank">
-								<p style="padding: 15px;"><span>사용가능한 포인트</span><span>&nbsp;&nbsp;&nbsp;&nbsp;5,000 P</span></p>
+function allCheckboxEvent() {
+	$('.main-hading').find(':input').on('click', function () {
+		$('#cartList').find(':checkbox').prop('checked', this.checked);
+		makeTotal();
+	});
 
-								<input name="Coupon" placeholder="사용할 포인트 입력">
-								<button class="btn"> 포인트 사용</button>
-							</form>
-						</div>
-						<div class="checkbox">
-							<label class="checkbox-inline" for="2"><input name="news" id="2"
-									type="checkbox"> Shipping (+10$)</label>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-7 col-12">
-					<div class="right">
-						<ul>
-							<li>주문도서 금액 합계<span style="font-weight: bold;">${lastPrice} + 원</span></li>
-							<li>주문도서 수량<span style="font-size: small;">&nbsp;(1권)</span><span style="font-weight: bold;">1종</span></li>
-							<li>사용 포인트<span style="font-weight: bold;">1,500 P</span></li>
-							<li class="last">주문 합계 금액<span style="font-weight: bold; font-size: larger;">28,500 원</span></li>
-						</ul>
-						<div class="button5">
-							<a href="#" class="btn" style="font-weight: bold; font-size: larger;">주문하기</a> <a href="#" class="btn" style="font-weight: bold; font-size: larger;">쇼핑 계속하기</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>`;
-		return totalAmo;
+}
+
+function modifyCartEvent() {
+	let modCarts = document.querySelectorAll("#cartList .modBtn");
+	modCarts.forEach(modCart => {
+		modCart.addEventListener("click", function (e) {
+			e.preventDefault();
+			let cartNo = modCart.dataset.cartno
+			let curQuantity = modCart.dataset.quantity
+			let modquantity = modCart.parentElement.parentElement.childNodes[3].value
+			let memberNo = modCart.dataset.memberno
+			let bookNo = modCart.dataset.bookno
+			let name = modCart.dataset.name
+			let price = modCart.dataset.price
+			let img = modCart.dataset.img
+			console.log(cartNo, curQuantity, modquantity, memberNo, bookNo, name, price, img);
+			if (curQuantity != modquantity) {
+				fetch("modifyCart.do?cno=" + cartNo + "&quan=" + modquantity + "&mno=" + memberNo + "&bno=" + bookNo + "&bookName=" + name + "&bookPrice=" + price + "&bookImg=" + img)
+					.then(result => result.json())
+					.then(result => {
+						if (result.retCode == "OK") {
+							alert('수정되었습니다.');
+							// modCart.parentElement.parentElement.childNodes[3].value = quantity;
+							cartList.innerHTML = '';
+							addPoint.innerHTML = '';
+							totalAmount.innerHTML = '';
+							showCart();
+						} else {
+							alert('수정 중 오류발생.');
+						}
+					})
+			} else {
+				alert("수량이 동일합니다.");
+			}
+		})
+	})
+}
+
+function removeCartEvent() {
+	let remCarts = document.querySelectorAll("#cartList .remBtn");
+	remCarts.forEach(remCart => {
+		remCart.addEventListener("click", function (e) {
+			console.log(remCart);
+			e.preventDefault();
+			let cartNo = remCart.dataset.cartno;
+			console.log(cartNo);
+			fetch("removeCart.do?cartNo=" + cartNo)
+				.then(result => result.json())
+				.then(result => {
+					if (result.retCode == "OK") {
+						alert('삭제됨.');
+						// remCart.closest("tr").remove();
+						cartList.innerHTML = '';
+						addPoint.innerHTML = '';
+						totalAmount.innerHTML = '';
+						showCart();
+					} else {
+						alert('삭제 중 오류발생.');
+					}
+				})
+		})
+	})
+}
+
+function btnEvent() {
+	$(".plusBtn").on("click", function () {
+		let price = $(this).closest("tr").find(".price").find("span").text();
+		let quantity = $(this).parent("div").parent("div").find("input").val();
+		$(this).parent("div").parent("div").find("input").val(++quantity);
+		$(this).closest("td").next("td").find("span").text(price * quantity);
+		// makePoint();
+	});
+
+	$(".minusBtn").on("click", function () {
+		let price = $(this).closest("td").prev().find("span").text();
+		let quantity = $(this).parent("div").parent("div").find("input").val();
+		if (quantity > 1) {
+			$(this).parent("div").parent("div").find("input").val(--quantity);
+		}
+		$(this).closest("td").next("td").find("span").text(price * quantity);
+		// makePoint();
+	});
+}
+
+// function makePoint() {
+// 	let sumPrice = document.querySelectorAll("#cartList .total-amount");
+// 	let sumPrice2 = 0;
+// 	sumPrice.forEach(td => {
+// 		sumPrice2 += parseInt(td.childNodes[0].innerText);
+// 	})
+// 	$(".totalPoint").text(sumPrice2 * 0.05);
+// }
+
+
+
+function selCheckEvent() {
+
+	let checks = document.querySelectorAll('#cartList .selCheck');
+	console.log(checks);
+	let totalPrice = 0;
+	let totalType = 0;
+	let totalQuantity = 0;
+	checks.forEach(check => {
+		console.log(check);
+		if (check.checked == true) {
+			let sumPrice = check.closest("tr").querySelector(".total-amount");
+			totalPrice += parseInt(sumPrice.innerText);
+
+			let quantity = check.closest("tr").querySelector(".input-number");
+			totalQuantity += parseInt(quantity.value);
+
+			let type = check.closest("tr").querySelector(".modBtn");
+			for (i = 1; i <= 100; i++) {
+				if (type.dataset.bookno == i) {
+					totalType++;
+				}
+			}
+		}
+	})
+	document.querySelector(".totalPoint").innerText = totalPrice * 0.05;
+	document.querySelector(".totalQuantity").innerText = totalQuantity;
+	document.querySelector(".totalType").innerText = totalType;
+	document.querySelector(".totalPrice").innerText = totalPrice;
+}
+
+
+function makeTotal() {
+	let checks = document.querySelectorAll('#cartList .selCheck');
+	console.log(checks);
+	let totalPoint = 0;
+	let totalQuantity = 0;
+	let totalType = 0;
+	let deliveryPrice = "무료";
+	let totalPrice = 0;
+	checks.forEach(check => {
+		console.log(check);
+		if (check.checked == true) {
+			let sumPrice = check.closest("tr").querySelector(".total-amount");
+			totalPrice += parseInt(sumPrice.innerText);
+
+			let quantity = check.closest("tr").querySelector(".input-number");
+			totalQuantity += parseInt(quantity.value);
+
+			let type = check.closest("tr").querySelector(".modBtn");
+			for (i = 1; i <= 100; i++) {
+				if (type.dataset.bookno == i) {
+					totalType++;
+				}
+			}
+		}
+	})
+	totalPoint = totalPrice * 0.05;
+	document.querySelector(".totalPoint").innerText = totalPoint;
+	document.querySelector(".totalQuantity").innerText = totalQuantity;
+	document.querySelector(".totalType").innerText = totalType;
+	document.querySelector(".totalPrice").innerText = totalPrice;
+	document.querySelector(".deliveryPrice").innerText = deliveryPrice;
+
+	// const totalAmo = ``;
+	// return totalAmo;
+
 }

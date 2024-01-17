@@ -14,7 +14,9 @@ public class CartListControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-		resp.setContentType("text/json;charset=utf-8");
+		// resp.setContentType("text/json;charset=utf-8");
+		String userId = req.getParameter("userId");
+		req.setAttribute("userId", userId);
 
 		RequestDispatcher rd = req.getRequestDispatcher("cart/cartList.tiles");
 		try {
