@@ -57,4 +57,16 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> mainBestProductList() {
 		return mapper.mainBestProductList();
 	}
+
+	@Override
+	public boolean addProduct(ProductVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.insertProduct(vo) == 1;
+	}
+
+	@Override
+	public List<String> searchProduct(String search) {
+		// TODO Auto-generated method stub
+		return mapper.searchProduct(search);
+	}
 }

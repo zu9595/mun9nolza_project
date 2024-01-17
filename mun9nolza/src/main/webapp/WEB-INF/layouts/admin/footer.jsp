@@ -5,9 +5,9 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2023</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">hello</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">문구야 놀자</a>
                             </div>
                         </div>
                     </div>
