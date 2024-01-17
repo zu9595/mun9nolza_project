@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="js2/cartList.js"></script>
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -38,17 +39,36 @@
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
-						<tbody id="cartList">
-							
+						<tbody id="cartList" style="text-align: center;">
+						
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
 				</div>
 			</div>
-			<div id="addPoint"></div>
+			<div id="addPoint">
+			<div class="cart_point_total" style="padding: 17px; text-align: right; border-bottom: 1px solid #aaa; font-size: 17px;"><span>적립 예정 포인트&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="totalPoint" style="font-weight: bold;"></span><span>&nbsp;P</span></div>
+			<div class="row">
+			</div>
 				<div class="col-12" id="totalAmount" style=":hover background-color: yellow;">
 					<!-- Total Amount -->
-					
+					<div class="total-amount">
+						<div class="row">
+							
+							<div class="col-11">
+								<div class="right">
+									<ul>
+									<li>주문도서 수량<span>권)</span><span class="totalQuantity" style="font-size: small;"></span><span>(</span><span style="font-weight: bold;">&nbsp;종</span><span class="totalType" style="font-weight: bold;"></span></li>
+									<li>배송비<span class="deliveryPrice" style="font-weight: bold;"></span></li>
+										<li class="last">주문 합계 금액<span>&nbsp;원</span><span class="totalPrice" style="font-weight: bold; font-size: larger;"></span></li>
+									</ul>
+									<div class="button5">
+										<a href="#" class="btn" style="font-weight: bold; font-size: larger;">주문하기</a> <a href="#" class="btn" style="font-weight: bold; font-size: larger;">쇼핑 계속하기</a>
+									</div>
+								
+							</div>
+						</div>
+					</div>
 					<!--/ End Total Amount -->
 				</div>
 			</div>

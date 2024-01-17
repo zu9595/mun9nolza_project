@@ -29,7 +29,6 @@ public class AdminMemberListControl implements Control {
 		try {
 			resp.getWriter().print(gson.toJson(list));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

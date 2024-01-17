@@ -18,6 +18,7 @@ public class OrderListVO {
 	private int totalPrice;
 	private int deliveryFee;
 	private String deliveryMemo;
+	private String orderStatus;
 	
 	private String proImage;
 	private String proName;

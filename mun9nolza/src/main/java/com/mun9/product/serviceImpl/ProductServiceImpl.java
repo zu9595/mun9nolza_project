@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> productListPaging(int page, String category) {
-		return mapper.productListPaging(page, category);
+	public List<ProductVO> productListPaging(ProductVO vo) {
+		return mapper.productListPaging(vo);
 	}
 
 	@Override
@@ -41,5 +41,20 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.selectProductList();
 	}
 
-	
+	@Override
+	public boolean delProduct(int proCode) {
+		// TODO Auto-generated method stub
+		return mapper.deleteProduct(proCode) == 1;
+	}
+
+	@Override
+	public boolean modProduct(ProductVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.modifyProduct(vo) > 0;
+	}
+
+	@Override
+	public List<ProductVO> mainBestProductList() {
+		return mapper.mainBestProductList();
+	}
 }

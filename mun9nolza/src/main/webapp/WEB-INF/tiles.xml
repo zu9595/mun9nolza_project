@@ -32,6 +32,10 @@
   	<put-attribute name="body" value="/WEB-INF/views/cart/{1}.jsp"></put-attribute>
   </definition>
   
+  <definition name="WILDCARD:inquire/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/views/inquire/{1}.jsp"></put-attribute>
+  </definition>
+  
   <!-- 마이페이지(내주문내역바로) -->
   <definition name="WILDCARD:mypage/*" extends="product">
   	<put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp"></put-attribute>

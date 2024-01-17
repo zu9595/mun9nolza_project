@@ -10,10 +10,10 @@ import com.mun9.member.service.MemberService;
 import com.mun9.member.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService {
-	
+
 	SqlSession session = DataSource.getInstance().openSession(true);
 	MemberMapper mapper = session.getMapper(MemberMapper.class);
-	
+
 	@Override
 	public boolean addMember(MemberVO vo) {
 		return mapper.insertMember(vo) == 1;
@@ -38,12 +38,16 @@ public class MemberServiceImpl implements MemberService {
 	public String findId(String userName, String email) {
 		return mapper.selectId(userName, email);
 	}
-  
-  @Override
+
+	@Override
+	public String findPw(String userId, String userName, String email) {
+		return mapper.selectPw(userId, userName, email);
+	}
+
+	@Override
 	public MemberVO kakaologin(String email, String userName) {
 		// TODO Auto-generated method stub
 		return mapper.kakaoSelectMember(email, userName);
 	}
 
-	
 }

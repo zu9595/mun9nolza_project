@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
+import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
@@ -19,20 +20,23 @@ import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
 import com.mun9.member.command.FindIdControl;
+import com.mun9.member.command.FindPwControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
-
 import com.mun9.product.command.ProductDetailControl;
+import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
-
+import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
-
+import com.mun9.product.command.AdminProductModControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
+import com.mun9.product.command.mainBestProductList;
+
 
 public class FrontController extends HttpServlet {
 
@@ -51,6 +55,7 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
+		map.put("/mainBest.do", new mainBestProductList());
 		
 		
 		//회원가입
@@ -58,20 +63,18 @@ public class FrontController extends HttpServlet {
 		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
-		
-		
-		//마이페이지
-		map.put("/myOrderList.do", new OrderListControl());
-		//마이페이지 주문목록 - id값에 맞는 orderList 정보를 Json타입의 데이터로 묶어줌(Json) 
-		map.put("/myOrderListJson.do", new OrderListJsonControl());
-		
+		map.put("/findPw.do", new FindPwControl());
 		
 		//로그인 --수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/socialLogin.do", new SocialLoginControl());
-
+		
+		
+		//마이페이지
+		map.put("/myOrderList.do", new OrderListControl());//주문목록
+		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
 
 		//장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
@@ -87,6 +90,8 @@ public class FrontController extends HttpServlet {
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		map.put("/productDetail.do", new ProductDetailControl());
 		
+		//문의 페이지
+		map.put("/inquireListForm.do", new InquireListFormControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
@@ -100,7 +105,13 @@ public class FrontController extends HttpServlet {
 		map.put("/adminProductListForm.do", new AdminProductListFormControl());
 		//admin Product List(Json)
 		map.put("/adminProductList.do", new AdminProductListControl());
-
+		// admin Product 삭제(Json)
+		map.put("/productDel.do", new AdminProductDelControl());
+		// admin Product 수정(Json)
+		map.put("/productMod.do", new AdminProductModControl());
+		
+		
+		
 	}
 
 	@Override

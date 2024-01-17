@@ -1,4 +1,4 @@
-package com.mun9.cart.command;
+package com.mun9.inquire.command;
 
 import java.io.IOException;
 
@@ -9,23 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.common.Control;
 
-public class CartListControl implements Control {
+public class InquireListFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
-		// resp.setContentType("text/json;charset=utf-8");
-		String userId = req.getParameter("userId");
-		req.setAttribute("userId", userId);
-
-		RequestDispatcher rd = req.getRequestDispatcher("cart/cartList.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireListBody.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

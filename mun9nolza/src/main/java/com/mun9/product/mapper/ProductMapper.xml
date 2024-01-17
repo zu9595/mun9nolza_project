@@ -13,24 +13,42 @@
     select * from product order by 1
  </select>
   
+  <select id="mainBestProductList" resultType="product">
+    select * from product order by pro_sell desc
+ </select>
+ 
   <select id="getProductDetail" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
    
- <select id="productListPaging" resultType="product">
+ <select id="productListPaging" resultType="product" parameterType="product">
 	select b.* from
 	(select rownum rn, a.* from
 	(select * from product
 	<where>
-    <if test="category != null and category != ''">
-    category = #{category}
-    </if>
-    </where> 
-	order by pro_discount
+	<if test="category != null and category != ''">
+		category = #{category}
+	</if>
+    </where>
+    <choose>
+	<when test="proName != null and proName != ''">
+		order by pro_name
+	</when>
+	<when test="proPrice != null and proPrice != ''">
+		order by pro_price
+	</when>
+	<when test="proCode != null and proCode != ''">
+		order by pro_code
+	</when>
+	<otherwise>
+		order by pro_discount
+	</otherwise>
+	</choose>
 	) a ) b
 	<![CDATA[
 	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
     ]]>
+    
  </select>
  <select id="selectCount" resultType="int">
 	select count(*) from product 
@@ -42,4 +60,13 @@
 	order by 1
  </select>
  
+ <delete id="deleteProduct" parameterType="int">
+ 	delete from product where pro_code=#{proCode}
+ </delete>
+ 
+ <update id="modifyProduct" parameterType="product">
+ 	update product
+	set pro_name= #{proName},pro_desc= #{proDesc},pro_image= #{proImage},pro_price= #{proPrice},pro_discount= #{proDiscount},pro_sell= #{proSell},pro_stock= #{proStock},category= #{category}
+	where pro_code= #{proCode}
+ </update>
 </mapper>
