@@ -33,5 +33,4 @@ public class AdminMemberListControl implements Control {
 			e.printStackTrace();
 		}
 	}
-
 }

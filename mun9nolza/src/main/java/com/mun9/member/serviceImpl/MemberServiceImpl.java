@@ -21,7 +21,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> memberList() {
-		// TODO Auto-generated method stub
 		return mapper.selectList();
 	}
 
@@ -32,8 +31,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean delMember(String userId, String userPw) {
-		// TODO Auto-generated method stub
 		return mapper.deleteMember(userId, userPw) == 1;
 	}
+
+	@Override
+	public String findId(String userName, String email) {
+		return mapper.selectId(userName, email);
+	}
+  
+  @Override
+	public MemberVO kakaologin(String email, String userName) {
+		// TODO Auto-generated method stub
+		return mapper.kakaoSelectMember(email, userName);
+	}
+
 	
 }

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -74,6 +74,10 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    <!-- kakao js -->
+    <script src="js/loginjs/kakao.js"></script>
+    <!-- main js -->
+    <script src="js/mainjs/mainBest.js"></script>
 </body>
 
 </html>

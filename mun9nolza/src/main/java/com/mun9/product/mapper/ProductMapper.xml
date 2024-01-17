@@ -8,6 +8,18 @@
   <select id="getProduct" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
+  
+  <select id="selectProductList" resultType="product">
+    select * from product order by 1
+ </select>
+  
+  <select id="mainBestProductList" resultType="product">
+    select * from product order by pro_sell desc
+ </select>
+ 
+  <select id="getProductDetail" resultType="product" parameterType="int">
+  	select * from product where pro_code = #{pcode}
+  </select>
    
  <select id="productListPaging" resultType="product" parameterType="product">
 	select b.* from
@@ -48,4 +60,13 @@
 	order by 1
  </select>
  
+ <delete id="deleteProduct" parameterType="int">
+ 	delete from product where pro_code=#{proCode}
+ </delete>
+ 
+ <update id="modifyProduct" parameterType="product">
+ 	update product
+	set pro_name= #{proName},pro_desc= #{proDesc},pro_image= #{proImage},pro_price= #{proPrice},pro_discount= #{proDiscount},pro_sell= #{proSell},pro_stock= #{proStock},category= #{category}
+	where pro_code= #{proCode}
+ </update>
 </mapper>
