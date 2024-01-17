@@ -11,7 +11,8 @@ public interface ProductService {
 
 	public List<ProductVO> productList();
 	
-	public List<ProductVO> mainBestProductList(); //메인 베스트 목록
+	public List<ProductVO> mainBestProductList(); // 메인 베스트 목록
+	public List<ProductVO> saleList(); // 할인 가격순 목록
 
 	int getTotalCnt(String category);
 	public ProductVO getProductDetail(int pcode);

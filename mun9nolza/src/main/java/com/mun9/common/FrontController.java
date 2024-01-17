@@ -29,13 +29,12 @@ import com.mun9.member.command.LogoutControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
-import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.AdminProductModControl;
+import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
-import com.mun9.product.command.mainBestProductList;
 
 
 public class FrontController extends HttpServlet {
@@ -55,8 +54,7 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
-		map.put("/mainBest.do", new mainBestProductList());
-		
+		map.put("/mainSaleList.do", new MainSaleListJson());
 		
 		//회원가입
 		map.put("/addMember.do", new AddMemberControl()); //가입기능

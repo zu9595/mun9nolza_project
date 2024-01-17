@@ -54,7 +54,14 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> mainBestProductList() {
+	public List<ProductVO> mainBestProductList() { // 메인 베스트 목록
+		// TODO Auto-generated method stub
 		return mapper.mainBestProductList();
+	}
+
+	@Override
+	public List<ProductVO> saleList() {
+		// TODO Auto-generated method stub
+		return mapper.saleList();
 	}
 }
