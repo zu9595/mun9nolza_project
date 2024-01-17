@@ -18,6 +18,11 @@ public class OrderListServiceImpl implements OrderListService{
 	public List<OrderListVO> getMyOrderList(String userId) {
 		return mapper.selectMyOrderList(userId);
 	}
+
+	@Override
+	public boolean modifyOrder(int orderNo) {
+		return mapper.updateOrderList(orderNo) == 1;
+	}
 	
 	
 	

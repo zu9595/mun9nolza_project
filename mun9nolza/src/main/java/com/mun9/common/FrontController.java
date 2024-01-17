@@ -26,6 +26,7 @@ import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
 
 import com.mun9.product.command.ProductDetailControl;
+import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
 
@@ -59,19 +60,16 @@ public class FrontController extends HttpServlet {
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
 		
-		
-		//마이페이지
-		map.put("/myOrderList.do", new OrderListControl());
-		//마이페이지 주문목록 - id값에 맞는 orderList 정보를 Json타입의 데이터로 묶어줌(Json) 
-		map.put("/myOrderListJson.do", new OrderListJsonControl());
-		
-		
 		//로그인 --수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/socialLogin.do", new SocialLoginControl());
-
+		
+		
+		//마이페이지
+		map.put("/myOrderList.do", new OrderListControl());//주문목록
+		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
 
 		//장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
