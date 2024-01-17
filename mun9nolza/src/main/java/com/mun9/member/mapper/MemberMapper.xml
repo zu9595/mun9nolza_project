@@ -25,11 +25,11 @@
 		delete from member where user_id=#{userId} and user_pw=#{userPw}
 	</delete>
 
-	<select id="selectId" parameterType="String" resultType="String">
+	<select id="selectId" resultType="String">
 		select user_id
 		from member
-		where user_name = '#{userName}'
-		and email = '#{email}'
+		where user_name = #{userName}
+		and email = #{email}
 	</select>
 
 </mapper>

@@ -28,7 +28,6 @@ public class FindIdControl implements Control {
 		try {
 			resp.getWriter().print(gson.toJson(fid));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
