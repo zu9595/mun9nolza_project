@@ -31,19 +31,18 @@
                 <td></td>
                 <td>
                 	<ul>
-                		<li><h7>배송비</h7></li>
+                		<li><h6>배송비</h6></li>
                 		<li><h5>총 금액</h5></li>
                 	</ul>                  
                 </td>
                 <td>
                 	<td>
                 	<ul>
-                		<li><h7>$21.00</h7></li>
+                		<li><h6>$21.00</h6></li>
                 		<li><h5>$2160.00</h5></li>
                 	</ul>                  
                 </td>
-                  
-                </td>
+                
               </tr>  
             </tbody>
           </table>
@@ -57,5 +56,6 @@
           </div>
         </div>
       </div>
+     </div>
   </section>
   <!--================End Cart Area =================-->

@@ -14,4 +14,8 @@ public interface MemberService {
 	public String findPw(String userId, String userName, String email);
 	public MemberVO kakaologin(String email, String userName);
 
+	//회원정보 수정
+	public MemberVO memInfo(String userId); //아이디조회
+	public boolean memInfoMod(MemberVO vo); //수정기능
+	
 }

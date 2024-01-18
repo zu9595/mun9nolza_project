@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
+import com.mun9.inquire.command.InquireAddFormControl;
+import com.mun9.inquire.command.InquireListControl;
+import com.mun9.cart.command.DelCartJson;
+import com.mun9.cart.command.ModCartCntJson;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
@@ -26,19 +30,23 @@ import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
+import com.mun9.member.command.MyInfoModControl;
+import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
-import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
 import com.mun9.product.command.AdminProductAddFormControl;
+
 import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.AdminProductModControl;
+import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
-import com.mun9.product.command.mainBestProductList;
+import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.searchControl;
+
 
 
 public class FrontController extends HttpServlet {
@@ -58,14 +66,17 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
+		map.put("/mainSaleList.do", new MainSaleListJson());
+		map.put("/mainCategoryHotList.do", new MainCategoryHotListJson());
+		
 		//상품 검색
 		map.put("/search.do",  new searchControl());
-		map.put("/mainBest.do", new mainBestProductList());
-		
+		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
 		
 		//회원가입
-		map.put("/addMember.do", new AddMemberControl()); //가입기능
 		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
+		map.put("/addMember.do", new AddMemberControl()); //가입기능
+
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
@@ -80,11 +91,18 @@ public class FrontController extends HttpServlet {
 		//마이페이지
 		map.put("/myOrderList.do", new OrderListControl());//주문목록
 		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
+		map.put("/myInfoModForm.do", new MyInfoModFormControl());//수정화면만
+		map.put("/myInfoMod.do", new MyInfoModControl()); //수정기능
 
 		//장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
 		//장바구니 목록(Json)
 		map.put("/cartListJson.do", new CartListJson());
+		//장바구니 상품 삭제
+		map.put("/delCartJson.do", new DelCartJson());
+		//장바구니 상품 숫자 변경
+		map.put("modCartCntJson.do", new ModCartCntJson());
+		//결제화면으로 이동
 		
 		
 		//전체 상품목록 이동
@@ -93,10 +111,13 @@ public class FrontController extends HttpServlet {
 		map.put("/productDetail.do", new ProductDetailControl());
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
-		map.put("/productDetail.do", new ProductDetailControl());
 		
 		//문의 페이지
 		map.put("/inquireListForm.do", new InquireListFormControl());
+		//문의 목록 list(Json)
+		map.put("/inquireList.do", new InquireListControl());
+		//문의 등록
+		map.put("/inquireAddForm.do", new InquireAddFormControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

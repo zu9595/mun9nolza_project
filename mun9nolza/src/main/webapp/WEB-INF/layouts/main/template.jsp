@@ -77,8 +77,14 @@
     <!-- kakao js -->
     <script src="js/loginjs/kakao.js"></script>
     <!-- main js -->
-    <script src="js/mainjs/mainBest.js"></script>
+
+    <script src="js/mainjs/mainHot.js"></script>
+    <script src="js/mainjs/mainSale.js"></script>
+    
     <script src="js/adminjs/adminSession.js"></script>
+    <script src="js/inquirejs/inquireSession.js"></script>
+	  <script src="js/product/productDetail.js"></script>
+
 </body>
 
 </html>

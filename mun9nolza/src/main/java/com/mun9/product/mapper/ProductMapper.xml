@@ -8,13 +8,25 @@
   <select id="getProduct" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
-  
+
   <select id="selectProductList" resultType="product">
     select * from product order by 1
  </select>
-  
-  <select id="mainBestProductList" resultType="product">
+ <select id="mainBestProductList" resultType="product">
     select * from product order by pro_sell desc
+ </select>
+ <select id="mainCategoryHotList" resultType="product">
+ 	select * from (select 
+                    pro_code
+                    ,pro_name
+                    ,pro_image
+                    ,category 
+                    ,ROW_NUMBER() OVER (PARTITION BY category ORDER BY pro_sell desc) as rn
+	from product)
+	where rn = 1
+ </select>
+ <select id="saleList" resultType="product">
+    select * from product order by pro_discount
  </select>
  
   <select id="getProductDetail" resultType="product" parameterType="int">
@@ -31,14 +43,14 @@
 	</if>
     </where>
     <choose>
-	<when test="proName != null and proName != ''">
+	<when test="proName != null">
 		order by pro_name
 	</when>
-	<when test="proPrice != null and proPrice != ''">
+	<when test="proPrice != null and proPrice != 0">
 		order by pro_price
 	</when>
-	<when test="proCode != null and proCode != ''">
-		order by pro_code
+	<when test="proSell != null and proSell != 0">
+		order by pro_sell
 	</when>
 	<otherwise>
 		order by pro_discount

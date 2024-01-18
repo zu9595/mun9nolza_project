@@ -46,8 +46,26 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO kakaologin(String email, String userName) {
-		// TODO Auto-generated method stub
 		return mapper.kakaoSelectMember(email, userName);
 	}
+
+	// 회원정보수정
+	@Override
+	public MemberVO memInfo(String userId) {
+		return mapper.selectInfo(userId);
+	}
+
+
+
+	@Override
+	public boolean memInfoMod(MemberVO vo) {
+		return mapper.updateInfo(vo)==1;
+	}
+
+
+
+	
+
+
 
 }

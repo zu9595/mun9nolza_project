@@ -31,7 +31,15 @@
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  	</insert>
  
- 	<!-- 회원목록 -->
+ 	<!--정보수정 -->
+ 	<select id="selectInfo" resultType="member" parameterType="String">
+ 		select * from member where user_id=#{userId}
+ 	</select>
+ 	<update id="updateInfo" parameterType="member">
+ 		update member set  user_pw=#{userPw}, user_name=#{userName}, phone_num=#{phoneNum}, email=#{email} where user_id=#{userId}
+ 	</update>
+ 	<!--  -->
+ 	
  	<select id="selectList" resultType="member">
     	select * from member order by 1
  	</select>

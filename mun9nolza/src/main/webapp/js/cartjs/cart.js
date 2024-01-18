@@ -1,6 +1,7 @@
 /**
  * cart.js
  */
+let myproCnt = 0;
 $(document).ready(cartList());
 
 function cartList() {
@@ -16,18 +17,19 @@ const userId = urlParams.get('userId');
             $(res).each((idx, cart) => {
 				// tr생성-> 첫번째 td밑div2개 td 총5개
 				console.log(cart);
-				let newTr = makeTr(cart);
+				let newTr = makeTr(cart,idx);
               	let cartListTbody = document.querySelector('.cartListTbody');
 				cartListTbody.insertAdjacentHTML('afterbegin', newTr);
-				
+				myproCnt = cart.myproCnt;
 				//모두 선택, 해제
 				allCheckEvent();
 				//선택삭제
-				delChecked();
+				delCheckEvent();
+				//체크박스 수량변경
+				cntDecrementEvent(cart,idx,myproCnt);
+				cntIncrementEvent(cart,idx,myproCnt);
 				
 				
-				
-				changeCnt2();
 				
 			})
         })
@@ -35,60 +37,82 @@ const userId = urlParams.get('userId');
 };
 
 // 모두 선택, 선택 해제
-function allCheckEvent(){	
+function allCheckEvent(){
 	$('thead input[type="checkbox"]').on('change', function(){
 				//console.log(this.checked);				
 				//console.log($('tbody input[type="checkbox"]').prop('checked'));				
 				//prop로...
 				$('tbody input[type="checkbox"]').prop('checked', this.checked);
 			})
-}
+}	
 
 
 // 선택 삭제 이벤트
-function delChecked(){	
+function delCheckEvent(){
 	$('#delChecked').on('click', function(){
 					$('tbody input:checked').parentsUntil('tbody').remove();
 	})
 }
 
-
-
-
-// 수량 변경할때마다 db에 저장하기
-function changeCnt() {
-	// <input class="input-number" type="text" value="${cart.myproCnt}" min="0" max="10">
-	$('.input-number-decrement').on("click", function(){
-		let cnt = $('.input-number').val();
-		cnt++;
-		console.log(cnt);
+function cntDecrementEvent(cart,idx,myproCnt){
+	//업태그
+	$(".cartListTbody").on("click",`.increment${idx}`,function(e){
+		console.log(e.target)
+		--myproCnt;
+		console.log(myproCnt)
+		let proCode = cart.proCode;
+		let userId = cart.userId;
+        $(".cartListTbody").find(`.input${idx}`).val(myproCnt);
 	})
-}
+	
+	}
 
-function changeCnt2() {
-	$(".input-number-increment").on("click", function () {
-		//let proDiscount = document.querySelector(".proDiscount").innerHTML = "";
-		let proDiscount = $(this).parent("tr");
-		//let proDiscount = $(this).closest("tr").find(".proDiscount").find("span").text();
-		let price = $(this).closest("tr").find(".subTotal").text();
-		let quantity = $(this).parent("div").find(".input-number").val();
-		quantity ++;
-		price = proDiscount * quantity;
-		console.log(proDiscount);
-		
-		// makePoint();
-	});
 
-	$(".minusBtn").on("click", function () {
-		let price = $(this).closest("td").prev().find("span").text();
-		let quantity = $(this).parent("div").parent("div").find("input").val();
-		if (quantity > 1) {
-			$(this).parent("div").parent("div").find("input").val(--quantity);
+// 수량 변경할때마다 db에 저장하기 custom.js에 미리 걸린 이벤트 주석 처리
+function cntIncrementEvent(cart,idx,myproCnt){
+	// <input class="input-number" type="text" value="${cart.myproCnt}" min="0" max="10">
+	//다운태그
+	
+	$(".cartListTbody").on("click",`.decrement${idx}`,function(e){
+		console.log(e.target)
+		console.log(cart)
+		if(myproCnt < 2){
+			++myproCnt;
+		}else{
 		}
-		$(this).closest("td").next("td").find("span").text(price * quantity);
-		// makePoint();
-	});
+		console.log(myproCnt)
+		let proCode = cart.proCode;
+		let userId = cart.userId;
+        $(".cartListTbody").find(`.input${idx}`).prop("value",`${myproCnt}`);
+		
+		/*fetch("cartListJson.do", {
+        method: "post",
+        headers:{
+        'Content-Type':'application/x-www-form-urlencode'
+    	},
+    	body: 'myproCnt=' + myproCnt + 'proCode=' + proCode +'&userId='+userId
+    	})*/
+		
+		//아이디/이름/수량
+	})
+	
+	
+	
+	/*$("input-number-decrement").on("click", function(){
+		let cnt = $('.input-number').val();
+		console.log(event.target);
+		let result = event.target.previousElementSibling.value;
+		console.log(result);
+		
+	})*/
 }
+/*function cntIncrementEvent(){
+	$(".input-number-increment").on("click", ".increment" ,function(){
+		console.log(event.target);
+	})
+}*/
+
+
 
 
 
@@ -108,7 +132,7 @@ function makeSubTotal(discountP, cnt){
 
 
 
-function makeTr(cart){
+function makeTr(cart,idx){
 	let newTr = `<tr>
 				<td>
 					<input type="checkbox" id="f-option" name="selector">
@@ -117,7 +141,7 @@ function makeTr(cart){
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="img/${cart.proImage}" alt="" />
+                      <img src="${cart.proImage}" alt="" />
                     </div>
                     <div class="media-body">
                       <a href="#">${cart.proName}</a>
@@ -135,9 +159,9 @@ function makeTr(cart){
                 
                 <td>
                   <div class="product_count">
-                    <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                    <input class="input-number" type="text" value="${cart.myproCnt}" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                    <span class="input-number-decrement decrement${idx}"> <i class="ti-angle-down"></i></span>
+                    <input class="input-number input${idx}" type="text" value="${cart.myproCnt}" min="0" max="10">
+                    <span class="input-number-increment increment${idx}"> <i class="ti-angle-up"></i></span>
                   </div>
                 </td>
                 <td>
