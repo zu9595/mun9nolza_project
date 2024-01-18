@@ -15,4 +15,5 @@ public class InquireVO {
 	private Date inqDate;
 	private String inqImg;
 	private String answer;
+	private String prodName;	
 }
