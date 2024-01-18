@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
+import com.mun9.cart.command.DelCartJson;
+import com.mun9.cart.command.ModCartCntJson;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
@@ -94,6 +96,11 @@ public class FrontController extends HttpServlet {
 		map.put("/cartList.do", new CartListControl());
 		//장바구니 목록(Json)
 		map.put("/cartListJson.do", new CartListJson());
+		//장바구니 상품 삭제
+		map.put("/delCartJson.do", new DelCartJson());
+		//장바구니 상품 숫자 변경
+		map.put("modCartCntJson.do", new ModCartCntJson());
+		//결제화면으로 이동
 		
 		
 		//전체 상품목록 이동
