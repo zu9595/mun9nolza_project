@@ -12,14 +12,14 @@
 } 
 
 </style>
-<script src="js/mypagejs/mypage.js"></script>
+<script src="js/mypagejs/myOrderList.js"></script>
 
 <section class="cat_product_area section_padding">
         <div class="container">
-            <div class="row">
+            <div class="row" style="padding-top: 80px">
                 <div class="col-lg-3">
                 
-                    <div class="left_sidebar_area">
+                    <div class="left_sidebar_area" style="padding-top: 100px">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
                                 <h4>주문내역</h4>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
-                                    <li><a href="#">개인정보 수정</a></li>
+                                    <li><a href="myInfoModForm.do?userId=${logId }">개인정보 수정</a></li>
                                     <li><a href="#">마이리뷰</a></li>
                                     <li><a href="#">회원탈퇴</a></li>
                                 </ul>
@@ -63,7 +63,9 @@
                 <!-- 바뀌는 구역 -->
         
                 <div class="col-lg-9">
-                   <div class="row align-items-center latest_product_inner productlist" style="width: 720px; height: 640px;">
+                   <h2>나의 주문내역</h2>
+                   
+                   <div style="width: 720px; height: 640px; padding: 50px">
                      <table class="table addOrderList">
                       <thead>
                        <tr>

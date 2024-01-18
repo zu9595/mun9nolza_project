@@ -26,6 +26,8 @@ import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
+import com.mun9.member.command.MyInfoModControl;
+import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
@@ -64,8 +66,9 @@ public class FrontController extends HttpServlet {
 		
 		
 		//회원가입
-		map.put("/addMember.do", new AddMemberControl()); //가입기능
 		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
+		map.put("/addMember.do", new AddMemberControl()); //가입기능
+
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
@@ -80,6 +83,8 @@ public class FrontController extends HttpServlet {
 		//마이페이지
 		map.put("/myOrderList.do", new OrderListControl());//주문목록
 		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
+		map.put("/myInfoModForm.do", new MyInfoModFormControl());//수정화면만
+		map.put("/myInfoMod.do", new MyInfoModControl()); //수정기능
 
 		//장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
