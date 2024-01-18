@@ -219,10 +219,54 @@
   $("#search_1").on("click", function () {
     $("#search_input_box").slideToggle();
     $("#search_input").focus();
+    
   });
   $("#close_search").on("click", function () {
     $('#search_input_box').slideUp(500);
   });
+    let input = $("#search_input_box").find('.search-inner').children();
+    let div = $(".search_input").children()
+    console.log(input)
+    console.log(div)
+    input[0].addEventListener('keyup',function(e){
+		if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=13){
+			let search = this.value;
+			let index=-1;
+			fetch('search.do?search='+search)
+			.then(res=>res.json())
+			.then(res=>{
+				console.log(res)
+				while(div.firstChild) {
+					div.removeChild(div.firstChild);
+				}
+				//삭제하는부분 필요
+				
+				//li 태그 생성
+				res.forEach(data=>{
+					let li = document.createElement('li');
+					console.log(data);
+					li.innerText = data;
+					li.className="item";
+					li.addEventListener('click',function(){
+						location.href="#";
+					});
+					div.append(li);
+				})
+			})
+			.catch(err=>console.log(err));
+    	} else if(e.keyCode==13){
+			let input = $("#search_input_box").find('.search-inner').children().value;
+			console.log(input);
+			fetch("search.do?search="+ input)
+			.then(res=>res.json())
+			.then(res=>{
+				location.href="특정 단어가 존재하는 검색리스트가 존재하는 상품목록 url필요?search="+res.search;
+			})
+			.catch(err=>console.log(err));
+		}
+		})
+  
+  
 
   //------- Mailchimp js --------//  
   function mailChimp() {

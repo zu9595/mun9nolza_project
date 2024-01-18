@@ -22,4 +22,6 @@ public interface ProductMapper {
 	
 	public int deleteProduct(int proCode);
 	public int modifyProduct(ProductVO vo);
+	public int insertProduct(ProductVO vo);
+	public List<String> searchProduct(String search);
 }

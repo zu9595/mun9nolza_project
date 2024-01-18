@@ -13,7 +13,9 @@ public class AdminMemberFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
+			String id = req.getParameter("userId");
+			
+			req.setAttribute("userId", id);
 		//페이지 이동(forward)
 			RequestDispatcher rd = req.getRequestDispatcher("admin/adminMember.tiles");
 			try {

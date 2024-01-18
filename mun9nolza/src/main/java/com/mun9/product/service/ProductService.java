@@ -18,5 +18,6 @@ public interface ProductService {
 	public ProductVO getProductDetail(int pcode);
 	public boolean delProduct(int proCode);
 	public boolean modProduct(ProductVO vo);
-	
+	public boolean addProduct(ProductVO vo);
+	public List<String> searchProduct(String search);
 }

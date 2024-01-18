@@ -27,7 +27,7 @@
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
-								<a href="adminForm.do">관리자페이지</a>
+								<a href="javascript:listView('${logId}')">관리자페이지</a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
@@ -113,7 +113,7 @@
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
-								<a href="adminForm.do">관리자페이지</a>
+								<a href="javascript:listView('${logId}')">관리자페이지</a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>

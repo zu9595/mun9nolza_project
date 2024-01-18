@@ -1,6 +1,9 @@
 /**
  * 
  */
+const urlParams = new URL(location.href).searchParams;
+const userId = urlParams.get('userId');
+
 $(document).ready(function(){
 	memberList();
 	
@@ -16,12 +19,21 @@ function memberList() {
             console.log(res);
             $(res).each((idx, member) => {
 				// tr생성. td생성
-
-				let tr = $('<tr />').addClass('del').append($('<td />').attr('id','id').text(member.userId),
-					$('<td />').attr('id','pw').text(member.userPw),
-					$('<td />').text(member.userName),
-					$('<td />').append($('<button />').addClass('delete').text('삭제'))
-				);
+				let tr = '';
+				if(userId == member.userId){
+					tr = $('<tr />').addClass('del').append($('<td />').attr('id','id').text(member.userId),
+						$('<td />').attr('id','pw').text(member.userPw),
+						$('<td />').text(member.userName),
+						$('<td />')
+						);
+				}else{
+					tr = $('<tr />').addClass('del').append($('<td />').attr('id','id').text(member.userId),
+						$('<td />').attr('id','pw').text(member.userPw),
+						$('<td />').text(member.userName),
+						$('<td />').append($('<button />').addClass('delete').text('삭제'))
+						);
+				}
+				
 				$('#list').append(tr);
 			})
 				$('.delete').on('click', function(e){

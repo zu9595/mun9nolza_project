@@ -73,4 +73,20 @@
 	set pro_name= #{proName},pro_desc= #{proDesc},pro_image= #{proImage},pro_price= #{proPrice},pro_discount= #{proDiscount},pro_sell= #{proSell},pro_stock= #{proStock},category= #{category}
 	where pro_code= #{proCode}
  </update>
+ 
+ <insert id="insertProduct" parameterType="product">
+ 	insert into product(pro_code,pro_name,pro_desc,pro_image,pro_price,pro_discount,pro_sell,pro_stock,category)
+	values (mypro_no_seq.NEXTVAL,#{proName},#{proDesc},#{proImage},#{proPrice},#{proDiscount},#{proSell},#{proStock},#{category})
+ </insert>
+ 
+ <select id="searchProduct" resultType="String">
+		select pro_name 
+		from product
+		where pro_name 
+		<![CDATA[
+			like #{search} and rownum <=10 order 
+			by pro_sell desc
+		]]>
+  </select>
+	
 </mapper>
