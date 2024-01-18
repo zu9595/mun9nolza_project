@@ -17,6 +17,10 @@
     select * from product order by pro_sell desc
  </select>
  
+ <select id="saleList" resultType="product">
+    select * from product order by pro_discount
+ </select>
+ 
   <select id="getProductDetail" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>

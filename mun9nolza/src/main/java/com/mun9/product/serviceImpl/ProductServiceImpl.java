@@ -54,11 +54,16 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> mainBestProductList() {
+	public List<ProductVO> mainBestProductList() { // 메인 베스트 목록
+		// TODO Auto-generated method stub
 		return mapper.mainBestProductList();
 	}
 
 	@Override
+	public List<ProductVO> saleList() {
+		// TODO Auto-generated method stub
+		return mapper.saleList();
+
 	public boolean addProduct(ProductVO vo) {
 		// TODO Auto-generated method stub
 		return mapper.insertProduct(vo) == 1;
@@ -68,5 +73,6 @@ public class ProductServiceImpl implements ProductService{
 	public List<String> searchProduct(String search) {
 		// TODO Auto-generated method stub
 		return mapper.searchProduct(search);
+
 	}
 }

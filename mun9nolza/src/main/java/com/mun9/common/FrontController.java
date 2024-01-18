@@ -32,13 +32,16 @@ import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
 import com.mun9.product.command.AdminProductAddFormControl;
+
 import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.AdminProductModControl;
+import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.mainBestProductList;
 import com.mun9.product.command.searchControl;
+
 
 
 public class FrontController extends HttpServlet {
@@ -58,6 +61,8 @@ public class FrontController extends HttpServlet {
 
 		//메인화면
 		map.put("/main.do",  new MainControl());
+		map.put("/mainSaleList.do", new MainSaleListJson());
+
 		//상품 검색
 		map.put("/search.do",  new searchControl());
 		map.put("/mainBest.do", new mainBestProductList());
