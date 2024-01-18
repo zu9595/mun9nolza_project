@@ -17,8 +17,8 @@ import com.mun9.inquire.command.InquireListControl;
 import com.mun9.cart.command.DelCartJson;
 import com.mun9.cart.command.ModCartCntJson;
 import com.mun9.inquire.command.InquireListFormControl;
-import com.mun9.member.command.AddMemberControl;
-import com.mun9.member.command.AddMemberFormControl;
+import com.mun9.member.command.JoinMemberControl;
+import com.mun9.member.command.JoinMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
@@ -74,8 +74,8 @@ public class FrontController extends HttpServlet {
 		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
 		
 		//회원가입
-		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
-		map.put("/addMember.do", new AddMemberControl()); //가입기능
+		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
+		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
 
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
@@ -99,9 +99,9 @@ public class FrontController extends HttpServlet {
 		//장바구니 목록(Json)
 		map.put("/cartListJson.do", new CartListJson());
 		//장바구니 상품 삭제
-		map.put("/delCartJson.do", new DelCartJson());
+		//map.put("/delCartJson.do", new DelCartJson());
 		//장바구니 상품 숫자 변경
-		map.put("modCartCntJson.do", new ModCartCntJson());
+		//map.put("modCartCntJson.do", new ModCartCntJson());
 		//결제화면으로 이동
 		
 		

@@ -5,12 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
-<style>
-.orderHidden {
-	display: none;
-}
-</style>
-<!-- <script src="js/mypagejs/mypage.js"></script> -->
+<script src="js/mypagejs/myInfoMod.js"></script>
 
 <section class="cat_product_area section_padding">
 	<div class="container">
@@ -63,7 +58,8 @@
 			<div class="col-lg-9" > 
 				<h2>회원정보 수정</h2>
 				<!-- <div class="row align-items-center latest_product_inner productlist"style="width: 720px; height: 640px;"> -->
-
+					
+					<!-- <div style="align:center"> -->
 					<form action="myInfoMod.do" method="post" class="validation-form" novalidate>
 					<!-- <div class="row"> -->
 						<input type="hidden" name="userId" value="${mem.userId }"> <!-- 화면엔 안보여줘도 되니 hidden (파라미터값 받아야되니 input사용) -->
@@ -74,7 +70,7 @@
 						<label for="pw" style="margin-top: 5px;">비밀번호</label>
 						<input type="password" name="userPw" value="${mem.userPw }" class="form-control" required style="width: 380px; margin-bottom: 5px;" id="pw">
 						<label for="pwCheck" style="margin-top: 5px;"></label>
-						<input type="password" name="userPwCheck" class="form-control" placeholder="비밀번호 재확인" required style="width: 380px;" id="pwCheck">
+						<input type="password" class="form-control" name="userPw" placeholder="비밀번호 재확인" required style="width: 380px;" id="pwCheck">
 						
 						<br>
 						
@@ -83,89 +79,19 @@
 							style="width: 380px;" id="name">
 
 						<label for="phone" required style="margin-top: 20px;">휴대전화</label>
-						<%-- <input type="tel" class="form-control" id="phone" name="phoneNum1" value="${mem.phoneNum1 }" style="width: 100px;">
-						<p> - </p>
-						<input type="tel" class="form-control" id="phone" name="phoneNum2" value="${mem.phoneNum1 }" style="width: 100px;">
-						<p> - </p>
-						<input type="tel" class="form-control" id="phone" name="phoneNum3" value="${mem.phoneNum1 }" style="width: 100px;">  --%>
-						<div class="phone-control">
-							<select name="phoneNum1" class="form-control" style="width: 100px;">
-								<option value="010" selected>010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-							</select>
-							<!-- <input type="tel" class="form-control" id="phone" name="phoneNum1" style="width: 100px;">  -->
-							<p> - </p> <input type="tel" class="form-control" id="phone" name="phoneNum2" style="width: 100px;"> 
-							<p> - </p> <input type="tel" class="form-control" id="phone" name="phoneNum3" style="width: 100px;">
-						</div>
-						
-						
+						<input type="tel" class="form-control" id="phone" name="phoneNum" value="${mem.phoneNum }" style="width: 380px;"> 
 						<br> 
 						
 						<label for="email">이메일</label> 
 						<input type="email" class="form-control" id="email" name="email"
 							style="width: 380px;" id="email" value="${mem.email }">						
 					</div>
-					
-					<!-- </div> -->
 					<br>
 
 					<button type="submit" class="modify">수정하기</button>
 				</form>
-				
-				
-					<!-- form 다른양식-->
-					<%-- <form id="updateform" enctype="multipart/form-data" method="post">
-						<p align="center">
-						<table border="1" width="50%" height="80%" align='center'>
-							<tr>
-								<td colspan="3" align="center"><h2>회원 정보 수정</h2></td>
-							</tr>
-							<tr>
-								<td rowspan="5" align="center">
-									<p>${user.image}</p> <img id="img" width="100" height="100"
-									border="1" /> <br /> <br /> <input type='file' id="image"
-									name="image" accept=".jpg,.jpeg,.gif,.png" /><br />
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;이메일</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="email" name="email"
-									readonly="readonly" value="${user.email}" id="email" size="30"
-									maxlength=50 required="required" />
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="password" name="pw"
-									id="pw" size="20" required="required" />
-									<div id="pwDiv"></div>
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호
-										확인</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="password"
-									id="pwconfirm" size="20" required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-								<td align="center" colspan="3">
-									<p></p> <input type="submit" value="정보수정"
-									class="btn btn-warning" /> <input type="button" value="메인으로"
-									class="btn btn-success"
-									onclick="javascript:window.location='/'">
-									<p></p>
-								</td>
-							</tr>
-						</table>
-					</form> --%>
-
 				</div>
+				
 			</div>
 
 			<!-- 바뀌는 구역 끝 -->

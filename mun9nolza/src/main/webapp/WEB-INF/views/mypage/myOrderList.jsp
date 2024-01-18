@@ -39,7 +39,7 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
-                                    <li><a href="myInfoModForm.do?userId=${logId }">개인정보 수정</a></li>
+                                    <li><a href="myInfoModForm.do">개인정보 수정</a></li>
                                     <li><a href="#">마이리뷰</a></li>
                                     <li><a href="#">회원탈퇴</a></li>
                                 </ul>

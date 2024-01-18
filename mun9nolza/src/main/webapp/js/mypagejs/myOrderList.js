@@ -1,5 +1,5 @@
 /**
- * mypage
+ * myOrderList.js
  */
 
 //상세조회

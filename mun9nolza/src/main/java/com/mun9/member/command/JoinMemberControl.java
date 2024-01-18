@@ -12,7 +12,7 @@ import com.mun9.member.service.MemberService;
 import com.mun9.member.serviceImpl.MemberServiceImpl;
 import com.mun9.member.vo.MemberVO;
 
-public class AddMemberControl implements Control {
+public class JoinMemberControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -26,11 +26,7 @@ public class AddMemberControl implements Control {
 			String userPw = req.getParameter("userPw");
 			String userName = req.getParameter("userName");
 			String gender = req.getParameter("gender");
-			String phoneNum1 = req.getParameter("phoneNum1");
-			String phoneNum2 = req.getParameter("phoneNum2");
-			String phoneNum3 = req.getParameter("phoneNum3");
-			
-			String phoneNum = phoneNum1.concat(phoneNum2).concat(phoneNum3);
+			String phoneNum = req.getParameter("phoneNum");
 			
 			String email = req.getParameter("email");
 			vo.setStatus("user");
@@ -48,12 +44,7 @@ public class AddMemberControl implements Control {
 			String userPw = req.getParameter("userPw");
 			String userName = req.getParameter("userName");
 			String gender = req.getParameter("gender");
-			String phoneNum1 = req.getParameter("phoneNum1");
-			String phoneNum2 = req.getParameter("phoneNum2");
-			String phoneNum3 = req.getParameter("phoneNum3");
-			
-			String phoneNum = phoneNum1.concat(phoneNum2).concat(phoneNum3);
-			
+			String phoneNum = req.getParameter("phoneNum");
 			String email = req.getParameter("email");
 
 			vo.setUserId(userId);
@@ -75,7 +66,7 @@ public class AddMemberControl implements Control {
 			if(svc.addMember(vo)) {				
 				rd.forward(req, resp);
 			} else {
-				resp.sendRedirect("addMemberForm.do");
+				resp.sendRedirect("joinMemberForm.do");
 			}
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();

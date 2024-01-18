@@ -18,6 +18,7 @@
 	crossorigin="anonymous">
 <!-- 상대경로로 이동 -> 파일위치에서 폴더에서 나가주고 폴더를 들어가야함 -->
 <link rel="stylesheet" href="css/membercss/signUp.css">
+<script src="js/memberjs/joinMember.js"></script>
 </head>
 
 <body>
@@ -30,9 +31,7 @@
 					</a>
 				</div>
 				<!-- 서버로 정보전송 -->
-				<form action="addMember.do" method="post" class="validation-form"
-					novalidate>
-					<!-- <div class="row"> -->
+				<form action="joinMember.do" method="post" class="validation-form" novalidate>
 
 					<div class="col-xs-12 col-md-6 mb-3" style="margin-left: 15px;">
 						<br> 
@@ -40,7 +39,8 @@
 						<input type="text" name="userId" class="form-control" required
 							style="width: 380px;" id="id"> 
 						<label for="pw" style="margin-top: 5px;">비밀번호</label>
-						<input type="password" name="userPw" class="form-control" required style="width: 380px;" id="pw">
+						<input type="password" name="userPw" class="form-control" placeholder="비밀번호 8자리 이상" required style="width: 380px;" id="pw">
+						<div id="check" class="msg" style="display:none; color: rgb(255, 74, 74); font-size: 0.8em; width:380px">비밀번호는 최소 8자리 이상(대소문자,특수문자 포함)</div>
 						<label for="pwCheck" style="margin-top: 5px;">비밀번호 확인</label>
 						<input type="password" class="form-control" required style="width: 380px;" id="pwCheck"> 
 						<br>
@@ -48,8 +48,7 @@
 						<c:choose>
 						<c:when test="${!empty vo }">
 						<label for="name" style="margin-top: 5px;">이름</label>
-						<input type="text" name="userName" class="form-control" required
-							style="width: 380px;" id="name" value="${vo.userName }" readonly>
+						<input type="text" name="userName" class="form-control" required style="width: 380px;" id="name" value="${vo.userName }" readonly>
 						</c:when>
 						<c:otherwise>
 						<label for="name" style="margin-top: 5px;">이름</label>
@@ -58,9 +57,6 @@
 						</c:otherwise>
 						</c:choose>
 						
-						<!-- <label for="birth" style="margin-top: 5px;">생년월일</label>
-                      <input type="text" class="form-control" placeholder="8자리" required style="width: 380px;"
-                        id="birth"> -->
 						<br>
 						
 						<c:choose>
@@ -93,20 +89,7 @@
 						</c:choose>
 						
 						<label for="phone" required style="margin-top: 20px;">휴대전화</label>
-						<div class="phone-control">
-							<select name="phoneNum1" class="form-control"
-								style="width: 100px;">
-								<option value="010" selected>010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-							</select> <p> - </p> <input type="tel" class="form-control"
-								id="phone1" name="phoneNum2" style="width: 100px;"> <p>
-								- </p> <input type="tel" class="form-control" id="phone2"
-								name="phoneNum3" style="width: 100px;">
-						</div>
+						<input type="tel" class="form-control" id="phone" name="phoneNum" placeholder="010-0000-0000" style="width: 380px;"> 
 						<br> 
 						
 						<c:choose>
@@ -134,11 +117,25 @@
 					</div>
 					<div class="mb-4"></div>
 					<button type="submit" class="btn btn-primary btn-lg btn-block">회원가입</button>
+					<br>
+					<p style="text-align: center">계정이 있으신가요? <a href="loginForm.do">로그인</a></p>
 				</form>
 			</div>
 		</div>
 		<footer class="my-3 text-center text-small"> </footer>
 	</div>
+	
+	
+<!-- 	<script>
+    let pw = document.getElementById('pw');
+    let check =  document.getElementById('check');
+    pw.addEventListener('input', function(){
+        if(pw.value.length >= 8){
+         check.style.display = 'none';
+        }
+    });
+	
+	</script> -->
 
 </body>
 </html>

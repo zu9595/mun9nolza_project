@@ -36,7 +36,7 @@
  		select * from member where user_id=#{userId}
  	</select>
  	<update id="updateInfo" parameterType="member">
- 		update member set  user_pw=#{userPw}, user_name=#{userName}, phone_num=#{phoneNum}, email=#{email} where user_id=#{userId}
+ 		update member set user_pw=#{userPw}, user_name=#{userName}, phone_num=#{phoneNum}, email=#{email} where user_id=#{userId}
  	</update>
  	<!--  -->
  	
