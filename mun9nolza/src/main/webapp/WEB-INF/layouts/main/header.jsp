@@ -31,7 +31,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
+								<a href="myOrderList.do">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
@@ -117,7 +117,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
+								<a href="myOrderList.do">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
