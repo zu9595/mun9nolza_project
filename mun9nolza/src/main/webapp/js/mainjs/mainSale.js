@@ -6,7 +6,7 @@ function showSaleList() {
 	fetch('mainSaleList.do')
 		.then(str => str.json())
 		.then(result => {
-			console.log("SaleListajax");
+			console.log("SaleList Ajax");
 			let i = 1;
 			result.forEach(product => {
 				if (i <= 8) {
@@ -17,18 +17,17 @@ function showSaleList() {
 					i++;
 			})
 		})
-		.catch(reject => console.log(reject));
+		.catch(err => console.error(err));
 }
 
 function makeSaleLi(product = {}) {
-	console.log(product);
 	let li =
 		`<div class="col-lg-3 col-sm-6">
             <div class="single_product_item">
                 <img src="`+ product.proImage + `" alt="이미지">
                 <div class="single_product_text">
                     <h4>`+ product.proName + `</h4>
-                    <h3>`+ product.proDiscount + `</h3>
+                    <h3>`+ product.proDiscount + `원</h3>
                     <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
                 </div>
             </div>

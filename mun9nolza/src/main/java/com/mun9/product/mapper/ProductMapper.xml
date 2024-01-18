@@ -8,15 +8,23 @@
   <select id="getProduct" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
-  
+
   <select id="selectProductList" resultType="product">
     select * from product order by 1
  </select>
-  
-  <select id="mainBestProductList" resultType="product">
+ <select id="mainBestProductList" resultType="product">
     select * from product order by pro_sell desc
  </select>
- 
+ <select id="mainCategoryHotList" resultType="product">
+ 	select * from (select 
+                    pro_code
+                    ,pro_name
+                    ,pro_image
+                    ,category 
+                    ,ROW_NUMBER() OVER (PARTITION BY category ORDER BY pro_sell desc) as rn
+	from product)
+	where rn = 1
+ </select>
  <select id="saleList" resultType="product">
     select * from product order by pro_discount
  </select>

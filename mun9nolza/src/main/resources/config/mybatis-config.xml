@@ -15,6 +15,7 @@
 		<typeAlias alias="cart" type="com.mun9.cart.vo.CartVO" /> 
 		<typeAlias alias="orderlist" type="com.mun9.orderlist.vo.OrderListVO" /> 
 		<typeAlias alias="require" type="com.mun9.inquire.vo.InquireVO" />
+		<typeAlias alias="banner" type="com.mun9.banner.vo.BannerVO" />
   	</typeAliases>
   
   <environments default="development">
@@ -23,14 +24,15 @@
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-        <property name="username" value="mun9nolza"/>
-        <property name="password" value="0000"/>
+        <property name="username" value="mun9test"/>
+        <property name="password" value="mun9test"/>
 
 
       </dataSource>
     </environment>
   </environments>
   <mappers>
+  	<mapper resource="com/mun9/banner/mapper/BannerMapper.xml" />
   	<mapper resource="com/mun9/member/mapper/MemberMapper.xml" />
   	<mapper resource="com/mun9/product/mapper/ProductMapper.xml" />
   	<mapper resource="com/mun9/cart/mapper/CartMapper.xml" />

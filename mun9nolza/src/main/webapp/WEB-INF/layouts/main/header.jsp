@@ -84,7 +84,7 @@
 								aria-haspopup="true" aria-expanded="false"> 문구 </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
 									<a class="dropdown-item" href="category.html"> 다이어리</a> <a
-										class="dropdown-item" href="single-product.html">캘린더</a> <a
+										class="dropdown-item" href="productDetail.do?pcode=1">캘린더</a> <a
 										class="dropdown-item" href="single-product.html">노트</a> <a
 										class="dropdown-item" href="single-product.html">일기장</a> <a
 										class="dropdown-item" href="single-product.html">가계부</a>

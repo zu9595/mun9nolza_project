@@ -13,6 +13,7 @@ public interface ProductService {
 	
 	public List<ProductVO> mainBestProductList(); // 메인 베스트 목록
 	public List<ProductVO> saleList(); // 할인 가격순 목록
+	public List<ProductVO> mainCategoryHotList(); // 카테고리별 최고 인기상품 목록
 
 	int getTotalCnt(String category);
 	public ProductVO getProductDetail(int pcode);

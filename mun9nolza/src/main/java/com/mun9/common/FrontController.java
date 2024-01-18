@@ -29,7 +29,6 @@ import com.mun9.member.command.LogoutControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
-import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
 import com.mun9.product.command.AdminProductAddFormControl;
 
@@ -39,7 +38,7 @@ import com.mun9.product.command.AdminProductModControl;
 import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
-import com.mun9.product.command.mainBestProductList;
+import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.searchControl;
 
 
@@ -62,11 +61,11 @@ public class FrontController extends HttpServlet {
 		//메인화면
 		map.put("/main.do",  new MainControl());
 		map.put("/mainSaleList.do", new MainSaleListJson());
-
+		map.put("/mainCategoryHotList.do", new MainCategoryHotListJson());
+		
 		//상품 검색
 		map.put("/search.do",  new searchControl());
-		map.put("/mainBest.do", new mainBestProductList());
-		
+		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
 		
 		//회원가입
 		map.put("/addMember.do", new AddMemberControl()); //가입기능
@@ -98,7 +97,6 @@ public class FrontController extends HttpServlet {
 		map.put("/productDetail.do", new ProductDetailControl());
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
-		map.put("/productDetail.do", new ProductDetailControl());
 		
 		//문의 페이지
 		map.put("/inquireListForm.do", new InquireListFormControl());

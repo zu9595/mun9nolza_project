@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> saleList() {
 		// TODO Auto-generated method stub
 		return mapper.saleList();
-
+	}
 	public boolean addProduct(ProductVO vo) {
 		// TODO Auto-generated method stub
 		return mapper.insertProduct(vo) == 1;
@@ -73,6 +73,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<String> searchProduct(String search) {
 		// TODO Auto-generated method stub
 		return mapper.searchProduct(search);
+	}
 
+	@Override
+	public List<ProductVO> mainCategoryHotList() {
+		return mapper.mainCategoryHotList();
 	}
 }
