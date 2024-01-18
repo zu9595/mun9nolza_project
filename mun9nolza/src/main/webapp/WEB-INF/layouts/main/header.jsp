@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<script src="js/adminjs/adminSession.js"></script>
 <header class="main_menu home_menu">
 	<!-- 로고 및 로그인 -->
 	<!-- 스타일에 화면이 작아지면 display ='none' 처리 -->
@@ -31,7 +31,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
+								<a href="myOrderList.do">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
@@ -84,7 +84,7 @@
 								aria-haspopup="true" aria-expanded="false"> 문구 </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
 									<a class="dropdown-item" href="category.html"> 다이어리</a> <a
-										class="dropdown-item" href="single-product.html">캘린더</a> <a
+										class="dropdown-item" href="productDetail.do?pcode=1">캘린더</a> <a
 										class="dropdown-item" href="single-product.html">노트</a> <a
 										class="dropdown-item" href="single-product.html">일기장</a> <a
 										class="dropdown-item" href="single-product.html">가계부</a>
@@ -117,7 +117,7 @@
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do?userId=${logId }">마이페이지</a>
+								<a href="myOrderList.do">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
@@ -142,7 +142,7 @@
 		<div class="container ">
 			<form class="d-flex justify-content-between search-inner">
 				<input type="text" class="form-control" id="search_input"
-					placeholder="Search Here">
+					placeholder="Search Here" >
 				<button type="submit" class="btn"></button>
 				<span class="ti-close" id="close_search" title="Close Search"></span>
 			</form>

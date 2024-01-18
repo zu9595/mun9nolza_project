@@ -10,9 +10,9 @@ public class MemberVO {
 	private String userName;
 	
 	private String gender;
-	
 	private String phoneNum;
 
 	private String email;
 	private String status;
+	
 }

@@ -1,7 +1,6 @@
-package com.mun9.orderlist.command;
+package com.mun9.member.command;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,35 +12,27 @@ import com.mun9.common.Control;
 import com.mun9.member.service.MemberService;
 import com.mun9.member.serviceImpl.MemberServiceImpl;
 import com.mun9.member.vo.MemberVO;
-import com.mun9.orderlist.service.OrderListService;
-import com.mun9.orderlist.serviceImpl.OrderListServiceImpl;
-import com.mun9.orderlist.vo.OrderListVO;
 
-public class OrderListControl implements Control {
+public class MyInfoModFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
-		OrderListVO vo = new OrderListVO();
-		OrderListService svc = new OrderListServiceImpl();
-		
-		
+	
 		HttpSession session = req.getSession();
-		String userId = (String)session.getAttribute("logId");
+		String userId = (String)session.getAttribute("logId"); 
+		//String userId = req.getParameter("userId");
 		
-		List<OrderListVO> list = svc.getMyOrderList(userId);
-		req.setAttribute("orderList", list);
-		req.setAttribute("vo", vo);
+		MemberService svc = new MemberServiceImpl();
+		MemberVO mem = svc.memInfo(userId);
 
+		req.setAttribute("mem", mem);
 		
-		//페이지이동
-		RequestDispatcher rd = req.getRequestDispatcher("mypage/myOrderList.tiles");
+		RequestDispatcher rd = req.getRequestDispatcher("mypage/myInfoMod.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 

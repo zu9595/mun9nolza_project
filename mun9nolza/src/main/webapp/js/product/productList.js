@@ -5,61 +5,42 @@
  	let products = document.querySelector('.productlist');
 	let pageInfo = 1;
     let category = '';
+    let option = '';
     let paging = document.querySelector('.pageination');
     let select = document.querySelector('.otp');
 
+
     //showList(pageInfo,''); 
-    showList(pageInfo,'','proName');
+    showList(pageInfo,'',option);
     
-    /*check.addEventListener('click',function(e){
-        console.log(e)
-        let option = e.dataset.value;
-        let val = '';
-        li.dataset.value; //이름, 가격, 최신, 좋아요순 / 1,2,3,4
-        switch(option){
-            case 1 :{
-                val = proName;
-            }
-            case 2: {
-                val = proPrice;
-            }
-            case 3: {
-                val = proCode;
-            }
-            default :{
-                val = '';
-            }
-        }
-        if(val==''){
-            showList(pageInfo,'');
-        }else{
-            showList(pageInfo,'',option); 
-        }
-    })*/
-
-
-	function pageList(e){
-        e.preventDefault();
-		pageInfo = this.getAttribute("href");
-        // console.log(pageInfo);
-        if(options != null){
-            showList(pageInfo, category, options);
-        }else{
-            showList(pageInfo, category);
-        }
-	}
     
-    $('.category').on('click', function(e){            
-        
+    $(".product_top_bar .otp").on("click",".option",function(e){
+        let val = e.target.dataset.value;
+        console.log(e.target)
+        console.log(val)
+        option = '';
+        //이름, 가격, 최신, 좋아요순 / 1,2,3,4
+        if(val==1){
+			option = 'proName'
+		}else if(val==2){
+			option = 'proPrice'
+		}else if(val==3){
+			option = 'proSell'
+		}else{
+			option = ''
+		}
+        showList(pageInfo,category,option); 
+    })
+    
+	$('.category').on('click', function(e){            
         category = e.target.innerText;
         console.log(category);
-        showList(1, category);
-        pagingList(result);
+        showList(1, category,'');
     });
     
     //Ajax호출.
-    function showList(page, category){
-        fetch('productPagingList.do?page='+ page +'&category='+ category )
+    function showList(page, category,option){
+        fetch('productPagingList.do?page='+ page +'&category='+ category +'&option='+ option)
 		.then(str => str.json())
 		.then(result => {
             let ul = ``;
@@ -67,8 +48,6 @@
             console.log(result);
             $(".listnumber").siblings().remove(); // 페이지 번호 클래스의 형제 태그들을 지우는 구문
 			result.list.forEach(product => {
-                // sort = $('.current').text(); // 정렬 텍스트 받아오는 구문
-                // sorting(sort);
                 let li = makeLi(product);
                 ul += li; // ul로 모아서 출력해야 제대로 나옴
 			})
@@ -80,26 +59,6 @@
 		.catch(reject => console.log(reject));
 	} // end of showList.
 	
-    function showList(page, category, options){
-        fetch('productPagingList.do?page='+ page +'&category='+ category +'&options='+ options)
-		.then(str => str.json())
-		.then(result => {
-            let ul = ``;
-            console.log("ajax 호출");
-            console.log(result);
-            $(".listnumber").siblings().remove(); // 페이지 번호 클래스의 형제 태그들을 지우는 구문
-			result.list.forEach(product => {
-                let li = makeLi(product);
-                ul += li; // ul로 모아서 출력해야 제대로 나옴
-			})
-            // console.log(ul);
-            products.insertAdjacentHTML('afterbegin',ul); // 이 구문이 ul대신 li로 들어가면 하나씩 들어가서 순번이 이상하게 나옴
-            pagingList(result);
-			// console.log(result);
-		})
-		.catch(reject => console.log(reject));
-	} // end of showList.
-
 function makeLi(product = {}) {
     
 const li = `<div class="col-lg-4 col-sm-6 listsize">
@@ -118,6 +77,7 @@ return li;
 }
 
 	function pagingList(result){
+		console.log(result)
             paging.innerHTML = ''; // 페이지 번호들 지우는 구문. 원래는 지정된 페이지 번호가 선택됐다는 css가 나와야 하는데 지워져서 안나옴
             $("#totalcnt").html(result.pageDTO.totalCnt);
             // console.log(result);
@@ -164,4 +124,11 @@ return li;
 				li.appendChild(aTag);
 				aTag.appendChild(iTag);
 			}
-	} 
+	}
+    
+    function pageList(e){
+        e.preventDefault();
+		pageInfo = this.getAttribute("href");
+        // console.log(pageInfo);
+       	showList(pageInfo, category, option);
+	}
