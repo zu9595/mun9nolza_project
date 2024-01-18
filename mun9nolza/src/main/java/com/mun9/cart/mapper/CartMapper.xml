@@ -8,20 +8,20 @@
 
   	
   <select id="selectCartList" resultType="cart" parameterType="String">
-  		select p.pro_image, p.pro_name, p.pro_price, p.pro_discount, c.mypro_cnt
+  		select p.pro_code,c.user_id,p.pro_image, p.pro_name, p.pro_price, p.pro_discount, c.mypro_cnt
 		from cart c join product p
 		on c.pro_code = p.pro_code
 		where c.user_id = #{userId}
   	</select>
 
 	<update id="changeCnt" parameterType="cart">
-		update cart set mypro_cnt = ''
-		where user_id = '' and pro_code = ''	
+		update cart set mypro_cnt = #{cnt}
+		where user_id = #{userId } and pro_code = #{proCode}	
 	</update>
 
 	<delete id="deleteCart" parameterType="int">
 		delete cart
-		where user_id = '' and pro_code = ''
+		where user_id = #{userId } and pro_code = #{proCode}
 	</delete>
   
  

@@ -235,11 +235,10 @@
 			fetch('search.do?search='+search)
 			.then(res=>res.json())
 			.then(res=>{
-				console.log(res)
-				while(div.firstChild) {
-					div.removeChild(div.firstChild);
-				}
+				console.log(res);
+				
 				//삭제하는부분 필요
+				div.find('li').remove();
 				
 				//li 태그 생성
 				res.forEach(data=>{
@@ -307,8 +306,8 @@
     $("#seconds").html("<span>Seconds</span>" + seconds);
 
   }
-// click counter js
-(function() {
+// click counter js 카트와 충돌해서 임시 주석 처리...
+/*(function() {
  
   window.inputNumber = function(el) {
 
@@ -355,7 +354,7 @@ inputNumber($('.input-number'));
   setInterval(function () {
     makeTimer();
   }, 1000);
-
+*/
   // click counter js
 
 
