@@ -82,18 +82,7 @@
                                 <div class="single_product_menu">
                                     <p>총 <span id="totalcnt"></span>개의 상품</p>
                                 </div>
-                                <div class="single_product_menu d-flex otp">
-                                
-                                    <h5>정렬 : </h5>
-                                    <select class="">
-                                        <option id="sorting" data-display="선택">선택</option>
-                                        <option value="1">이름순</option>
-                                        <option value="2">가격순</option>
-                                        <option value="3">최신순</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="single_product_menu d-flex">
+                                <div class="single_product_menu d-flex" style="visibility: hidden;">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="search"
                                             aria-describedby="inputGroupPrepend">
@@ -103,9 +92,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                 
+                                <div class="single_product_menu d-flex otp">
+                                    <h5>정렬 : </h5>
+                                    <select class="">
+                                        <option id="sorting" data-display="선택">선택</option>
+                                        <option value="1">이름순</option>
+                                        <option value="2">가격순</option>
+                                        <option value="3">인기순</option>
+                                    </select>
+                                </div>
                             </div>
-                            
                         </div>
                     </div>
 	                

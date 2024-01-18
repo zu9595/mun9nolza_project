@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<script src="js/adminjs/adminSession.js"></script>
 <header class="main_menu home_menu">
 	<!-- 로고 및 로그인 -->
 	<!-- 스타일에 화면이 작아지면 display ='none' 처리 -->

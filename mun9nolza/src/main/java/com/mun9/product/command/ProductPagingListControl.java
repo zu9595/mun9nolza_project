@@ -23,24 +23,25 @@ public class ProductPagingListControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		ProductService svc = new ProductServiceImpl();
 		String category = req.getParameter("category");
-		String options = req.getParameter("options");
+		String option = req.getParameter("option");
 		String page = req.getParameter("page");
 		
+		//페이지 값이 없으면 1
 		page = page == null ? "1" : page;
 		ProductVO vo = new ProductVO();
 		vo.setPage(Integer.parseInt(page));
 		vo.setCategory(category);
 		
-		if(options.equals("proName")) {
-			vo.setProName(options);
-		}else if(options.equals("proPrice")) {
-			vo.setProPrice(Integer.parseInt(options));
-		}else if(options.equals("proCode")) {
-			vo.setProCode(Integer.parseInt(options));
+		if(option.equals("proName")) {
+			vo.setProName("이름");
+		}else if(option.equals("proPrice")) {
+			vo.setProPrice(1);
+		}else if(option.equals("proSell")) {
+			vo.setProSell(1);
 		}
 		List<ProductVO> list = svc.productListPaging(vo);
 		
-		int total = svc.getTotalCnt(category);		
+		int total = svc.getTotalCnt(category);
 		PageDTO dto = new PageDTO(Integer.parseInt(page), total);
 		
 		Map<String, Object> map = new HashMap<String, Object>();

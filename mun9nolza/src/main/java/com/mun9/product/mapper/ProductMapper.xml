@@ -31,14 +31,14 @@
 	</if>
     </where>
     <choose>
-	<when test="proName != null and proName != ''">
+	<when test="proName != null">
 		order by pro_name
 	</when>
-	<when test="proPrice != null and proPrice != ''">
+	<when test="proPrice != null and proPrice != 0">
 		order by pro_price
 	</when>
-	<when test="proCode != null and proCode != ''">
-		order by pro_code
+	<when test="proSell != null and proSell != 0">
+		order by pro_sell
 	</when>
 	<otherwise>
 		order by pro_discount
