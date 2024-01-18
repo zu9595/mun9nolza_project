@@ -1,12 +1,21 @@
 /**
  * cart.js
  */
-let myproCnt = 0;
-$(document).ready(cartList());
+let pageMoveId = '';
+let pageMoveCode = '';
+let pageMovecnt = '';
+
+$(document).ready(function(){
+	cartList();
+//	cntDecrementEvent();
+//	cntIncrementEvent();
+	console.log(pageMoveId)
+	});
 
 function cartList() {
 const urlParams = new URL(location.href).searchParams;
 const userId = urlParams.get('userId');
+	pageMoveId = userId;
     fetch("cartListJson.do?userId=" + userId, {
         method: "get",
         headers: { "Content-Type": "application/json" }
@@ -26,13 +35,27 @@ const userId = urlParams.get('userId');
 				//선택삭제
 				delCheckEvent();
 				//체크박스 수량변경
-				cntDecrementEvent(cart,idx,myproCnt);
-				cntIncrementEvent(cart,idx,myproCnt);
-				
-				
-				
+				console.log(cart.myproCnt)
+				cntDecrementEvent(idx);
+				cntIncrementEvent(idx);
 			})
+//			return res;
         })
+//        .then(res => {
+//			console.log(res)
+//			$(res).each((idx, res) => {
+//				fetch(`ModCartCntJson.do?cnt=${res.myproCnt}&proCode=${res.proCode}&userId=${res.userId}`, {
+//        		method: "get",
+//        		headers:{
+//					"Content-Type": "application/json"
+//        		//'Content-Type':'application/x-www-form-urlencode'
+//    			}
+//    			})
+//				})
+//    			.then(res => {
+//					console.log(res);
+//				})
+//				})
         .catch(console.error);
 };
 
@@ -50,72 +73,47 @@ function allCheckEvent(){
 // 선택 삭제 이벤트
 function delCheckEvent(){
 	$('#delChecked').on('click', function(){
-					$('tbody input:checked').parentsUntil('tbody').remove();
+			$('tbody input:checked').parentsUntil('tbody').remove();
 	})
 }
 
-function cntDecrementEvent(cart,idx,myproCnt){
+function cntDecrementEvent(idx){
 	//업태그
-	$(".cartListTbody").on("click",`.increment${idx}`,function(e){
+	$(".cartListTbody").on("click",`.ininput${idx}`,function(e){
+		let val = $(e.target).prev().val();
 		console.log(e.target)
-		--myproCnt;
-		console.log(myproCnt)
-		let proCode = cart.proCode;
-		let userId = cart.userId;
-        $(".cartListTbody").find(`.input${idx}`).val(myproCnt);
+		val++;
+        $(e.target).prev().val(val);
+        
+	e.stopPropagation();
 	})
-	
-	}
+}
 
 
 // 수량 변경할때마다 db에 저장하기 custom.js에 미리 걸린 이벤트 주석 처리
-function cntIncrementEvent(cart,idx,myproCnt){
-	// <input class="input-number" type="text" value="${cart.myproCnt}" min="0" max="10">
+function cntIncrementEvent(idx){
 	//다운태그
-	
-	$(".cartListTbody").on("click",`.decrement${idx}`,function(e){
+	$(".cartListTbody").on("click",`.deinput${idx}`,function(e){
+		let val = $(e.target).next().val();
 		console.log(e.target)
-		console.log(cart)
-		if(myproCnt < 2){
-			++myproCnt;
-		}else{
+		if(val > 1){
+			val--;
 		}
-		console.log(myproCnt)
-		let proCode = cart.proCode;
-		let userId = cart.userId;
-        $(".cartListTbody").find(`.input${idx}`).prop("value",`${myproCnt}`);
-		
-		/*fetch("cartListJson.do", {
+        $(e.target).next().val(val);
+        e.stopPropagation();
+	})
+}
+
+// 페이지 이동시 데이터 저장 
+function orderModSet(){
+	fetch("ModCartCntJson.do", {
         method: "post",
         headers:{
         'Content-Type':'application/x-www-form-urlencode'
     	},
-    	body: 'myproCnt=' + myproCnt + 'proCode=' + proCode +'&userId='+userId
-    	})*/
-		
-		//아이디/이름/수량
-	})
-	
-	
-	
-	/*$("input-number-decrement").on("click", function(){
-		let cnt = $('.input-number').val();
-		console.log(event.target);
-		let result = event.target.previousElementSibling.value;
-		console.log(result);
-		
-	})*/
+    	body: 'cnt=' + pageMovecnt + 'proCode=' + pageMoveCode +'&userId='+pageMoveId
+    	})
 }
-/*function cntIncrementEvent(){
-	$(".input-number-increment").on("click", ".increment" ,function(){
-		console.log(event.target);
-	})
-}*/
-
-
-
-
-
 
 // 상품별 가격 합산
 function makeSubTotal(discountP, cnt){
@@ -159,9 +157,9 @@ function makeTr(cart,idx){
                 
                 <td>
                   <div class="product_count">
-                    <span class="input-number-decrement decrement${idx}"> <i class="ti-angle-down"></i></span>
-                    <input class="input-number input${idx}" type="text" value="${cart.myproCnt}" min="0" max="10">
-                    <span class="input-number-increment increment${idx}"> <i class="ti-angle-up"></i></span>
+                    <span class="input-number-decrement ti-angle-down deinput${idx}"></span>
+                    <input class="input-number" type="text" value="${cart.myproCnt}" min="0" max="10">
+                    <span class="input-number-increment ti-angle-up ininput${idx}"></span>
                   </div>
                 </td>
                 <td>

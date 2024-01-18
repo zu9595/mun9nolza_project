@@ -7,5 +7,5 @@ import com.mun9.cart.vo.CartVO;
 public interface CartMapper {
 	List<CartVO> selectCartList(String userId);
 	int changeCnt(CartVO vo);
-	int deleteCart(int cartNo);
+	int deleteCart(CartVO vo);
 }

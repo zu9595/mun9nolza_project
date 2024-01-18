@@ -17,6 +17,18 @@ public class CartServiceImpl implements CartService{
 	public List<CartVO> selectCartList(String userId) {
 		return mapper.selectCartList(userId);
 	}
+
+	@Override
+	public boolean deleteCartList(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.deleteCart(vo) > 0;
+	}
+
+	@Override
+	public boolean changeMyproCnt(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.changeCnt(vo) > 0;
+	}
 	
 	
 

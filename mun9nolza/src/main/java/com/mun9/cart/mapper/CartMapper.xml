@@ -5,8 +5,6 @@
   
 <mapper namespace="com.mun9.cart.mapper.CartMapper">
 
-
-  	
   <select id="selectCartList" resultType="cart" parameterType="String">
   		select p.pro_code,c.user_id,p.pro_image, p.pro_name, p.pro_price, p.pro_discount, c.mypro_cnt
 		from cart c join product p
@@ -19,7 +17,7 @@
 		where user_id = #{userId } and pro_code = #{proCode}	
 	</update>
 
-	<delete id="deleteCart" parameterType="int">
+	<delete id="deleteCart" parameterType="cart">
 		delete cart
 		where user_id = #{userId } and pro_code = #{proCode}
 	</delete>
