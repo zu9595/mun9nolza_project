@@ -149,6 +149,12 @@
 		</div>
 	</div>
 	<!-- 검색 박스 -->
+	
+	
+<!-- <script>
+var a = "${logId }";
+</script>
+<script link="b.js"></script> -->
 
 	
 </header>

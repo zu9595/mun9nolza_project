@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
+import com.mun9.inquire.command.InquireAddFormControl;
+import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
@@ -97,6 +99,10 @@ public class FrontController extends HttpServlet {
 		
 		//문의 페이지
 		map.put("/inquireListForm.do", new InquireListFormControl());
+		//문의 목록 list(Json)
+		map.put("/inquireList.do", new InquireListControl());
+		//문의 등록
+		map.put("/inquireAddForm.do", new InquireAddFormControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

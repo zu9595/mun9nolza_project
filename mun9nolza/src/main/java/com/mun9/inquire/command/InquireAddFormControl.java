@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mun9.common.Control;
 
-public class InquireListFormControl implements Control {
+public class InquireAddFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireListBody.tiles");
-		
+		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireAddForm.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 	}
 
