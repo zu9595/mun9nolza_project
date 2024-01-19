@@ -35,4 +35,9 @@ public class InquireServiceImpl implements InquireService {
 		return mapper.deleteInquire(inqNo) == 1;
 	}
 
+	@Override
+	public InquireVO detailInquire(int inqNo) {
+		return mapper.selectInquire(inqNo);
+	}
+
 }
