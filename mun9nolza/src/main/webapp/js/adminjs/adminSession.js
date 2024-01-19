@@ -17,4 +17,22 @@ function listView(userId){
     f.submit();
 }
 
+function cartNumbering(userId){
+	//$(`.main_menu .cart i:after`)
+	
+	fetch("myOrderList.do", {
+		method: "post",
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: "userId=" + userId
+	})
+	.then(str => str.json())
+	.then(res => {
+		if(res){
+			console.log(res)
+			//$(`.main_menu .cart i:after`).css("content")
+		}
+	})
+}
+
 

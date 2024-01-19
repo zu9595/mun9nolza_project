@@ -17,7 +17,9 @@
 							</a></li>
 						</ul>
 					</div>
-
+					
+					<a href="javascript:cartNumbering(${logId })">ㅎㅇ</a>
+					
 					<div class="hearer_icon d-flex">
 						<c:choose>
 							<c:when test="${empty logId }">

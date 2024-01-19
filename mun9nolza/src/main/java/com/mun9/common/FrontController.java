@@ -35,6 +35,7 @@ import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
+import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
 import com.mun9.product.command.AdminProductAddFormControl;
 
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do",  new MainControl());
 		map.put("/mainSaleList.do", new MainSaleListJson());
 		map.put("/mainCategoryHotList.do", new MainCategoryHotListJson());
+		map.put("/myOrderListJson.do", new OrderListJsonControl());//주문갯수
 		
 		//상품 검색
 		map.put("/search.do",  new searchControl());
