@@ -1,5 +1,5 @@
 /**
- * mypage
+ * myOrderList.js
  */
 
 //상세조회
@@ -37,5 +37,3 @@ function removeOrder(orderNo) {
 		}
 	})
 }
-
-
