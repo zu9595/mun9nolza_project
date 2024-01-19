@@ -12,7 +12,7 @@ import com.mun9.member.service.MemberService;
 import com.mun9.member.serviceImpl.MemberServiceImpl;
 import com.mun9.member.vo.MemberVO;
 
-public class AddMemberFormControl implements Control {
+public class JoinMemberFormControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -20,7 +20,7 @@ public class AddMemberFormControl implements Control {
 		
 		//회원가입 화면 열어주는 것만
 		if (req.getMethod().equals("GET")) {
-		RequestDispatcher rd = req.getRequestDispatcher("no/member/addMember.tiles"); //이동할 페이지
+		RequestDispatcher rd = req.getRequestDispatcher("no/member/joinMember.tiles"); //이동할 페이지
 		
 		
 		//페이지 이동(forward)
@@ -43,7 +43,7 @@ public class AddMemberFormControl implements Control {
 			vo.setGender(gender);
 			req.setAttribute("vo", vo);
 			
-			RequestDispatcher rd = req.getRequestDispatcher("no/member/addMember.tiles"); //이동할 페이지
+			RequestDispatcher rd = req.getRequestDispatcher("no/member/joinMember.tiles"); //이동할 페이지
 			//페이지 이동(forward)
 			try {
 				rd.forward(req, resp);

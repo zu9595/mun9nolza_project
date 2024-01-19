@@ -8,15 +8,31 @@ import com.mun9.common.DataSource;
 import com.mun9.inquire.mapper.InquireMapper;
 import com.mun9.inquire.service.InquireService;
 import com.mun9.inquire.vo.InquireVO;
+import com.mun9.product.vo.ProductVO;
 
-public class InquireServiceImpl implements InquireService{
+public class InquireServiceImpl implements InquireService {
 
 	SqlSession session = DataSource.getInstance().openSession(true);
 	InquireMapper mapper = session.getMapper(InquireMapper.class);
-	
+
 	@Override
 	public List<InquireVO> inquireList() {
 		return mapper.selectList();
+	}
+
+	@Override
+	public List<ProductVO> prodCodeList(String category) {
+		return mapper.selectCodeList(category);
+	}
+
+	@Override
+	public boolean addInquire(InquireVO vo) {
+		return mapper.insertInquire(vo) == 1;
+	}
+
+	@Override
+	public boolean delInquire(int inqNo) {
+		return mapper.deleteInquire(inqNo) == 1;
 	}
 
 }

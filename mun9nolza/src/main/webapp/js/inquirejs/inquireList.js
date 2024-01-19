@@ -3,7 +3,6 @@
  */
 $(document).ready(function() {
 	inquireList();
-	console.log(userId);
 });
 
 function inquireList() {
@@ -41,8 +40,15 @@ function inquireList() {
 
 				$('#inquireList').append(tr);
 			})
+			$('.delete').on('click', function() {
+				delInq();
+			})
 
 		}).catch(console.error);
+}
+
+function delInq(){
+	console.log(this);
 }
 
 function dateFormat(date) {
