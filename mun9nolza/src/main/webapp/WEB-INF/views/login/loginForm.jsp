@@ -24,7 +24,7 @@
 <script src="js/popper.min.js"></script>
 <!-- bootstrap js -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/loginjs/lofinForm.js"></script>
+<script src="js/loginjs/loginForm.js"></script>
 </head>
 
 <body>
