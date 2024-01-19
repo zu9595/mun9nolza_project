@@ -15,4 +15,6 @@ public interface InquireService {
 
 	public boolean delInquire(int inqNo);
 
+	public InquireVO detailInquire(int inqNo);
+
 }

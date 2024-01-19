@@ -17,6 +17,7 @@ import com.mun9.cart.command.ModCartCntJson;
 import com.mun9.inquire.command.InquireAddControl;
 import com.mun9.inquire.command.InquireAddFormControl;
 import com.mun9.inquire.command.InquireDelControl;
+import com.mun9.inquire.command.InquireDetailControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.inquire.command.ProdCodeListControl;
@@ -89,7 +90,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
 		
-		//로그인 --수정필요
+		//로그인 --소셜로그인 수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
@@ -125,18 +126,20 @@ public class FrontController extends HttpServlet {
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		
-		//문의 페이지
+		//문의 페이지 이동
 		map.put("/inquireListForm.do", new InquireListFormControl());
 		//문의 목록 list(Json)
 		map.put("/inquireList.do", new InquireListControl());
-		//문의 등록 페이지
+		//문의 등록 페이지 이동
 		map.put("/inquireAddForm.do", new InquireAddFormControl());
-		//상품 코드
+		//상품 코드 list(Json)
 		map.put("/prodCodeList.do", new ProdCodeListControl());
 		//문의 등록
 		map.put("/inquireAdd.do", new InquireAddControl());
 		//문의 삭제
 		map.put("/inquireDel.do", new InquireDelControl());
+		//문의 상세 -- 수정필요
+		map.put("/inquireDetail.do", new InquireDetailControl());
 		
 		//상품 상세
 		map.put("/prodDetailImg.do", new prodDetailImgGetControl());

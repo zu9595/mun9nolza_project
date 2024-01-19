@@ -1,6 +1,8 @@
 package com.mun9.inquire.command;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +23,17 @@ public class InquireDelControl implements Control {
 
 		int inqNo = Integer.parseInt(req.getParameter("inqNo"));
 
+		Map<String,Object> map = new HashMap<String,Object>();
+		if(svc.delInquire(inqNo)) {
+			map.put("retCode", "OK");
+		}else {
+			map.put("retCode", "NG");
+		}
+		
+		Gson gson = new GsonBuilder().create();
+		
 		try {
-			if (svc.delInquire(inqNo)) {
-				resp.sendRedirect("inquireListForm.do");
-			}else {
-				resp.sendRedirect("inquireDel.do");
-			}
+			resp.getWriter().print(gson.toJson(map));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
