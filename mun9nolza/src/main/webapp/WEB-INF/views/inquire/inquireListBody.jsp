@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<script> let userId = '${logId}'</script>
+<script>
+	let userId = '${logId}'
+</script>
 <script src="js/inquirejs/inquireList.js"></script>
 <section class="section_padding">
 	<div class="container">
@@ -20,6 +23,11 @@
 			<tbody id="inquireList">
 			</tbody>
 		</table>
-		<button type="button" class="btn btn-primary" onclick="location.href='inquireAddForm.do'">상품문의</button>
+		<c:if test="${!empty logId}">
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button type="button" class="btn btn-outline-primary"
+					onclick="location.href='inquireAddForm.do'">상품문의</button>
+			</div>
+		</c:if>
 	</div>
 </section>

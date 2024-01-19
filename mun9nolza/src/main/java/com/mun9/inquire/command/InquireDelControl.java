@@ -1,7 +1,6 @@
 package com.mun9.inquire.command;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,25 +10,27 @@ import com.google.gson.GsonBuilder;
 import com.mun9.common.Control;
 import com.mun9.inquire.service.InquireService;
 import com.mun9.inquire.serviceImpl.InquireServiceImpl;
-import com.mun9.inquire.vo.InquireVO;
-import com.mun9.product.vo.ProductVO;
+import com.mun9.product.service.ProductService;
+import com.mun9.product.serviceImpl.ProductServiceImpl;
 
-public class InquireListControl implements Control {
+public class InquireDelControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		InquireService svc = new InquireServiceImpl();
-		
-		List<InquireVO> list = svc.inquireList();
-		
-		resp.setContentType("text/json;charset=utf-8");
-		Gson gson = new GsonBuilder().create();
-		
+
+		int inqNo = Integer.parseInt(req.getParameter("inqNo"));
+
 		try {
-			resp.getWriter().print(gson.toJson(list));
+			if (svc.delInquire(inqNo)) {
+				resp.sendRedirect("inquireListForm.do");
+			}else {
+				resp.sendRedirect("inquireDel.do");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
