@@ -16,7 +16,8 @@ function listView(userId){
     document.body.appendChild(f);
     f.submit();
 }
-
+// 넘버링
+/*
 function cartNumbering(userId){
 	//$(`.main_menu .cart i:after`)
 	
@@ -34,5 +35,5 @@ function cartNumbering(userId){
 		}
 	})
 }
-
+*/
 

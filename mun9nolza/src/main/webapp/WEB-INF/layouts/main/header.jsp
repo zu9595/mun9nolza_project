@@ -17,9 +17,6 @@
 							</a></li>
 						</ul>
 					</div>
-					
-					<a href="javascript:cartNumbering(${logId })">ㅎㅇ</a>
-					
 					<div class="hearer_icon d-flex">
 						<c:choose>
 							<c:when test="${empty logId }">
@@ -129,8 +126,8 @@
 							</a>
 						</div>
 						<!-- 검색 -->
-						<a id="search_1" href="javascript:void(0)"><i
-							class="ti-search"></i></a>
+						<!-- <a id="search_1" href="javascript:void(0)"><i
+							class="ti-search"></i></a> -->
 						<!-- 검색 -->
 					</div>
 				</nav>

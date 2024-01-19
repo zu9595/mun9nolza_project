@@ -20,8 +20,6 @@ import com.mun9.inquire.command.InquireDelControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.inquire.command.ProdCodeListControl;
-import com.mun9.member.command.AddMemberControl;
-import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
@@ -53,6 +51,7 @@ import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.searchControl;
+import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
 
 
@@ -138,6 +137,10 @@ public class FrontController extends HttpServlet {
 		map.put("/inquireAdd.do", new InquireAddControl());
 		//문의 삭제
 		map.put("/inquireDel.do", new InquireDelControl());
+		
+		//상품 상세
+		map.put("/prodDetailImg.do", new prodDetailImgGetControl());
+		
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
