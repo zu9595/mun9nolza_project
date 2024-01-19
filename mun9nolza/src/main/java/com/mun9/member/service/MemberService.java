@@ -8,7 +8,7 @@ public interface MemberService {
 	public MemberVO login(String userId, String userPw);
 	public List<MemberVO> memberList();
 	public boolean addMember(MemberVO vo);
-	public boolean delMember(String userId, String userPw);
+	public boolean delMember(String userId, String userPw); //+회원탈퇴
 	//아이디 찾기
 	public String findId(String userName, String email);
 	public String findPw(String userId, String userName, String email);
@@ -17,5 +17,8 @@ public interface MemberService {
 	//회원정보 수정
 	public MemberVO memInfo(String userId); //아이디조회
 	public boolean memInfoMod(MemberVO vo); //수정기능
+	
+	
+	
 	
 }

@@ -21,7 +21,7 @@ function makeCategoryHotList(product = {}) {
 		<div class="single_feature_post_text">
                     <p>`+product.category+`</p>
                     <h3>`+product.proName+`</h3>
-                    <a href="#" class="feature_btn">상세페이지로 <i class="fas fa-play"></i></a>
+                    <a href="productDetail.do?pcode=`+product.proCode+`" class="feature_btn">상세페이지로 <i class="fas fa-play"></i></a>
                     <img src="`+product.proImage+`" alt="이미지">
                 </div>`
 	return li;

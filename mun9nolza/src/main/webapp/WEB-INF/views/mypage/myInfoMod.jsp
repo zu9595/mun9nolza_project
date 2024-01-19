@@ -5,16 +5,66 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
+<script src="js/mypagejs/myInfoMod.js"></script>
+
 <style>
-.orderHidden {
-	display: none;
+.delmodal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.5);
+  z-index: 6;
+  padding: 100px 50px;
+
+  visibility: hidden; 
+  opacity: 0;
+}
+
+.show { 
+  visibility: visible;
+  opacity: 1;
 }
 </style>
-<!-- <script src="js/mypagejs/mypage.js"></script> -->
+
+<!-- 회원 탈퇴 모달창 -->
+<div class="delmodal" id="#deleteForm">
+ <div class="modal-dialog">
+  <div class="modal-content">
+  <!-- Modal Header -->
+  <div class="modal-header">
+   <h4 class="modal-title">회원탈퇴</h4>
+   <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+  <!-- Modal body -->
+  <div class="modal-body">
+  <b> 탈퇴 후 복구가 불가능합니다. <br> 정말로 탈퇴하시겠습니까? <br></b>
+  <br>
+  <form action="myInfoDel.do" method="post">
+  <input type="hidden" name="userId" value="${mem.userId }">
+  <!-- 회원탈퇴 시 : 비밀번호 -->
+					<table>
+						<tr>
+							<td>비밀번호: </td>
+							<td><input type="password" name="userPw" id="lastpw" required>
+							</td>
+						</tr>
+
+					</table>
+					<br>
+					<button type="submit" class="clear btn btn-secondary btn-sm">탈퇴하기</button>
+					<!-- <button type="button" class="close">닫기</button> -->
+				</form>
+			</div>
+	</div>
+	</div>
+		</div>
+
 
 <section class="cat_product_area section_padding">
 	<div class="container">
-		<div class="row" style="padding-top: 80px"> <!-- body부분 -->
+		<div class="row" style="padding-top: 80px">
+		
+			<!-- body부분 -->
 			<div class="col-lg-3">
 
 				<div class="left_sidebar_area" style="padding-top: 100px">
@@ -38,8 +88,7 @@
 						<div class="widgets_inner">
 							<ul class="list">
 								<li><a href="myInfoModForm.do">개인정보 수정</a></li>
-								<li><a href="#">마이리뷰</a></li>
-								<li><a href="#">회원탈퇴</a></li>
+								<li><a href="myReview.do">마이리뷰</a></li>
 							</ul>
 						</div>
 					</aside>
@@ -60,120 +109,55 @@
 			</div>
 
 			<!-- 바뀌는 구역 -->
-			<div class="col-lg-9" > 
+			<div class="col-lg-9">
 				<h2>회원정보 수정</h2>
 				<!-- <div class="row align-items-center latest_product_inner productlist"style="width: 720px; height: 640px;"> -->
 
-					<form action="myInfoMod.do" method="post" class="validation-form" novalidate>
+				<!-- <div style="align:center"> -->
+				<form action="myInfoMod.do" method="post" class="validation-form"
+					novalidate>
 					<!-- <div class="row"> -->
-						<input type="hidden" name="userId" value="${mem.userId }"> <!-- 화면엔 안보여줘도 되니 hidden (파라미터값 받아야되니 input사용) -->
+					<input type="hidden" name="userId" value="${mem.userId }">
+					<!-- 화면엔 안보여줘도 되니 hidden (파라미터값 받아야되니 input사용) -->
 					<div class="col-xs-12 col-md-6 mb-3" style="margin-left: 15px;">
-						<br> 
-						<label for="id" style="margin-top: 5px;">아이디</label>
-						<input type="text" name="userId" value="${mem.userId }"class="form-control" required style="width: 380px;" id="id" disabled> 
-						<label for="pw" style="margin-top: 5px;">비밀번호</label>
-						<input type="password" name="userPw" value="${mem.userPw }" class="form-control" required style="width: 380px; margin-bottom: 5px;" id="pw">
-						<label for="pwCheck" style="margin-top: 5px;"></label>
-						<input type="password" name="userPwCheck" class="form-control" placeholder="비밀번호 재확인" required style="width: 380px;" id="pwCheck">
-						
-						<br>
-						
-						<label for="name" style="margin-top: 5px;">이름</label>
-						<input type="text" name="userName" value="${mem.userName }" class="form-control" required
-							style="width: 380px;" id="name">
+						<br> <label for="id" style="margin-top: 5px;">아이디</label> <input
+							type="text" name="userId" value="${mem.userId }"
+							class="form-control" required style="width: 380px;" id="id"
+							disabled> <label for="pw" style="margin-top: 5px;">비밀번호</label>
+						<input type="password" name="userPw" value="${mem.userPw }"
+							placeholder="비밀번호 8자리 이상" class="form-control" required
+							style="width: 380px; margin-bottom: 5px;" id="pw">
+						<div id="check" class="msg"
+							style="display: none; color: rgb(255, 74, 74); font-size: 0.8em; width: 380px">비밀번호는
+							최소 8자리 이상(대소문자,특수문자 포함)</div>
+						<label for="pwCheck" style="margin-top: 5px;"></label> <input
+							type="password" class="form-control" name="userPw"
+							placeholder="비밀번호 재확인" required style="width: 380px;"
+							id="pwCheck"> <br> <label for="name"
+							style="margin-top: 5px;">이름</label> <input type="text"
+							name="userName" value="${mem.userName }" class="form-control"
+							required style="width: 380px;" id="name"> <label
+							for="phone" required style="margin-top: 20px;">휴대전화</label> <input
+							type="tel" class="form-control" id="phone" name="phoneNum"
+							value="${mem.phoneNum }" style="width: 380px;"> <br>
 
-						<label for="phone" required style="margin-top: 20px;">휴대전화</label>
-						<%-- <input type="tel" class="form-control" id="phone" name="phoneNum1" value="${mem.phoneNum1 }" style="width: 100px;">
-						<p> - </p>
-						<input type="tel" class="form-control" id="phone" name="phoneNum2" value="${mem.phoneNum1 }" style="width: 100px;">
-						<p> - </p>
-						<input type="tel" class="form-control" id="phone" name="phoneNum3" value="${mem.phoneNum1 }" style="width: 100px;">  --%>
-						<div class="phone-control">
-							<select name="phoneNum1" class="form-control" style="width: 100px;">
-								<option value="010" selected>010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-							</select>
-							<!-- <input type="tel" class="form-control" id="phone" name="phoneNum1" style="width: 100px;">  -->
-							<p> - </p> <input type="tel" class="form-control" id="phone" name="phoneNum2" style="width: 100px;"> 
-							<p> - </p> <input type="tel" class="form-control" id="phone" name="phoneNum3" style="width: 100px;">
-						</div>
-						
-						
-						<br> 
-						
-						<label for="email">이메일</label> 
-						<input type="email" class="form-control" id="email" name="email"
-							style="width: 380px;" id="email" value="${mem.email }">						
+						<label for="email">이메일</label> <input type="email"
+							class="form-control" id="email" name="email"
+							style="width: 380px;" id="email" value="${mem.email }">
 					</div>
-					
-					<!-- </div> -->
 					<br>
-
-					<button type="submit" class="modify">수정하기</button>
+					<div>
+					<button type="submit" class="btn btn-secondary btn-sm">수정하기</button>
+					<button type="button" id="delinfo" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
+					</div>
 				</form>
-				
-				
-					<!-- form 다른양식-->
-					<%-- <form id="updateform" enctype="multipart/form-data" method="post">
-						<p align="center">
-						<table border="1" width="50%" height="80%" align='center'>
-							<tr>
-								<td colspan="3" align="center"><h2>회원 정보 수정</h2></td>
-							</tr>
-							<tr>
-								<td rowspan="5" align="center">
-									<p>${user.image}</p> <img id="img" width="100" height="100"
-									border="1" /> <br /> <br /> <input type='file' id="image"
-									name="image" accept=".jpg,.jpeg,.gif,.png" /><br />
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;이메일</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="email" name="email"
-									readonly="readonly" value="${user.email}" id="email" size="30"
-									maxlength=50 required="required" />
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="password" name="pw"
-									id="pw" size="20" required="required" />
-									<div id="pwDiv"></div>
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="#f5f5f5"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;비밀번호
-										확인</font></td>
-								<td>&nbsp;&nbsp;&nbsp; <input type="password"
-									id="pwconfirm" size="20" required="required" />
-								</td>
-							</tr>
-							
-							<tr>
-								<td align="center" colspan="3">
-									<p></p> <input type="submit" value="정보수정"
-									class="btn btn-warning" /> <input type="button" value="메인으로"
-									class="btn btn-success"
-									onclick="javascript:window.location='/'">
-									<p></p>
-								</td>
-							</tr>
-						</table>
-					</form> --%>
-
-				</div>
 			</div>
 
-			<!-- 바뀌는 구역 끝 -->
 		</div>
+
+
+		<!-- 바뀌는 구역 끝 -->
+		
 	</div>
 </section>
 
-<!--     <script>
-
-    
-    </script> -->

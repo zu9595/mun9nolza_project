@@ -28,7 +28,7 @@ function makeSaleLi(product = {}) {
                 <div class="single_product_text">
                     <h4>`+ product.proName + `</h4>
                     <h3>`+ product.proDiscount + `원</h3>
-                    <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
+                    <a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세페이지로<i class="ti-heart"></i></a>
                 </div>
             </div>
         </div>`

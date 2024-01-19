@@ -14,10 +14,10 @@
           <div class="product_slider_img">
             <div id="vertical">
               <div data-thumb="img/product/single-product/product_1.png">
-                <img src="img/product/single-product/product_1.png" />
+                <img src="${vo.proImage }" alt="메인이미지"/>
               </div>
               <div data-thumb="img/product/single-product/product_1.png">
-                <img src="img/product/single-product/product_1.png" />
+                <img src="img/product/single-product/product_1.png" alt="상세이미지"/>
               </div>
               <div data-thumb="img/product/single-product/product_1.png">
                 <img src="img/product/single-product/product_1.png" />

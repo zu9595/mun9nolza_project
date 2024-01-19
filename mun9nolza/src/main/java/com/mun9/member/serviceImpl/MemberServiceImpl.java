@@ -49,18 +49,24 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.kakaoSelectMember(email, userName);
 	}
 
-	// 회원정보수정
+	//회원정보수정
 	@Override
 	public MemberVO memInfo(String userId) {
 		return mapper.selectInfo(userId);
 	}
-
-
-
 	@Override
 	public boolean memInfoMod(MemberVO vo) {
-		return mapper.updateInfo(vo)==1;
+		return mapper.updateInfo(vo) == 1;
 	}
+
+
+	//회원탈퇴
+
+	
+
+	
+
+
 
 
 
