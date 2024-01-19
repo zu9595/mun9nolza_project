@@ -38,8 +38,8 @@
                 <td>
                 	<td>
                 	<ul>
-                		<li><h6>$21.00</h6></li>
-                		<li><h5>$2160.00</h5></li>
+                		<li><span class="delieveryFee">3000</span>원</li>
+                		<li><span class="total">총금액이야</span>원</li>
                 	</ul>                  
                 </td>
                 
