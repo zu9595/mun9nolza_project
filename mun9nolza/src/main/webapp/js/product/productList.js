@@ -68,7 +68,7 @@ const li = `<div class="col-lg-4 col-sm-6 listsize">
         <h4>`+product.proName+`</h4>
         <h3>`+product.proPrice+`원</h3>
         <h3>할인가 `+product.proDiscount+`원</h3>
-        <a href="#" class="add_cart">장바구니에 담기<i class="ti-heart"></i></a>
+        <a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세보기<i class="fas fa-cart-plus"></i></a>
     </div>
 </div>
 </div>`

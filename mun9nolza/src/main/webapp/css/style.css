@@ -2255,7 +2255,7 @@ ul {
   height: 14px;
   right: -11px;
   top: -8px;
-  content: "수정";
+  content: "";
   text-align: center;
   line-height: 15px;
   font-size: 10px;
@@ -5598,7 +5598,7 @@ ul {
 /* line 47, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_confirmation_part.scss */
 .confirmation_part .order_details_iner {
   margin-top: 50px;
-  background-color: #ecfdff;
+  /* background-color: #ecfdff;*/
   padding: 30px 30px 15px;
   text-transform: capitalize;
 }

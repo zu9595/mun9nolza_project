@@ -1,35 +1,36 @@
 package com.mun9.inquire.command;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mun9.common.Control;
 import com.mun9.inquire.service.InquireService;
 import com.mun9.inquire.serviceImpl.InquireServiceImpl;
 import com.mun9.inquire.vo.InquireVO;
-import com.mun9.product.vo.ProductVO;
 
-public class InquireListControl implements Control {
+public class InquireDetailControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		String inqNo = req.getParameter("inqNo");
+
 		InquireService svc = new InquireServiceImpl();
-		
-		List<InquireVO> list = svc.inquireList();
-		
-		resp.setContentType("text/json;charset=utf-8");
-		Gson gson = new GsonBuilder().create();
-		
+		InquireVO vo = svc.detailInquire(Integer.parseInt(inqNo));
+
+		req.setAttribute("vo", vo);
+
+		// 페이징 이동(forward)
+		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireDetailForm.tiles");
 		try {
-			resp.getWriter().print(gson.toJson(list));
-		} catch (IOException e) {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }

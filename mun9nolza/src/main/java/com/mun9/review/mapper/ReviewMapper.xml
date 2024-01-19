@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mun9.review.mapper.ReviewMapper">
+
+ <!-- 마이페이지(주문내역조회): 로그인아이디-최근주문순 -->
+ <select id="selectMyReview" resultType="review" parameterType="String">
+ 	select * from review where user_id=#{userId}
+ </select>
+
+ 
+</mapper>

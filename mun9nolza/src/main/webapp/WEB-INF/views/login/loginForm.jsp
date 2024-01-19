@@ -24,7 +24,7 @@
 <script src="js/popper.min.js"></script>
 <!-- bootstrap js -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/loginjs/lofinForm.js"></script>
+<script src="js/loginjs/loginForm.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 							width=50 height=50 alt="카카오 로그인 버튼" /></a>
 					</div>
 					<div class="link-tag">
-						<a href="addMemberForm.do" style="color: black;">회원가입</a> / <a
+						<a href="joinMemberForm.do" style="color: black;">회원가입</a> / <a
 							href="#" style="color: black;" data-toggle="modal"
 							data-target="#modal_findid" onclick="resetIdInfo()">아이디찾기</a> / <a
 							href="#" style="color: black;" data-toggle="modal"

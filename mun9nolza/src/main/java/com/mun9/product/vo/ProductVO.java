@@ -1,6 +1,7 @@
 package com.mun9.product.vo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class ProductVO {

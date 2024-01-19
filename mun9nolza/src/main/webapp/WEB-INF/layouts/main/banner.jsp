@@ -18,7 +18,6 @@
                                     <div class="banner_text_iner">
                                         <h1>${banner.bannerName}</h1>
                                         <p>${banner.bannerDesc}</p>
-                                        <a href="#" class="btn_2">사러가기</a>
                                     </div>
                                 </div>
                             </div>

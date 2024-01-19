@@ -17,12 +17,11 @@
 							</a></li>
 						</ul>
 					</div>
-
 					<div class="hearer_icon d-flex">
 						<c:choose>
 							<c:when test="${empty logId }">
 								<a href="loginForm.do">로그인</a>
-								<a href="addMemberForm.do">회원가입</a>
+								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
@@ -108,7 +107,7 @@
 						<c:choose>
 							<c:when test="${empty logId }">
 								<a href="loginForm.do">로그인</a>
-								<a href="addMemberForm.do">회원가입</a>
+								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
@@ -127,8 +126,8 @@
 							</a>
 						</div>
 						<!-- 검색 -->
-						<a id="search_1" href="javascript:void(0)"><i
-							class="ti-search"></i></a>
+						<!-- <a id="search_1" href="javascript:void(0)"><i
+							class="ti-search"></i></a> -->
 						<!-- 검색 -->
 					</div>
 				</nav>

@@ -1,7 +1,6 @@
 package com.mun9.orderdetail.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,9 +29,9 @@ public class OrderDetailFormControl implements Control {
 		List<CartVO> clist = csvc.selectCartList(userId);
 		
 		MemberService msvc = new MemberServiceImpl();
-		MemberVO mlist = msvc.memInfo(userId);
+		MemberVO minfo = msvc.memInfo(userId);
 		
-		req.setAttribute("memberList", mlist);
+		req.setAttribute("memberinfo", minfo);
 		req.setAttribute("cartList", clist);
 
 		//페이지이동

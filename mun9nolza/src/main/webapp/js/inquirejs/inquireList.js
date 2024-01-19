@@ -3,7 +3,6 @@
  */
 $(document).ready(function() {
 	inquireList();
-	console.log(userId);
 });
 
 function inquireList() {
@@ -23,26 +22,49 @@ function inquireList() {
 				console.log(inquire.userId, userId);
 				if (userId == inquire.userId) {
 					tr = `<tr class="del">
-						<td>${inquire.inqNo}</td>
-						<td>${inquire.inqTitle}</td>
+						<td id="inqNo">${inquire.inqNo}</td>
+						<td><a href="inquireDetail.do?inqNo=${inqNo}">${inquire.inqTitle}</a></td>
 						<td>${inquire.userId}</td>
 						<td>${dateFormat(date)}</td>
-						<td><a class="delete">삭제</a></td>
+						<td><button type="button" class="delete" style="border: none; background:none">삭제</button></td>
 					</tr>`
 				} else {
 					tr = `<tr class="del">
 						<td>${inquire.inqNo}</td>
-						<td>${inquire.inqTitle}</td>
+						<td><a href="inquireDetail.do?inqNo=${inquire.inqNo}">${inquire.inqTitle}</a></td>
 						<td>${inquire.userId}</td>
 						<td>${dateFormat(date)}</td>
 						<td></td>
 					</tr>`
 				}
-
 				$('#inquireList').append(tr);
 			})
 
+			$('.delete').on('click', function(e) {
+				console.log($(e.target).parent().siblings('#inqNo').text());
+				let inqNo = $(e.target).parent().siblings('#inqNo').text();
+				delInq(inqNo);
+			})
+
+
 		}).catch(console.error);
+}
+
+async function delInq(inqNo) {
+	const promise = await fetch(`inquireDel.do?inqNo=${inqNo}`)
+	const json = await promise.json();
+	try{
+		if(json.retCode == 'OK'){
+			alert('삭제됨');
+			$('.del').remove();
+			inquireList();
+						
+		}else if(json.retCode == 'NG'){
+			alert('삭제중 애러');
+		}
+	}catch(err){
+		console.error('예외 => ',err);
+	}
 }
 
 function dateFormat(date) {

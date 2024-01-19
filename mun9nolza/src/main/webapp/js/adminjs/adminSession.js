@@ -16,5 +16,24 @@ function listView(userId){
     document.body.appendChild(f);
     f.submit();
 }
-
+// 넘버링
+/*
+function cartNumbering(userId){
+	//$(`.main_menu .cart i:after`)
+	
+	fetch("myOrderList.do", {
+		method: "post",
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: "userId=" + userId
+	})
+	.then(str => str.json())
+	.then(res => {
+		if(res){
+			console.log(res)
+			//$(`.main_menu .cart i:after`).css("content")
+		}
+	})
+}
+*/
 

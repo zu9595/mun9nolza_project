@@ -16,6 +16,7 @@ public interface MemberMapper {
 	public String selectPw(@Param("userId") String userId, @Param("userName") String userName, @Param("email") String email);
 	public MemberVO kakaoSelectMember(@Param("email") String email,  @Param("userName") String userName);
 
+	//회원수정
 	public MemberVO selectInfo(String userId);
 	public int updateInfo(MemberVO vo);
 	
