@@ -14,13 +14,15 @@ import com.mun9.inquire.serviceImpl.InquireServiceImpl;
 import com.mun9.inquire.vo.InquireVO;
 import com.mun9.product.vo.ProductVO;
 
-public class InquireListControl implements Control {
+public class ProdCodeListControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		InquireService svc = new InquireServiceImpl();
+		String category = req.getParameter("category");
 		
-		List<InquireVO> list = svc.inquireList();
+		InquireService svc = new InquireServiceImpl();
+
+		List<ProductVO> list = svc.prodCodeList(category);
 		
 		resp.setContentType("text/json;charset=utf-8");
 		Gson gson = new GsonBuilder().create();

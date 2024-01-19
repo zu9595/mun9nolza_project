@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
 import com.mun9.cart.command.ModCartCntJson;
+import com.mun9.inquire.command.InquireAddControl;
 import com.mun9.inquire.command.InquireAddFormControl;
+import com.mun9.inquire.command.InquireDelControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
+import com.mun9.inquire.command.ProdCodeListControl;
 import com.mun9.member.command.AddMemberControl;
 import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
@@ -120,8 +123,14 @@ public class FrontController extends HttpServlet {
 		map.put("/inquireListForm.do", new InquireListFormControl());
 		//문의 목록 list(Json)
 		map.put("/inquireList.do", new InquireListControl());
-		//문의 등록
+		//문의 등록 페이지
 		map.put("/inquireAddForm.do", new InquireAddFormControl());
+		//상품 코드
+		map.put("/prodCodeList.do", new ProdCodeListControl());
+		//문의 등록
+		map.put("/inquireAdd.do", new InquireAddControl());
+		//문의 삭제
+		map.put("/inquireDel.do", new InquireDelControl());
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
