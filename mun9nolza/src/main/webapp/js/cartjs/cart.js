@@ -114,7 +114,7 @@ function cntDecrementEvent(idx,res){
     .catch(console.error);
 	
 	
-	
+	makeSubTotal(idx,res);
 	})
 }
 // 체크박스 수량 다운태그
@@ -134,7 +134,10 @@ function cntIncrementEvent(idx,res){
         headers: { "Content-Type": "application/json" }
 	    })
 	    .catch(console.error);
+	    
+		makeSubTotal(idx,res);
 		})
+		
 }
 
 /*// 페이지 이동시 데이터 저장 
@@ -153,14 +156,11 @@ function makeSubTotal(idx,res){
 	
 	let proDiscount = $(`.proDiscount${idx}`).text();	
 	let myproCnt = $(`.myproCnt${idx}`).val();
-		
-	console.log(proDiscount);
-	console.log(myproCnt);
 	
-	let subTotal = proDiscount * myproCnt;
+	//console.log(proDiscount);
+	//console.log(myproCnt);
 	
-	
-	
+	$(`.subTotal${idx}`).text(proDiscount * myproCnt);	
 }
 
 // 배송비 계산
