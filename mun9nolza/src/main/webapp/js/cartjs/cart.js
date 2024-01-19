@@ -41,6 +41,12 @@ const userId = urlParams.get('userId');
 				//서브토탈
 				makeSubTotal(idx,cart)
 				
+				//배송비
+				makeDeliveryFee(idx,res)
+				//총금액
+				makeTotal(idx,res)
+				
+				
 			})
 				delCheckEvent(res);
 //			return res;
@@ -71,8 +77,7 @@ function allCheckEvent(){
 				//prop로...
 				$('tbody input[type="checkbox"]').prop('checked', this.checked);
 			})
-}	
-
+}
 
 // 선택 삭제 이벤트
 function delCheckEvent(res){
@@ -114,7 +119,7 @@ function cntDecrementEvent(idx,res){
     .catch(console.error);
 	
 	
-	
+	makeSubTotal(idx,res);
 	})
 }
 // 체크박스 수량 다운태그
@@ -134,7 +139,10 @@ function cntIncrementEvent(idx,res){
         headers: { "Content-Type": "application/json" }
 	    })
 	    .catch(console.error);
+	    
+		makeSubTotal(idx,res);
 		})
+		
 }
 
 /*// 페이지 이동시 데이터 저장 
@@ -153,20 +161,42 @@ function makeSubTotal(idx,res){
 	
 	let proDiscount = $(`.proDiscount${idx}`).text();	
 	let myproCnt = $(`.myproCnt${idx}`).val();
-		
-	console.log(proDiscount);
-	console.log(myproCnt);
 	
-	let subTotal = proDiscount * myproCnt;
+	//console.log(proDiscount);
+	//console.log(myproCnt);
+	
+	$(`.subTotal${idx}`).text(proDiscount * myproCnt);	
+}
+
+// 배송비 계산
+function makeDeliveryFee(idx,res){
+	let proDiscount = $(`.proDiscount${idx}`).text();	
+	let myproCnt = $(`.myproCnt${idx}`).val();
+	//let subTotal =$(`.proDiscount${idx}`).text() * $(`.myproCnt${idx}`).val();
+	//let total = $(`.total`).val();
+	let preTotal = 0;
+	console.log(total);
+		
+	$('tbody input:checked').each((idx,cart) => {
+		let proDiscount = res[cart.className].proDiscount;
+		let myproCnt = res[cart.className].myproCnt;
+		let subTotal = proDiscount * myproCnt;
+		console.log(subTotal);
+		preTotal += subTotal;
+		
+	})
+	
+	$(`.total`).text(preTotal);
+}
+
+// 총 금액
+function makeTotal(idx,res){
 	
 	
 	
 }
 
-// 배송비 계산
-
-// 총 금액
-// :checked 로 선택
+// :checked 로 선택된 상품만 주문하기 페이지로 넘기기
 
 
 
