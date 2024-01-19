@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mun9.cart.command.AddCartJson;
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
 import com.mun9.cart.command.DelCartControl;
@@ -38,6 +39,7 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
+import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
@@ -112,10 +114,14 @@ public class FrontController extends HttpServlet {
 		map.put("/cartListJson.do", new CartListJson());
 		//장바구니 상품 삭제
 		map.put("/delCart.do", new DelCartControl());
+		//장바구니 상품 추가
+		map.put("/addCartJson.do", new AddCartJson());
 		//장바구니 상품 숫자 변경
 		map.put("/modCartCntJson.do", new ModCartCntJson());
 		//결제화면으로 이동
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
+		//단건결제화면으로 이동
+		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
 		
 		
 		

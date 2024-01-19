@@ -10,11 +10,10 @@ $(document).ready(function(){
 //	cntDecrementEvent();
 //	cntIncrementEvent();
 	console.log(pageMoveId)
+	console.log(userId)
 	});
 
 function cartList() {
-const urlParams = new URL(location.href).searchParams;
-const userId = urlParams.get('userId');
 	pageMoveId = userId;
     fetch("cartListJson.do?userId=" + userId, {
         method: "get",
@@ -42,9 +41,9 @@ const userId = urlParams.get('userId');
 				makeSubTotal(idx,cart)
 				
 				//배송비
-				makeDeliveryFee(idx,res)
+				//makeDeliveryFee(idx,res)
 				//총금액
-				makeTotal(idx,res)
+				//makeTotal(idx,res)
 				
 				
 			})
@@ -237,5 +236,5 @@ function makeTr(cart,idx){
                   <h5><span class="subTotal subTotal${idx}"></span></h5>
                 </td>
               </tr>`
-              return newTr;
+      return newTr;
 }

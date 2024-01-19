@@ -6,5 +6,5 @@ import com.mun9.productimage.vo.ProductImageVO;
 
 public interface ProductImageService {
 
-	public List<ProductImageVO> getImg(int orderNo);
+	public List<ProductImageVO> getImg(int proCode);
 }

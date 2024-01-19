@@ -1,7 +1,7 @@
 /**
  * 
  */
-		Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
+		/*Kakao.init('3417f296b9ba3b697980f5786262df50'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 
 		//카카오로그인	
@@ -33,7 +33,7 @@
 	
 		//수정필요
 		//카카오로그아웃  
-		/*function kakaoLogout() {
+		function kakaoLogout() {
 			if (Kakao.Auth.getAccessToken()) {
 				Kakao.API.request({
 					url : '/v1/user/unlink',

@@ -6,7 +6,7 @@
 <mapper namespace="com.mun9.productimage.mapper.ProductImageMapper">
   
   <select id="selectImg" resultType="productimg" parameterType="int">
-  	select * from productimage where order_no = #{orderNo}
+  	select * from productimage where pro_code = #{proCode} and img_no in (2,3,4)
   </select>
 
  

@@ -15,9 +15,9 @@ public class ProductImageServiceImpl implements ProductImageService{
 	ProductImageMapper mapper = session.getMapper(ProductImageMapper.class);
 	
 	@Override
-	public List<ProductImageVO> getImg(int orderNo) {
+	public List<ProductImageVO> getImg(int proCode) {
 		// TODO Auto-generated method stub
-		return mapper.selectImg(orderNo);
+		return mapper.selectImg(proCode);
 	}
 
 }

@@ -3,30 +3,20 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<script src="js/product/productDetail.js"></script>
+  
     
   <!--================Single Product Area =================-->
   <div class="product_image_area section_padding">
     <div class="container">
       <div class="row s_product_inner justify-content-between">
-        <div class="col-lg-7 col-xl-7">
+        <div class="col-lg-7 col-xl-7 w">
           <div class="product_slider_img">
             <div id="vertical">
               <div data-thumb="img/logo.png">
                 <img src="${vo.proImage }" alt="메인이미지"/>
               </div>
-              <c:forEach >
-              <div data-thumb="img/logo.png">
-                <img src="img/logo.png" alt="상세이미지"/>
-              </div>
-              </c:forEach>
-              <div data-thumb="img/logo.png">
-                <img src="img/logo.png" />
-              </div>
-              <div data-thumb="img/logo.png">
-                <img src="img/logo.png" />
-              </div>
+				<!-- 상세페이지 3개 가져옴(2,3,4) -->
+              
             </div>
           </div>
         </div>
@@ -34,24 +24,56 @@
         
           <div class="s_product_text">
             <h5></h5>
-            <h3>${vo.proName } 상품이름</h3>
-            <h2>${vo.proDiscount } 상품할인 가격 / ${vo.proPrice }상품 원래가격</h2>
+            <h3>${vo.proName }</h3>
+            <c:choose>
+            <c:when test="${!empty vo.proDiscount }">
+            <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span>${vo.proDiscount }원</h2>
+            </c:when>
+            <c:otherwise>
+            <h2>${vo.proPrice }원</h2>
+            </c:otherwise>
+            </c:choose>
             <ul class="list">
               <li>
                 <p>${vo.proDesc }상품 내용</p>
               </li>              
             </ul>
             <div class="buy">
-            	<p>배송비</p>
+            	<p>배송비 | 3000원 <br><span style="font-size: 16px; opacity: 0.5;">5만원이상 구매시 무료배송</span> </p>
             </div>
             <div class="card_area d-flex justify-content-between align-items-center">
               <div class="product_count">
-                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                <input class="input-number" type="text" value="1" min="0" max="10">
-                <span class="number-increment"> <i class="ti-plus"></i></span>
+                <span class="inumber-decrement ti-minus deinput"></span>
+                <input class="input-number prodCnt" type="text" value="1" min="0" max="10">
+                <span class="number-increment ti-plus ininput"></span>
               </div>
-              <a href="#" class="btn_3">상품구매</a>
-              <a href="#" class="like_us" role = "button"> <i class="fas fa-cart-plus"></i> </a>
+              
+              <c:choose>
+              <c:when test="${!empty userId }">
+              <a href="javascript:singlePayForm()" class="btn_3">상품구매</a>
+              </c:when>
+              <c:otherwise>
+              <a href="loginForm.do" class="btn_3">상품구매</a>
+              </c:otherwise>
+              </c:choose>
+              <!-- 장바구니 이동 -->
+              <c:choose>
+              <c:when test="${!empty userId }">
+              <a href="cartList.do" class="btn_3">장바구니 이동</a>
+              </c:when>
+              <c:otherwise>
+              <a href="loginForm.do" class="btn_3">장바구니 이동</a>
+              </c:otherwise>
+              </c:choose>
+              <!-- 로그인 세션이 존재할때 -->
+              <c:choose>
+              <c:when test="${!empty userId }">
+              <a href="javascript:addCartList()" class="like_us fas fa-cart-plus" role = "button"></a>
+              </c:when>
+              <c:otherwise>
+              <a href="loginForm.do" class="like_us" role = "button"> <i class="fas fa-cart-plus"></i> </a>
+              </c:otherwise>
+              </c:choose>
             </div>
             
           </div>
@@ -273,4 +295,12 @@
       </div>
     </div>
   </section>
+  
+<script>
+	let proCode = `${vo.proCode }`;
+	let userId = `${userId}`;
+	let proPrice = `${vo.proPrice}`;
+	let proDiscount = `${vo.proDiscount}`;
+</script>
+<script src="js/product/productDetail.js"></script>
   <!-- product_list part end-->

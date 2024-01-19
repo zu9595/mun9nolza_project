@@ -22,11 +22,11 @@ public class prodDetailImgGetControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-		String orderNo = req.getParameter("orderNo");
+		String proCode = req.getParameter("proCode");
 		
 		//이미지 상세 목록
 		ProductImageService svc = new ProductImageServiceImpl();
-		List<ProductImageVO> list =  svc.getImg(Integer.parseInt(orderNo));
+		List<ProductImageVO> list =  svc.getImg(Integer.parseInt(proCode));
 		
 		Gson gson = new GsonBuilder().create();
 		
