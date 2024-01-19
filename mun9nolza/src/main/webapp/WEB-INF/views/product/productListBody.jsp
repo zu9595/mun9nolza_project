@@ -33,7 +33,7 @@
                             </div>
                         </aside>
 
-                        <aside class="left_widgets p_filter_widgets">
+                        <!-- <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
                                 <h3>상품 필터</h3>
                             </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="widgets_inner">
                                 <div class="range_item">
-                                    <!-- <div id="slider-range"></div> -->
+                                    <!-- <div id="slider-range"></div> 
                                     <input type="text" class="js-range-slider" value="" />
                                     <div class="d-flex">
                                         <div class="price_text">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </aside>
+                        </aside> -->
                     </div>
                     
                 </div>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mun9.cart.command.AddCartJson;
 import com.mun9.cart.command.CartListControl;
 import com.mun9.cart.command.CartListJson;
 import com.mun9.cart.command.DelCartControl;
@@ -17,11 +18,10 @@ import com.mun9.cart.command.ModCartCntJson;
 import com.mun9.inquire.command.InquireAddControl;
 import com.mun9.inquire.command.InquireAddFormControl;
 import com.mun9.inquire.command.InquireDelControl;
+import com.mun9.inquire.command.InquireDetailControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
 import com.mun9.inquire.command.ProdCodeListControl;
-import com.mun9.member.command.AddMemberControl;
-import com.mun9.member.command.AddMemberFormControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
@@ -39,6 +39,7 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
+import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
@@ -53,6 +54,7 @@ import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.searchControl;
+import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
 
 
@@ -90,7 +92,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
 		
-		//로그인 --수정필요
+		//로그인 --소셜로그인 수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
@@ -112,10 +114,14 @@ public class FrontController extends HttpServlet {
 		map.put("/cartListJson.do", new CartListJson());
 		//장바구니 상품 삭제
 		map.put("/delCart.do", new DelCartControl());
+		//장바구니 상품 추가
+		map.put("/addCartJson.do", new AddCartJson());
 		//장바구니 상품 숫자 변경
 		map.put("/modCartCntJson.do", new ModCartCntJson());
 		//결제화면으로 이동
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
+		//단건결제화면으로 이동
+		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
 		
 		
 		
@@ -126,18 +132,24 @@ public class FrontController extends HttpServlet {
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		
-		//문의 페이지
+		//문의 페이지 이동
 		map.put("/inquireListForm.do", new InquireListFormControl());
 		//문의 목록 list(Json)
 		map.put("/inquireList.do", new InquireListControl());
-		//문의 등록 페이지
+		//문의 등록 페이지 이동
 		map.put("/inquireAddForm.do", new InquireAddFormControl());
-		//상품 코드
+		//상품 코드 list(Json)
 		map.put("/prodCodeList.do", new ProdCodeListControl());
 		//문의 등록
 		map.put("/inquireAdd.do", new InquireAddControl());
 		//문의 삭제
 		map.put("/inquireDel.do", new InquireDelControl());
+		//문의 상세 -- 수정필요
+		map.put("/inquireDetail.do", new InquireDetailControl());
+		
+		//상품 상세
+		map.put("/prodDetailImg.do", new prodDetailImgGetControl());
+		
 		
 		//admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

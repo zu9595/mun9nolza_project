@@ -24,5 +24,9 @@
 	<delete id="deleteInquire" parameterType="int">
 		delete from inquire where inq_no=#{inqNo}
 	</delete>
+	
+	<select id="selectInquire" parameterType="int" resultType="inquire">
+		select * from inquire where inq_no=#{inqNo}
+	</select>
 
 </mapper>

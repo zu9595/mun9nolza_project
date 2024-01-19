@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mun9.common.Control;
 import com.mun9.product.service.ProductService;
@@ -22,7 +23,11 @@ public class ProductDetailControl implements Control {
 		ProductService svc = new ProductServiceImpl();
 		ProductVO vo = svc.getProductDetail(pcode);
 		
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("logId");
+		
 		req.setAttribute("vo", vo);
+		req.setAttribute("userId", userId);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("product/productDetail.tiles");
 			try {

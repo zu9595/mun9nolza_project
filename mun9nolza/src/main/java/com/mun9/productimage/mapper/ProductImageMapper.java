@@ -1,5 +1,9 @@
 package com.mun9.productimage.mapper;
 
-public interface ProductImageMapper {
+import java.util.List;
 
+import com.mun9.productimage.vo.ProductImageVO;
+
+public interface ProductImageMapper {
+	public List<ProductImageVO> selectImg(int proCode);
 }

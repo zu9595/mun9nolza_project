@@ -3,7 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script> let userId = '${userId}'</script>
+<script> let userId = `${userId}`</script>
 <script src="js/cartjs/cart.js"></script>
 
     <!--================Cart Area =================-->
@@ -38,8 +38,8 @@
                 <td>
                 	<td>
                 	<ul>
-                		<li><h6>$21.00</h6></li>
-                		<li><h5>$2160.00</h5></li>
+                		<li><span class="delieveryFee">3000</span>원</li>
+                		<li><span class="total">총금액이야</span>원</li>
                 	</ul>                  
                 </td>
                 
