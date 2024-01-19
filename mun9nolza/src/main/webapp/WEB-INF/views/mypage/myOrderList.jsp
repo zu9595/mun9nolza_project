@@ -63,7 +63,7 @@
         
                 <div class="col-lg-9">
                    <h2>나의 주문내역</h2>
-                   
+${orderList}
                    <div style="width: 720px; height: 640px; padding: 50px">
                      <table class="table addOrderList">
                       <thead>
@@ -73,20 +73,36 @@
                          <th>주문상품</th>
                          <th>주문상태</th>
                          <th>상세조회</th>
+                         <td colspan="2">수령인</td>
+                         <td colspan="2">연락처</td>
+                         <td colspan="2">주소</td>
                        </tr>
                      </thead>
                      <tbody>  
                        <c:forEach var="vo" items="${orderList}">
                        <tr>
+                      	<td>
+                      	<table>
+                      	   <tr>
+                        <td><fmt:formatDate value="${vo.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+                        <td>${vo.orderNo }</td>                 
+                        <td><span class="status">${vo.orderStatus }</span></td>
+                        <td><button onclick="detailView()">상세조회</button></td> <!-- 확인하기 -->
+                         <td colspan="2">${vo.orderRecipient }</td>
+                         <td colspan="2">${vo.orderPhone }</td>
+                         <td colspan="2">${vo.orderAddr }${vo.detailAddr }</td>
+                                             
+                                          	 <td>${vo.totalPrice }원</td>
+                       	
                         <td><fmt:formatDate value="${vo.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
                         <td>${vo.orderNo }</td>
-                        <td> ${vo.proName }</td>
+                
                         <td><span class="status">${vo.orderStatus }</span></td>
                         <td><button onclick="detailView()">상세조회</button></td> <!-- 확인하기 -->
                        </tr>
                        
                        <!-- 상세조회 -->
-                       <tr class="orderHidden detail">
+                       <tr class=" detail">
                         <td colspan="5">
                         
                        <table class="table">
@@ -96,26 +112,18 @@
                          <td>가격</td>
                          <td colspan="2">수량</td>
                         </tr>
+                        
+                          <c:forEach var="dvo" items="${vo.detailList}">
                         <tr>
-                       	 <td><c:if test="${!empty vo.proImage}"><img width="150px" src="img/${vo.proImage}"></c:if></td>
-                       	 <td> ${vo.proName }</td>
-                       	 <td>${vo.totalPrice }원</td>
-                       	 <td colspan="2">${vo.deProCnt }개</td>
+                       	 <td><c:if test="${!empty dvo.proImage}"><img width="150px" src="${dvo.proImage}"></c:if></td>
+                       	 <td> ${dvo.proName }</td>
+ 						<td colspan="2">${dvo.deProCnt }개</td>
                        	 <td><button onclick="removeOrder(${vo.orderNo})">주문취소</button></td>
                         </tr>
-                        <tr>
-                         <td colspan="2">수령인</td>
-                         <td colspan="2">연락처</td>
-                         <td colspan="2">주소</td>
-                        </tr>
-                        <tr>
-                         <td colspan="2">${vo.orderRecipient }</td>
-                         <td colspan="2">${vo.orderPhone }</td>
-                         <td colspan="2">${vo.orderAddr }${vo.detailAddr }</td>
-                         <td></td>                       
-                        </tr> 
+                           </c:forEach>
                         <tr>
                          <td colspan="5" style="text-align:center">총 주문금액</td>
+                         
                         </tr>
                         <tr>
                          <td colspan="5"  style="text-align:center">${vo.totalPrice }원</td>
