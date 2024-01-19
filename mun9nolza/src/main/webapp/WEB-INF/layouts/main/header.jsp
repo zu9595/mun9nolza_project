@@ -24,7 +24,7 @@
 						<c:choose>
 							<c:when test="${empty logId }">
 								<a href="loginForm.do">로그인</a>
-								<a href="addMemberForm.do">회원가입</a>
+								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
@@ -110,7 +110,7 @@
 						<c:choose>
 							<c:when test="${empty logId }">
 								<a href="loginForm.do">로그인</a>
-								<a href="addMemberForm.do">회원가입</a>
+								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>

@@ -25,31 +25,34 @@ import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
 import com.mun9.member.command.AdminMemberFormControl;
 import com.mun9.member.command.AdminMemberListControl;
+import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.FindIdControl;
 import com.mun9.member.command.FindPwControl;
-import com.mun9.member.command.SocialLoginControl;
-import com.mun9.orderdetail.command.OrderDetailFormControl;
-import com.mun9.member.command.AdminProductListFormControl;
+import com.mun9.member.command.JoinMemberControl;
+import com.mun9.member.command.JoinMemberFormControl;
 import com.mun9.member.command.LoginControl;
 import com.mun9.member.command.LoginFormControl;
 import com.mun9.member.command.LogoutControl;
+import com.mun9.member.command.MyInfoDelControl;
 import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
-import com.mun9.product.command.ProductDetailControl;
+import com.mun9.member.command.SocialLoginControl;
+import com.mun9.orderdetail.command.OrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
 import com.mun9.product.command.AdminProductAddFormControl;
-
 import com.mun9.product.command.AdminProductDelControl;
 import com.mun9.product.command.AdminProductListControl;
 import com.mun9.product.command.AdminProductModControl;
+import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.MainSaleListJson;
+import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
-import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.searchControl;
+import com.mun9.review.command.MyReviewControl;
 
 
 
@@ -79,8 +82,8 @@ public class FrontController extends HttpServlet {
 		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
 		
 		//회원가입
-		map.put("/addMemberForm.do", new AddMemberFormControl()); //가입화면만
-		map.put("/addMember.do", new AddMemberControl()); //가입기능
+		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
+		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
 
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
@@ -98,7 +101,10 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
 		map.put("/myInfoModForm.do", new MyInfoModFormControl());//수정화면만
 		map.put("/myInfoMod.do", new MyInfoModControl()); //수정기능
-
+		map.put("/myInfoDel.do", new MyInfoDelControl()); //삭제기능
+		map.put("/myReview.do", new MyReviewControl());
+		
+		
 		//장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
 		//장바구니 목록(Json)

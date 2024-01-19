@@ -17,6 +17,7 @@
 		<typeAlias alias="inquire" type="com.mun9.inquire.vo.InquireVO" />
 		<typeAlias alias="require" type="com.mun9.inquire.vo.InquireVO" />
 		<typeAlias alias="banner" type="com.mun9.banner.vo.BannerVO" />
+		<typeAlias alias="review" type="com.mun9.review.vo.ReviewVO" />
   	</typeAliases>
   
   <environments default="development">
@@ -39,5 +40,6 @@
   	<mapper resource="com/mun9/cart/mapper/CartMapper.xml" />
   	<mapper resource="com/mun9/orderlist/mapper/OrderListMapper.xml" />
   	<mapper resource="com/mun9/inquire/mapper/InquireMapper.xml" />
+  	<mapper resource="com/mun9/review/mapper/ReviewMapper.xml" />
   </mappers>
 </configuration>
