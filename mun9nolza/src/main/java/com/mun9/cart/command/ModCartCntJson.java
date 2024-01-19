@@ -19,7 +19,7 @@ public class ModCartCntJson implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		String userId = req.getParameter("userId");
-		String myproCnt = req.getParameter("cnt");
+		String myproCnt = req.getParameter("myproCnt");
 		String proCode = req.getParameter("proCode");
 		
 		CartService svc = new CartServiceImpl();

@@ -13,13 +13,14 @@
   	</select>
 
 	<update id="changeCnt" parameterType="cart">
-		update cart set mypro_cnt = #{cnt}
+		update cart set mypro_cnt = #{myproCnt}
 		where user_id = #{userId } and pro_code = #{proCode}	
 	</update>
 
 	<delete id="deleteCart" parameterType="cart">
 		delete cart
-		where user_id = #{userId } and pro_code = #{proCode}
+		where user_id = #{userId } and pro_code= #{proCode}
+		
 	</delete>
   
  
