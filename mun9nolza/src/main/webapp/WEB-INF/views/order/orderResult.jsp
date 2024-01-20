@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <section class="confirmation_part padding_top">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="confirmation_tittle">
-					<span>결제 페이지</span>
+					<span>결제 결과 페이지</span>
 				</div>
 			</div>
 			<div class="col-lg-12">
@@ -27,28 +26,29 @@
 						<tbody>
 
 							<c:forEach var="order" items="${cartList }">
-							<tr>
-								<th><span>${order.proCode }</span></th>
-								<th><img src="${order.proImage }" alt="작은이미지" width="30px" height="30px"></th>
-								<th><span>${order.proName }</span></th>
-								<th><span>${order.proPrice }</span></th>
-								<th>${order.myproCnt }</th>
-								<th><span class="orderprice">${order.proPrice*order.myproCnt }</span></th>
-							</tr>
+								<tr>
+									<th><span>${order.proCode }</span></th>
+									<th><img src="${order.proImage }" alt="작은이미지" width="30px"
+										height="30px"></th>
+									<th><span>${order.proName }</span></th>
+									<th><span>${order.proPrice }</span></th>
+									<th>${order.myproCnt }</th>
+									<th><span class="orderprice">${order.proPrice*order.myproCnt }</span></th>
+								</tr>
 							</c:forEach>
 
 
 							<tr>
 								<th colspan="4"><span></span></th>
 								<th><span>배송비</span></th>
-								<th><span id="delifee"></span>원</th>
+								<th><span>$원</span></th>
 							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
 								<th scope="col" colspan="4"></th>
 								<th scope="col">합계</th>
-								<th scope="col">${orderSum }원</th>
+								<th scope="col">원</th>
 							</tr>
 						</tfoot>
 					</table>
@@ -56,42 +56,38 @@
 			</div>
 		</div>
 		<div class="row">
-			<!-- <div class="col-lg-6 col-lx-4">
+			<div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>구매자 정보</h4>
 					<ul>
 						<li>
-							<p>구매자 :</p> <span>${memberInfo.userName}</span>
+							<p>구매자 :</p> <span>${memberinfo.userName}</span>
 						</li>
 						<li>
-							<p>연락처 :</p> <span>${memberInfo.phoneNum}</span>
-						</li>
-					</ul>
-				</div>
-			</div> -->
-			<div class="col-lg-6 col-lx-4">
-				<div class="single_confirmation_details">
-					<h4>배송 정보 입력</h4>
-					<ul>
-						<li>
-							<p>수령인	:</p> <span><input name="orderRecipient" type="text" size="20"></span>
-						</li>
-						<li>
-							<p>주소	:</p> <span><input name="orderAddr" type="text" size="40"></span>
-						</li>
-						<li>
-							<p>상세주소	:</p> <span><input name="detailAddr" type="text" size="70"></span>
-						</li>
-						<li>
-							<p>연락처	:</p> <span><input id="tel1" type="text" size="5"> - <input id="tel2" type="text" size="5"> - <input id="tel3" type="text" size="5"></span>
-						</li>
-						<li>
-							<p>배송메모	:</p> <span><input name="deliveryMemo" type="text" size="70"></span>
+							<p>연락처 :</p> <span>${memberinfo.phoneNum}</span>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<span><a class="btn_1" href="#" onclick="orderResult()">결제하기</a></span>
+			<div class="col-lg-6 col-lx-4">
+				<div class="single_confirmation_details">
+					<h4>받는 사람 정보</h4>
+					<ul>
+						<li>
+							<p>수령인</p> <span>:${}</span>
+						</li>
+						<li>
+							<p>주소</p> <span>:${ }</span>
+						</li>
+						<li>
+							<p>상세주소</p> <span>:${ }</span>
+						</li>
+						<li>
+							<p>배송메모</p> <span>:${ }</span>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<!-- <div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>결제 수단</h4>
@@ -115,9 +111,3 @@
 		</div>
 	</div>
 </section>
-<script>
-let userId = `${userId}`;
-let orderSum = `${orderSum}`;
-</script>  
-<script src="js/orderjs/orderDetail.js"></script>
-	

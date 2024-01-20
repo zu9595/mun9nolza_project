@@ -1,5 +1,7 @@
 package com.mun9.orderdetail.mapper;
 
-public interface OrderDetailMapper {
+import com.mun9.orderlist.vo.OrderListVO;
 
+public interface OrderDetailMapper {
+	int insertOrder(OrderListVO vo);
 }
