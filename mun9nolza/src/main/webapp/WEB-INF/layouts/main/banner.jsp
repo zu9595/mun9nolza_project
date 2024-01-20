@@ -14,7 +14,7 @@
                     <div class="single_banner_slider">
                         <div class="row">
                             <div class="col-lg-5 col-md-8">
-                                <div class="banner_text">
+                                  <div class="banner_text">
                                     <div class="banner_text_iner">
                                         <h1>${banner.bannerName}</h1>
                                         <p>${banner.bannerDesc}</p>

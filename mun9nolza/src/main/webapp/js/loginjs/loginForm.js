@@ -41,7 +41,7 @@ function resultIdModal() {
 			if (fid != null) {
 				result_mbody +=
 					`<div class="found-success">
-									<h4>회원님의 아이디는 "\${fid}" 입니다</h4>
+									<h4>회원님의 아이디는 "${fid}" 입니다</h4>
 								</div>`;
 				let result_mfooter =
 					`<div class="found-login">
@@ -111,7 +111,7 @@ function resultPwModal() {
 			if (fpw != null) {
 				result_mbody +=
 					`<div class="found-success">
-									<h4>회원님의 비밀번호는 "\${fpw}" 입니다</h4>
+									<h4>회원님의 비밀번호는 "${fpw}" 입니다</h4>
 								</div>`;
 				let result_mfooter =
 					`<div class="found-login">
