@@ -14,6 +14,7 @@
 		<typeAlias alias="product" type="com.mun9.product.vo.ProductVO" /> 
 		<typeAlias alias="cart" type="com.mun9.cart.vo.CartVO" /> 
 		<typeAlias alias="orderlist" type="com.mun9.orderlist.vo.OrderListVO" />
+		<!-- <typeAlias alias="myorderdetail" type="com.mun9.orderlist.vo.MyOrderDetailVO" /> -->
 		<typeAlias alias="orderdetail" type="com.mun9.orderlist.vo.OrderDetailVO" />
 		 
 		<typeAlias alias="inquire" type="com.mun9.inquire.vo.InquireVO" />

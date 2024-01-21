@@ -16,5 +16,8 @@ public interface InquireMapper {
 	public int deleteInquire(int inqNo);
 
 	public InquireVO selectInquire(int inqNo);
+	
+	//
+	public List<InquireVO> selectMyInquire(String userId);
 
 }

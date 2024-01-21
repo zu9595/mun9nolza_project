@@ -8,21 +8,15 @@ window.addEventListener('DOMContentLoaded', event => {
 	//input이벤트로 비밀번호 8자리 이하시 문구 뜨도록
     let pw = document.getElementById('pw');
     let check =  document.getElementById('check');
-    pw.addEventListener('input', function(){
-        if(pw.value.length < 8){
-         check.style.display = 'block';
-        }else if(pw.value.length >= 8) {
+    pw.addEventListener('input', function() {
+		if (pw.value.length < 6) {
+			check.style.display = 'block';
+		} else if (pw.value.length >= 6) {
 			check.style.display = 'none';
 		}
-    });  
+	});
 	  
-	document.querySelector('form').addEventListener('submit', function(){
-		
-		
-		
-		//alert('회원님의 정보가 수정되었습니다.')
-		
-	})  
+
 	
 	
 	/* 회원탈퇴 */

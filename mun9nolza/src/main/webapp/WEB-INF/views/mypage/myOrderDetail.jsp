@@ -12,33 +12,33 @@
 } */
 
 </style>
-<script src="js/mypagejs/myOrderList.js"></script>
+<!--<script src="js/mypagejs/myOrderList.js"></script> -->
 
                 <!-- 바뀌는 구역 -->       
-         <!--        <div class="col-lg-9">
-                   <h3>주문내역</h3>
+                <div class="col-lg-9">
+                   <h2>나의 주문내역</h2>
                    
                    <div style="width: 720px; height: 640px; padding: 50px">
-                     <table class="table addOrderList">
+                     <table class="table">
                       <thead>
                        <tr>
-                         <th>주문날짜</th>
-                         <th>주문번호</th>
-                         <th>주문상품</th>
-                         <th>주문상태</th>
-                         <th>상세조회</th>
+                         <th>상품이미지</th>
+                         <th>상품명</th>
+                         <th>정상가</th>
+                         <th>할인가</th>
+                         <th>수량</th>
                        </tr>
                      </thead>
                      <tbody>  
-                       <c:forEach var="vo" items="${orderList}">
+                       <c:forEach var="dvo" items="${orderDetail}">
                        <tr>
-                        <td><fmt:formatDate value="${vo.orderDate }" pattern="yyyy-MM-dd"></fmt:formatDate></td>
-                        <td>${vo.orderNo }</td>
-                        <td> ${vo.proName } 등</td>
-                        <td><span class="status">${vo.orderStatus }</span></td>
-                        <!-- <td><button onclick="detailView()">상세조회</button></td> --> <!-- 확인하기 -->
-                        <td><button onclick="detailSelect()">상세조회</button></td>
-                       </tr>         -->
+                        <td>${dvo.proImage }</td>
+                        <td> ${dvo.proName }</td>
+                        <td>${dvo.proPrice}</td>
+                        <td>${dvo.proDiscount}</td>
+                        <td>${dvo.deProCnt}</td>
+                        
+                       </tr>
                        
                        <%-- <!-- 상세조회 -->
                        <tr class="orderHidden detail">
@@ -79,13 +79,13 @@
                        
                        </td>
                        </tr> --%>
-            <!--           </c:forEach> 
+                       </c:forEach> 
                      </tbody>   
                       
                       
                      </table>  
                    </div>          
-              </div>                     -->  
+              </div>
                <!-- 바뀌는 구역 끝 -->
 
     

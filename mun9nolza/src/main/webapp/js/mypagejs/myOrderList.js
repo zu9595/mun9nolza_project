@@ -1,11 +1,15 @@
 /**
  * myOrderList.js
  */
-
+aass();
 //상세조회
 function detailView() {
 	$(event.target).closest('tr').next().toggle('orderHidden');
 }
+
+
+
+
 
 //주문취소
 function removeOrder(orderNo) {
@@ -35,5 +39,18 @@ function removeOrder(orderNo) {
 		}else {
 			alert('오류');
 		}
+	})
+}
+
+function aass(){
+	
+	fetch("myOrderList.do", {
+		method: "post",
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
+		}
+	})
+	.then(str => str.json())
+	.then(result => {
+		console.log(result);
 	})
 }

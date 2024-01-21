@@ -2,12 +2,15 @@ package com.mun9.orderlist.mapper;
 
 import java.util.List;
 
+import com.mun9.orderlist.vo.OrderDetailVO;
 import com.mun9.orderlist.vo.OrderListVO;
 
 public interface OrderListMapper {
 	
 	//마이페이지(주문내역조회): 로그인아이디-최근주문순
 	List<OrderListVO> selectMyOrderList(String userId);
+	//List<OrderListVO> selectMyOrderDetail(int orderNo, String userId);
+	
 	//주문상태수정
 	int updateOrderList(int orderNo);
 	

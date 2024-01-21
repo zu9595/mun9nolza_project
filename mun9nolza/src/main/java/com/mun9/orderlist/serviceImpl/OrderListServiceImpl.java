@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.mun9.common.DataSource;
 import com.mun9.orderlist.mapper.OrderListMapper;
 import com.mun9.orderlist.service.OrderListService;
+import com.mun9.orderlist.vo.OrderDetailVO;
 import com.mun9.orderlist.vo.OrderListVO;
 
 public class OrderListServiceImpl implements OrderListService{
@@ -18,11 +19,17 @@ public class OrderListServiceImpl implements OrderListService{
 	public List<OrderListVO> getMyOrderList(String userId) {
 		return mapper.selectMyOrderList(userId);
 	}
-
+	/*
+	 * @Override public List<MyOrderDetailVO> getMyOrderDetail(int orderNo, String
+	 * userId) { return mapper.selectMyOrderDetail(orderNo, userId); }
+	 */
+	
+	
 	@Override
 	public boolean modifyOrder(int orderNo) {
 		return mapper.updateOrderList(orderNo) == 1;
 	}
+
 	
 	
 	
