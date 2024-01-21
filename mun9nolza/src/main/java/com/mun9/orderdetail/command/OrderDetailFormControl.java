@@ -31,9 +31,20 @@ public class OrderDetailFormControl implements Control {
 		MemberService msvc = new MemberServiceImpl();
 		MemberVO minfo = msvc.memInfo(userId);
 		
-		req.setAttribute("memberinfo", minfo);
+		int priceSum = 0;
+		for(CartVO singleCart : clist) {
+			if(singleCart.getProDiscount() == 0) {
+				priceSum += (singleCart.getProPrice()*singleCart.getMyproCnt());
+			} else {
+				priceSum += (singleCart.getProDiscount()*singleCart.getMyproCnt());
+			}
+		}
+		
+		req.setAttribute("userId", userId);
+		req.setAttribute("memberInfo", minfo);
 		req.setAttribute("cartList", clist);
-
+		req.setAttribute("orderSum", priceSum);
+		
 		//페이지이동
 		RequestDispatcher rd = req.getRequestDispatcher("order/orderDetail.tiles");
 		try {
