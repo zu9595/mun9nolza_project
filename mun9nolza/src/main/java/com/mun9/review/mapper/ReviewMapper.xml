@@ -10,5 +10,28 @@
  	select * from review where user_id=#{userId}
  </select>
 
+ <select id="selectReviewCount" resultType="int" parameterType="int">
+	select count(*) from review where pro_code = #{proCode}
+ </select>
+ 
+  <select id="reviewListPaging" resultType="review" parameterType="review">
+	select b.* from
+	(select rownum rn, a.* from
+	(select * from review
+		where pro_code = #{proCode}
+		order by re_no
+	) a ) b
+	<![CDATA[
+	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
+    ]]>
+ </select>
+ 
+ <insert id="addReview" parameterType="review">
+ 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content,re_image,re_date) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent},#{reImage},sysdate)
+ </insert>
+ 
+  <select id="selectOrderReview" parameterType="String" resultType="int">
+ 	select order_no from orderlist where user_id = #{userId}
+ </select>
  
 </mapper>

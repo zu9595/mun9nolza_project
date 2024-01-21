@@ -56,6 +56,8 @@ import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.searchControl;
 import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
+import com.mun9.review.command.reviewAddJson;
+import com.mun9.review.command.reviewListJson;
 
 
 
@@ -129,6 +131,10 @@ public class FrontController extends HttpServlet {
 		map.put("/productListForm.do", new ProductListFormControl()); 
 		//상품 상세페이지 이동
 		map.put("/productDetail.do", new ProductDetailControl());
+		//상품 리뷰 목록Json
+		map.put("/reviewList.do", new reviewListJson());
+		//상품 리뷰 추가Json
+		map.put("/reviewAdd.do", new reviewAddJson());
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		

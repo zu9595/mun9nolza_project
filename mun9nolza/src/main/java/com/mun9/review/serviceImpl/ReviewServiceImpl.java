@@ -19,4 +19,28 @@ public class ReviewServiceImpl implements ReviewService{
 		return mapper.selectMyReview(userId);
 	}
 
+	@Override
+	public int getTotalReviewCnt(int proCode) {
+		// TODO Auto-generated method stub
+		return mapper.selectReviewCount(proCode);
+	}
+
+	@Override
+	public List<ReviewVO> reviewListPaging(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.reviewListPaging(vo);
+	}
+
+	@Override
+	public boolean addReview(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.addReview(vo) == 1;
+	}
+
+	@Override
+	public boolean orderTFReview(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectOrderReview(userId) > 0;
+	}
+
 }

@@ -7,10 +7,19 @@
             <div class="col-lg-12">
                 <div class="banner_slider owl-carousel bannerlist">
                 
-                
+                	
+                	<c:forEach var="banner" items="${bannerList}">
+                    <div class="single_banner_slider">
+                    	<div class="banner_img d-none d-lg-block">
+                                <img src="${banner.bannerImg}" alt="">
+                            </div>
+                    </div>
+               		</c:forEach>
+                	
+                	
                 
                		<!-- 여기 -->
-               		<c:forEach var="banner" items="${bannerList}">
+               		<!--<c:forEach var="banner" items="${bannerList}">
                     <div class="single_banner_slider">
                         <div class="row">
                             <div class="col-lg-5 col-md-8">
@@ -26,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-               		</c:forEach>
+               		</c:forEach>-->
                     <!-- 여기 -->
                     
                     

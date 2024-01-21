@@ -3,7 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-  
+<link rel="stylesheet" href="css/review.css">
     
   <!--================Single Product Area =================-->
   <div class="product_image_area section_padding">
@@ -27,7 +27,7 @@
             <h3>${vo.proName }</h3>
             <c:choose>
             <c:when test="${!empty vo.proDiscount }">
-            <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span>${vo.proDiscount }원</h2>
+            <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span><span>${vo.proDiscount }원</span></h2>
             </c:when>
             <c:otherwise>
             <h2>${vo.proPrice }원</h2>
@@ -56,22 +56,13 @@
               <a href="loginForm.do" class="btn_3">상품구매</a>
               </c:otherwise>
               </c:choose>
-              <!-- 장바구니 이동 -->
-              <c:choose>
-              <c:when test="${!empty userId }">
-              <a href="cartList.do" class="btn_3">장바구니 이동</a>
-              </c:when>
-              <c:otherwise>
-              <a href="loginForm.do" class="btn_3">장바구니 이동</a>
-              </c:otherwise>
-              </c:choose>
               <!-- 로그인 세션이 존재할때 -->
               <c:choose>
               <c:when test="${!empty userId }">
-              <a href="javascript:addCartList()" class="like_us fas fa-cart-plus" role = "button"></a>
+              <a href="javascript:addCartList()" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니 추가</a>
               </c:when>
               <c:otherwise>
-              <a href="loginForm.do" class="like_us" role = "button"> <i class="fas fa-cart-plus"></i> </a>
+              <a href="loginForm.do" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니<br>추가</a>
               </c:otherwise>
               </c:choose>
             </div>
@@ -84,162 +75,36 @@
     </div>
   </div>
   <!--================End Single Product Area =================-->
-  
+  <!-- 장바구니 이동 -->
+              <!--<c:choose>
+              <c:when test="${!empty userId }">
+              <a href="cartList.do" class="btn_3">장바구니</a>
+              </c:when>
+              <c:otherwise>
+              <a href="loginForm.do" class="btn_3">장바구니</a>
+              </c:otherwise>
+              </c:choose>-->
   
 
   <!--================Product Description Area =================-->
+
+
+
   <section class="product_description_area">
-    <div class="container">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">상품 설명</a>
+	<div class="container">
+		<ul class="btns" >
+        <li class="btn1">
+          <a class="tab1" href="#">상품 설명</a>
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-            aria-selected="false">리뷰</a>
+        <li class="btn2">
+          <a class="tab2" href="#">리뷰</a>
         </li>
       </ul>
-      
-      <!-- 리뷰시작 -->
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <p>
-            ${vo.proDesc }
-          </p>
-          
-        </div>
-
-        <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-          <div class="row">
-            <div class="col-lg-6">
-              
-              <div class="review_list">
-                <!-- 리뷰 페이징 목록 -->
-                <!-- 리뷰 1건 리뷰 -->
-                <div class="review_item">
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="img/product/single-product/review-1.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <!-- 리뷰 1건 리뷰 -->
-                
-                <div class="review_item">
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="img/product/single-product/review-2.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div class="review_item">
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="img/product/single-product/review-3.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="review_box">
-                <h4>리뷰 쓰기</h4>
-                <!-- 별점클릭 이벤트 -->
-                <p>별점:</p>
-                <ul class="list">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                </ul>
-                <!-- 별점클릭 이벤트 -->
-                <!-- 리뷰 등록 ajax -->
-                <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="btn_3">
-                      등록
-                    </button>
-                  </div>
-                </form>
-                <!-- 리뷰 등록 -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 리뷰끝 -->
-    </div>
+	</div>
+    <div class=" tab3"></div>
+    <div class=" pageination"></div>
   </section>
+
   <!--================End Product Description Area =================-->
 
   <!-- product_list part start-->
@@ -301,6 +166,8 @@
 	let userId = `${userId}`;
 	let proPrice = `${vo.proPrice}`;
 	let proDiscount = `${vo.proDiscount}`;
+	let proDesc = `${vo.proDesc}`;
 </script>
 <script src="js/product/productDetail.js"></script>
+<script src="js/product/review.js"></script>
   <!-- product_list part end-->

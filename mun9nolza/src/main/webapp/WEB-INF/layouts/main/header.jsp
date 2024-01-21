@@ -27,7 +27,7 @@
                 		<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="far fa-user"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="loginForm.do">로그인</a></li>
+                        <li><a class="dropdown-item" href="loginForm.do">로그인&ensp;</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="joinMemberForm.do">회원가입</a></li>
                         </ul>
@@ -109,9 +109,9 @@
 						<span class="menu_icon"><i class="fas fa-bars"></i></span>
 					</button>
 
-					<div class="collapse navbar-collapse main-menu-item"
+					<div class="collapse navbar-collapse main-menu-item big_width"
 						id="navbarSupportedContent">
-						<ul class="navbar-nav">
+						<ul class="navbar-nav headerCategory">
 							<li class="nav-item"><a class="nav-link" href="main.do">Home</a>
 							</li>
 							<li><a class="nav-link" href="productListForm.do">전체상품</a></li>
@@ -140,22 +140,23 @@
 							<li><a class="nav-link" href="inquireListForm.do">문의사항</a></li>
 						</ul>
 					</div>
+					
 					<!-- 웹페이지가 작을때 스타일에 visibility='visible' / 기본 'hidden'  처리 -->
 					<div class="hearer_icon d-flex able">
 						<c:choose>
 							<c:when test="${empty logId }">
-								<a href="loginForm.do">로그인</a>
+								<a href="loginForm.do">로그인&ensp;</a>
 								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
-								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()"><i class="bi bi-door-open"></i></a>
 								<a href="javascript:listView('${logId}')"><i class="bi bi-clipboard"></i></a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do">마이페이지</a>
-								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
+								<a href="myOrderList.do"><i class="bi bi-person-badge"></i></a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()"><i class="bi bi-door-open"></i></a>
 							</c:otherwise>
 						</c:choose>
 						<div class="cart">

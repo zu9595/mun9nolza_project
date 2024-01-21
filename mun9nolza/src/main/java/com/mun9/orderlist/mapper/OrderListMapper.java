@@ -8,6 +8,7 @@ public interface OrderListMapper {
 	
 	//마이페이지(주문내역조회): 로그인아이디-최근주문순
 	List<OrderListVO> selectMyOrderList(String userId);
+	List<OrderListVO> selectDetailMap(String userId);
 	//주문상태수정
 	int updateOrderList(int orderNo);
 	
