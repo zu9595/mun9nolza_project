@@ -29,25 +29,24 @@ function cartList() {
               	let cartListTbody = document.querySelector('.cartListTbody');
 				cartListTbody.insertAdjacentHTML('afterbegin', newTr);
 				myproCnt = cart.myproCnt;
-				//모두 선택, 해제
-				allCheckEvent();
-				//체크박스 선택 삭제
-				//체크박스 수량변경
-				console.log(cart.myproCnt)
+				
+				//디폴트로 체크박스 모두 선택
+				$('thead input[type="checkbox"]').prop('checked', true);
+				//체크박스 모두 선택, 해제 이벤트
+				
+				//체크박스 수량변경 이벤트
+				//console.log(cart.myproCnt);
 				cntDecrementEvent(idx,cart);
 				cntIncrementEvent(idx,cart);
 				
 				//서브토탈
-				makeSubTotal(idx,cart)
-				
-				//배송비
-				//makeDeliveryFee(idx,res)
-				//총금액
-				//makeTotal(idx,res)
-				
-				
-			})
+				makeSubTotal(idx,cart);				
+			})				
+				allCheckEvent(res);
+				//체크박스 선택 삭제 이벤트
 				delCheckEvent(res);
+				//배송비, 총금액 계산
+				makeFeeTotal(res);
 //			return res;
         })
 //        .then(res => {
@@ -69,14 +68,23 @@ function cartList() {
 };
 
 // 모두 선택, 선택 해제
-function allCheckEvent(){
+function allCheckEvent(res){
 	$('thead input[type="checkbox"]').on('change', function(){
 				//console.log(this.checked);				
 				//console.log($('tbody input[type="checkbox"]').prop('checked'));				
 				//prop로...
 				$('tbody input[type="checkbox"]').prop('checked', this.checked);
+				
+				//makeFeeTotal(res);
 			})
 }
+
+// 체크박스 1개라도 선택해제시 thead체크박스도 선택해제
+ $('tbody input[type="checkbox"]').click, function () {
+                            $('thead input[type="checkbox"]').prop('checked', false);
+                        };
+
+
 
 // 선택 삭제 이벤트
 function delCheckEvent(res){
@@ -95,6 +103,8 @@ function delCheckEvent(res){
 		})
 		
 		$('tbody input:checked').parentsUntil('tbody').remove();
+		
+		//makeFeeTotal(res);
 	})
 }
 
@@ -104,7 +114,7 @@ function delCheckEvent(res){
 function cntDecrementEvent(idx,res){
 	$(".cartListTbody").on("click",`.ininput${idx}`,function(e){
 		let val = $(e.target).prev().val();
-		console.log(e.target)
+		//console.log(e.target)
 		val++;
         $(e.target).prev().val(val);
         
@@ -119,13 +129,14 @@ function cntDecrementEvent(idx,res){
 	
 	
 	makeSubTotal(idx,res);
+	//makeFeeTotal(res);
 	})
 }
 // 체크박스 수량 다운태그
 function cntIncrementEvent(idx,res){	
 	$(".cartListTbody").on("click",`.deinput${idx}`,function(e){
 		let val = $(e.target).next().val();
-		console.log(e.target)
+		//console.log(e.target)
 		if(val > 1){
 			val--;
 		}
@@ -139,6 +150,7 @@ function cntIncrementEvent(idx,res){
 	    })
 	    .catch(console.error);
 	    
+		//makeFeeTotal(res);
 		makeSubTotal(idx,res);
 		})
 		
@@ -165,35 +177,39 @@ function makeSubTotal(idx,res){
 	//console.log(myproCnt);
 	
 	$(`.subTotal${idx}`).text(proDiscount * myproCnt);	
+	//makeFeeTotal(res);
 }
 
-// 배송비 계산
-function makeDeliveryFee(idx,res){
-	let proDiscount = $(`.proDiscount${idx}`).text();	
-	let myproCnt = $(`.myproCnt${idx}`).val();
-	//let subTotal =$(`.proDiscount${idx}`).text() * $(`.myproCnt${idx}`).val();
-	//let total = $(`.total`).val();
+// 배송비, 총금액 계산
+function makeFeeTotal(res){
 	let preTotal = 0;
-	console.log(total);
-		
+		/*let list = new ArrayList();
+		console.log($('tbody input:checked'));
+		let checkedpro = $('tbody input:checked')
+		for(i=0; i<checkedpro.length; i++){
+			console.log($('.subTotal'+i).val());
+		}*/
 	$('tbody input:checked').each((idx,cart) => {
-		let proDiscount = res[cart.className].proDiscount;
+		let proDiscount = res[cart.className].proDiscount; //$(`.proDiscount${idx}`).val();
 		let myproCnt = res[cart.className].myproCnt;
 		let subTotal = proDiscount * myproCnt;
-		console.log(subTotal);
 		preTotal += subTotal;
-		
 	})
-	
-	$(`.total`).text(preTotal);
+	console.log(preTotal);
+	if(preTotal < 50000 ){
+		$(`.delieveryFee`).text(`+3000 원`)
+		$(`.total`).text(preTotal+3000);
+	}else{
+		$(`.delieveryFee`).text("무료")
+		$(`.total`).text(preTotal);
+	}
 }
 
-// 총 금액
-function makeTotal(idx,res){
+function makeTotal(res){
 	
-	
-	
-}
+	//$('table input[type="checkbox"]').on('change', makeFeeTotal(res));
+};
+
 
 // :checked 로 선택된 상품만 주문하기 페이지로 넘기기
 
@@ -203,7 +219,7 @@ function makeTotal(idx,res){
 function makeTr(cart,idx){
 	let newTr = `<tr>
 				<td>
-					<input type="checkbox" id="f-option" name="selector" class="${idx}">
+					<input type="checkbox" id="f-option" name="selector" class="${idx}" checked="true">
 				</td>
 				
                 <td>

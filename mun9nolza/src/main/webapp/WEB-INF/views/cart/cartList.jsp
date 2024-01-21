@@ -32,14 +32,14 @@
                 <td>
                 	<ul>
                 		<li><h6>배송비</h6></li>
-                		<li><h5>총 금액</h5></li>
+                		<li><h5>결제금액</h5></li>
                 	</ul>                  
                 </td>
                 <td>
                 	<td>
                 	<ul>
-                		<li><span class="delieveryFee">3000</span>원</li>
-                		<li><span class="total">총금액이야</span>원</li>
+                		<li><span class="delieveryFee"></span></li>
+                		<li><span class="total"></span> 원</li>
                 	</ul>                  
                 </td>
                 
