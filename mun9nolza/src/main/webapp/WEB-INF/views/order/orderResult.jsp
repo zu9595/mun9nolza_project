@@ -25,7 +25,7 @@
 						</thead>
 						<tbody>
 
-							<c:forEach var="order" items="${cartList }">
+						<!-- 	<c:forEach var="order" items="${cartList }"> -->
 								<tr>
 									<th><span>${order.proCode }</span></th>
 									<th><img src="${order.proImage }" alt="작은이미지" width="30px"
@@ -35,7 +35,7 @@
 									<th>${order.myproCnt }</th>
 									<th><span class="orderprice">${order.proPrice*order.myproCnt }</span></th>
 								</tr>
-							</c:forEach>
+							<!--</c:forEach>-->
 
 
 							<tr>
@@ -74,16 +74,16 @@
 					<h4>받는 사람 정보</h4>
 					<ul>
 						<li>
-							<p>수령인</p> <span>:${}</span>
+	<!--						<p>수령인</p> <span>:${}</span> -->
 						</li>
 						<li>
-							<p>주소</p> <span>:${ }</span>
+	<!--						<p>주소</p> <span>:${ }</span> -->
 						</li>
 						<li>
-							<p>상세주소</p> <span>:${ }</span>
+	<!--						<p>상세주소</p> <span>:${ }</span> -->
 						</li>
 						<li>
-							<p>배송메모</p> <span>:${ }</span>
+	<!--						<p>배송메모</p> <span>:${ }</span> -->
 						</li>
 					</ul>
 				</div>

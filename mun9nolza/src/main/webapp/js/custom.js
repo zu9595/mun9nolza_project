@@ -246,6 +246,10 @@
 					console.log(data);
 					li.innerText = data;
 					li.className="item";
+					let a = document.createElement('a');
+					a.setAttribute('href','#')
+					a.setAttribute('style','display=block;')
+					li.append(a)	
 					li.addEventListener('click',function(){
 						location.href="#";
 					});
