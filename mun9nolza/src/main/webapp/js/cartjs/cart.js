@@ -69,7 +69,7 @@ function cartList() {
 
 // 모두 선택, 선택 해제
 function allCheckEvent(res){
-	$('thead input[type="checkbox"]').on('change', function(){
+	$('thead input[type="checkbox"]').on('click', function(){
 				//console.log(this.checked);				
 				//console.log($('tbody input[type="checkbox"]').prop('checked'));				
 				//prop로...
@@ -80,10 +80,31 @@ function allCheckEvent(res){
 }
 
 // 체크박스 1개라도 선택해제시 thead체크박스도 선택해제
- $('tbody input[type="checkbox"]').click, function () {
+ $('tbody input[type="checkbox"]').on('click', function () {
                             $('thead input[type="checkbox"]').prop('checked', false);
-                        };
+                        });
 
+
+
+const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+console.log(checkboxes);
+for(const checkbox of checkboxes){
+    checkbox.addEventListener('click',function(){
+        
+        const totalCnt = checkboxes.length;
+    
+        const checkedCnt = document.querySelectorAll('.chk:checked').length;
+        
+        if(totalCnt == checkedCnt){
+            document.querySelector('#checkAll').checked = true;
+        }
+        else{
+            document.querySelector('#checkAll').checked = false;
+        }
+        
+    });
+    
+}
 
 
 // 선택 삭제 이벤트
@@ -104,7 +125,7 @@ function delCheckEvent(res){
 		
 		$('tbody input:checked').parentsUntil('tbody').remove();
 		
-		//makeFeeTotal(res);
+		makeFeeTotal(res);
 	})
 }
 
@@ -129,7 +150,7 @@ function cntDecrementEvent(idx,res){
 	
 	
 	makeSubTotal(idx,res);
-	//makeFeeTotal(res);
+	makeFeeTotal(res);
 	})
 }
 // 체크박스 수량 다운태그
@@ -150,8 +171,8 @@ function cntIncrementEvent(idx,res){
 	    })
 	    .catch(console.error);
 	    
-		//makeFeeTotal(res);
 		makeSubTotal(idx,res);
+		makeFeeTotal(res);
 		})
 		
 }
@@ -183,25 +204,18 @@ function makeSubTotal(idx,res){
 // 배송비, 총금액 계산
 function makeFeeTotal(res){
 	let preTotal = 0;
-		/*let list = new ArrayList();
-		console.log($('tbody input:checked'));
-		let checkedpro = $('tbody input:checked')
-		for(i=0; i<checkedpro.length; i++){
-			console.log($('.subTotal'+i).val());
-		}*/
+	
 	$('tbody input:checked').each((idx,cart) => {
-		let proDiscount = res[cart.className].proDiscount; //$(`.proDiscount${idx}`).val();
-		let myproCnt = res[cart.className].myproCnt;
-		let subTotal = proDiscount * myproCnt;
+		let subTotal = parseInt(document.querySelector('.subTotal'+idx).innerHTML);
 		preTotal += subTotal;
+		console.log(preTotal);
 	})
-	console.log(preTotal);
 	if(preTotal < 50000 ){
-		$(`.delieveryFee`).text(`+3000 원`)
-		$(`.total`).text(preTotal+3000);
+		document.querySelector('.delieveryFee').innerHTML = '+3000 원';
+		document.querySelector('.total').innerHTML = preTotal + 3000;
 	}else{
-		$(`.delieveryFee`).text("무료")
-		$(`.total`).text(preTotal);
+		document.querySelector('.delieveryFee').innerHTML = '무료';
+		document.querySelector('.total').innerHTML = preTotal;
 	}
 }
 
