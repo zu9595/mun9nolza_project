@@ -16,7 +16,7 @@
 
 <section class="cat_product_area section_padding">
         <div class="container">
-            <div class="row" style="padding-top: 80px">
+            <div class="row">
                 <div class="col-lg-3">
                 
                     <div class="left_sidebar_area" style="padding-top: 100px">

@@ -7,18 +7,56 @@
 	<!-- 스타일에 화면이 작아지면 display ='none' 처리 -->
 	<div class="container unable">
 		<div class="row align-items-center">
-			<div class="col-lg-12">
+			<div class="col-lg-12" style="margin-top: 35px;">
 				<nav class="navbar navbar-expand-lg navbar-light">
+			<a class="navbar-brand able" style="visibility: hidden; margin-right: 3rem;"> <img
+						src="img/logo.png" alt="logo">
+					</a>
 					<div class="collapse navbar-collapse main-menu-item"
 						id="navbarSupportedContent">
 						<ul class="navbar-nav">
 							<li class="nav-item"><a class="navbar-brand"
-								href="main.do"> <img src="img/logo.png" alt="logo">
+								href="main.do"> <img src="img/logo.png" alt="logo" style=" width: 10rem;">
 							</a></li>
 						</ul>
 					</div>
-					<div class="hearer_icon d-flex">
-						<c:choose>
+					<div class="hearer_icon d-flex" style="font-family: 'Metropolis','Noto Sans KR',sans-serif; font-size: 1rem; font-weight: 700;">
+					<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                        <c:choose>
+							<c:when test="${empty logId }">
+                		<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="far fa-user"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="loginForm.do">로그인&ensp;</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="joinMemberForm.do">회원가입</a></li>
+                        </ul>
+                        </c:when>
+						<c:when test="${!empty logId and status eq 'admin'}">
+							<li><span>${logName } 님</span></li>
+                		<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="fas fa-user fa-fw"></i></a>
+							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a href="javascript:listView('${logId}')"><i class="bi bi-clipboard"></i></a></li>
+                        <li><hr class="dropdown-divider" /></li>
+						 <li><a class="dropdown-item" href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a></li>
+                        </ul>
+                        </c:when>
+							<c:otherwise>
+							<li><span>${logName } 님</span></li>
+                		<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="fas fa-user fa-fw" ></i></a>
+							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="myOrderList.do">마이페이지</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+						 <li><a class="dropdown-item" href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a></li>
+                        </ul>
+							</c:otherwise>
+						</c:choose>
+                </li>
+            </ul>
+					
+						<!--<c:choose>
 							<c:when test="${empty logId }">
 								<a href="loginForm.do">로그인</a>
 								<a href="joinMemberForm.do">회원가입</a>
@@ -33,7 +71,7 @@
 								<a href="myOrderList.do">마이페이지</a>
 								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
 							</c:otherwise>
-						</c:choose>
+						</c:choose>-->
 
 						<div class="cart">
 							<a href="cartList.do" role="button"> 
@@ -71,9 +109,9 @@
 						<span class="menu_icon"><i class="fas fa-bars"></i></span>
 					</button>
 
-					<div class="collapse navbar-collapse main-menu-item"
+					<div class="collapse navbar-collapse main-menu-item big_width"
 						id="navbarSupportedContent">
-						<ul class="navbar-nav">
+						<ul class="navbar-nav headerCategory">
 							<li class="nav-item"><a class="nav-link" href="main.do">Home</a>
 							</li>
 							<li><a class="nav-link" href="productListForm.do">전체상품</a></li>
@@ -85,8 +123,8 @@
 									<a class="dropdown-item" href="category.html"> 다이어리</a> <a
 										class="dropdown-item" href="productDetail.do?pcode=1">캘린더</a> <a
 										class="dropdown-item" href="single-product.html">노트</a> <a
-										class="dropdown-item" href="single-product.html">일기장</a> <a
-										class="dropdown-item" href="single-product.html">가계부</a>
+										class="dropdown-item" href="single-product.html">필기도구</a> <a
+										class="dropdown-item" href="single-product.html">필통/파우치</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="blog.html"
@@ -102,22 +140,23 @@
 							<li><a class="nav-link" href="inquireListForm.do">문의사항</a></li>
 						</ul>
 					</div>
+					
 					<!-- 웹페이지가 작을때 스타일에 visibility='visible' / 기본 'hidden'  처리 -->
 					<div class="hearer_icon d-flex able">
 						<c:choose>
 							<c:when test="${empty logId }">
-								<a href="loginForm.do">로그인</a>
+								<a href="loginForm.do">로그인&ensp;</a>
 								<a href="joinMemberForm.do">회원가입</a>
 							</c:when>
 							<c:when test="${!empty logId and status eq 'admin'}">
 								<span>${logName } 님</span>
-								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()"><i class="bi bi-door-open"></i></a>
 								<a href="javascript:listView('${logId}')"><i class="bi bi-clipboard"></i></a>
 							</c:when>
 							<c:otherwise>
 								<span>${logName } 님</span>
-								<a href="myOrderList.do">마이페이지</a>
-								<a href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a>
+								<a href="myOrderList.do"><i class="bi bi-person-badge"></i></a>
+								<a href="logout.do" onclick="javascript:kakaoLogout()"><i class="bi bi-door-open"></i></a>
 							</c:otherwise>
 						</c:choose>
 						<div class="cart">

@@ -39,6 +39,8 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
+import com.mun9.orderdetail.command.OrderDetailJson;
+import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
@@ -56,6 +58,8 @@ import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.searchControl;
 import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
+import com.mun9.review.command.reviewAddJson;
+import com.mun9.review.command.reviewListJson;
 
 
 
@@ -122,6 +126,10 @@ public class FrontController extends HttpServlet {
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
 		//단건결제화면으로 이동
 		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
+		//결제 시 데이터 관련
+		map.put("/orderDetailData.do", new OrderDetailJson());
+		//결제 후 내역 페이지
+		map.put("/orderResult.do", new OrderResultControl());
 		
 		
 		
@@ -129,6 +137,10 @@ public class FrontController extends HttpServlet {
 		map.put("/productListForm.do", new ProductListFormControl()); 
 		//상품 상세페이지 이동
 		map.put("/productDetail.do", new ProductDetailControl());
+		//상품 리뷰 목록Json
+		map.put("/reviewList.do", new reviewListJson());
+		//상품 리뷰 추가Json
+		map.put("/reviewAdd.do", new reviewAddJson());
 		//전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl()); 
 		

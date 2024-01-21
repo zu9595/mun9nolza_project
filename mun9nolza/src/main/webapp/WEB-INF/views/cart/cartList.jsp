@@ -52,7 +52,7 @@
           </div>
           <div class="checkout_btn_inner float-right">
             <a class="btn_1" href="#">쇼핑 계속하기</a>
-            <a class="btn_1 checkout_btn_1" href="#">주문하기</a>
+            <a class="btn_1 checkout_btn_1" href="orderDetailForm.do">주문하기</a>
           </div>
         </div>
       </div>

@@ -35,6 +35,11 @@ input:focus {
   outline: none !important;
 }
 
+.headerCategory li {
+	margin: 0 2%;
+	width: 10rem;
+}
+
 /* line 20, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .gray_bg {
   background-color: #ecfdff;
@@ -42,13 +47,13 @@ input:focus {
 
 /* line 24, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .section_padding {
-  padding: 140px 0px;
+  padding: 40px 0px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   /* line 24, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
   .section_padding {
-    padding: 140px 0px;
+    padding: 40px 0px;
   }
 }
 
@@ -513,15 +518,14 @@ ul {
   display: inline-block;
   padding: 9px 42px;
   border-radius: 50px;
-  background-color: #ff3368;
+  background-color: rgb(134,164,28);
   border: 1px solid #ecfdff;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
   font-weight: 400;
-  box-shadow: -1.717px 8.835px 29.76px 2.24px rgba(255, 51, 104, 0.18);
-  border: 1px solid #ff3368;
+  border: 1px solid #86a41c;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -2110,6 +2114,7 @@ ul {
   top: 0;
   width: 100%;
   z-index: 999;
+  display: contents;
 }
 
 /* line 9, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
@@ -2121,12 +2126,13 @@ ul {
 /* line 14, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
 .main_menu .navbar {
   padding: 0px;
+  height: 80px;
 }
 
 /* line 20, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
 .main_menu .main-menu-item ul li .nav-link {
   color: #000;
-  font-size: 15px;
+  font-size: 17.5px;
   padding: 36px 23px;
   font-family: "Poppins", sans-serif;
   text-transform: capitalize;
@@ -2302,6 +2308,7 @@ ul {
 }
 
 @media (max-width: 991px) {
+  
   .unable{
 	  display: none;  
   }
@@ -2312,6 +2319,7 @@ ul {
   /* line 194, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .main_menu {
     padding: 26px 0px;
+    
   }
   /* line 198, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
   .home_menu .main-menu-item {
@@ -2439,7 +2447,7 @@ ul {
 .banner_part .single_banner_slider .banner_text {
   display: table;
   width: 100%;
-  height: 820px;
+  height: 400px;
 }
 
 /* line 11, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
@@ -2538,19 +2546,19 @@ ul {
 
 /* line 66, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
 .banner_part .single_banner_slider .banner_img {
-  position: absolute;
+  /*position: absolute;
   right: 0;
-  top: 30%;
+  top: 30%;*/
+  height: 30rem;
 }
 
 /* line 72, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
 .banner_part .owl-nav {
   position: absolute;
-  right: -20%;
+  right: -4%;
   bottom: 0;
-  padding: 35px 80px;
-  background-color: #fff;
-}
+  padding: 13px 16px;
+}	
 
 @media (max-width: 991px) {
   /* line 72, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
@@ -3882,6 +3890,8 @@ ul {
   font-weight: bold;
   color: #ff3368;
   margin-bottom: 15px;
+  position: relative;
+  left: 12rem;
 }
 
 /* line 639, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
@@ -4083,10 +4093,9 @@ ul {
 
 /* line 803, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
 .product_description_area .nav.nav-tabs li a.active {
-  background: #ff3368;
+  background: #86a41c;
   color: #fff;
-  border-color: #ff3368;
-  box-shadow: -1.717px 8.835px 29.76px 2.24px rgba(255, 51, 104, 0.18);
+  border-color: #86a41c;
 }
 
 /* line 813, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
@@ -5520,9 +5529,13 @@ ul {
 
 /* line 2042, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
 .s_product_text .btn_3 {
-  padding: 13px 36px;
-  box-shadow: -1.717px 8.835px 29.76px 2.24px rgba(255, 51, 104, 0.18);
-  border: 1px solid #ff3368;
+  padding: 12px 18px;
+  box-shadow: -1.717px 8.835px 29.76px 2.24px ;
+  border: 1px solid rgb(134,164,28);
+  height: 3rem;
+  width: 7rem;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 @media (max-width: 576px) {
@@ -7790,5 +7803,10 @@ h6 {
     justify-content: flex-start !important;
   }
 }
-
+@media (max-width: 991px) {
+  .s_product_text h2{
+	  position: relative;
+	  left: 69%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

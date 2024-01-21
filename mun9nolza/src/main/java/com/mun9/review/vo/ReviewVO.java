@@ -10,10 +10,11 @@ public class ReviewVO {
 	private int reNo;
 	private int orderNo;
 	private int proCode;
+	private String userId;
 	private String reTitle;
-	private String reContent;
 	private Date reDate;
+	private String reContent;
 	private String reImage;
 	private int reRate;
-	private String userId;
+	private int page;
 }

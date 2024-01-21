@@ -47,13 +47,13 @@
 		order by pro_name
 	</when>
 	<when test="proPrice != null and proPrice != 0">
-		order by pro_price
+		order by pro_discount
 	</when>
 	<when test="proSell != null and proSell != 0">
 		order by pro_sell
 	</when>
 	<otherwise>
-		order by pro_discount
+		order by pro_price
 	</otherwise>
 	</choose>
 	) a ) b

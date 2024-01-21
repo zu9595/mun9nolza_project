@@ -2,7 +2,7 @@
  * 
  */
 
- let a = `<div class="owl-item cloned" style="width: 1140px;"><div class="single_banner_slider">
+ let a = `<div class="owl-item cloned" style="width: 700px;"><div class="single_banner_slider">
                         <div class="row">
                             <div class="col-lg-5 col-md-8">
                                 <div class="banner_text">
