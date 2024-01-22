@@ -23,6 +23,12 @@
 		
 	</delete>
 	
+	<select id="selectOneCart" parameterType="cart">
+		select user_id, pro_code, mypro_cnt
+		from cart
+		where user_id = #{userId } and pro_code= #{proCode}
+	</select>
+	
 	<insert id="addCart" parameterType="cart">
 		insert into cart values (mypro_no_seq.nextval,#{userId},#{proCode},#{proPrice},#{proDiscount},#{myproCnt})
 	</insert>

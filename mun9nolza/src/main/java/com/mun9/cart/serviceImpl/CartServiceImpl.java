@@ -35,6 +35,11 @@ public class CartServiceImpl implements CartService{
 		// TODO Auto-generated method stub
 		return mapper.addCart(vo) == 1;
 	}
+
+	@Override
+	public boolean selectOneCart(CartVO vo) {
+		return mapper.selectOneCart(vo) ==1;
+	}
 	
 	
 

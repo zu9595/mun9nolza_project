@@ -7,6 +7,7 @@ import com.mun9.cart.vo.CartVO;
 public interface CartService {
 	public List<CartVO> selectCartList(String userId);
 	public boolean deleteCartList(CartVO vo);
+	public boolean selectOneCart(CartVO vo);
 	public boolean addCartList(CartVO vo);
 	public boolean changeMyproCnt(CartVO vo);
 }

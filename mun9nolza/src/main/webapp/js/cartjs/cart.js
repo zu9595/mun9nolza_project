@@ -4,9 +4,10 @@
 let pageMoveId = '';
 let pageMoveCode = '';
 let pageMovecnt = '';
-
+				
 $(document).ready(function(){
 	cartList();
+	checkEventHandler();
 //	cntDecrementEvent();
 //	cntIncrementEvent();
 	console.log(pageMoveId)
@@ -46,7 +47,8 @@ function cartList() {
 				//체크박스 선택 삭제 이벤트
 				delCheckEvent(res);
 				//배송비, 총금액 계산
-				makeFeeTotal(res);
+				makeFeeTotal();
+
 //			return res;
         })
 //        .then(res => {
@@ -75,58 +77,55 @@ function allCheckEvent(res){
 				//prop로...
 				$('tbody input[type="checkbox"]').prop('checked', this.checked);
 				
-				//makeFeeTotal(res);
+				makeFeeTotal();
 			})
 }
 
+
 // 체크박스 1개라도 선택해제시 thead체크박스도 선택해제
- $('tbody input[type="checkbox"]').on('click', function () {
-                            $('thead input[type="checkbox"]').prop('checked', false);
-                        });
-
-
-
-const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-console.log(checkboxes);
-for(const checkbox of checkboxes){
+function checkEventHandler(){
+	let checkbox = document.querySelector('tbody');
     checkbox.addEventListener('click',function(){
-        
-        const totalCnt = checkboxes.length;
+        if(event.target.type != 'checkbox' ) {
+			return;
+		}
+        let totalCnt = document.querySelectorAll('tbody input[type="checkbox"]').length;
     
-        const checkedCnt = document.querySelectorAll('.chk:checked').length;
+        let checkedCnt = document.querySelectorAll('tbody input[type="checkbox"]:checked').length;
         
         if(totalCnt == checkedCnt){
-            document.querySelector('#checkAll').checked = true;
+            document.querySelector('.allCheck').checked = true;
         }
         else{
-            document.querySelector('#checkAll').checked = false;
+            document.querySelector('.allCheck').checked = false;
         }
         
+		makeFeeTotal();
     });
     
 }
 
-
 // 선택 삭제 이벤트
-function delCheckEvent(res){
+function  delCheckEvent(res){
 	$('#delChecked').on('click', function(){
+		let checkedCnt = document.querySelectorAll('tbody input[type="checkbox"]:checked').length;
 		//console.log(res);
 		//console.log($('tbody input:checked'));
-		$('tbody input:checked').each((idx,cart) => {
-		let userId = res[cart.className].userId;
-		let proCode = res[cart.className].proCode;
-		//console.log(res[cart.className].proCode);
-			fetch(`delCart.do?userId=${userId}&proCode=${proCode}`, {
-        	method: "get",
-       		headers: { "Content-Type": "application/json" }
-	    	})
-	    	.catch(console.error);
-		})
-		
+		$('tbody input:checked').each(async function (idx,cart)  {
+			let userId = res[cart.className].userId;
+			let proCode = res[cart.className].proCode;
+			//console.log(res[cart.className].proCode);
+			await fetch(`delCart.do?userId=${userId}&proCode=${proCode}`, {
+	        	method: "get",
+	       		headers: { "Content-Type": "application/json" }
+		    	})
+		    	.catch(console.error);
+			
+		})// end of each
+		alert(checkedCnt+'개 상품이 삭제되었습니다')
 		$('tbody input:checked').parentsUntil('tbody').remove();
-		
-		makeFeeTotal(res);
-	})
+		makeFeeTotal();
+	}) //end of click
 }
 
 
@@ -150,7 +149,7 @@ function cntDecrementEvent(idx,res){
 	
 	
 	makeSubTotal(idx,res);
-	makeFeeTotal(res);
+	makeFeeTotal();
 	})
 }
 // 체크박스 수량 다운태그
@@ -172,7 +171,7 @@ function cntIncrementEvent(idx,res){
 	    .catch(console.error);
 	    
 		makeSubTotal(idx,res);
-		makeFeeTotal(res);
+		makeFeeTotal();
 		})
 		
 }
@@ -202,7 +201,7 @@ function makeSubTotal(idx,res){
 }
 
 // 배송비, 총금액 계산
-function makeFeeTotal(res){
+function makeFeeTotal(){
 	let preTotal = 0;
 	
 	$('tbody input:checked').each((idx,cart) => {
