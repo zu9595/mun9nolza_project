@@ -19,6 +19,8 @@ public class OrderListVO {
 	private String deliveryMemo;
 	private String orderStatus;
 	
+
+	
     List<OrderDetailVO> detailList;
 }
 

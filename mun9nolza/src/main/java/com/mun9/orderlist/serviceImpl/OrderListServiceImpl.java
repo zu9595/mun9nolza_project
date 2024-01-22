@@ -29,6 +29,10 @@ public class OrderListServiceImpl implements OrderListService{
 		return mapper.insertOrderList(vo) == 1;
 	}
 	
-	
+	@Override
+	public boolean orderTFReview(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectOrderReview(userId) > 0;
+	}
 	
 }

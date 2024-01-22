@@ -5,16 +5,16 @@
   
 <mapper namespace="com.mun9.orderlist.mapper.OrderListMapper">
 
+
 <insert id="insertOrderList" parameterType="orderlist">
 	insert into orderlist(order_no, order_date, user_id, order_recipient, order_addr, detail_addr, order_phone, total_price, delivery_fee, delivery_memo, order_status)
 	values(order_no_seq.nextval, #{orderDate}, #{userId}, #{orderRecipient}, #{orderAddr}, #{detailAddr}, #{orderPhone}, #{totalPrice}, #{deliveryFee}, #{deliveryMemo}, #{orderStatus})
 </insert>
  	
- 	
- 	
   <resultMap id="selectDetailMap" type="orderlist">
    	<result property="orderNo" column="order_no"/>
  	<result property="orderDate" column="order_date"/>
+ 	
  	<result property="orderRecipient" column="order_recipient"/>
  	<result property="orderAddr" column="order_addr"/>
  	<result property="detailAddr" column="detail_addr"/>
@@ -26,7 +26,7 @@
  	<result property="orderStatus" column="order_status"/>
   
    <collection property="detailList" ofType="orderdetail">
-  	 <result property="procode" column="pro_code"/>
+  	 <result property="proCode" column="pro_code"/>
   	 <result property="proImage" column="pro_image"/>
   	 <result property="proName" column="pro_name"/>
   	 <result property="deProCnt" column="de_pro_cnt"/>
@@ -36,7 +36,7 @@
   
  <!-- 마이페이지(주문내역조회): 로그인아이디-최근주문순 -->
  <select id="selectMyOrderList" resultMap="selectDetailMap" parameterType="String">
- 	select o.order_date as "orderDate", o.order_no, p.pro_image, p.pro_name, od.de_pro_cnt, o.total_price, o.order_status,
+ 	select o.order_date, o.order_no, p.pro_image, p.pro_code, p.pro_name, od.de_pro_cnt, od.de_pro_price, o.total_price, o.order_status,
  	       o.order_recipient, o.order_phone, o.order_addr, o.detail_addr
 	from orderlist o, product p, orderdetail od
 	where o.order_no = od.order_no
@@ -49,5 +49,9 @@
  <update id="updateOrderList" parameterType="int">
   	update orderlist set order_status = '주문취소' where order_no = #{orderNo}
  </update>
+ 
+   <select id="selectOrderReview" parameterType="String" resultType="int">
+ 	select count(order_no) count from orderlist where user_id = #{userId}
+ </select>
  
 </mapper>

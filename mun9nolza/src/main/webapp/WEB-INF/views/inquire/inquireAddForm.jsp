@@ -21,8 +21,8 @@
 						<option value="다이어리">다이어리</option>
 						<option value="캘린더">캘린더</option>
 						<option value="노트">노트</option>
-						<option value="일기장">일기장</option>
-						<option value="가계부">가계부</option>
+						<option value="필기도구">필기도구</option>
+						<option value="필통/파우치">필통/파우치</option>
 						<option value="메모지">메모지</option>
 						<option value="스티커">스티커</option>
 						<option value="테이프">테이프</option>
