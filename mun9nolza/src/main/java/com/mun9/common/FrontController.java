@@ -21,6 +21,7 @@ import com.mun9.inquire.command.InquireDelControl;
 import com.mun9.inquire.command.InquireDetailControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
+import com.mun9.inquire.command.MyInquireControl;
 import com.mun9.inquire.command.ProdCodeListControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
@@ -29,6 +30,7 @@ import com.mun9.member.command.AdminMemberListControl;
 import com.mun9.member.command.AdminProductListFormControl;
 import com.mun9.member.command.FindIdControl;
 import com.mun9.member.command.FindPwControl;
+import com.mun9.member.command.JoinIdJsonControl;
 import com.mun9.member.command.JoinMemberControl;
 import com.mun9.member.command.JoinMemberFormControl;
 import com.mun9.member.command.LoginControl;
@@ -91,6 +93,7 @@ public class FrontController extends HttpServlet {
 		//회원가입
 		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
 		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
+		map.put("/joinIdJson.do", new JoinIdJsonControl()); //아이디중복체크
 
 		//아이디 찾기
 		map.put("/findId.do", new FindIdControl());
@@ -110,6 +113,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myInfoMod.do", new MyInfoModControl()); //수정기능
 		map.put("/myInfoDel.do", new MyInfoDelControl()); //삭제기능
 		map.put("/myReview.do", new MyReviewControl());
+		map.put("/myInquire.do", new MyInquireControl());
 		
 		
 		//장바구니 페이지

@@ -30,6 +30,9 @@
     	insert into member values (#{userId}, #{userPw}, #{userName}, 
     						  #{gender}, #{phoneNum}, #{email}, #{status})
  	</insert>
+ 	<select id="selectIdCheck" parameterType="String" resultType="int">
+ 		select count(*) from member where user_id = #{userId}
+ 	</select>
  
  	<!--마이페이지-->
  	<select id="selectInfo" resultType="member" parameterType="String">
@@ -38,9 +41,6 @@
  	<update id="updateInfo" parameterType="member">
  		update member set  user_pw=#{userPw}, user_name=#{userName}, phone_num=#{phoneNum}, email=#{email} where user_id=#{userId}
  	</update>
- 	<!-- <delete id="deleteInfo" parameterType="String">
- 		delete from member where user_id=#{userId} and user_pw=#{userPw} 
- 	</delete> -->
  	<!--  -->
  	
  	<select id="selectList" resultType="member">

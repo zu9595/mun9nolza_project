@@ -10,15 +10,16 @@ function detailView() {
 //주문취소
 function removeOrder(orderNo) {
 	
-	let status = $(event.target).closest('tr.detail').prev().find('.status');
-
-	if(status.text() != '배송준비중'){
-		alert('배송준비 중으로 주문취소 불가');
-		//alert('배송준비 중으로 주문취소 불가'); 
+	
+	let status = $(event.target).closest('tr.detail').find('.status');
+	if(status.text() == '배송중'){
+		alert('배송중인 상품으로 주문취소 불가');
 		return;
-	}/*else if(status.text() == '배송완료'){
+	}else if(status.text() == '배송완료'){
 		alert('배송완료된 상품입니다')
-	}*/
+		return;
+	}
+	
 	
 	fetch("myOrderModifyJson.do", {
 		method: "post",

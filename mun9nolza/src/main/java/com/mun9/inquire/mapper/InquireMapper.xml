@@ -28,5 +28,9 @@
 	<select id="selectInquire" parameterType="int" resultType="inquire">
 		select * from inquire where inq_no=#{inqNo}
 	</select>
+	
+	 <select id="selectMyInquire" resultType="inquire" parameterType="String">
+ 	select * from inquire where user_id=#{userId}
+ </select>
 
 </mapper>
