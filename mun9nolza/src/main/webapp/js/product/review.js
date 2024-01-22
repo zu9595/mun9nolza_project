@@ -6,6 +6,8 @@ let tab1 = document.querySelector(`.tab1`);
 let tab2 = document.querySelector(`.tab2`);
 let tab3 = document.querySelector(`.tab3`);
 let paging = document.querySelector('.pageination');
+let star = 0;
+
 reviewList(pageInfo, proCode);
 btn1();
 btn2();
@@ -80,6 +82,7 @@ function pagingList(result){
             let ul = document.createElement('ul');
             ul.className = 'pagination justify-content-center';
             paging.appendChild(ul);
+            console.log(result)
 			//이전.
 			if(result.pageDTO.prev)	{
                 let li = document.createElement('li');
@@ -133,67 +136,70 @@ function consts2(){
               <div class="review_box">
                 <h4>리뷰 쓰기</h4>
                 <!-- 별점클릭 이벤트 -->
-                <p>별점:</p>
-                <ul class="listStar">
-                  <li>
-                    <a href="#" class="fa fa-star 1">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 2">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 3">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 4">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 5">
-                    </a>
-                  </li>
-                </ul>
+                <form method="post" enctype="multipart/form-data">
+                <fieldset>
+                <legend>별점을 선택하세요</legend>
+                <div class="listStar">
+                   <input type="radio" id="1" name="reRate" value="1"/>
+                   <label for="star1">1</label>
+                   <input type="radio" id="2" name="reRate" value="2"/>
+                   <label for="star2">2</label>
+                   <input type="radio" id="3" name="reRate" value="3"/>
+                   <label for="star3">3</label>
+                   <input type="radio" id="4" name="reRate" value="4"/>
+                   <label for="star4">4</label>
+                   <input type="radio" id="5" name="reRate" value="5"/>
+                   <label for="star5">5</label>
+                </div>
                 <!-- 별점클릭 이벤트 -->
                 <!-- 리뷰 등록 ajax -->
-                <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate" enctype="multipart/form-data">
                   <div class="col-md-12">
                   	<label for="reTitle">제목</label>
                 	<input type="text" id="reTitle" name="reTitle">
                     <div class="form-group">
-                      <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
+                      <textarea class="form-control" name="reContent" rows="1" placeholder="Review"></textarea>
                     </div>
                 	<input type="file" id="reImage" name="reImage">
                   </div>
-                  <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="btn_3">
-                      등록
-                    </button>
+                  <div class="col-md-12" style="text-align:center;">
+                    <button class="btn_3" style="display :inline-block;">등록</button>
                   </div>
-                </form>
+                  </fieldset>
                 <!-- 리뷰 등록 -->
+                </form>
               </div>
             </div>`
         return con3;
 }
 
 function addReview(){
-	$('.product_description_area').on('click','.btn_3',function(e){
-		console.log(e.target)
-		//reContent
-		//reRate
-		//reImage
-		fetch('reviewAdd.do',{
-		method: "post",
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
+	$('.product_description_area').on('change','.btn_3',function(e){
+		let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage').val().split("\\")
+		console.log(imageN[imageN.length-1])
+		
+		let reTitle = $(e.target).parent().siblings('.col-md-12').find('#reTitle').val();
+		let reContent = $(e.target).parent().siblings('.col-md-12').find('.form-control').val();
+		let reRate = $(e.target).parent().siblings('.listStar').find('input:checked').attr('id');
+		let reImage = imageN[imageN.length-1];
+		
+		const formData = new FormData();
+		formData.append("userId", userId);
+		formData.append("proCode", proCode);
+		formData.append("reTitle", reTitle);
+		formData.append("reContent", reContent);
+		formData.append("reRate", reRate);
+		formData.append("reImage", reImage);
+		
+		fetch('reviewAdd.do', {
+		method: "POST",
+		headers: {
+			'Content-Type': 'multipart/form-data'
 		},
-		body: 'userId='+ userId +'&proCode='+ proCode + '&reContent='+ reContent + '&reRate='+ reRate + '&reImage='+ reImage
-		})
+		body: formData
+	})
 		.then(str => str.json())
 		.then(result => {
-			console.log(result)
+			console.log(result);
 		})
 	})
 }

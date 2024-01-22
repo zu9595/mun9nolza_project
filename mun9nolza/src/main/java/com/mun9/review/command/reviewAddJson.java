@@ -1,10 +1,5 @@
 package com.mun9.review.command;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,56 +21,55 @@ public class reviewAddJson implements Control {
 		ReviewService svc = new ReviewServiceImpl();
 		ReviewVO vo = new ReviewVO();
 		
-		String userId = req.getParameter("userId");
-		String proCode = req.getParameter("proCode");
-		String reContent = req.getParameter("reContent");
-		String reRate = req.getParameter("reRate");
-		
-		String saveLoc = req.getServletContext().getRealPath("images");
+		String saveLoc = req.getServletContext().getRealPath("img");
 		int maxSize = 1024 * 1024 * 5;
 		MultipartRequest mr = null;
-
+		String userId = "";
+		String reImage = "";
+		String proCode = "";
+		String reTitle = "";
+		String reContent = "";
+		String[] reRate = null;
+		
 		try {
 			// 1.request 2.saveLoc 3.maxSize 4.인코딩 5.리네임정책
 			mr = new MultipartRequest(req, saveLoc, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			// 파일시스템에 바뀐이름을 가져옴
-			String reImage = mr.getParameter("reImage");
+			reImage = mr.getFilesystemName("reImage");
+			userId = mr.getParameter("userId");
+			proCode = mr.getParameter("proCode");
+			reTitle = mr.getParameter("reTitle");
+			reContent = mr.getParameter("reContent");
+			reRate = mr.getParameterValues("reRate");
 			
+			System.out.println(reRate);
+			
+			vo.setReImage(reImage);
 			vo.setUserId(userId);
 			vo.setProCode(Integer.parseInt(proCode));
+			vo.setReTitle(reTitle);
 			vo.setReContent(reContent);
-			vo.setReRate(Integer.parseInt(reRate));
-			vo.setReImage(reImage);
+			//vo.setReRate(Integer.parseInt(reRate));
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		System.out.println(vo.toString());
+		String ok = "";
 		
-		
-		String orders = "";
-		String clear = "";
 		if(svc.orderTFReview(userId)) {
-			orders = "OK";
-			if(svc.addReview(vo)) {
-				clear = "OK";
-			}else{
-				clear = "NG";
-			};
-		}else{
-			orders = "NG";
-		};
-		
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("clear", clear);
-		map.put("orderYN", orders);
+			svc.addReview(vo);
+			ok = "OK";
+		}else {
+			ok="NG";
+		}
 		
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.create();
 		
 		try {
-			resp.getWriter().print(gson.toJson(map));
-		} catch (IOException e) {
+			resp.getWriter().print(gson.toJson(ok));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
