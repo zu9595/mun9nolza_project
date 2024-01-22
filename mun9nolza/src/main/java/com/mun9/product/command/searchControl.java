@@ -18,8 +18,8 @@ public class searchControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// 검색단어가 포함되며 판매량이 높은 순
-		ProductService svc = new ProductServiceImpl();
 		resp.setContentType("text/json;charset=utf-8");
+		ProductService svc = new ProductServiceImpl();
 		
 		String search = req.getParameter("search");
 		List<String> list = new ArrayList<>();
