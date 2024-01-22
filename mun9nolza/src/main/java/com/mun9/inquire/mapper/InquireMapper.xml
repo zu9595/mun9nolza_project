@@ -6,27 +6,58 @@
 
 	<!-- 문의목록 -->
 	<select id="selectList" resultType="inquire">
-		select * from inquire order by 1
+		select * from inquire order
+		by 1
 	</select>
 
 	<!-- 상품코드 -->
 	<select id="selectCodeList" parameterType="String"
 		resultType="product">
 		select pro_code, pro_name from product
-		where category=#{category} order by 1
+		where
+		category=#{category} order by 1
 	</select>
 
 	<insert id="insertInquire" parameterType="inquire">
-		insert into inquire(inq_no, user_id, pro_code, inq_title, inq_content, inq_date, inq_img, prod_name)
-		values(inq_no_seq.nextval, #{userId}, #{proCode}, #{inqTitle}, #{inqContent}, sysdate, #{inqImg}, #{prodName})
+		insert into
+		inquire(inq_no, user_id, pro_code, inq_title, inq_content, inq_date,
+		inq_img, prod_name)
+		values(inq_no_seq.nextval, #{userId}, #{proCode},
+		#{inqTitle}, #{inqContent}, sysdate, #{inqImg}, #{prodName})
 	</insert>
-	
+
 	<delete id="deleteInquire" parameterType="int">
-		delete from inquire where inq_no=#{inqNo}
+		delete from inquire
+		where inq_no=#{inqNo}
 	</delete>
-	
-	<select id="selectInquire" parameterType="int" resultType="inquire">
+
+	<select id="selectInquire" parameterType="int"
+		resultType="inquire">
 		select * from inquire where inq_no=#{inqNo}
 	</select>
+
+	<update id="updateInquire" parameterType="inquire">
+		update inquire set
+		inq_content = #{inqContent}, inq_img=#{inqImg} where inq_no = #{inqNo}
+	</update>
+
+	<select id="selectCount" resultType="int">
+		select count(*) from inquire
+		order by 1
+	</select>
+
+	<select id="inquireListPaging" resultType="inquire"
+		parameterType="inquire">
+		select b.* from
+		(select rownum rn, a.* from
+		(select * from inquire
+		) a )
+		b
+	<![CDATA[
+	where b.rn > (#{page}-1)*9 and b.rn <= #{page}*9
+    ]]>
+		order by inq_no
+	</select>
+
 
 </mapper>

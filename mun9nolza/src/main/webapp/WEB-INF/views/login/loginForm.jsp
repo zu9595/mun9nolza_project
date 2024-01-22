@@ -24,6 +24,17 @@
 <script src="js/popper.min.js"></script>
 <!-- bootstrap js -->
 <script src="js/bootstrap.min.js"></script>
+<%
+String msg = (String) request.getAttribute("message");
+
+if (msg != null) {
+%>
+<script>
+	alert("<%=msg%>");
+</script>
+<%
+}
+%>
 <script src="js/loginjs/loginForm.js"></script>
 </head>
 
@@ -121,29 +132,29 @@
 		src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
 		charset="utf-8"></script>
 	<script>
-				var naverLogin = new naver.LoginWithNaverId({
-					clientId: "NoqCJJA8y8apy_2fhbFi", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-					callbackUrl: "http://localhost:8081/MiddleProject/naverLogin.do", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-					isPopup: false,
-					callbackHandle: true
-				});
-				naverLogin.init();
+		var naverLogin = new naver.LoginWithNaverId({
+			clientId : "NoqCJJA8y8apy_2fhbFi", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+			callbackUrl : "http://localhost:8081/MiddleProject/naverLogin.do", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+			isPopup : false,
+			callbackHandle : true
+		});
+		naverLogin.init();
 
-				var testPopUp;
-				function openPopUp() {
-					testPopUp = window
-						.open("https://nid.naver.com/nidlogin.logout", "_blank",
+		var testPopUp;
+		function openPopUp() {
+			testPopUp = window
+					.open("https://nid.naver.com/nidlogin.logout", "_blank",
 							"toolbar=yes,scrollbars=yes,resizable=yes,width=1000,height=1000");
-				}
-				function closePopUp() {
-					testPopUp.close();
-				}
+		}
+		function closePopUp() {
+			testPopUp.close();
+		}
 
-				function naverLogout() {
-					openPopUp();
-					closePopUp();
-				}
-			</script>
+		function naverLogout() {
+			openPopUp();
+			closePopUp();
+		}
+	</script>
 
 
 	<!-- 카카오톡 스크립트 -->
