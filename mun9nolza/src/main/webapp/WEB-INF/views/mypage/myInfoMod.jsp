@@ -24,6 +24,29 @@
   visibility: visible;
   opacity: 1;
 }
+
+.fail_msg {
+	display:none; 
+	color: red; 
+	font-size: 0.8em; 
+	width:380px
+}
+
+.buttons {
+	padding-left: 140px;
+}
+/* .all {
+	border: 1px solid gray;
+} */
+/* .out {
+	width: 100%;
+	text-align: center;
+}
+.in {
+	display: inline-block;
+} */
+
+
 </style>
 
 <!-- 회원 탈퇴 모달창 -->
@@ -45,8 +68,8 @@
 					<table>
 						<tr>
 							<td>비밀번호: </td>
-							<td><input type="password" name="userPw" id="lastpw" required>
-							</td>
+							<td><input type="password" name="userPw" id="lastpw" required></td>
+							<td><div id="pwcheck" class="fail_msg">비밀번호 불일치</div></td>
 						</tr>
 
 					</table>
@@ -58,62 +81,13 @@
 	</div>
 	</div>
 		</div>
-
-
-<section class="cat_product_area section_padding">
-	<div class="container">
-		<div class="row" style="padding-top: 80px">
-		
-			<!-- body부분 -->
-			<div class="col-lg-3">
-
-				<div class="left_sidebar_area" style="padding-top: 100px">
-					<aside class="left_widgets p_filter_widgets">
-						<div class="l_w_title">
-							<h4>주문내역</h4>
-							<br>
-						</div>
-						<div class="widgets_inner">
-							<ul class="list">
-								<li><a href="myOrderList.do">주문/배송목록</a></li>
-							</ul>
-						</div>
-					</aside>
-
-					<aside class="left_widgets p_filter_widgets">
-						<div class="l_w_title">
-							<h4>회원정보</h4>
-							<br>
-						</div>
-						<div class="widgets_inner">
-							<ul class="list">
-								<li><a href="myInfoModForm.do">개인정보 수정</a></li>
-								<li><a href="myReview.do">마이리뷰</a></li>
-							</ul>
-						</div>
-					</aside>
-
-					<aside class="left_widgets p_filter_widgets">
-						<div class="l_w_title">
-							<h4>고객센터</h4>
-							<br>
-						</div>
-						<div class="widgets_inner">
-							<ul class="list">
-								<li><a href="#">1:1문의내역</a></li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-
-			</div>
-
 			<!-- 바뀌는 구역 -->
-			<div class="col-lg-9">
-				<h2>회원정보 수정</h2>
+			<div class="col-lg-9 out">
+			 <div class="in">
+				<h3>회원정보 수정</h3>
 				<!-- <div class="row align-items-center latest_product_inner productlist"style="width: 720px; height: 640px;"> -->
 
-				<!-- <div style="align:center"> -->
+				<div class="all">
 				<form action="myInfoMod.do" method="post" class="validation-form"
 					novalidate>
 					<!-- <div class="row"> -->
@@ -129,7 +103,7 @@
 							style="width: 380px; margin-bottom: 5px;" id="pw">
 						<div id="check" class="msg"
 							style="display: none; color: rgb(255, 74, 74); font-size: 0.8em; width: 380px">비밀번호는
-							최소 8자리 이상(대소문자,특수문자 포함)</div>
+							최소 6자리 이상(대소문자,특수문자 포함)</div>
 						<label for="pwCheck" style="margin-top: 5px;"></label> <input
 							type="password" class="form-control" name="userPw"
 							placeholder="비밀번호 재확인" required style="width: 380px;"
@@ -146,18 +120,19 @@
 							style="width: 380px;" id="email" value="${mem.email }">
 					</div>
 					<br>
-					<div>
+					<div class="buttons">
 					<button type="submit" class="btn btn-secondary btn-sm">수정하기</button>
 					<button type="button" id="delinfo" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
 					</div>
 				</form>
+				</div><!-- all -->
+			</div> <!-- in -->
 			</div>
 
-		</div>
+
 
 
 		<!-- 바뀌는 구역 끝 -->
 		
-	</div>
-</section>
+
 

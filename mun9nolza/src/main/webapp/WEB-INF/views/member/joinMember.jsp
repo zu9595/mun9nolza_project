@@ -19,9 +19,40 @@
 <!-- 상대경로로 이동 -> 파일위치에서 폴더에서 나가주고 폴더를 들어가야함 -->
 <link rel="stylesheet" href="css/membercss/signUp.css">
 <script src="js/memberjs/joinMember.js"></script>
+
+<style>
+.success_msg {
+	display:none; 
+	color: green; 
+	font-size: 0.8em; 
+	width:380px
+}
+
+.fail_msg {
+	display:none; 
+	color: red; 
+	font-size: 0.8em; 
+	width:380px
+}
+
+.star {
+ 	color:red; 
+ 	font-weight: bold
+}
+
+.form-control {
+	width: 380px;
+}
+
+
+</style>
+
 </head>
 
 <body>
+
+  
+
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-5 mx-auto">
@@ -31,29 +62,34 @@
 					</a>
 				</div>
 				<!-- 서버로 정보전송 -->
-				<form action="joinMember.do" method="post" class="validation-form" novalidate>
+				<form name="form" action="joinMember.do" method="post" class="validation-form"> <!--return signUpCheck()  -->
 
 					<div class="col-xs-12 col-md-6 mb-3" style="margin-left: 15px;">
 						<br> 
-						<label for="id" style="margin-top: 5px;">아이디</label>
-						<input type="text" name="userId" class="form-control" required
-							style="width: 380px;" id="id"> 
-						<label for="pw" style="margin-top: 5px;">비밀번호</label>
-						<input type="password" name="userPw" class="form-control" placeholder="비밀번호 8자리 이상" required style="width: 380px;" id="pw">
-						<div id="check" class="msg" style="display:none; color: rgb(255, 74, 74); font-size: 0.8em; width:380px">비밀번호는 최소 8자리 이상(대소문자,특수문자 포함)</div>
-						<label for="pwCheck" style="margin-top: 5px;">비밀번호 확인</label>
-						<input type="password" class="form-control" required style="width: 380px;" id="pwCheck"> 
+						<!-- 아이디 -->
+						<label for="id" style="margin-top: 5px;">아이디<span class="star">*</span></label>
+						<input type="text" id="id" name="userId" class="form-control no_input" placeholder="아이디 5자리 이상"> 
+						<div id="id_ok" class="success_msg">사용 가능한 아이디</div>
+						<div id="id_no" class="fail_msg">사용 불가한 아이디</div>
+						<div id="id_length" class="fail_msg">아이디 최소 5자리 이상</div>
+						<!-- 비밀번호 -->
+						<label for="pw" style="margin-top: 5px;">비밀번호<span class="star">*</span></label>
+						<input type="password"  id="pw" name="userPw" class="form-control no_input" placeholder="비밀번호 6자리 이상" >
+						<div id="pwcheck" class="fail_msg">비밀번호 최소 6자리 이상 (대소문자,특수문자 포함)</div>
+						<!--<label for="pwCheck" style="margin-top: 5px;"></label>  -->
+						<input type="password" id="pwCheck" class="form-control no_input" style="width: 380px; margin-top: 3px"  placeholder="비밀번호 확인"> 
+						<div id="pwcheck2" class="fail_msg">비밀번호 불일치</div>
 						<br>
 						
+						<!-- 이름 -->
 						<c:choose>
 						<c:when test="${!empty vo }">
-						<label for="name" style="margin-top: 5px;">이름</label>
-						<input type="text" name="userName" class="form-control" required style="width: 380px;" id="name" value="${vo.userName }" readonly>
+						<label for="name" style="margin-top: 5px;">이름<span class="star">*</span></label>
+						<input type="text" name="userName" class="form-control no_input" id="name" value="${vo.userName }" readonly>
 						</c:when>
 						<c:otherwise>
-						<label for="name" style="margin-top: 5px;">이름</label>
-						<input type="text" name="userName" class="form-control" required
-							style="width: 380px;" id="name">
+						<label for="name" style="margin-top: 5px;">이름<span class="star">*</span></label>
+						<input type="text" name="userName" class="form-control no_input" id="name">
 						</c:otherwise>
 						</c:choose>
 						
@@ -88,20 +124,18 @@
 						</c:otherwise>
 						</c:choose>
 						
-						<label for="phone" required style="margin-top: 20px;">휴대전화</label>
-						<input type="tel" class="form-control" id="phone" name="phoneNum" placeholder="010-0000-0000" style="width: 380px;"> 
+						<label for="phone" style="margin-top: 20px;">휴대전화<span class="star">*</span></label>
+						<input type="tel" class="form-control no_input" id="phone" name="phoneNum" placeholder="010-0000-0000"> 
 						<br> 
 						
 						<c:choose>
 						<c:when test="${!empty vo }">
 						<label for="email">이메일</label> 
-						<input type="email" class="form-control" id="email" name="email"
-							style="width: 380px;" placeholder="you@mun9nolza.com" id="email" value="${vo.email }" readonly>
+						<input type="email" class="form-control" id="email" name="email" placeholder="you@mun9nolza.com" id="email" value="${vo.email }" readonly>
 						</c:when>
 						<c:otherwise>
 						<label for="email">이메일</label> 
-						<input type="email" class="form-control" id="email" name="email"
-							style="width: 380px;" placeholder="you@mun9nolza.com" id="email">
+						<input type="email" class="form-control" id="email" name="email" placeholder="you@mun9nolza.com" id="email">
 						</c:otherwise>
 						</c:choose>
 					</div>
@@ -110,11 +144,10 @@
 					<br>
 
 					<hr class="mb-4">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="aggrement"
-							required> <label class="custom-control-label"
-							for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-					</div>
+					<!-- <div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="aggrement"> 
+						<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+					</div> -->
 					<div class="mb-4"></div>
 					<button type="submit" class="btn btn-primary btn-lg btn-block">회원가입</button>
 					<br>
@@ -126,16 +159,6 @@
 	</div>
 	
 	
-<!-- 	<script>
-    let pw = document.getElementById('pw');
-    let check =  document.getElementById('check');
-    pw.addEventListener('input', function(){
-        if(pw.value.length >= 8){
-         check.style.display = 'none';
-        }
-    });
-	
-	</script> -->
 
 </body>
 </html>

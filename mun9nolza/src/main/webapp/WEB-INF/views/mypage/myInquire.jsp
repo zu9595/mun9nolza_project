@@ -9,31 +9,27 @@
 <!-- 바뀌는 구역 -->
 
 <div class="col-lg-9">
-	<h3>마이리뷰</h3>
+	<h3>나의 문의내역</h3>
 
 	<div style="width: 720px; height: 640px; padding: 50px">
 		<table class="table review">
 			<thead>
 				<tr>
-					<th>주문번호</th>
-					<th>상품코드</th>
+					<th>글번호</th>
 					<th>제목</th>
-					<!-- <th>내용</th> -->
-					<!-- <th>이미지</th> -->
-					<th>별점</th>
-					<th>등록일</th>
+					<th>상품이름</th>
+					<th>내용</th>
+					<th>작성일시</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="vo" items="${reviewList}">
+				<c:forEach var="vo" items="${inquireList}">
 					<tr>
-						<td>${vo.orderNo }</td>
-						<td>${vo.proCode }</td>
-						<td><a href="#">${vo.reTitle }</a></td><!-- 확인하기 -->
-						<%-- <td>${vo.reContent }</td> --%>
-						<%-- <td>${vo.reImage }</td> --%>
-						<td>${vo.reRate }</td>
-						<td><fmt:formatDate value="${vo.reDate }"
+						<td>${vo.inqNo }</td>
+						<td>${vo.inqTitle }</td>
+						<td>${vo.prodName }</td>
+						<td>${vo.inqContent }</td>
+						<td><fmt:formatDate value="${vo.inqDate }"
 								pattern="yyyy-MM-dd"></fmt:formatDate></td>
 					</tr>
 				</c:forEach>

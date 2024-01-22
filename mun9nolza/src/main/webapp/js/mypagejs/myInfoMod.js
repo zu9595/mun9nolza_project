@@ -9,20 +9,14 @@ window.addEventListener('DOMContentLoaded', event => {
     let pw = document.getElementById('pw');
     let check =  document.getElementById('check');
     pw.addEventListener('input', function(){
-        if(pw.value.length < 8){
+        if(pw.value.length < 6){
          check.style.display = 'block';
-        }else if(pw.value.length >= 8) {
+        }else if(pw.value.length >= 6) {
 			check.style.display = 'none';
 		}
     });  
 	  
-	document.querySelector('form').addEventListener('submit', function(){
-		
-		
-		
-		//alert('회원님의 정보가 수정되었습니다.')
-		
-	})  
+	
 	
 	
 	/* 회원탈퇴 */
@@ -36,7 +30,15 @@ window.addEventListener('DOMContentLoaded', event => {
 		document.querySelector('.delmodal').classList.remove('show');
 	})
 	
-	//비번----확인
+	
+	//비밀번호 일치 확인
+	/*let lastpw = document.getElementById('lastpw'); //비번input
+	let pwcheck = document.getElementById('pwcheck'); //알림문구
+	lastpw.addEventListener('input', function(){
+		if(lastpw.value )
+	})*/
+	
+	//비번----확인 (안 됨)
 	document.getElementById('clear').addEventListener('click', function(){
 		let pw = document.getElementById('lastpw');
 		if(pw.value == "") {
