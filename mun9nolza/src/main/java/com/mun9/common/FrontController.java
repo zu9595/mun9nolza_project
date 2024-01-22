@@ -21,6 +21,9 @@ import com.mun9.inquire.command.InquireDelControl;
 import com.mun9.inquire.command.InquireDetailControl;
 import com.mun9.inquire.command.InquireListControl;
 import com.mun9.inquire.command.InquireListFormControl;
+import com.mun9.inquire.command.InquireModifyControl;
+import com.mun9.inquire.command.InquireModifyFormControl;
+import com.mun9.inquire.command.InquirePagingListControl;
 import com.mun9.inquire.command.ProdCodeListControl;
 import com.mun9.member.command.AdminFormControl;
 import com.mun9.member.command.AdminMemberDelControl;
@@ -61,8 +64,6 @@ import com.mun9.review.command.MyReviewControl;
 import com.mun9.review.command.reviewAddJson;
 import com.mun9.review.command.reviewListJson;
 
-
-
 public class FrontController extends HttpServlet {
 
 	// 생명주기:
@@ -78,92 +79,93 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출");
 
-		//메인화면
-		map.put("/main.do",  new MainControl());
+		// 메인화면
+		map.put("/main.do", new MainControl());
 		map.put("/mainSaleList.do", new MainSaleListJson());
 		map.put("/mainCategoryHotList.do", new MainCategoryHotListJson());
-		map.put("/myOrderListJson.do", new OrderListJsonControl());//주문갯수
-		
-		//상품 검색
-		map.put("/search.do",  new searchControl());
-		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
-		
-		//회원가입
-		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
-		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
+		map.put("/myOrderListJson.do", new OrderListJsonControl());// 주문갯수
 
-		//아이디 찾기
+		// 상품 검색
+		map.put("/search.do", new searchControl());
+		// map.put("/mainBest.do", new mainBestProductList()); // 미사용
+
+		// 회원가입
+		map.put("/joinMemberForm.do", new JoinMemberFormControl()); // 가입화면만
+		map.put("/joinMember.do", new JoinMemberControl()); // 가입기능
+
+		// 아이디 찾기
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
-		
-		//로그인 --소셜로그인 수정필요
+
+		// 로그인 --소셜로그인 수정필요
 		map.put("/loginForm.do", new LoginFormControl());
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/socialLogin.do", new SocialLoginControl());
-		
-		
-		//마이페이지
-		map.put("/myOrderList.do", new OrderListControl());//주문목록
-		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); //orderStatus를 Json타입으로
-		map.put("/myInfoModForm.do", new MyInfoModFormControl());//수정화면만
-		map.put("/myInfoMod.do", new MyInfoModControl()); //수정기능
-		map.put("/myInfoDel.do", new MyInfoDelControl()); //삭제기능
+
+		// 마이페이지
+		map.put("/myOrderList.do", new OrderListControl());// 주문목록
+		map.put("/myOrderModifyJson.do", new ModifyOrderJsonControl()); // orderStatus를 Json타입으로
+		map.put("/myInfoModForm.do", new MyInfoModFormControl());// 수정화면만
+		map.put("/myInfoMod.do", new MyInfoModControl()); // 수정기능
+		map.put("/myInfoDel.do", new MyInfoDelControl()); // 삭제기능
 		map.put("/myReview.do", new MyReviewControl());
-		
-		
-		//장바구니 페이지
+
+		// 장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
-		//장바구니 목록(Json)
+		// 장바구니 목록(Json)
 		map.put("/cartListJson.do", new CartListJson());
-		//장바구니 상품 삭제
+		// 장바구니 상품 삭제
 		map.put("/delCart.do", new DelCartControl());
-		//장바구니 상품 추가
+		// 장바구니 상품 추가
 		map.put("/addCartJson.do", new AddCartJson());
-		//장바구니 상품 숫자 변경
+		// 장바구니 상품 숫자 변경
 		map.put("/modCartCntJson.do", new ModCartCntJson());
-		//결제화면으로 이동
+		// 결제화면으로 이동
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
-		//단건결제화면으로 이동
+		// 단건결제화면으로 이동
 		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
-		//결제 시 데이터 관련
+		// 결제 시 데이터 관련
 		map.put("/orderDetailData.do", new OrderDetailJson());
-		//결제 후 내역 페이지
+		// 결제 후 내역 페이지
 		map.put("/orderResult.do", new OrderResultControl());
-		
-		
-		
-		//전체 상품목록 이동
-		map.put("/productListForm.do", new ProductListFormControl()); 
-		//상품 상세페이지 이동
+
+		// 전체 상품목록 이동
+		map.put("/productListForm.do", new ProductListFormControl());
+		// 상품 상세페이지 이동
 		map.put("/productDetail.do", new ProductDetailControl());
-		//상품 리뷰 목록Json
+		// 상품 리뷰 목록Json
 		map.put("/reviewList.do", new reviewListJson());
-		//상품 리뷰 추가Json
+		// 상품 리뷰 추가Json
 		map.put("/reviewAdd.do", new reviewAddJson());
-		//전체 상품목록 분류 및 페이징(Json)
-		map.put("/productPagingList.do", new ProductPagingListControl()); 
-		
-		//문의 페이지 이동
+		// 전체 상품목록 분류 및 페이징(Json)
+		map.put("/productPagingList.do", new ProductPagingListControl());
+
+		// 문의 페이지 이동
 		map.put("/inquireListForm.do", new InquireListFormControl());
-		//문의 목록 list(Json)
+		// 문의 목록 list(Json)
 		map.put("/inquireList.do", new InquireListControl());
-		//문의 등록 페이지 이동
+		// 문의 등록 페이지 이동
 		map.put("/inquireAddForm.do", new InquireAddFormControl());
-		//상품 코드 list(Json)
+		// 상품 코드 list(Json)
 		map.put("/prodCodeList.do", new ProdCodeListControl());
-		//문의 등록
+		// 문의 등록
 		map.put("/inquireAdd.do", new InquireAddControl());
-		//문의 삭제
+		// 문의 삭제
 		map.put("/inquireDel.do", new InquireDelControl());
-		//문의 상세 -- 수정필요
+		// 문의 상세
 		map.put("/inquireDetail.do", new InquireDetailControl());
-		
-		//상품 상세
+		// 문의 수정 페이지 이동
+		map.put("/inquireModifyForm.do", new InquireModifyFormControl());
+		// 문의 수정
+		map.put("/inquireModify.do", new InquireModifyControl());
+		// 문의 페이징 -- 수정 필요
+		map.put("/inquirePagingList.do", new InquirePagingListControl());
+
+		// 상품 상세
 		map.put("/prodDetailImg.do", new prodDetailImgGetControl());
-		
-		
-		//admin 페이지
+
+		// admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());
 		// admin 사용자 목록 이동
 		map.put("/adminMemberForm.do", new AdminMemberFormControl());
@@ -171,11 +173,11 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new AdminMemberListControl());
 		// admin 사용자 삭제(Json)
 		map.put("/memberDel.do", new AdminMemberDelControl());
-		//admin Product List 이동
+		// admin Product List 이동
 		map.put("/adminProductListForm.do", new AdminProductListFormControl());
-		//admin Product AddForm 이동
+		// admin Product AddForm 이동
 		map.put("/adminProductAddForm.do", new AdminProductAddFormControl());
-		//admin Product List(Json)
+		// admin Product List(Json)
 		map.put("/adminProductList.do", new AdminProductListControl());
 		// admin Product 삭제(Json)
 		map.put("/productDel.do", new AdminProductDelControl());
@@ -183,9 +185,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productMod.do", new AdminProductModControl());
 		// admin Product 추가
 		map.put("/productAdd.do", new AdminProductAddControl());
-		
-		
-		
+
 	}
 
 	@Override

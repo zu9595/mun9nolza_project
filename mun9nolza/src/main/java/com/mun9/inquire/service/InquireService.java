@@ -17,4 +17,10 @@ public interface InquireService {
 
 	public InquireVO detailInquire(int inqNo);
 
+	public boolean modifyInquire(InquireVO vo);
+
+	public List<InquireVO> inquireListPaging(InquireVO vo);
+
+	public int getTotalCnt();
+
 }

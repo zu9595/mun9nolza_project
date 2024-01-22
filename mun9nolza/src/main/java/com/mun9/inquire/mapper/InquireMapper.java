@@ -17,4 +17,11 @@ public interface InquireMapper {
 
 	public InquireVO selectInquire(int inqNo);
 
+	public int updateInquire(InquireVO vo);
+
+	public List<InquireVO> inquireListPaging(InquireVO vo);
+
+	public int selectCount();
+
+
 }
