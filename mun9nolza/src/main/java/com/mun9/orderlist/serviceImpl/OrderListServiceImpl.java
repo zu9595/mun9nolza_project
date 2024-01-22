@@ -24,6 +24,10 @@ public class OrderListServiceImpl implements OrderListService{
 		return mapper.updateOrderList(orderNo) == 1;
 	}
 	
-	
+	@Override
+	public boolean orderTFReview(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectOrderReview(userId) > 0;
+	}
 	
 }

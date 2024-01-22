@@ -11,5 +11,4 @@ public interface ReviewMapper {
 	int selectReviewCount(int proCode);
 	List<ReviewVO> reviewListPaging(ReviewVO vo);
 	int addReview(ReviewVO vo);
-	int selectOrderReview(String userId);
 }
