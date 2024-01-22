@@ -5,6 +5,12 @@
   
 <mapper namespace="com.mun9.orderlist.mapper.OrderListMapper">
 
+
+<insert id="insertOrderList" parameterType="orderlist">
+	insert into orderlist(order_no, order_date, user_id, order_recipient, order_addr, detail_addr, order_phone, total_price, delivery_fee, delivery_memo, order_status)
+	values(order_no_seq.nextval, #{orderDate}, #{userId}, #{orderRecipient}, #{orderAddr}, #{detailAddr}, #{orderPhone}, #{totalPrice}, #{deliveryFee}, #{deliveryMemo}, #{orderStatus})
+</insert>
+ 	
   <resultMap id="selectDetailMap" type="orderlist">
    	<result property="orderNo" column="order_no"/>
  	<result property="orderDate" column="order_date"/>

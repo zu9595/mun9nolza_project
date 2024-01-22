@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.mun9.common.DataSource;
 import com.mun9.orderdetail.mapper.OrderDetailMapper;
 import com.mun9.orderdetail.service.OrderDetailService;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 import com.mun9.orderlist.vo.OrderListVO;
 
 public class OrderDetailServiceImpl implements OrderDetailService {
@@ -12,8 +13,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	OrderDetailMapper mapper = session.getMapper(OrderDetailMapper.class);
 	
 	@Override
-	public boolean addOrder(OrderListVO vo) {
-		return mapper.insertOrder(vo) == 1;
+	public boolean addOrderDetail(OrderListVO vo) {
+		return mapper.insertOrderDetail(vo) == 1;
 	}
-
 }

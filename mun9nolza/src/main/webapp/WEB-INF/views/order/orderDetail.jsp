@@ -69,29 +69,31 @@
 					</ul>
 				</div>
 			</div> -->
+			<form method="post" action="orderResult.do">
 			<div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>배송 정보 입력</h4>
 					<ul>
 						<li>
-							<p>수령인	:</p> <span><input name="orderRecipient" type="text" size="20"></span>
+							<p>수령인	:</p> <span><input name="orderRecipient" type="text" size="20" value="홍길동"></span>
 						</li>
 						<li>
-							<p>주소	:</p> <span><input name="orderAddr" type="text" size="40"></span>
+							<p>주소	:</p> <span><input name="orderAddr" type="text" size="40" value="주소"></span>
 						</li>
 						<li>
-							<p>상세주소	:</p> <span><input name="detailAddr" type="text" size="70"></span>
+							<p>상세주소	:</p> <span><input name="detailAddr" type="text" size="70" value="상세주소"></span>
 						</li>
 						<li>
-							<p>연락처	:</p> <span><input id="tel1" type="text" size="5"> - <input id="tel2" type="text" size="5"> - <input id="tel3" type="text" size="5"></span>
+							<p>연락처	:</p> <span><input id="tel1" type="text" size="5" value="010"> - <input id="tel2" type="text" size="5" value="112"> - <input id="tel3" type="text" size="5" value="1234"></span>
 						</li>
 						<li>
-							<p>배송메모	:</p> <span><input name="deliveryMemo" type="text" size="70"></span>
+							<p>배송메모	:</p> <span><input name="deliveryMemo" type="text" size="70" value="배송메모"></span>
 						</li>
 					</ul>
+			<button type="submit">등록하기</button>
 				</div>
 			</div>
-			<span><a class="btn_1" href="#" onclick="orderResult()">결제하기</a></span>
+			</form>
 			<!-- <div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>결제 수단</h4>
@@ -117,7 +119,7 @@
 </section>
 <script>
 let userId = `${userId}`;
-let orderSum = `${orderSum}`;
+let orderSum = ${orderSum};
 </script>  
 <script src="js/orderjs/orderDetail.js"></script>
 	

@@ -4,9 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.mun9.orderdetail.mapper.OrderDetailMapper">
-<insert id="insertOrder" parameterType="orderlist">
-	insert into orderlist(order_no, order_date, user_id, order_recipient, order_addr, detail_addr, order_phone, total_price, delivery_fee, delivery_memo, order_status)
-	values(order_no_seq.nextval, #{orderDate}, #{userId}, #{orderRecipient}, #{orderAddr}, #{detailAddr}, #{orderPhone}, #{totalPrice}, #{deliveryFee}, #{deliveryMemo}, #{orderStatus})
+<insert id="insertOrderDetail" parameterType="orderlist">
+	insert into orderdetail (order_no, pro_code, de_pro_cnt, de_pro_price)
+	select ol.order_no, c.pro_code, c.mypro_cnt, c.pro_price*c.mypro_cnt
+	from orderlist ol join cart c
+	on ol.user_id = c.user_id
+	where ol.user_id = #{userId} and ol.order_no = #{orderNo}
 </insert>
 
 </mapper>
