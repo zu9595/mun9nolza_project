@@ -8,6 +8,7 @@ public interface MemberService {
 	public MemberVO login(String userId, String userPw);
 	public List<MemberVO> memberList();
 	public boolean addMember(MemberVO vo);
+	public boolean idCheck(String userId); //아이디중복
 	public boolean delMember(String userId, String userPw); //+회원탈퇴
 	//아이디 찾기
 	public String findId(String userName, String email);

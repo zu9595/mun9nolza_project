@@ -11,8 +11,11 @@ public interface OrderListMapper {
 	List<OrderListVO> selectDetailMap(String userId);
 	//주문상태수정
 	int updateOrderList(int orderNo);
+
 	int insertOrderList(OrderListVO vo);
-	
+
+	int selectOrderReview(String userId);
+
 	
 	
 	

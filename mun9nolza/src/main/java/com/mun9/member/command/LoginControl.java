@@ -54,7 +54,7 @@ public class LoginControl implements Control {
 				e.printStackTrace();
 			}
 		}else {
-			req.setAttribute("massage", "아이디와 비밀번호를 확인하세요");
+			req.setAttribute("message", "아이디와 비밀번호를 확인하세요");
 			//페이지 없음
 			try { 
 				req.getRequestDispatcher("no/login/loginForm.tiles").forward(req, resp);

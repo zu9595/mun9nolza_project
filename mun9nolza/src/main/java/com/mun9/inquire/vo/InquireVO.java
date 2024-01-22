@@ -16,4 +16,5 @@ public class InquireVO {
 	private String inqImg;
 	private String answer;
 	private String prodName;	
+	private int page;	
 }

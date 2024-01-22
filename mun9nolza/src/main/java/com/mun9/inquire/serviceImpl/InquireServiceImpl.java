@@ -40,4 +40,24 @@ public class InquireServiceImpl implements InquireService {
 		return mapper.selectInquire(inqNo);
 	}
 
+	@Override
+	public List<InquireVO> getMyInquire(String userID) {
+		return mapper.selectMyInquire(userID);
+    
+  @Override
+	public boolean modifyInquire(InquireVO vo) {
+		return mapper.updateInquire(vo) == 1;
+	}
+
+	@Override
+	public List<InquireVO> inquireListPaging(InquireVO vo) {
+		return mapper.inquireListPaging(vo);
+	}
+
+	@Override
+	public int getTotalCnt() {
+		return mapper.selectCount();
+
+	}
+
 }
