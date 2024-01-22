@@ -5,9 +5,6 @@
   
 <mapper namespace="com.mun9.orderlist.mapper.OrderListMapper">
 
- 	
- 	
- 	
   <resultMap id="selectDetailMap" type="orderlist">
    	<result property="orderNo" column="order_no"/>
  	<result property="orderDate" column="order_date"/>
@@ -45,5 +42,9 @@
  <update id="updateOrderList" parameterType="int">
   	update orderlist set order_status = '주문취소' where order_no = #{orderNo}
  </update>
+ 
+   <select id="selectOrderReview" parameterType="String" resultType="int">
+ 	select count(order_no) count from orderlist where user_id = #{userId}
+ </select>
  
 </mapper>

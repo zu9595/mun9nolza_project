@@ -8,23 +8,30 @@ let tab3 = document.querySelector(`.tab3`);
 let paging = document.querySelector('.pageination');
 let star = 0;
 
-reviewList(pageInfo, proCode);
+$(document).ready(function(){
+	reviewList(pageInfo, proCode);
+	btn1();
+	btn2();
+	addReview(proCode);
+    tab3.insertAdjacentHTML('afterend',consts2());
+    delLi();
+});
+
+/*reviewList(pageInfo, proCode);
 btn1();
 btn2();
-addReview();
+addReview(userId,proCode);*/
 function reviewList(page, proCode){
 	fetch('reviewList.do?page='+ page +'&proCode='+ proCode)
 		.then(str => str.json())
 		.then(result => {
             let ul = ``;
-            
 			result.list.forEach(rev => {
 				console.log(rev)
                 let li = makeLis(rev);
                 ul += li; 
 			})
             tab3.insertAdjacentHTML('afterbegin',ul);
-            tab3.insertAdjacentHTML('afterend',consts2());
             pagingList(result);
             
 		})
@@ -73,6 +80,7 @@ const li = `<div class="11">
                   <p>
                     ${rev.reContent}
                   </p>
+                  <button class="delPoint">삭제</button>
                 </div>`
 return li;
 }
@@ -136,7 +144,6 @@ function consts2(){
               <div class="review_box">
                 <h4>리뷰 쓰기</h4>
                 <!-- 별점클릭 이벤트 -->
-                <form method="post" enctype="multipart/form-data">
                 <fieldset>
                 <legend>별점을 선택하세요</legend>
                 <div class="listStar">
@@ -159,51 +166,81 @@ function consts2(){
                     <div class="form-group">
                       <textarea class="form-control" name="reContent" rows="1" placeholder="Review"></textarea>
                     </div>
-                	<input type="file" id="reImage" name="reImage">
+                	<!--<input type="file" id="reImage" name="reImage">-->
                   </div>
                   <div class="col-md-12" style="text-align:center;">
                     <button class="btn_3" style="display :inline-block;">등록</button>
                   </div>
                   </fieldset>
                 <!-- 리뷰 등록 -->
-                </form>
               </div>
             </div>`
         return con3;
 }
 
-function addReview(){
-	$('.product_description_area').on('change','.btn_3',function(e){
-		let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage').val().split("\\")
-		console.log(imageN[imageN.length-1])
+function addReview(proCode){
+	$('.product_description_area').on('click','.btn_3',function(e){
+		//let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage').val().split("\\")
+		//let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage')
+		//console.log(imageN[imageN.length-1])
+		console.log($(e.target).parent().siblings('.col-md-12').find('#reImage'));
 		
 		let reTitle = $(e.target).parent().siblings('.col-md-12').find('#reTitle').val();
 		let reContent = $(e.target).parent().siblings('.col-md-12').find('.form-control').val();
 		let reRate = $(e.target).parent().siblings('.listStar').find('input:checked').attr('id');
-		let reImage = imageN[imageN.length-1];
+		//let reImage = imageN[imageN.length-1];
 		
-		const formData = new FormData();
-		formData.append("userId", userId);
-		formData.append("proCode", proCode);
-		formData.append("reTitle", reTitle);
-		formData.append("reContent", reContent);
-		formData.append("reRate", reRate);
-		formData.append("reImage", reImage);
+		//const formData = new FormData();
+		//formData.enctype='multipart/form-data';
+		//formData.method='post';
+		//formData.append('text', userId);
+		//formData.append('number', proCode);
+		//formData.append('text', reTitle);
+		//formData.append('text', reContent);
+		//formData.append('number', reRate);
+		//formData.append('file', reImage);
+		//console.log(userId)
+		//formData.append("reImage", fileInput.files[0]);
+		//const fileInput = document.querySelector("#reImage");
+		//console.log(fileInput.files[0]);
+		//formData.append("reImage", $(e.target).parent().siblings('.col-md-12').find('#reImage').files[0]);
 		
-		fetch('reviewAdd.do', {
-		method: "POST",
-		headers: {
-			'Content-Type': 'multipart/form-data'
-		},
-		body: formData
-	})
+		fetch('reviewAdd.do?proCode='+ proCode + '&reContent='+ reContent + '&reRate='+ reRate + '&reTitle='+ reTitle, {
+		method: "get"
+		})
 		.then(str => str.json())
-		.then(result => {
-			console.log(result);
+		.then(res => {
+			console.log(res)	
+			if(res.retCode == "OK"){
+				alert('리뷰 1건 등록하셨습니다.');	
+				reviewList(pageInfo, proCode);
+			}else{
+				alert('회원으로 구매하신 상품이 없습니다.');
+			}
+		})
+		
+	})
+}
+function delLi(){
+	$(".tab3").on("click",".delPoint",function(e){
+		$(e.target).parent().remove();
+		
+		//수정필요
+		fetch('reviewDel.do?proCode='+ proCode + '&reContent='+ reContent + '&reRate='+ reRate + '&reTitle='+ reTitle, {
+		method: "get"
+		})
+		.then(str => str.json())
+		.then(res => {
+			console.log(res)	
+			if(res.retCode == "OK"){
+				alert('리뷰 1건 등록하셨습니다.');	
+				reviewList(pageInfo, proCode);
+			}else{
+				alert('회원으로 구매하신 상품이 없습니다.');
+			}
 		})
 	})
 }
-
 
 
 

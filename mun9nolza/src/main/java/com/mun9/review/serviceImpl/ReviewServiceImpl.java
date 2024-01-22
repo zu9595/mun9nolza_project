@@ -34,13 +34,7 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public boolean addReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.addReview(vo) == 1;
-	}
-
-	@Override
-	public boolean orderTFReview(String userId) {
-		// TODO Auto-generated method stub
-		return mapper.selectOrderReview(userId) != null ? true : false;
+		return mapper.addReview(vo) > 0;
 	}
 
 }

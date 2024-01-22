@@ -27,11 +27,7 @@
  </select>
  
  <insert id="addReview" parameterType="review">
- 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content,re_image,re_date) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent},#{reImage},sysdate)
+ 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent})
  </insert>
- 
-  <select id="selectOrderReview" parameterType="String">
- 	select order_no from orderlist where user_id = #{userId}
- </select>
  
 </mapper>
