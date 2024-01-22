@@ -39,7 +39,6 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
-import com.mun9.orderdetail.command.OrderDetailJson;
 import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
@@ -126,8 +125,7 @@ public class FrontController extends HttpServlet {
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
 		//단건결제화면으로 이동
 		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
-		//결제 시 데이터 관련
-		map.put("/orderDetailData.do", new OrderDetailJson());
+		//map.put("/orderDetailData.do", new OrderDetailJson()); // 미사용
 		//결제 후 내역 페이지
 		map.put("/orderResult.do", new OrderResultControl());
 		

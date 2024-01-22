@@ -1,32 +1,27 @@
 
+console.log(orderSum);
 console.log(userId);
 
-let orderStatus = "준비중";
+let orderStatus = '준비중';
 let deliveryFee = 3000;
-
+let ordertel = $('#tel1').val() +'-'+ $('#tel2').val() +'-'+ $('#tel3').val();
 function orderResult() {
-	let ordertel = $('#tel1').val() + $('#tel2').val() + $('#tel3').val();
 	console.log(ordertel);
-	makeOrderData(userId, orderRecipient, orderAddr, detailAddr, ordertel, deliveryMemo, orderSum, deliveryFee, orderDate, orderStatus);
+	makeOrderData(userId, orderRecipient, orderAddr, detailAddr, ordertel, deliveryMemo, orderSum, deliveryFee, orderStatus);
 }
 
 // Ajax
-function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone, deliveryMemo, totalPrice, deliveryFee, orderDate, orderStatus) {
-	fetch('orderDetailData.do', {
+function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone, deliveryMemo, totalPrice, deliveryFee, orderStatus){
+	fetch('orderResult.do', {
 		method: "POST",
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
-		body: 'userId=' + userId + '&orderRecipient=' + orderRecipient + '&orderAddr=' + orderAddr + '&detailAddr=' + detailAddr + '&orderPhone=' + orderPhone + '&deliveryMemo=' + deliveryMemo + '&totalPrice=' + totalPrice + '&deliveryFee=' + deliveryFee + '&orderDate=' + orderDate + '&orderStatus=' + orderStatus
+		body: 'userId=' + userId + '&orderRecipient=' + orderRecipient + '&orderAddr=' + orderAddr + '&detailAddr=' + detailAddr + '&orderPhone=' + orderPhone + '&deliveryMemo=' + deliveryMemo + '&totalPrice=' + totalPrice + '&deliveryFee=' + deliveryFee + '&orderStatus=' + orderStatus
 	})
 		.then(str => str.json())
 		.then(result => {
 			console.log(result);
-			if (result.retCode == 'OK'){
-					alert('결제 완료');
-				} else if(result.retCode == 'NG'){
-					alert('처리중 에러');
-				}
 		})
 		.catch(err => console.error(err));
 }

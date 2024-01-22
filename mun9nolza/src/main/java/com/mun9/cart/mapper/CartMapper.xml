@@ -26,6 +26,10 @@
 	<insert id="addCart" parameterType="cart">
 		insert into cart values (mypro_no_seq.nextval,#{userId},#{proCode},#{proPrice},#{proDiscount},#{myproCnt})
 	</insert>
-  
+	
+  <delete id="resetCartList" parameterType="String">
+  	delete cart
+  	where user_id= #{userId}
+  </delete>
  
 </mapper>
