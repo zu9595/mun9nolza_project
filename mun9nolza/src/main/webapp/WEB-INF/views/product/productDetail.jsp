@@ -40,15 +40,8 @@ width: 100%;
 font-size: 1rem;
 }
 
-fieldset .col-md-12{
-}
-
 .product_description_area .col-lg-6{
 max-width: 100%;
-}
-
-.tab3{
-
 }
 
 </style>
@@ -62,7 +55,7 @@ max-width: 100%;
           <div class="product_slider_img">
             <div id="vertical">
               <div data-thumb="img/logo.png">
-                <img src="img/${vo.proImage }" alt="메인이미지"/>
+                <img src="img/${vo.proImage }" alt="메인이미지" style="width: 32rem;height: 24rem; margin-bottom: 2rem;"/>
               </div>
 				<!-- 상세페이지 3개 가져옴(2,3,4) -->
               
@@ -168,8 +161,20 @@ max-width: 100%;
       </div>
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-12">
-          <div class="best_product_slider owl-carousel">
-            <div class="single_product_item">
+          <div class="best_product_slider owl-carousel bestProd">
+          
+          <!-- 베스트 목록 -->
+          <c:forEach var="item" items="${bestList}" begin="0" end="7" step="1">
+                	<div class="single_product_item">
+                		<img src="img/${item.proImage }" alt="이미지">
+                        <div class="single_product_text">
+                            <h4>${item.proName} </h4>
+                            <h3>${item.proPrice}원</h3>
+                        </div>
+                    </div>
+                </c:forEach>
+           <!-- 베스트 목록 -->
+            <!-- <div class="single_product_item">
               <img src="img/logo.png" alt="">
               <div class="single_product_text">
                 <h4>Quartz Belt Watch</h4>
@@ -203,7 +208,9 @@ max-width: 100%;
                 <h4>Quartz Belt Watch</h4>
                 <h3>$150.00</h3>
               </div>
-            </div>
+            </div> -->
+            
+            
           </div>
         </div>
       </div>

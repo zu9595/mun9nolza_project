@@ -27,6 +27,15 @@
 		insert into cart values (mypro_no_seq.nextval,#{userId},#{proCode},#{proPrice},#{proDiscount},#{myproCnt})
 	</insert>
 	
+	<select id="addCartCheck" parameterType="cart">
+		select count(*) count from cart where user_id=#{userId} and pro_code=#{proCode}
+	</select>
+	
+	<update id="setCartList" parameterType="cart">
+		update cart set mypro_cnt = mypro_cnt + #{myproCnt}
+		where user_id = #{userId} and pro_code = #{proCode}
+	</update>
+	
   <delete id="resetCartList" parameterType="String">
   	delete cart
   	where user_id= #{userId}
