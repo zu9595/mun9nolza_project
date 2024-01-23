@@ -63,7 +63,7 @@ function makeLi(product = {}) {
     
 const li = `<div class="col-lg-4 col-sm-6 listsize">
     <div class="single_product_item">
-    <img src="`+product.proImage+`" alt="이미지">
+    <img src="img/`+product.proImage+`" alt="이미지">
     <div class="single_product_text">
         <h4>`+product.proName+`</h4>
         <h3>`+product.proPrice+`원</h3>

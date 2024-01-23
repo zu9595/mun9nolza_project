@@ -24,7 +24,7 @@ function makeSaleLi(product = {}) {
 	let li =
 		`<div class="col-lg-3 col-sm-6">
             <div class="single_product_item">
-                <img src="`+ product.proImage + `" alt="이미지">
+                <img src="img/`+ product.proImage + `" alt="이미지">
                 <div class="single_product_text">
                     <h4>`+ product.proName + `</h4>
                     <h3>`+ product.proDiscount + `원</h3>

@@ -44,7 +44,7 @@ public class InquireServiceImpl implements InquireService {
 	public List<InquireVO> getMyInquire(String userID) {
 		return mapper.selectMyInquire(userID);
     
-  @Override
+	@Override
 	public boolean modifyInquire(InquireVO vo) {
 		return mapper.updateInquire(vo) == 1;
 	}

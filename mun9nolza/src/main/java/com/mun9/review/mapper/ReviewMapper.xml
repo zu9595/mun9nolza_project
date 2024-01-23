@@ -27,7 +27,7 @@
  </select>
  
  <insert id="addReview" parameterType="review">
- 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent})
+ 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content,re_image) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent},#{reImage})
  </insert>
  
 </mapper>

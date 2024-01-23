@@ -4,6 +4,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="css/review.css">
+<style>
+.product_description_area .container{
+ border-bottom: 1px solid #dddddd; 
+ border-top: 1px solid #dddddd; 
+
+}
+.product_description_area .container .btns{
+display: flex;
+padding: 5px 0px;
+}
+
+.product_description_area .container .btn1,.product_description_area .container .btn2{
+border: 1px solid #dddddd;
+border-radius: 40%;
+padding: 5px 8px;
+margin: 5px 10px;
+width: 5rem;
+text-align: center;
+background: rgb(134,164,28);
+text-transform: uppercase;
+}
+
+.product_description_area .container a{
+text-decoration: none;
+color: #fff;
+
+}
+.product_description_area .col-lg-6{
+margin-top: 2rem; 
+width: 100%;
+}
+
+.review_box legend{
+font-size: 1rem;
+}
+
+fieldset .col-md-12{
+}
+
+.product_description_area .col-lg-6{
+max-width: 100%;
+}
+
+.tab3{
+
+}
+
+</style>
+    
     
   <!--================Single Product Area =================-->
   <div class="product_image_area section_padding">
@@ -13,7 +62,7 @@
           <div class="product_slider_img">
             <div id="vertical">
               <div data-thumb="img/logo.png">
-                <img src="${vo.proImage }" alt="메인이미지"/>
+                <img src="img/${vo.proImage }" alt="메인이미지"/>
               </div>
 				<!-- 상세페이지 3개 가져옴(2,3,4) -->
               
@@ -26,7 +75,7 @@
             <h5></h5>
             <h3>${vo.proName }</h3>
             <c:choose>
-            <c:when test="${!empty vo.proDiscount }">
+            <c:when test="${vo.proDiscount eq 0 } ">
             <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span><span>${vo.proDiscount }원</span></h2>
             </c:when>
             <c:otherwise>

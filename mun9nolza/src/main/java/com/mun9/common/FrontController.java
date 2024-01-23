@@ -47,6 +47,7 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
+import com.mun9.orderdetail.command.OrderDetailJson;
 import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
@@ -63,6 +64,7 @@ import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.searchControl;
+import com.mun9.productimage.command.prodDetailImg2GetControl;
 import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
 import com.mun9.review.command.reviewAddJson;
@@ -191,6 +193,7 @@ public class FrontController extends HttpServlet {
 
 		// 상품 상세
 		map.put("/prodDetailImg.do", new prodDetailImgGetControl());
+		map.put("/prodDetailImg2.do", new prodDetailImg2GetControl());
 
 		// admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

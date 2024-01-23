@@ -44,21 +44,45 @@ function btn1(){
           <p>
             ${proDesc }
           </p>
+          <div class="imgDetail">
+          </div>
         </div>`
 	$(`.tab1`).on('click', function(e){
 	$('.tab3').children().remove();
 	$('.pageination').children().first().remove();
 	$('.tab3').siblings().eq(1).remove();
-	console.log($('.tab3').siblings().eq(2))
+	console.log($('.tab3').siblings().eq(1))
 	tab3.insertAdjacentHTML('afterbegin',con2);
+	imgDetails();
 });
 }
+
+function imgDetails(){
+	fetch('prodDetailImg2.do?proCode='+ proCode, {
+		method: "get"
+		})
+		.then(str => str.json())
+		.then(res => {
+			let imgd = '';
+			console.log(res)
+			res.forEach(rev => {
+				console.log(rev)
+                let im = `<img src="img/${rev.image}" alt="이미지 없음">`;
+                imgd += im; 
+			})
+			let sw= document.querySelector('.tab3 .homes');
+			sw.insertAdjacentHTML('beforeend',imgd);
+		})	
+}
+
 
 function btn2(){
 	
 $(`.tab2`).on('click', function(e){
-	$('.tab3').children().remove();
+	$('.tab3').empty();
+	e.stopPropagation()
 	reviewList(pageInfo, proCode);
+	tab3.insertAdjacentHTML('afterend',consts2());
 });
 }
 
@@ -144,6 +168,7 @@ function consts2(){
               <div class="review_box">
                 <h4>리뷰 쓰기</h4>
                 <!-- 별점클릭 이벤트 -->
+                <form id="reData">
                 <fieldset>
                 <legend>별점을 선택하세요</legend>
                 <div class="listStar">
@@ -166,12 +191,13 @@ function consts2(){
                     <div class="form-group">
                       <textarea class="form-control" name="reContent" rows="1" placeholder="Review"></textarea>
                     </div>
-                	<!--<input type="file" id="reImage" name="reImage">-->
+                	<input type="file" id="reImage" name="reImage">
                   </div>
                   <div class="col-md-12" style="text-align:center;">
-                    <button class="btn_3" style="display :inline-block;">등록</button>
+                    <button type="button" class="btn_3" style="display :inline-block;">등록</button>
                   </div>
                   </fieldset>
+                  </form>
                 <!-- 리뷰 등록 -->
               </div>
             </div>`
@@ -183,30 +209,28 @@ function addReview(proCode){
 		//let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage').val().split("\\")
 		//let imageN = $(e.target).parent().siblings('.col-md-12').find('#reImage')
 		//console.log(imageN[imageN.length-1])
-		console.log($(e.target).parent().siblings('.col-md-12').find('#reImage'));
+		//console.log($(e.target).parent().siblings('.col-md-12').find('#reImage'));
 		
 		let reTitle = $(e.target).parent().siblings('.col-md-12').find('#reTitle').val();
 		let reContent = $(e.target).parent().siblings('.col-md-12').find('.form-control').val();
 		let reRate = $(e.target).parent().siblings('.listStar').find('input:checked').attr('id');
 		//let reImage = imageN[imageN.length-1];
 		
-		//const formData = new FormData();
-		//formData.enctype='multipart/form-data';
-		//formData.method='post';
+		//file은 이미지 원본 그대로 넘겨야함
+		const formData = new FormData();
 		//formData.append('text', userId);
-		//formData.append('number', proCode);
-		//formData.append('text', reTitle);
-		//formData.append('text', reContent);
-		//formData.append('number', reRate);
-		//formData.append('file', reImage);
+		formData.append('proCode', proCode);
+		formData.append('reTitle', reTitle);
+		formData.append('reContent', reContent);
+		formData.append('reRate', reRate);
+		const fileField = document.querySelector('input[type="file"]');
+		//formData.append('reImage', reImage);
+		formData.append("reImage", fileField.files[0]);
 		//console.log(userId)
-		//formData.append("reImage", fileInput.files[0]);
-		//const fileInput = document.querySelector("#reImage");
-		//console.log(fileInput.files[0]);
-		//formData.append("reImage", $(e.target).parent().siblings('.col-md-12').find('#reImage').files[0]);
 		
-		fetch('reviewAdd.do?proCode='+ proCode + '&reContent='+ reContent + '&reRate='+ reRate + '&reTitle='+ reTitle, {
-		method: "get"
+		fetch('reviewAdd.do', {
+		method: "post",
+		body:formData
 		})
 		.then(str => str.json())
 		.then(res => {

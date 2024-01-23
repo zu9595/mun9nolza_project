@@ -191,7 +191,11 @@ function orderModSet(){
 // 상품별 가격 합산
 function makeSubTotal(idx,res){
 	
-	let proDiscount = $(`.proDiscount${idx}`).text();	
+	let proDiscount = $(`.proDiscount${idx}`).text();
+	if(proDiscount == 0){
+		proDiscount = $(`.proPrice${idx}`).text();
+	}
+	console.log(proDiscount);
 	let myproCnt = $(`.myproCnt${idx}`).val();
 	
 	//console.log(proDiscount);
@@ -248,7 +252,7 @@ function makeTr(cart,idx){
                 </td>
                 
                 <td>
-                  <h5><span class="proPrice">${cart.proPrice}</span></h5>
+                  <h5><span class="proPrice${idx}">${cart.proPrice}</span></h5>
                 </td>
                 
                 <td>

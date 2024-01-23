@@ -29,7 +29,7 @@ function detDetailImg(proCode){
 
 function imgdiv(res){
 	const div = `<div data-thumb="img/logo.png">
-                <img src="${res.image}" alt="상세이미지"/>
+                <img src="img/${res.image}" alt="상세이미지"/>
               </div>`;
     
     return div;

@@ -29,7 +29,7 @@ public class prodDetailImgGetControl implements Control {
 		List<ProductImageVO> list =  svc.getImg(Integer.parseInt(proCode));
 		
 		Gson gson = new GsonBuilder().create();
-		
+		resp.setContentType("text/json;charset=utf-8");
 		try {
 			resp.getWriter().print(gson.toJson(list));
 		} catch (IOException e) {
