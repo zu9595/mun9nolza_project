@@ -66,6 +66,7 @@ import com.mun9.product.command.ProductMenuListControl;
 import com.mun9.product.command.ProductPagingListControl;
 import com.mun9.product.command.mainBestProductList;
 import com.mun9.product.command.searchControl;
+import com.mun9.product.command.searchListControl;
 import com.mun9.productimage.command.prodDetailImg2GetControl;
 import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
@@ -95,8 +96,12 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderListJson.do", new OrderListJsonControl());//주문갯수
 		
 		//상품 검색
-		map.put("/search.do",  new searchControl());
-//		map.put("/mainBest.do", new mainBestProductList());
+
+		map.put("/search.do",  new searchControl());//상품 검색해서 json생성
+		map.put("/searchList.do",  new searchListControl());//검색 결과 페이지로 이동
+		
+		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
+
 		
 		//회원가입
 		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만

@@ -37,7 +37,7 @@
                 	<td>
                 	<ul>
                 		<li><span class="delieveryFee"></span></li>
-                		<li><span class="total"></span> 원</li>
+                		<li><span class="total"></span></li>
                 	</ul>                  
                 </td>
                 

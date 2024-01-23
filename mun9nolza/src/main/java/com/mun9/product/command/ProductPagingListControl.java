@@ -40,6 +40,7 @@ public class ProductPagingListControl implements Control {
 		}else if(option.equals("proSell")) {
 			vo.setProSell(1);
 		}
+
 		proName = req.getParameter("proName"); 
 		
 		List<ProductVO> list = svc.productListPaging(vo);

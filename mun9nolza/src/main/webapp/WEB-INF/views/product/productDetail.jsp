@@ -98,13 +98,14 @@ max-width: 100%;
               <a href="loginForm.do" class="btn_3">상품구매</a>
               </c:otherwise>
               </c:choose>
+              
               <!-- 로그인 세션이 존재할때 -->
               <c:choose>
               <c:when test="${!empty userId }">
               <a href="javascript:addCartList()" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니 추가</a>
               </c:when>
               <c:otherwise>
-              <a href="loginForm.do" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니<br>추가</a>
+              <a href="addCartJson.do?userId=${userId}&proCode=${proCode}&proPrice=${proPrice}&proDiscount=${proDiscount}&myproCnt=${myproCnt}" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니<br>추가</a>
               </c:otherwise>
               </c:choose>
             </div>

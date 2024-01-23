@@ -88,12 +88,11 @@
  </insert>
  
  <select id="searchProduct" resultType="String">
-		select pro_name 
+		select pro_name, pro_code, pro_image, pro_price, pro_discount
 		from product
-		where pro_name 
+		where 
 		<![CDATA[
-			like #{search} and rownum <=10 order 
-			by pro_sell desc
+			(pro_name like #{search} or category like #{search}) and rownum <=10 order by pro_sell desc			
 		]]>
   </select>
 	
