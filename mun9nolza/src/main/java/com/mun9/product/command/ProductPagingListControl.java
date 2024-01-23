@@ -25,6 +25,7 @@ public class ProductPagingListControl implements Control {
 		String category = req.getParameter("category");
 		String option = req.getParameter("option");
 		String page = req.getParameter("page");
+		String proName = null; 
 		
 		//페이지 값이 없으면 1
 		page = page == null ? "1" : page;
@@ -39,8 +40,8 @@ public class ProductPagingListControl implements Control {
 		}else if(option.equals("proSell")) {
 			vo.setProSell(1);
 		}
-		
-		
+
+		proName = req.getParameter("proName"); 
 		
 		List<ProductVO> list = svc.productListPaging(vo);
 		

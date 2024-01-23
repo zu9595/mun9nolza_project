@@ -44,7 +44,7 @@
                 		<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="fas fa-user fa-fw"></i></a>
 							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a href="javascript:listView('${logId}')"><i class="bi bi-clipboard"></i></a></li>
+                        <li><a class="dropdown-item" href="javascript:listView('${logId}')">관리자로그인&ensp;</a></li>
                         <li><hr class="dropdown-divider" /></li>
 						 <li><a class="dropdown-item" href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a></li>
                         </ul>
@@ -98,7 +98,7 @@
 	</div>
 
 	<!-- 카테고리 -->
-	<div class="container">
+	<div class="container" style="max-width: 100%; background: floralwhite;">
 		<div class="row align-items-center">
 			<div class="col-lg-12">
 				<nav class="navbar navbar-expand-lg navbar-light">
@@ -127,22 +127,22 @@
 								id="navbarDropdown_1" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> 문구 </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-									<a class="dropdown-item" href="category.html"> 다이어리</a> <a
-										class="dropdown-item" href="productDetail.do?pcode=1">캘린더</a> <a
-										class="dropdown-item" href="single-product.html">노트</a> <a
-										class="dropdown-item" href="single-product.html">필기도구</a> <a
-										class="dropdown-item" href="single-product.html">필통/파우치</a>
+									<a class="dropdown-item" href="productMenuList.do?category=다이어리"> 다이어리</a> <a
+										class="dropdown-item" href="productMenuList.do?category=캘린더">캘린더</a> <a
+										class="dropdown-item" href="productMenuList.do?category=노트">노트</a> <a
+										class="dropdown-item" href="productMenuList.do?category=필기도구">필기도구</a> <a
+										class="dropdown-item" href="productMenuList.do?category=필통/파우치">필통/파우치</a>
 								</div></li>
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="blog.html"
 								id="navbarDropdown_3" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> 꾸미기용품 </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-									<a class="dropdown-item" href="checkout.html">메모지</a> <a
-										class="dropdown-item" href="login.html"> 스티커</a> <a
-										class="dropdown-item" href="tracking.html">테이프</a> <a
-										class="dropdown-item" href="cart.html">스템프</a> <a
-										class="dropdown-item" href="confirmation.html">엽서/카드</a>
+									<a class="dropdown-item" href="productMenuList.do?category=메모지">메모지</a> <a
+										class="dropdown-item" href="productMenuList.do?category=스티커"> 스티커</a> <a
+										class="dropdown-item" href="productMenuList.do?category=테이프">테이프</a> <a
+										class="dropdown-item" href="productMenuList.do?category=스템프">스템프</a> <a
+										class="dropdown-item" href="productMenuList.do?category=엽서/카드">엽서/카드</a>
 								</div></li>
 							<li><a class="nav-link" href="inquireListForm.do">문의사항</a></li>
 						</ul>

@@ -5,7 +5,8 @@
 <script>
 	let userId = '${logId}'
 </script>
-<script src="js/inquirejs/inquireList.js"></script>
+<script defer src="js/inquirejs/inquireList.js"></script>
+
 <section class="section_padding">
 	<div class="container">
 		<h3>문의사항</h3>
@@ -17,7 +18,6 @@
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일시</th>
-					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody id="inquireList">
@@ -29,5 +29,8 @@
 					onclick="location.href='inquireAddForm.do'">상품문의</button>
 			</div>
 		</c:if>
+		<div class="col-lg-12" style="align-self: flex-end;">
+			<div class="pageination"></div>
+		</div>
 	</div>
 </section>

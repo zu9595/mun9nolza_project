@@ -34,13 +34,12 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public boolean addReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.addReview(vo) == 1;
+		return mapper.addReview(vo) > 0;
 	}
-
 	@Override
-	public boolean orderTFReview(String userId) {
+	public boolean deleteReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.selectOrderReview(userId) > 0;
+		return mapper.deleteReview(vo) > 0;
 	}
 
 }

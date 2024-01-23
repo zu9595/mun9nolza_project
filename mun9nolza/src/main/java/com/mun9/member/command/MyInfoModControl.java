@@ -41,8 +41,11 @@ public class MyInfoModControl implements Control {
 		MemberService svc = new MemberServiceImpl();
 		svc.memInfoMod(vo);
 		try {
-			resp.sendRedirect("myInfoModForm.do");
-		} catch (IOException e) {
+			//msg.jsp
+			req.setAttribute("msg","수정되었습니다");
+			req.setAttribute("url","myInfoModForm.do");
+			req.getRequestDispatcher("no/common/result.tiles").forward(req, resp);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

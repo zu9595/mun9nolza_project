@@ -11,5 +11,5 @@ public interface ReviewService {
 	int getTotalReviewCnt(int proCode);
 	List<ReviewVO> reviewListPaging(ReviewVO vo);
 	boolean addReview(ReviewVO vo);
-	boolean orderTFReview(String userId);
+	boolean deleteReview(ReviewVO vo);
 }

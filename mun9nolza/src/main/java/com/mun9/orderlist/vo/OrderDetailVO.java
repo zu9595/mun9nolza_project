@@ -5,11 +5,13 @@ import lombok.Data;
 @Data
 public class OrderDetailVO {
 
-	private int procode;
+	private int proCode;
 	private String proImage;
 	private String proName;
 	private int deProCnt;
 	private int deProPrice;
+	
+	
 	
 	
 }

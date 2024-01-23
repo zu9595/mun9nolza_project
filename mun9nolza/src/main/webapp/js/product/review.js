@@ -6,23 +6,27 @@ let tab1 = document.querySelector(`.tab1`);
 let tab2 = document.querySelector(`.tab2`);
 let tab3 = document.querySelector(`.tab3`);
 let paging = document.querySelector('.pageination');
-reviewList(pageInfo, proCode);
-btn1();
-btn2();
-addReview();
+let star = 0;
+
+$(document).ready(function(){
+	reviewList(pageInfo, proCode);
+	btn1();
+	btn2();
+	addReview(proCode);
+    tab3.insertAdjacentHTML('afterend',consts2());
+    delLi();
+});
+
 function reviewList(page, proCode){
 	fetch('reviewList.do?page='+ page +'&proCode='+ proCode)
 		.then(str => str.json())
 		.then(result => {
             let ul = ``;
-            
 			result.list.forEach(rev => {
-				console.log(rev)
                 let li = makeLis(rev);
                 ul += li; 
 			})
             tab3.insertAdjacentHTML('afterbegin',ul);
-            tab3.insertAdjacentHTML('afterend',consts2());
             pagingList(result);
             
 		})
@@ -31,25 +35,51 @@ function reviewList(page, proCode){
 
 
 function btn1(){
-	const con2 = `<div class="homes" id="home" >
-          <p>
+	const con2 = `<div class="homes" id="home" style="display: flex;align-items: center; flex-direction: column;">
+          <p style="padding: 3rem 40%; max-width: 100%; margin: 0 auto; text-align: center;">
             ${proDesc }
           </p>
+          <div class="imgDetail">
+          </div>
         </div>`
 	$(`.tab1`).on('click', function(e){
 	$('.tab3').children().remove();
 	$('.pageination').children().first().remove();
 	$('.tab3').siblings().eq(1).remove();
-	console.log($('.tab3').siblings().eq(2))
+	console.log($('.tab3').siblings().eq(1))
 	tab3.insertAdjacentHTML('afterbegin',con2);
+	imgDetails();
 });
 }
+
+function imgDetails(){
+	fetch('prodDetailImg2.do?proCode='+ proCode, {
+		method: "get"
+		})
+		.then(str => str.json())
+		.then(res => {
+			let imgd = '';
+			console.log(res)
+			res.forEach(rev => {
+				console.log(rev)
+                let im = `<img src="img/${rev.image}" alt="이미지 없음" style="margin: 1rem 0;">`;
+                imgd += im; 
+			})
+			let sw= document.querySelector('.tab3 .homes');
+			sw.insertAdjacentHTML('beforeend',imgd);
+		})	
+}
+
 
 function btn2(){
 	
 $(`.tab2`).on('click', function(e){
-	$('.tab3').children().remove();
+	$('.tab3').empty();
+	$('.tab3').siblings().eq(1).remove();
+	console.log(tab3)
+	e.stopPropagation()
 	reviewList(pageInfo, proCode);
+	tab3.insertAdjacentHTML('afterend',consts2());
 });
 }
 
@@ -58,10 +88,10 @@ function makeLis(rev = {}) {
 for(let i =1;i<=rev.reRate;i++){
 	starssd += `<i class="fa fa-star ${i}s"></i>`;
 }
-const li = `<div class="11">
-                  <div class="22">
-                    <div class="33">
-                      <img src="${rev.reImage}" alt="이미지없음" />
+const li = `<div class="11" style="padding: 2% 18%;height: 10rem; margin-bottom: 1rem;">
+                  <div class="22" style="height: 4rem;">
+                    <div class="33" style="float: left;width: 10rem;margin-right: 2rem; height: 10rem;">
+                      <img src="img/${rev.reImage}" alt="이미지없음" style="height: 10rem; width: 10rem;"/>
                     </div>
                     <div class="stars">
                       <h4>${rev.reTitle}</h4>
@@ -71,6 +101,7 @@ const li = `<div class="11">
                   <p>
                     ${rev.reContent}
                   </p>
+                  <button class="delPoint btn btn-danger" style="float: right;">삭제</button>
                 </div>`
 return li;
 }
@@ -124,80 +155,115 @@ function pagingList(result){
 function pageList(e){
         e.preventDefault();
 		pageInfo = this.getAttribute("href");
+		$('.tab3').empty();
        	reviewList(pageInfo,proCode);
 }
 
 function consts2(){
 	const con3 = `<!-- 리뷰페이지 번호 -->
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="padding: 0px 18%; margin-top: 5rem;">
               <div class="review_box">
                 <h4>리뷰 쓰기</h4>
                 <!-- 별점클릭 이벤트 -->
-                <p>별점:</p>
-                <ul class="listStar">
-                  <li>
-                    <a href="#" class="fa fa-star 1">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 2">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 3">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 4">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="fa fa-star 5">
-                    </a>
-                  </li>
-                </ul>
+                <form id="reData">
+                <fieldset>
+                <legend>별점을 선택하세요</legend>
+                <div class="listStar">
+                   <input type="radio" id="1" name="reRate" value="1"/>
+                   <label for="star1">1</label>
+                   <input type="radio" id="2" name="reRate" value="2"/>
+                   <label for="star2">2</label>
+                   <input type="radio" id="3" name="reRate" value="3"/>
+                   <label for="star3">3</label>
+                   <input type="radio" id="4" name="reRate" value="4"/>
+                   <label for="star4">4</label>
+                   <input type="radio" id="5" name="reRate" value="5"/>
+                   <label for="star5">5</label>
+                </div>
                 <!-- 별점클릭 이벤트 -->
                 <!-- 리뷰 등록 ajax -->
-                <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate" enctype="multipart/form-data">
                   <div class="col-md-12">
-                  	<label for="reTitle">제목</label>
+                  	<label for="reTitle">제목</label><br>
                 	<input type="text" id="reTitle" name="reTitle">
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
+                    <div class="form-group" style="margin: 1rem 0;">
+                    <label for="reContent">내용</label>
+                      <textarea class="form-control" name="reContent" rows="1" placeholder="Review"></textarea>
                     </div>
                 	<input type="file" id="reImage" name="reImage">
                   </div>
-                  <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="btn_3">
-                      등록
-                    </button>
+                  <div class="col-md-12" style="text-align:center;">
+                    <button type="button" class="btn_3" style="display :inline-block;">등록</button>
                   </div>
-                </form>
+                  </fieldset>
+                  </form>
                 <!-- 리뷰 등록 -->
               </div>
             </div>`
         return con3;
 }
 
-function addReview(){
+function addReview(proCode){
 	$('.product_description_area').on('click','.btn_3',function(e){
-		console.log(e.target)
-		//reContent
-		//reRate
-		//reImage
-		fetch('reviewAdd.do',{
+		let reTitle = $(e.target).parent().siblings('.col-md-12').find('#reTitle').val();
+		let reContent = $(e.target).parent().siblings('.col-md-12').find('.form-control').val();
+		let reRate = $(e.target).parent().siblings('.listStar').find('input:checked').attr('id');
+		
+		//file은 이미지 원본 그대로 넘겨야함
+		const formData = new FormData();
+		//formData.append('text', userId);
+		formData.append('proCode', proCode);
+		formData.append('reTitle', reTitle);
+		formData.append('reContent', reContent);
+		formData.append('reRate', reRate);
+		const fileField = document.querySelector('input[type="file"]');
+		formData.append("reImage", fileField.files[0]);
+		
+		fetch('reviewAdd.do', {
 		method: "post",
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: 'userId='+ userId +'&proCode='+ proCode + '&reContent='+ reContent + '&reRate='+ reRate + '&reImage='+ reImage
+		body:formData
 		})
 		.then(str => str.json())
-		.then(result => {
-			console.log(result)
+		.then(res => {
+			console.log(res)	
+			if(res.retCode == "OK"){
+				$(e.target).parent().siblings('.col-md-12').find('#reTitle').val('');
+				$(e.target).parent().siblings('.col-md-12').find('.form-control').val('');
+				$(e.target).parent().siblings('.listStar').find('input:checked').prop("checked", false);
+				alert('리뷰 1건 등록하셨습니다.');	
+				$('.tab3').empty();
+				reviewList(pageInfo, proCode);
+			}else{
+				alert('회원으로 구매하신 상품이 없습니다.');
+			}
+		})
+		
+	})
+}
+function delLi(){
+	$(".tab3").on("click",".delPoint",function(e){
+		//console.log($(e.target).parent().find('i').length)
+		//let reContent = $(e.target).parent().find('p').text();
+		let reRate = $(e.target).parent().find('i').length;
+		let reTitle = $(e.target).parent().find('h4').text();
+		console.log($(e.target).parent().find('h4').text());
+		//수정필요
+		fetch('reviewDel.do?proCode='+ proCode + '&reRate='+ reRate + '&reTitle='+ encodeURI(reTitle,"UTF-8"), {
+		method: "get"
+		})
+		.then(str => str.json())
+		.then(res => {
+			console.log(res)	
+			if(res.retCode == "OK"){
+				//$(e.target).parent().remove();
+				alert('리뷰를 삭제하셨습니다.');	
+				$('.tab3').empty();
+				reviewList(pageInfo, proCode);
+			}else{
+				alert('해당 회원이 작성하신 리뷰가 아닙니다.');
+			}
 		})
 	})
 }
-
 
 
 

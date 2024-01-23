@@ -31,15 +31,15 @@ public class InquireAddControl implements Control {
 			String proCode = mr.getParameter("proCode");
 			String inqTitle = mr.getParameter("inqTitle");
 			String inqContent = mr.getParameter("inqContent");
-			String inqImg = mr.getParameter("inqImg");
+			String inqImg = mr.getFilesystemName("inqImg");
 			String prodName = mr.getParameter("prodName");
 
 			vo.setUserId(userId);
 			vo.setProCode(Integer.parseInt(proCode));
 			vo.setInqTitle(inqTitle);
 			vo.setInqContent(inqContent);
-			vo.setInqImg(inqImg);
 			vo.setProdName(prodName);
+			vo.setInqImg(inqImg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -48,15 +48,13 @@ public class InquireAddControl implements Control {
 
 		req.setAttribute("vo", vo);
 
-		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireListBody.tiles");
-
 		try {
 			if (svc.addInquire(vo)) {
-				rd.forward(req, resp);
+				resp.sendRedirect("inquireListForm.do");
 			} else {
 				resp.sendRedirect("inquireAddForm.do");
 			}
-		} catch (ServletException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

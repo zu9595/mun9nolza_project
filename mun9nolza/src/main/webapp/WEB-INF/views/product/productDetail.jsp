@@ -4,6 +4,48 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="css/review.css">
+<style>
+.product_description_area .container{
+ border-bottom: 1px solid #dddddd; 
+ border-top: 1px solid #dddddd; 
+
+}
+.product_description_area .container .btns{
+display: flex;
+padding: 5px 0px;
+}
+
+.product_description_area .container .btn1,.product_description_area .container .btn2{
+border: 1px solid #dddddd;
+border-radius: 40%;
+padding: 5px 8px;
+margin: 5px 10px;
+width: 5rem;
+text-align: center;
+background: rgb(134,164,28);
+text-transform: uppercase;
+}
+
+.product_description_area .container a{
+text-decoration: none;
+color: #fff;
+
+}
+.product_description_area .col-lg-6{
+margin-top: 2rem; 
+width: 100%;
+}
+
+.review_box legend{
+font-size: 1rem;
+}
+
+.product_description_area .col-lg-6{
+max-width: 100%;
+}
+
+</style>
+    
     
   <!--================Single Product Area =================-->
   <div class="product_image_area section_padding">
@@ -13,7 +55,7 @@
           <div class="product_slider_img">
             <div id="vertical">
               <div data-thumb="img/logo.png">
-                <img src="${vo.proImage }" alt="메인이미지"/>
+                <img src="img/${vo.proImage }" alt="메인이미지" style="width: 32rem;height: 24rem; margin-bottom: 2rem;"/>
               </div>
 				<!-- 상세페이지 3개 가져옴(2,3,4) -->
               
@@ -26,7 +68,7 @@
             <h5></h5>
             <h3>${vo.proName }</h3>
             <c:choose>
-            <c:when test="${!empty vo.proDiscount }">
+            <c:when test="${vo.proDiscount eq 0 } ">
             <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span><span>${vo.proDiscount }원</span></h2>
             </c:when>
             <c:otherwise>
@@ -120,8 +162,20 @@
       </div>
       <div class="row align-items-center justify-content-between">
         <div class="col-lg-12">
-          <div class="best_product_slider owl-carousel">
-            <div class="single_product_item">
+          <div class="best_product_slider owl-carousel bestProd">
+          
+          <!-- 베스트 목록 -->
+          <c:forEach var="item" items="${bestList}" begin="0" end="7" step="1">
+                	<div class="single_product_item">
+                		<img src="img/${item.proImage }" alt="이미지">
+                        <div class="single_product_text">
+                            <h4>${item.proName} </h4>
+                            <h3>${item.proPrice}원</h3>
+                        </div>
+                    </div>
+                </c:forEach>
+           <!-- 베스트 목록 -->
+            <!-- <div class="single_product_item">
               <img src="img/logo.png" alt="">
               <div class="single_product_text">
                 <h4>Quartz Belt Watch</h4>
@@ -155,7 +209,9 @@
                 <h4>Quartz Belt Watch</h4>
                 <h3>$150.00</h3>
               </div>
-            </div>
+            </div> -->
+            
+            
           </div>
         </div>
       </div>
