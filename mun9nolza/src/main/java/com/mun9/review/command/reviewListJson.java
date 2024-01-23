@@ -28,7 +28,6 @@ public class reviewListJson implements Control {
 		String proCode = req.getParameter("proCode");
 		String page = req.getParameter("page");
 		
-		System.out.println(proCode);
 		page = page == null ? "1" : page;
 		ReviewVO vo = new ReviewVO();
 		vo.setPage(Integer.parseInt(page));

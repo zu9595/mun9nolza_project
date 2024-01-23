@@ -18,6 +18,11 @@ public class MemberServiceImpl implements MemberService {
 	public boolean addMember(MemberVO vo) {
 		return mapper.insertMember(vo) == 1;
 	}
+	@Override
+	public boolean idCheck(String userId) {
+		return mapper.selectIdCheck(userId) == 1;
+	}
+	
 
 	@Override
 	public List<MemberVO> memberList() {
@@ -60,7 +65,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
-	//회원탈퇴
 
 	
 

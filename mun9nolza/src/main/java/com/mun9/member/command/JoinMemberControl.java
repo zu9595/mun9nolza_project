@@ -59,18 +59,32 @@ public class JoinMemberControl implements Control {
 
 		//데이터 세팅해서 넘기기
 		req.setAttribute("vo", vo);
-		
-		//이동할 페이지
-		RequestDispatcher rd = req.getRequestDispatcher("mainbody.tiles");
+
 		try {
-			if(svc.addMember(vo)) {				
-				rd.forward(req, resp);
-			} else {
+			if(svc.addMember(vo)) {
+				
+				req.setAttribute("msg", "회원가입이 완료되었습니다");
+				req.setAttribute("url", "loginForm.do");
+				req.getRequestDispatcher("no/common/result.tiles").forward(req, resp);
+			}else {
 				resp.sendRedirect("joinMemberForm.do");
 			}
-		} catch (ServletException | IOException e) {
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		//이동할 페이지
+		//RequestDispatcher rd = req.getRequestDispatcher("mainbody.tiles");
+		//try {
+			//if(svc.addMember(vo)) {				
+				//rd.forward(req, resp);
+			//} else {
+				//resp.sendRedirect("joinMemberForm.do");
+			//}
+		//} catch (ServletException | IOException e) {
+			//e.printStackTrace();
+		//}
 		
 
 	}// end of execute.

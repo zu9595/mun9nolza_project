@@ -40,6 +40,10 @@ public class CartServiceImpl implements CartService{
 	public boolean selectOneCart(CartVO vo) {
 		return mapper.selectOneCart(vo) ==1;
 	}
+		
+	public List<CartVO> resetCartList(String userId) {
+		return mapper.resetCartList(userId);
+	}
 	
 	
 

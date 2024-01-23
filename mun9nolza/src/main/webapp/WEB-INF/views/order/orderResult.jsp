@@ -27,13 +27,13 @@
 
 						<!-- 	<c:forEach var="order" items="${cartList }"> -->
 								<tr>
-									<th><span>${order.proCode }</span></th>
-									<th><img src="${order.proImage }" alt="작은이미지" width="30px"
+									<th><span></span></th>
+									<th><img src="" alt="작은이미지" width="30px"
 										height="30px"></th>
-									<th><span>${order.proName }</span></th>
-									<th><span>${order.proPrice }</span></th>
-									<th>${order.myproCnt }</th>
-									<th><span class="orderprice">${order.proPrice*order.myproCnt }</span></th>
+									<th><span></span></th>
+									<th><span></span></th>
+									<th></th>
+									<th><span class="orderprice"></span></th>
 								</tr>
 							<!--</c:forEach>-->
 
@@ -61,10 +61,10 @@
 					<h4>구매자 정보</h4>
 					<ul>
 						<li>
-							<p>구매자 :</p> <span>${memberinfo.userName}</span>
+							<p>구매자 :</p> <span></span>
 						</li>
 						<li>
-							<p>연락처 :</p> <span>${memberinfo.phoneNum}</span>
+							<p>연락처 :</p> <span></span>
 						</li>
 					</ul>
 				</div>
