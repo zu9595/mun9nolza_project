@@ -26,7 +26,7 @@
 				<c:forEach var="vo" items="${inquireList}">
 					<tr>
 						<td>${vo.inqNo }</td>
-						<td>${vo.inqTitle }</td>
+						<td><a href="inquireDetail.do?inqNo=${vo.inqNo }">${vo.inqTitle }</a></td>
 						<td>${vo.prodName }</td>
 						<td>${vo.inqContent }</td>
 						<td><fmt:formatDate value="${vo.inqDate }"

@@ -144,10 +144,6 @@
 					<br>
 
 					<hr class="mb-4">
-					<!-- <div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="aggrement"> 
-						<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-					</div> -->
 					<div class="mb-4"></div>
 					<button type="submit" class="btn btn-primary btn-lg btn-block">회원가입</button>
 					<br>
