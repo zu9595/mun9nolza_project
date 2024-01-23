@@ -37,8 +37,25 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
+	public boolean selectOneCart(CartVO vo) {
+		return mapper.selectOneCart(vo) ==1;
+    
+  @Override
 	public List<CartVO> resetCartList(String userId) {
 		return mapper.resetCartList(userId);
+	}
+
+	@Override
+	public boolean addCartCheck(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.addCartCheck(vo) > 0;
+	}
+
+	@Override
+	public boolean setCartList(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.setCartList(vo) ==1;
+
 	}
 	
 	

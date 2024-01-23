@@ -22,6 +22,7 @@ public class OrderListControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
+		
 		OrderListVO vo = new OrderListVO();
 		OrderListService svc = new OrderListServiceImpl();
 		

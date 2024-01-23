@@ -27,7 +27,11 @@
  </select>
  
  <insert id="addReview" parameterType="review">
- 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent})
+ 	insert into review(re_no,order_no,pro_code,user_id,re_title,re_rate,re_content,re_image) values (re_no_seq.nextval,#{orderNo},#{proCode},#{userId},#{reTitle},#{reRate},#{reContent},#{reImage})
  </insert>
+ 
+ <delete id="deleteReview" parameterType="review">
+	delete from review where user_id=#{userId} and pro_code=#{proCode} and re_title=#{reTitle} and re_rate=#{reRate}
+</delete>
  
 </mapper>

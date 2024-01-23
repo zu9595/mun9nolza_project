@@ -4,14 +4,15 @@
 
  	let products = document.querySelector('.productlist');
 	let pageInfo = 1;
-    let category = '';
+    let category = categorys;
+    console.log(categorys)
     let option = '';
     let paging = document.querySelector('.pageination');
     let select = document.querySelector('.otp');
 
 
     //showList(pageInfo,''); 
-    showList(pageInfo,'',option);
+    showList(pageInfo,category,option);
     
     
     $(".product_top_bar .otp").on("click",".option",function(e){
@@ -63,12 +64,12 @@ function makeLi(product = {}) {
     
 const li = `<div class="col-lg-4 col-sm-6 listsize">
     <div class="single_product_item">
-    <img src="`+product.proImage+`" alt="이미지">
+    <img src="img/`+product.proImage+`" alt="이미지">
     <div class="single_product_text">
         <h4>`+product.proName+`</h4>
         <h3>`+product.proPrice+`원</h3>
         <h3>할인가 `+product.proDiscount+`원</h3>
-        <a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세보기<i class="fas fa-cart-plus"></i></a>
+        <a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세보기</a>
     </div>
 </div>
 </div>`

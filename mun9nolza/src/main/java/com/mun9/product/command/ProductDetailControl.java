@@ -1,6 +1,7 @@
 package com.mun9.product.command;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,13 +20,16 @@ public class ProductDetailControl implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		int pcode = Integer.parseInt(req.getParameter("pcode"));
-		
+		ProductService psvc = new ProductServiceImpl();
 		ProductService svc = new ProductServiceImpl();
 		ProductVO vo = svc.getProductDetail(pcode);
+		List<ProductVO> list2 = psvc.mainBestProductList();
+		
 		
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("logId");
 		
+		req.setAttribute("bestList", list2);
 		req.setAttribute("vo", vo);
 		req.setAttribute("userId", userId);
 		

@@ -22,7 +22,24 @@ public class MyInfoDelControl implements Control {
 		//String logPw = (String)session.getAttribute("logPw");
 		String userPw = req.getParameter("userPw"); //비밀번호 입력받은 값
 		
+	
 		try {
+			if(svc.delMember(userId, userPw)) {
+				req.setAttribute("msg", "탈퇴되었습니다");
+				req.setAttribute("url", "main.do");
+				session.invalidate(); //세션무효화
+				req.getRequestDispatcher("no/common/result.tiles").forward(req, resp);
+			}else {
+				req.setAttribute("msg", "비밀번호 불일치");
+				req.setAttribute("url", "myInfoModForm.do");
+				req.getRequestDispatcher("no/common/result.tiles").forward(req, resp);
+			}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+		/*try {
 			if(svc.delMember(userId, userPw)) {
 				req.setAttribute("msg", "탈퇴되었습니다");
 				req.setAttribute("url", "main.do");
@@ -33,18 +50,9 @@ public class MyInfoDelControl implements Control {
 			}
 			}catch (Exception e) {
 				e.printStackTrace();
-			}
+			} */
 		
-		//try {
-		//if(svc.delMember(userId, userPw)) {
-		//	session.invalidate(); //세션무효화
-		//	resp.sendRedirect("mainbody.tiles");
-		//}else {
-		//	resp.sendRedirect("myInfoModForm.do");
-		//}
-		//}catch (IOException e) {
-		//	e.printStackTrace();
-		//}
+
 
 	}
 }

@@ -9,5 +9,8 @@ public interface CartMapper {
 	int changeCnt(CartVO vo);
 	int deleteCart(CartVO vo);
 	int addCart(CartVO vo);
+	int selectOneCart(CartVO vo);
 	List<CartVO> resetCartList(String userId);
+	int addCartCheck(CartVO vo);
+	int setCartList(CartVO vo);
 }

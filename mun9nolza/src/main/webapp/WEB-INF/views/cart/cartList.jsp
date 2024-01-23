@@ -23,8 +23,6 @@
               </tr>
             </thead>
             <tbody id="cartListTbody" class="cartListTbody">
-              
-              
               <tr>
               	<td></td>
                 <td></td>
@@ -39,7 +37,7 @@
                 	<td>
                 	<ul>
                 		<li><span class="delieveryFee"></span></li>
-                		<li><span class="total"></span> 원</li>
+                		<li><span class="total"></span></li>
                 	</ul>                  
                 </td>
                 
