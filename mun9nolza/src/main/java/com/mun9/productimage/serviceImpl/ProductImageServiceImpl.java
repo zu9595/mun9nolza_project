@@ -19,5 +19,10 @@ public class ProductImageServiceImpl implements ProductImageService{
 		// TODO Auto-generated method stub
 		return mapper.selectImg(proCode);
 	}
+	@Override
+	public List<ProductImageVO> getDetailImg(int proCode) {
+		// TODO Auto-generated method stub
+		return mapper.selectDetailImg(proCode);
+	}
 
 }

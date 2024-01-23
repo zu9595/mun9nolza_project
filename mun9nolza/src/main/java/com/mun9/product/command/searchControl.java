@@ -2,7 +2,9 @@ package com.mun9.product.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,12 +25,17 @@ public class searchControl implements Control {
 		
 		String search = req.getParameter("search");
 		List<String> list = new ArrayList<>();
-		
+				
 		if(!search.equals("")) {
 			list = svc.searchProduct("%"+search+"%");
 		}
+		//req.setAttribute("searchList", list);
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		Gson gson = new GsonBuilder().create();
+		map.put("list", list);
+		
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
 		
 		try {
 			resp.getWriter().print(gson.toJson(list));

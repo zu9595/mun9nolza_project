@@ -263,7 +263,7 @@
 			fetch("search.do?search="+ input)
 			.then(res=>res.json())
 			.then(res=>{
-				location.href="특정 단어가 존재하는 검색리스트가 존재하는 상품목록 url필요?search="+res.search;
+				location.href="searchList.do?search="+res.search;
 			})
 			.catch(err=>console.log(err));
 		}

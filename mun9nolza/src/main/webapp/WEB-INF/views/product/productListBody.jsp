@@ -24,10 +24,25 @@
                                         <a href="#" class="category">노트</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="category">일기장</a>
+                                        <a href="#" class="category">필기도구</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="category">가계부</a>
+                                        <a href="#" class="category">필통/파우치</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="category">메모지</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="category">스티커</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="category">테이프</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="category">스템프</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="category">엽서/카드</a>
                                     </li>
                                 </ul>
                             </div>
@@ -146,4 +161,13 @@
             </div>
         </div>
     </section>
+<script>
+let categorys = '';
+if(`${category}` != null){
+	categorys = `${category}`;
+	console.log(categorys);
+}else{
+	categorys ='';
+}
+</script>
 <script src="js/product/productList.js"></script>

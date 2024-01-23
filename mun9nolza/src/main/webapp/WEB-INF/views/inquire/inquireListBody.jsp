@@ -5,7 +5,7 @@
 <script>
 	let userId = '${logId}'
 </script>
-<script src="js/inquirejs/inquireList.js"></script>
+<script defer src="js/inquirejs/inquireList.js"></script>
 
 <section class="section_padding">
 	<div class="container">
