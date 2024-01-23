@@ -88,6 +88,7 @@ $(document).ready(function() {
 	showList(pageInfo);
 });
 
+/*
 function inquireList() {
 	fetch("inquireList.do", {
 		method: "get",
@@ -123,6 +124,7 @@ function inquireList() {
 
 		}).catch(console.error);
 }
+*/
 
 function dateFormat(date) {
 	let month = date.getMonth() + 1;

@@ -87,7 +87,6 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new MainControl());
 		map.put("/mainSaleList.do", new MainSaleListJson());
 		map.put("/mainCategoryHotList.do", new MainCategoryHotListJson());
-
 		map.put("/myOrderListJson.do", new OrderListJsonControl());//주문갯수
 		
 		//상품 검색
@@ -99,9 +98,6 @@ public class FrontController extends HttpServlet {
 		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
 		map.put("/joinIdJson.do", new JoinIdJsonControl()); //아이디중복체크
 
-		//아이디 찾기
-		map.put("/myOrderListJson.do", new OrderListJsonControl());// 주문갯수
-
 		// 상품 검색
 		map.put("/search.do", new searchControl());
 		// map.put("/mainBest.do", new mainBestProductList()); // 미사용
@@ -110,8 +106,7 @@ public class FrontController extends HttpServlet {
 		map.put("/joinMemberForm.do", new JoinMemberFormControl()); // 가입화면만
 		map.put("/joinMember.do", new JoinMemberControl()); // 가입기능
 
-		// 아이디 찾기
-
+		// 아이디,비밀번호 찾기
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
 
@@ -128,11 +123,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myInfoMod.do", new MyInfoModControl()); // 수정기능
 		map.put("/myInfoDel.do", new MyInfoDelControl()); // 삭제기능
 		map.put("/myReview.do", new MyReviewControl());
-
 		map.put("/myInquire.do", new MyInquireControl());
-		
-		
-
 
 		// 장바구니 페이지
 		map.put("/cartList.do", new CartListControl());
@@ -153,7 +144,7 @@ public class FrontController extends HttpServlet {
 		//결제 후 내역 페이지
 
 		// 결제 시 데이터 관련
-		map.put("/orderDetailData.do", new OrderDetailJson());
+//		map.put("/orderDetailData.do", new OrderDetailJson());
 		// 결제 후 내역 페이지
 		map.put("/orderResult.do", new OrderResultControl());
 
