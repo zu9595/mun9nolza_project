@@ -84,6 +84,7 @@
 			<!-- 바뀌는 구역 -->
 			<div class="col-lg-9 out">
 			 <div class="in">
+			 <br>
 				<h3>회원정보 수정</h3>
 				<!-- <div class="row align-items-center latest_product_inner productlist"style="width: 720px; height: 640px;"> -->
 
@@ -96,10 +97,10 @@
 					<div class="col-xs-12 col-md-6 mb-3" style="margin-left: 15px;">
 						<br> <label for="id" style="margin-top: 5px;">아이디</label> <input
 							type="text" name="userId" value="${mem.userId }"
-							class="form-control" required style="width: 380px;" id="id"
-							disabled> <label for="pw" style="margin-top: 5px;">비밀번호</label>
+							class="form-control" required style="width: 380px;" id="id" disabled> <label for="pw" style="margin-top: 5px;">비밀번호</label>
+							
 						<input type="password" name="userPw" value="${mem.userPw }"
-							placeholder="비밀번호 8자리 이상" class="form-control" required
+							placeholder="비밀번호 6자리 이상" class="form-control" required
 							style="width: 380px; margin-bottom: 5px;" id="pw">
 						<div id="check" class="msg"
 							style="display: none; color: rgb(255, 74, 74); font-size: 0.8em; width: 380px">비밀번호는

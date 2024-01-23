@@ -5,9 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
+<style>
+.table {
+	text-align: center;
+}
+</style>
+
 <!-- aside -->
 <!-- 바뀌는 구역 -->
-
 <div class="col-lg-9">
 	<h3>마이리뷰</h3>
 
@@ -18,8 +23,7 @@
 					<th>주문번호</th>
 					<th>상품코드</th>
 					<th>제목</th>
-					<!-- <th>내용</th> -->
-					<!-- <th>이미지</th> -->
+					<th colspan="2">내용</th>
 					<th>별점</th>
 					<th>등록일</th>
 				</tr>
@@ -29,8 +33,8 @@
 					<tr>
 						<td>${vo.orderNo }</td>
 						<td>${vo.proCode }</td>
-						<td><a href="#">${vo.reTitle }</a></td><!-- 확인하기 -->
-						<%-- <td>${vo.reContent }</td> --%>
+						<td>${vo.reTitle }</td><!-- 확인하기 -->
+						<td colspan="2">${vo.reContent }</td>
 						<%-- <td>${vo.reImage }</td> --%>
 						<td>${vo.reRate }</td>
 						<td><fmt:formatDate value="${vo.reDate }"

@@ -1,5 +1,6 @@
 package com.mun9.orderlist.vo;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.Data;
 public class OrderListVO {
 
 	private int orderNo;
-	private String orderDate;
+	private Date orderDate;
 	private String orderRecipient;
 	private String orderAddr;
 	private String detailAddr;

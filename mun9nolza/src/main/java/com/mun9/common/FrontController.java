@@ -106,9 +106,6 @@ public class FrontController extends HttpServlet {
 		map.put("/search.do", new searchControl());
 		// map.put("/mainBest.do", new mainBestProductList()); // 미사용
 
-		// 회원가입
-		map.put("/joinMemberForm.do", new JoinMemberFormControl()); // 가입화면만
-		map.put("/joinMember.do", new JoinMemberControl()); // 가입기능
 
 		// 아이디 찾기
 
@@ -153,7 +150,7 @@ public class FrontController extends HttpServlet {
 		//결제 후 내역 페이지
 
 		// 결제 시 데이터 관련
-		map.put("/orderDetailData.do", new OrderDetailJson());
+		//map.put("/orderDetailData.do", new OrderDetailJson());
 		// 결제 후 내역 페이지
 		map.put("/orderResult.do", new OrderResultControl());
 

@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<script src="js/mypagejs/myOrderList.js"></script>
 
 <style>
 .orderHidden {
@@ -14,17 +15,13 @@
 }
 
 </style>
-<script src="js/mypagejs/myOrderList.js"></script>
 
 
 <!-- 바뀌는 구역 -->
 <div class="col-lg-9">
-<!-- <div class="col-lg-9"> -->
-
 
 	<h3>나의 주문내역</h3>
 	<br>
-	<!-- <div class="in"> -->
 	 <table class="table addOrderList">
 	 	<thead>
 	 		<tr>
@@ -46,10 +43,9 @@
 	 		  		 <td><span class="status">${vo.orderStatus }</span></td>
 	 		  		 <td>${vo.orderRecipient }</td>
 	 		  		 <td>${vo.orderAddr } ${vo.detailAddr }</td>
-	 		  		 <!--<td><button onclick="detailView()">상세조회</button></td>  -->
 	 		  		 <td><button type="button" class="btn btn-default btn-sm btn-outline-info" onclick="detailView()">상세조회</button></td>
 	 		  		 <td><button type="button" class="btn btn-default btn-sm btn-outline-secondary" onclick="removeOrder(${vo.orderNo})">주문취소</button></td>
-	 		  		 <%-- <td><button onclick="removeOrder(${vo.orderNo})">주문취소</button></td> --%>
+	 		  		
 	 		 </tr>
 	 		
 	 		<!-- 상세조회 -->
@@ -67,7 +63,7 @@
 	 		    <tr>
 	 		     <td>
 	 		       <c:if test="${!empty dvo.proImage}">
-	 		        <img width="150px" src="${dvo.proImage}">
+	 		        <img width="150px" src="img/${dvo.proImage}">
 				   </c:if>
 				</td>
 				<td>${dvo.proCode }</td>
@@ -90,14 +86,7 @@
 
 	 	 </tbody>
 	  </table>
-	<!-- </div> --><!-- in -->
 	
 </div>
 	
 <!-- 바뀌는 구역 끝 -->
-
-
-<!--     <script>
-
-    
-    </script> -->
