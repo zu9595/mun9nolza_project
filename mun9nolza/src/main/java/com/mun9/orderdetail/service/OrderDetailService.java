@@ -1,7 +1,12 @@
 package com.mun9.orderdetail.service;
 
-import com.mun9.orderlist.vo.OrderListVO;
+import java.util.List;
+
+import com.mun9.cart.vo.CartVO;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 
 public interface OrderDetailService {
-	boolean addOrderDetail(OrderListVO vo);
+	OrderDetailVO addOrderDetail(CartVO vo);
+
+	List<OrderDetailVO> selectOrderDetailList(String userId);
 }
