@@ -9,6 +9,9 @@
   	select * from productimage where pro_code = #{proCode} and img_no in (2,3,4)
   </select>
 
+<select id="selectDetailImg" resultType="productimg" parameterType="int">
+  	select * from productimage where pro_code = #{proCode} and img_no not in (1,2,3,4) order by img_no
+  </select>
  
 	
 </mapper>

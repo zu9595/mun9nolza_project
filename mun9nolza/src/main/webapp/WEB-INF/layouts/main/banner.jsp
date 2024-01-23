@@ -11,7 +11,7 @@
                 	<c:forEach var="banner" items="${bannerList}">
                     <div class="single_banner_slider">
                     	<div class="banner_img d-none d-lg-block">
-                                <img src="${banner.bannerImg}" alt="">
+                                <img src="img/${banner.bannerImg}" alt="">
                             </div>
                     </div>
                		</c:forEach>

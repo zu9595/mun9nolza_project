@@ -10,4 +10,6 @@ public interface CartMapper {
 	int deleteCart(CartVO vo);
 	int addCart(CartVO vo);
 	List<CartVO> resetCartList(String userId);
+	int addCartCheck(CartVO vo);
+	int setCartList(CartVO vo);
 }

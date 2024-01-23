@@ -47,6 +47,7 @@ import com.mun9.member.command.MyInfoModControl;
 import com.mun9.member.command.MyInfoModFormControl;
 import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
+import com.mun9.orderdetail.command.OrderDetailJson;
 import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
@@ -61,11 +62,15 @@ import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductDetailControl;
 import com.mun9.product.command.ProductListFormControl;
+import com.mun9.product.command.ProductMenuListControl;
 import com.mun9.product.command.ProductPagingListControl;
+import com.mun9.product.command.mainBestProductList;
 import com.mun9.product.command.searchControl;
+import com.mun9.productimage.command.prodDetailImg2GetControl;
 import com.mun9.productimage.command.prodDetailImgGetControl;
 import com.mun9.review.command.MyReviewControl;
 import com.mun9.review.command.reviewAddJson;
+import com.mun9.review.command.reviewDelJson;
 import com.mun9.review.command.reviewListJson;
 
 public class FrontController extends HttpServlet {
@@ -91,7 +96,7 @@ public class FrontController extends HttpServlet {
 		
 		//상품 검색
 		map.put("/search.do",  new searchControl());
-		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
+//		map.put("/mainBest.do", new mainBestProductList());
 		
 		//회원가입
 		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
@@ -156,8 +161,12 @@ public class FrontController extends HttpServlet {
 		map.put("/reviewList.do", new reviewListJson());
 		// 상품 리뷰 추가Json
 		map.put("/reviewAdd.do", new reviewAddJson());
+		// 상품 리뷰 삭제Json
+		map.put("/reviewDel.do", new reviewDelJson());
 		// 전체 상품목록 분류 및 페이징(Json)
 		map.put("/productPagingList.do", new ProductPagingListControl());
+		// 상품목록 메뉴
+		map.put("/productMenuList.do", new ProductMenuListControl());
 
 		// 문의 페이지 이동
 		map.put("/inquireListForm.do", new InquireListFormControl());
@@ -182,6 +191,7 @@ public class FrontController extends HttpServlet {
 
 		// 상품 상세
 		map.put("/prodDetailImg.do", new prodDetailImgGetControl());
+		map.put("/prodDetailImg2.do", new prodDetailImg2GetControl());
 
 		// admin 페이지
 		map.put("/adminForm.do", new AdminFormControl());

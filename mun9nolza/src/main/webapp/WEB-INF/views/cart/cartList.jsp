@@ -23,8 +23,6 @@
               </tr>
             </thead>
             <tbody id="cartListTbody" class="cartListTbody">
-              
-              
               <tr>
               	<td></td>
                 <td></td>
