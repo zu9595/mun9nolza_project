@@ -1,7 +1,12 @@
 package com.mun9.orderdetail.mapper;
 
-import com.mun9.orderlist.vo.OrderListVO;
+import java.util.List;
+
+import com.mun9.cart.vo.CartVO;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 
 public interface OrderDetailMapper {
-	int insertOrderDetail(OrderListVO vo);
+	OrderDetailVO insertOrderDetail(CartVO vo);
+	
+	List<OrderDetailVO> selectOrderDetailList(String userId);
 }

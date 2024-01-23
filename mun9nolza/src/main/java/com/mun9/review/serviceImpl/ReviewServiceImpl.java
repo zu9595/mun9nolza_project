@@ -36,5 +36,10 @@ public class ReviewServiceImpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return mapper.addReview(vo) > 0;
 	}
+	@Override
+	public boolean deleteReview(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.deleteReview(vo) > 0;
+	}
 
 }

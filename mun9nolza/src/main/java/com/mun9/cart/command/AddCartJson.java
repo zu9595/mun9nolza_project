@@ -37,34 +37,26 @@ public class AddCartJson implements Control {
 		vo.setMyproCnt(Integer.parseInt(myproCnt));
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		
-		if(svc.selectOneCart(vo)) {
-			
-			if(svc.changeMyproCnt(vo)) {
+		if(svc.addCartCheck(vo)) {
+			if(svc.setCartList(vo)) {
 				map.put("retCode", "OK");
 			}else {
 				map.put("retCode", "NG");
 			}
-			
 		}else {
-			
-			
 			if(svc.addCartList(vo)) {
 				map.put("retCode", "OK");
 			}else {
 				map.put("retCode", "NG");
 			}
-			
-			Gson gson = new GsonBuilder().create();
-			try {
-				resp.getWriter().print(gson.toJson(map));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}//end of else...svc.selectOneCart(vo)
+		}
 		
-		
+		Gson gson = new GsonBuilder().create();
+		try {
+			resp.getWriter().print(gson.toJson(map));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

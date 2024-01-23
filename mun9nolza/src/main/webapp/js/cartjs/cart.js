@@ -190,7 +190,11 @@ function orderModSet(){
 // 상품별 가격 합산
 function makeSubTotal(idx,res){
 	
-	let proDiscount = $(`.proDiscount${idx}`).text();	
+	let proDiscount = $(`.proDiscount${idx}`).text();
+	if(proDiscount == 0){
+		proDiscount = $(`.proPrice${idx}`).text();
+	}
+	console.log(proDiscount);
 	let myproCnt = $(`.myproCnt${idx}`).val();
 	
 	//console.log(proDiscount);
@@ -211,10 +215,10 @@ function makeFeeTotal(){
 	})
 	if(preTotal < 50000 ){
 		document.querySelector('.delieveryFee').innerHTML = '+3000 원';
-		document.querySelector('.total').innerHTML = preTotal + 3000;
+		document.querySelector('.total').innerHTML = preTotal + 3000 +'원';
 	}else{
 		document.querySelector('.delieveryFee').innerHTML = '무료';
-		document.querySelector('.total').innerHTML = preTotal;
+		document.querySelector('.total').innerHTML = preTotal +'원';
 	}
 }
 
@@ -238,16 +242,16 @@ function makeTr(cart,idx){
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="${cart.proImage}" alt="" />
+                      <img src="img/${cart.proImage}" alt="" />
                     </div>
                     <div class="media-body">
-                      <a href="#">${cart.proName}</a>
+                      <a href="productDetail.do?pcode=${cart.proCode}" text-decoration:none>${cart.proName}</a>
                     </div>
                   </div>
                 </td>
                 
                 <td>
-                  <h5><span class="proPrice">${cart.proPrice}</span></h5>
+                  <h5><span class="proPrice${idx}">${cart.proPrice}</span></h5>
                 </td>
                 
                 <td>

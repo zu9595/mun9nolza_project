@@ -43,15 +43,13 @@ public class InquireModifyControl implements Control {
 		
 		req.setAttribute("vo", vo);
 
-		RequestDispatcher rd = req.getRequestDispatcher("inquire/inquireListBody.tiles");
-	
 		try {
 			if (svc.modifyInquire(vo)) {
-				rd.forward(req, resp);
+				resp.sendRedirect("inquireListForm.do");
 			} else {
 				resp.sendRedirect("inquireModifyForm.do");
 			}
-		} catch (ServletException | IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	

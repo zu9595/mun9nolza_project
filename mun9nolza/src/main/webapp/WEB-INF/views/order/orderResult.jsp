@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <section class="confirmation_part padding_top">
 	<div class="container">
 		<div class="row">
@@ -16,26 +17,21 @@
 						<thead>
 							<tr>
 								<th scope="col">상품코드</th>
-								<th scope="col" colspan="2">상품정보</th>
-								<!-- 이미지 상품명 -->
-								<th scope="col">가격</th>
+								<th scope="col">상품명</th>
 								<th scope="col">수량</th>
 								<th scope="col">합계</th>
 							</tr>
 						</thead>
 						<tbody>
 
-						<!-- 	<c:forEach var="order" items="${cartList }"> -->
+							<c:forEach var="order" items="${orderDetailList}">
 								<tr>
-									<th><span></span></th>
-									<th><img src="" alt="작은이미지" width="30px"
-										height="30px"></th>
-									<th><span></span></th>
-									<th><span></span></th>
-									<th></th>
-									<th><span class="orderprice"></span></th>
+									<th><span>${order.proCode }</span></th>
+									<th><span>${order.orderNo }</span></th>
+									<th><span>${order.deProCnt }</span></th>
+									<th><span>${order.deProPrice }</span></th>
 								</tr>
-							<!--</c:forEach>-->
+							</c:forEach>
 
 
 							<tr>
@@ -74,16 +70,16 @@
 					<h4>받는 사람 정보</h4>
 					<ul>
 						<li>
-	<!--						<p>수령인</p> <span>:${}</span> -->
+							<p>수령인</p> <span>:${orderInfo.orderRecipient}</span> 
 						</li>
 						<li>
-	<!--						<p>주소</p> <span>:${ }</span> -->
+							<p>주소</p> <span>:${orderInfo.orderAddr}</span> 
 						</li>
 						<li>
-	<!--						<p>상세주소</p> <span>:${ }</span> -->
+							<p>상세주소</p> <span>:${orderInfo.detailAddr}</span> 
 						</li>
 						<li>
-	<!--						<p>배송메모</p> <span>:${ }</span> -->
+							<p>배송메모</p> <span>:${orderInfo.deliveryMemo}</span> 
 						</li>
 					</ul>
 				</div>

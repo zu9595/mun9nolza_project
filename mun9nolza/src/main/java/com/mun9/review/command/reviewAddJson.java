@@ -24,35 +24,32 @@ public class reviewAddJson implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-			resp.setContentType("text/json;charset=utf-8");
-		
-		//String saveLoc = req.getServletContext().getRealPath("img");
-		//int maxSize = 1024 * 1024 * 5;
-		//MultipartRequest mr = null;
-		
-		//try {
+		String saveLoc = req.getServletContext().getRealPath("img");
+		int maxSize = 1024 * 1024 * 5;
+		MultipartRequest mr = null;
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("logId");
+		System.out.println(userId);
+		try {
 			// 1.request 2.saveLoc 3.maxSize 4.인코딩 5.리네임정책
-			//mr = new MultipartRequest(req, saveLoc, maxSize, "utf-8", new DefaultFileRenamePolicy());
-			HttpSession session = req.getSession();
-			String userId = (String)session.getAttribute("logId");
-			System.out.println(userId);
-			
-			String proCode = req.getParameter("proCode");
-			String reTitle = req.getParameter("reTitle");
-			String reContent = req.getParameter("reContent");
-			String reRate = req.getParameter("reRate");
-			//String reImage = mr.getFilesystemName("reImage");
+			mr = new MultipartRequest(req, saveLoc, maxSize, "utf-8", new DefaultFileRenamePolicy());
+			String proCode = mr.getParameter("proCode");
+			String reTitle = mr.getParameter("reTitle");
+			String reContent = mr.getParameter("reContent");
+			String reRate = mr.getParameter("reRate");
+			String reImage = mr.getFilesystemName("reImage");
 			// 파일시스템에 바뀐이름을 가져옴
 			
 			ReviewService svc = new ReviewServiceImpl();
 			OrderListService osvc = new OrderListServiceImpl();
 			ReviewVO vo = new ReviewVO();
-			//vo.setReImage(reImage);
+			vo.setReImage(reImage);
 			vo.setUserId(userId);
 			vo.setProCode(Integer.parseInt(proCode));
 			vo.setReTitle(reTitle);
 			vo.setReContent(reContent);
 			vo.setReRate(Integer.parseInt(reRate));
+			
 			
 			System.out.println(vo.toString());
 			
@@ -74,9 +71,9 @@ public class reviewAddJson implements Control {
 				e.printStackTrace();
 			}
 			
-		//}catch(Exception e){
-		//	e.printStackTrace();
-		//}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }
