@@ -40,9 +40,7 @@ function addCartList(){
 	console.log(myproCnt)
 	fetch(`addCartJson.do?userId=${userId}&proCode=${proCode}&proPrice=${proPrice}&proDiscount=${proDiscount}&myproCnt=${myproCnt}`,{
         method: "get",
-		headers: {
-			"Content-Type": "application/json"
-			}
+		headers: {"Content-Type": "application/json"}
 		})
 		.then(str => str.json())
 		.then(res => {

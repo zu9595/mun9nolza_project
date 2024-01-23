@@ -8,6 +8,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,33 +22,25 @@ public class AddCartJson implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-		String userId = req.getParameter("userId");
-		String proCode = req.getParameter("proCode");
-		String proPrice = req.getParameter("proPrice");
-		String proDiscount = req.getParameter("proDiscount");
-		String myproCnt = req.getParameter("myproCnt");
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("logId");
+		
+		int proCode = Integer.parseInt(req.getParameter("proCode"));
+		int proPrice = Integer.parseInt(req.getParameter("proPrice"));
+		int proDiscount = Integer.parseInt(req.getParameter("proDiscount"));
+		int myproCnt = Integer.parseInt(req.getParameter("myproCnt"));
 		
 		CartService svc = new CartServiceImpl();
 		
 		CartVO vo = new CartVO();
 		vo.setUserId(userId);
-		vo.setProCode(Integer.parseInt(proCode));
-		vo.setProPrice(Integer.parseInt(proPrice));
-		vo.setProDiscount(Integer.parseInt(proDiscount));
-		vo.setMyproCnt(Integer.parseInt(myproCnt));
+		vo.setProCode(proCode);
+		vo.setProPrice(proPrice);
+		vo.setProDiscount(proDiscount);
+		vo.setMyproCnt(myproCnt);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		
-		if(svc.selectOneCart(vo)) {
-			
-			if(svc.changeMyproCnt(vo)) {
-				map.put("retCode", "OK");
-			}else {
-				map.put("retCode", "NG");
-			}
-			
-		}else {
-			
+						
 			
 			if(svc.addCartList(vo)) {
 				map.put("retCode", "OK");
@@ -62,7 +55,6 @@ public class AddCartJson implements Control {
 				e.printStackTrace();
 			}
 			
-		}//end of else...svc.selectOneCart(vo)
 		
 		
 	}

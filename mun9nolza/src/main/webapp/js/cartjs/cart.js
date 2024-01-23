@@ -211,10 +211,10 @@ function makeFeeTotal(){
 	})
 	if(preTotal < 50000 ){
 		document.querySelector('.delieveryFee').innerHTML = '+3000 원';
-		document.querySelector('.total').innerHTML = preTotal + 3000;
+		document.querySelector('.total').innerHTML = preTotal + 3000 +'원';
 	}else{
 		document.querySelector('.delieveryFee').innerHTML = '무료';
-		document.querySelector('.total').innerHTML = preTotal;
+		document.querySelector('.total').innerHTML = preTotal +'원';
 	}
 }
 
@@ -238,10 +238,10 @@ function makeTr(cart,idx){
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="${cart.proImage}" alt="" />
+                      <img src="img/${cart.proImage}" alt="" />
                     </div>
                     <div class="media-body">
-                      <a href="#">${cart.proName}</a>
+                      <a href="productDetail.do?pcode=${cart.proCode}" text-decoration:none>${cart.proName}</a>
                     </div>
                   </div>
                 </td>
