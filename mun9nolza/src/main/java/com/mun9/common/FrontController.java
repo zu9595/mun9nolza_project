@@ -110,7 +110,6 @@ public class FrontController extends HttpServlet {
 
 		// 상품 검색
 		map.put("/search.do", new searchControl());
-		// map.put("/mainBest.do", new mainBestProductList()); // 미사용
 
 
 		// 아이디,비밀번호 찾기
@@ -147,11 +146,11 @@ public class FrontController extends HttpServlet {
 		// 단건결제화면으로 이동
 		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
 
+
 		//map.put("/orderDetailData.do", new OrderDetailJson()); // 미사용
 		//결제 후 내역 페이지
 
 		// 결제 시 데이터 관련
-
 		//map.put("/orderDetailData.do", new OrderDetailJson());
 		// 결제 후 내역 페이지
 		map.put("/orderResult.do", new OrderResultControl());

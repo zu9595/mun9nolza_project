@@ -70,6 +70,10 @@
 				</div>
 			</div> -->
 			<form method="post" action="orderResult.do">
+				<input type="hidden" name="totalPrice" value="${orderSum }">
+				<input type="hidden" id="orderPhone" name="orderPhone" value="">
+				<input type="hidden" name="deliveryFee" value="2500">
+				<input type="hidden" name="orderStatus" value="준비중">
 			<div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>배송 정보 입력</h4>
@@ -118,8 +122,6 @@
 	</div>
 </section>
 <script>
-let userId = `${userId}`;
-let orderSum = ${orderSum};
+$('#orderPhone').val($('#tel1').val() +'-'+ $('#tel2').val() +'-'+ $('#tel3').val());
 </script>  
 <script src="js/orderjs/orderDetail.js"></script>
-	

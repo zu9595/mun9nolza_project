@@ -1,14 +1,12 @@
 
-console.log(orderSum);
+/*console.log(orderSum);
 console.log(userId);
 
 let orderStatus = '준비중';
 let deliveryFee = 3000;
 let ordertel = $('#tel1').val() +'-'+ $('#tel2').val() +'-'+ $('#tel3').val();
-function orderResult() {
-	console.log(ordertel);
+console.log(ordertel);
 	makeOrderData(userId, orderRecipient, orderAddr, detailAddr, ordertel, deliveryMemo, orderSum, deliveryFee, orderStatus);
-}
 
 // Ajax
 function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone, deliveryMemo, totalPrice, deliveryFee, orderStatus){
@@ -24,7 +22,7 @@ function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone
 			console.log(result);
 		})
 		.catch(err => console.error(err));
-}
+}*/
 
 
 

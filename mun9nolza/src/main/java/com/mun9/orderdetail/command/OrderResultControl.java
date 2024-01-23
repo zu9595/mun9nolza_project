@@ -3,6 +3,7 @@ package com.mun9.orderdetail.command;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ import com.mun9.cart.vo.CartVO;
 import com.mun9.common.Control;
 import com.mun9.orderdetail.service.OrderDetailService;
 import com.mun9.orderdetail.serviceImpl.OrderDetailServiceImpl;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 import com.mun9.orderlist.service.OrderListService;
 import com.mun9.orderlist.serviceImpl.OrderListServiceImpl;
 import com.mun9.orderlist.vo.OrderListVO;
@@ -30,11 +32,11 @@ public class OrderResultControl implements Control {
 		OrderDetailService svc = new OrderDetailServiceImpl();
 		OrderListService lsvc = new OrderListServiceImpl();
 		String userId = (String) session.getAttribute("logId");
-		LocalDate now = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
-		String orderDate = now.format(formatter);
-
-		String orderRecipient = req.getParameter("recipient");
+//		LocalDate now = LocalDate.now();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+		Date orderDate = null;
+		
+		String orderRecipient = req.getParameter("orderRecipient");
 		String orderAddr = req.getParameter("orderAddr");
 		String detailAddr = req.getParameter("detailAddr");
 		String orderPhone = req.getParameter("orderPhone");
@@ -58,16 +60,23 @@ public class OrderResultControl implements Control {
 		
 		CartService csvc = new CartServiceImpl();
 		List<CartVO> clist = csvc.selectCartList(userId);
-		req.setAttribute("cartlist", clist);
+		
+		for(int i=0; i<clist.size(); i++) {
+			svc.addOrderDetail(clist.get(i));
+		}
+		List<OrderDetailVO> odlist = svc.selectOrderDetailList(userId);
+		req.setAttribute("orderDetailList", odlist);
+		req.setAttribute("orderInfo", vo);
 		// 페이지이동
 		RequestDispatcher rd = null;
 		try {
-		if(lsvc.addOrderList(vo) && svc.addOrderDetail(vo)) {
+		if(lsvc.addOrderList(vo)) {
 			rd = req.getRequestDispatcher("order/orderResult.tiles");
 			rd.forward(req, resp);
-			csvc.resetCartList(userId);
-		}else {
-			resp.sendRedirect("order/orderDetail.tiles");
+			//csvc.resetCartList(userId);
+//		}else {
+//			resp.sendRedirect("order/orderDetail.tiles");
+			
 		}
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
