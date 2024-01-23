@@ -96,7 +96,6 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderListJson.do", new OrderListJsonControl());//주문갯수
 		
 		//상품 검색
-
 		map.put("/search.do",  new searchControl());//상품 검색해서 json생성
 		map.put("/searchList.do",  new searchListControl());//검색 결과 페이지로 이동
 		
