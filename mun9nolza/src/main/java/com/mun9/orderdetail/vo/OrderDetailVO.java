@@ -9,4 +9,5 @@ public class OrderDetailVO {
 	private int orderNo;
 	private int deProCnt;
 	private int deProPrice;
+	private String userId;
 }

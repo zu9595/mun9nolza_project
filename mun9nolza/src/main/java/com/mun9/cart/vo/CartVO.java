@@ -21,7 +21,7 @@ public class CartVO {
 	private int proDiscount;
 	private int myproCnt;
 	private int myproPrice;
-	
+	private int orderNo;
 }
 
 //

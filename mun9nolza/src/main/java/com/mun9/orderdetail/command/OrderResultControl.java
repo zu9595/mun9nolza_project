@@ -1,8 +1,6 @@
 package com.mun9.orderdetail.command;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mun9.cart.service.CartService;
-import com.mun9.cart.serviceImpl.CartServiceImpl;
-import com.mun9.cart.vo.CartVO;
 import com.mun9.common.Control;
 import com.mun9.orderdetail.service.OrderDetailService;
 import com.mun9.orderdetail.serviceImpl.OrderDetailServiceImpl;
@@ -41,8 +36,8 @@ public class OrderResultControl implements Control {
 		String detailAddr = req.getParameter("detailAddr");
 		String orderPhone = req.getParameter("orderPhone");
 		String deliveryMemo = req.getParameter("deliveryMemo");
-		int totalPrice = Integer.parseInt(req.getParameter("totalPrice"));
-		int deliveryFee = Integer.parseInt(req.getParameter("deliveryFee"));
+		String totalPrice = req.getParameter("totalPrice");
+		String deliveryFee = req.getParameter("deliveryFee");
 		String orderStatus = req.getParameter("orderStatus");
 		
 		OrderListVO vo = new OrderListVO();
@@ -53,31 +48,43 @@ public class OrderResultControl implements Control {
 		vo.setDetailAddr(detailAddr);
 		vo.setOrderPhone(orderPhone);
 		vo.setDeliveryMemo(deliveryMemo);
-		vo.setTotalPrice(totalPrice);
-		vo.setDeliveryFee(deliveryFee);
+		if(totalPrice!="") {
+			vo.setTotalPrice(Integer.parseInt(totalPrice));
+		}
+		vo.setDeliveryFee(Integer.parseInt(deliveryFee));
 		vo.setOrderStatus(orderStatus);
 		
+		//orderList 추가
+		lsvc.addOrderList(vo);
 		
-		CartService csvc = new CartServiceImpl();
-		List<CartVO> clist = csvc.selectCartList(userId);
-		
-		for(int i=0; i<clist.size(); i++) {
-			svc.addOrderDetail(clist.get(i));
+		//orderList의 orderNo 목록 숫자만 뽑음 -> orderDetail 추가
+		List<OrderListVO> ovo = lsvc.orderListsDe(userId);
+		int w=0;
+		for(int i=0;i<ovo.size();i++) {
+			if(ovo.size()-1==i) {
+				w = ovo.get(i).getOrderNo(); 
+			}
 		}
-		List<OrderDetailVO> odlist = svc.selectOrderDetailList(userId);
+		List<OrderDetailVO> list2 = lsvc.orderDetailBefore(userId,w);
+			
+			for(OrderDetailVO vo2 : list2) {
+				svc.addOrderDetail(vo2);
+			}
+		
+		
+		List<OrderDetailVO> odlist = svc.selectOrderDetailList(w);
+		System.out.println(odlist.toString());
 		req.setAttribute("orderDetailList", odlist);
 		req.setAttribute("orderInfo", vo);
+		
 		// 페이지이동
 		RequestDispatcher rd = null;
 		try {
-		if(lsvc.addOrderList(vo)) {
 			rd = req.getRequestDispatcher("order/orderResult.tiles");
 			rd.forward(req, resp);
 			//csvc.resetCartList(userId);
 //		}else {
 //			resp.sendRedirect("order/orderDetail.tiles");
-			
-		}
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

@@ -15,12 +15,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	OrderDetailMapper mapper = session.getMapper(OrderDetailMapper.class);
 	
 	@Override
-	public OrderDetailVO addOrderDetail(CartVO vo) {
+	public OrderDetailVO addOrderDetail(OrderDetailVO vo) {
 		return mapper.insertOrderDetail(vo);
 	}
 
 	@Override
-	public List<OrderDetailVO> selectOrderDetailList(String userId) {
-		return mapper.selectOrderDetailList(userId);
+	public List<OrderDetailVO> selectOrderDetailList(int orderNo) {
+		return mapper.selectOrderDetailList(orderNo);
 	}
 }

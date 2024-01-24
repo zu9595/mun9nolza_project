@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mun9.common.DataSource;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 import com.mun9.orderlist.mapper.OrderListMapper;
 import com.mun9.orderlist.service.OrderListService;
 import com.mun9.orderlist.vo.OrderListVO;
@@ -26,7 +27,7 @@ public class OrderListServiceImpl implements OrderListService{
 
 	@Override
 	public boolean addOrderList(OrderListVO vo) {
-		return mapper.insertOrderList(vo) == 1;
+		return mapper.insertOrderList(vo) > 0;
 	}
 	
 	@Override
@@ -34,5 +35,18 @@ public class OrderListServiceImpl implements OrderListService{
 		// TODO Auto-generated method stub
 		return mapper.selectOrderReview(userId) > 0;
 	}
+
+	@Override
+	public List<OrderListVO> orderListsDe(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.orderListsDe(userId);
+	}
+
+	@Override
+	public List<OrderDetailVO> orderDetailBefore(String userId, int orderNo) {
+		// TODO Auto-generated method stub
+		return mapper.orderDetailBefore(userId,orderNo);
+	}
+
 	
 }

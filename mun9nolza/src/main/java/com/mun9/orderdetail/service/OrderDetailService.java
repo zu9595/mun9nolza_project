@@ -6,7 +6,7 @@ import com.mun9.cart.vo.CartVO;
 import com.mun9.orderdetail.vo.OrderDetailVO;
 
 public interface OrderDetailService {
-	OrderDetailVO addOrderDetail(CartVO vo);
+	OrderDetailVO addOrderDetail(OrderDetailVO vo);
 
-	List<OrderDetailVO> selectOrderDetailList(String userId);
+	List<OrderDetailVO> selectOrderDetailList(int orderNo);
 }
