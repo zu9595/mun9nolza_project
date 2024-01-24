@@ -23,7 +23,7 @@
 <style>
 .success_msg {
 	display:none; 
-	color: green; 
+	color: blue; 
 	font-size: 0.8em; 
 	width:380px
 }
@@ -75,7 +75,7 @@
 						<!-- 비밀번호 -->
 						<label for="pw" style="margin-top: 5px;">비밀번호<span class="star">*</span></label>
 						<input type="password"  id="pw" name="userPw" class="form-control no_input" placeholder="비밀번호 6자리 이상" >
-						<div id="pwcheck" class="fail_msg">비밀번호 최소 6자리 이상 (대소문자,특수문자 포함)</div>
+						<div id="pwcheck" class="fail_msg">비밀번호 최소 6자리 이상</div>
 						<!--<label for="pwCheck" style="margin-top: 5px;"></label>  -->
 						<input type="password" id="pwCheck" class="form-control no_input" style="width: 380px; margin-top: 3px"  placeholder="비밀번호 확인"> 
 						<div id="pwcheck2" class="fail_msg">비밀번호 불일치</div>

@@ -108,7 +108,7 @@
 							style="width: 380px; margin-bottom: 5px;" id="pw">
 						<div id="check" class="msg"
 							style="display: none; color: rgb(255, 74, 74); font-size: 0.8em; width: 380px">비밀번호는
-							최소 6자리 이상(대소문자,특수문자 포함)</div>
+							최소 6자리 이상</div>
 						<label for="pwCheck" style="margin-top: 5px;"></label> <input
 							type="password" class="form-control" name="userPw"
 							placeholder="비밀번호 재확인" required style="width: 380px;"

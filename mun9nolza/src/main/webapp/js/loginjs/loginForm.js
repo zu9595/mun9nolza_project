@@ -73,7 +73,7 @@ function resetPwInfo() {
 	$('#modal_findpw .modal-body').empty();
 	$('#modal_findpw .modal-footer').empty();
 	let modal_body = `<form method = "POST" >
-							<label style="margin-right: 16px;">아이디</label> <input type="text" name="userId"
+							<label>아이디</label> <input type="text" name="userId"
 								class="btn-name pmid" placeholder="등록한 아이디" required> <br>
 							<label style="margin-right: 16px;">이름</label> <input type="text" name="userName"
 								class="btn-name pmname" placeholder="등록한 이름" required> <br> <label>이메일</label> <input

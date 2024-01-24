@@ -15,9 +15,9 @@
 <!-- 바뀌는 구역 -->
 <div class="col-lg-9">
 <br>
-	<h3>마이리뷰</h3>
+	<h3>나의 리뷰</h3>
 <br>
-<!-- 	<div style="width: 720px; height: 640px; padding: 50px"> -->
+
 		<table class="table review">
 			<thead>
 				<tr>
@@ -36,7 +36,6 @@
 						<td>${vo.proCode }</td>
 						<td>${vo.reTitle }</td><!-- 확인하기 -->
 						<td colspan="2">${vo.reContent }</td>
-						<%-- <td>${vo.reImage }</td> --%>
 						<td>${vo.reRate }</td>
 						<td><fmt:formatDate value="${vo.reDate }"
 								pattern="yyyy-MM-dd"></fmt:formatDate></td>

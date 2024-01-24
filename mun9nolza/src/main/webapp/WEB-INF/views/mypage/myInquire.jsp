@@ -5,6 +5,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
+<style>
+.table {
+	text-align: center;
+}
+</style>
+
 <!-- aside -->
 <!-- 바뀌는 구역 -->
 

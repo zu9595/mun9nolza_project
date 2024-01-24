@@ -77,7 +77,7 @@ max-width: 100%;
             </c:choose>
             <ul class="list">
               <li>
-                <p>${vo.proDesc }상품 내용</p>
+                <p>${vo.proDesc }</p>
               </li>              
             </ul>
             <div class="buy">

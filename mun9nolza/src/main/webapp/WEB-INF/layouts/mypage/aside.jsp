@@ -22,7 +22,7 @@
                             <div class="widgets_inner">
                                 <ul class="list">
                                     <li><a href="myInfoModForm.do">개인정보 수정/탈퇴</a></li>
-                                    <li><a href="myReview.do">마이리뷰</a></li>
+                                    <li><a href="myReview.do">나의 리뷰</a></li>
                                 </ul>
                             </div>
                         </aside>
