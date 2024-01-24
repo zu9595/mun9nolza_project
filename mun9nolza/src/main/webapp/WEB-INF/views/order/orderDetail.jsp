@@ -74,6 +74,7 @@
 				<input type="hidden" id="orderPhone" name="orderPhone" value="">
 				<input type="hidden" name="deliveryFee" value="2500">
 				<input type="hidden" name="orderStatus" value="준비중">
+				<input type="hidden" name="orderNo" value="준비중">
 			<div class="col-lg-6 col-lx-4">
 				<div class="single_confirmation_details">
 					<h4>배송 정보 입력</h4>
