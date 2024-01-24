@@ -2290,7 +2290,7 @@ ul {
   transform: scale(1, 0);
   display: block;
   border: 0px solid transparent;
-  background-color: #A9C8DF;
+  background-color: #86a41c;
 }
 
 /* line 174, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
@@ -2298,7 +2298,7 @@ ul {
   font-size: 14px;
   padding: 8px 20px !important;
   color: #fff !important;
-  background-color: #A9C8DF;
+  background-color: #86a41c;
   text-transform: capitalize;
 }
 

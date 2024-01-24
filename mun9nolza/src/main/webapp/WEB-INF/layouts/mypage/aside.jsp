@@ -34,7 +34,7 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
-                                    <li><a href="myInquire.do">1:1문의내역</a></li>
+                                    <li><a href="myInquire.do">나의 문의내역</a></li>
                                 </ul>
                             </div>
                         </aside>

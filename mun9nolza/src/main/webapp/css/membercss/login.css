@@ -11,10 +11,10 @@ body {
 	min-height: 100vh;
 	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
 		to(#1d466c));
-	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+	background: -webkit-linear-gradient(bottom left, #fff6dd 0%, #fff6dd 100%);
+	background: -moz-linear-gradient(bottom left, #fff6dd 0%, #fff6dd 100%);
+	background: -o-linear-gradient(bottom left, #fff6dd 0%, #fff6dd 100%);
+	background: linear-gradient(to top right, #fff6dd 0%, #fff6dd 100%);
 	display: grid;
 	place-content: center;
 	padding: 50px;

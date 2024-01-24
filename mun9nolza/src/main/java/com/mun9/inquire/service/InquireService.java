@@ -17,7 +17,7 @@ public interface InquireService {
 
 	public InquireVO detailInquire(int inqNo);
 
-//	public List<InquireVO> getMyInquire(String userID);
+	public List<InquireVO> getMyInquire(String userID);
 
 	public boolean modifyInquire(InquireVO vo);
 

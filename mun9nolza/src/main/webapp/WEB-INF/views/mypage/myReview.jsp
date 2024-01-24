@@ -14,9 +14,10 @@
 <!-- aside -->
 <!-- 바뀌는 구역 -->
 <div class="col-lg-9">
+<br>
 	<h3>마이리뷰</h3>
-
-	<div style="width: 720px; height: 640px; padding: 50px">
+<br>
+<!-- 	<div style="width: 720px; height: 640px; padding: 50px"> -->
 		<table class="table review">
 			<thead>
 				<tr>

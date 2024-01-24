@@ -25,8 +25,8 @@ public class MyInquireControl implements Control {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("logId");
 
-//		List<InquireVO> list = svc.getMyInquire(userId);
-//		req.setAttribute("inquireList", list);
+		List<InquireVO> list = svc.getMyInquire(userId);
+		req.setAttribute("inquireList", list);
 		req.setAttribute("vo", vo);
 
 		// 페이지이동

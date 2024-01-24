@@ -33,11 +33,14 @@
 }
 
 .buttons {
-	padding-left: 140px;
+	padding-left: 120px;
+	padding-top: 30px
 }
-/* .all {
-	border: 1px solid gray;
-} */
+ .all {
+	border: 1px solid  rgb(190, 190, 190);
+	padding-bottom: 30px;
+	border-radius: 10px;
+} 
 /* .out {
 	width: 100%;
 	text-align: center;
@@ -86,15 +89,16 @@
 			 <div class="in">
 			 <br>
 				<h3>회원정보 수정</h3>
+				<br>
 				<!-- <div class="row align-items-center latest_product_inner productlist"style="width: 720px; height: 640px;"> -->
 
-				<div class="all">
+				<div>
 				<form action="myInfoMod.do" method="post" class="validation-form"
 					novalidate>
 					<!-- <div class="row"> -->
 					<input type="hidden" name="userId" value="${mem.userId }">
 					<!-- 화면엔 안보여줘도 되니 hidden (파라미터값 받아야되니 input사용) -->
-					<div class="col-xs-12 col-md-6 mb-3" style="margin-left: 15px;">
+					<div class="col-xs-12 col-md-6 mb-3 all" style="margin-left: 15px;">
 						<br> <label for="id" style="margin-top: 5px;">아이디</label> <input
 							type="text" name="userId" value="${mem.userId }"
 							class="form-control" required style="width: 380px;" id="id" disabled> <label for="pw" style="margin-top: 5px;">비밀번호</label>
@@ -119,12 +123,12 @@
 						<label for="email">이메일</label> <input type="email"
 							class="form-control" id="email" name="email"
 							style="width: 380px;" id="email" value="${mem.email }">
-					</div>
-					<br>
 					<div class="buttons">
 					<button type="submit" class="btn btn-secondary btn-sm">수정하기</button>
 					<button type="button" id="delinfo" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteForm">회원탈퇴</button>
 					</div>
+					</div>
+					<br>
 				</form>
 				</div><!-- all -->
 			</div> <!-- in -->

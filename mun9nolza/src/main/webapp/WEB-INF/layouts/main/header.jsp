@@ -7,7 +7,12 @@
 	#cartListTbody tr:last-child td:last-child ul{
 		text-align:right
 		}
-
+	#cartListTbody tr td img{
+		max-width:100px;
+	}
+	#cartListTbody td:nth-child(3) h5 span{display:inline-block; position:relative;}
+	#cartListTbody td:nth-child(3) h5 span:before{content:''; display:block; position:absolute; left:0; top:50%; width:100%; height:1px; border-top:1px solid #111; margin-top:-0.5px;}
+	
 </style>
 <header class="main_menu home_menu">
 	<!-- 로고 및 로그인 -->
