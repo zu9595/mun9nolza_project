@@ -29,7 +29,7 @@
 							<c:forEach var="order" items="${cartList }">
 							<tr>
 								<th><span>${order.proCode }</span></th>
-								<th><img src="${order.proImage }" alt="작은이미지" width="30px" height="30px"></th>
+								<th><img src="img/${order.proImage }" alt="작은이미지" width="30px" height="30px"></th>
 								<th><span>${order.proName }</span></th>
 								<th><span>${order.proPrice }</span></th>
 								<th>${order.myproCnt }</th>
