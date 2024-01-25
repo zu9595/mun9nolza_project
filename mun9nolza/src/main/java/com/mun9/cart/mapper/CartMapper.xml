@@ -30,19 +30,19 @@
 	</select>
 	
 
-	<insert id="addCart" parameterType="cart">
+	<!--<insert id="addCart" parameterType="cart">
 		insert into cart values (mypro_no_seq.nextval,#{userId},#{proCode},#{proPrice},#{proDiscount},#{myproCnt})
-	</insert>
+	</insert>-->
 	
 
-	<!-- <update id="addCart" parameterType="cart">
+	 <update id="addCart" parameterType="cart">
 	 MERGE INTO cart
 	 USING dual
 	 ON (user_id = #{userId } and pro_code = #{proCode})
 	 when matched then update set mypro_cnt = #{myproCnt}
 	 when not matched then insert ( mypro_no, user_id, pro_code, pro_price, pro_discount, mypro_cnt)
 	    values(mypro_no_seq.nextval, #{userId }, #{proCode}, #{proPrice}, #{proDiscount}, #{myproCnt}); 
-	</update> -->
+	</update> 
 
 	<select id="addCartCheck" parameterType="cart">
 		select count(*) count from cart where user_id=#{userId} and pro_code=#{proCode}
