@@ -2,6 +2,7 @@ package com.mun9.orderlist.mapper;
 
 import java.util.List;
 
+import com.mun9.orderdetail.vo.OrderDetailVO;
 import com.mun9.orderlist.vo.OrderListVO;
 
 public interface OrderListMapper {
@@ -15,8 +16,7 @@ public interface OrderListMapper {
 	int insertOrderList(OrderListVO vo);
 
 	int selectOrderReview(String userId);
-
 	
-	
-	
+	List<OrderListVO> orderListsDe(String userId);
+	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
 }

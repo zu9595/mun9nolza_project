@@ -49,6 +49,7 @@ import com.mun9.member.command.SocialLoginControl;
 import com.mun9.orderdetail.command.OrderDetailFormControl;
 import com.mun9.orderdetail.command.OrderDetailJson;
 import com.mun9.orderdetail.command.OrderResultControl;
+import com.mun9.orderdetail.command.OrderResultJson;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
 import com.mun9.orderlist.command.OrderListControl;
@@ -100,17 +101,17 @@ public class FrontController extends HttpServlet {
 		map.put("/searchList.do",  new searchListControl());//검색 결과 페이지로 이동
 		
 		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
-
+		
 		
 		//회원가입
 		map.put("/joinMemberForm.do", new JoinMemberFormControl()); //가입화면만
 		map.put("/joinMember.do", new JoinMemberControl()); //가입기능
 		map.put("/joinIdJson.do", new JoinIdJsonControl()); //아이디중복체크
-
+		
 		// 상품 검색
 		map.put("/search.do", new searchControl());
-
-
+		
+		
 		// 아이디,비밀번호 찾기
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPw.do", new FindPwControl());
@@ -142,8 +143,12 @@ public class FrontController extends HttpServlet {
 		map.put("/modCartCntJson.do", new ModCartCntJson());
 		// 결제화면으로 이동
 		map.put("/orderDetailForm.do", new OrderDetailFormControl());
-		// 단건결제화면으로 이동
+		// 결제화면으로 데이터
+		map.put("/orderDetailJson.do", new OrderDetailJson());
+		// 결제화면으로 이동
 		map.put("/singleOrderDetailForm.do", new SingleOrderDetailFormControl());
+		// 결제완료화면 데이터
+		map.put("/orderResultJson.do", new OrderResultJson());
 
 
 		//map.put("/orderDetailData.do", new OrderDetailJson()); // 미사용

@@ -17,3 +17,4 @@ public interface CartService {
 	public boolean resetCartList(String userId);
 	public List<CartVO> selectOneCart2(CartVO vo);
 }
+

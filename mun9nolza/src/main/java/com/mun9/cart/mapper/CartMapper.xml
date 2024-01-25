@@ -36,12 +36,10 @@
 	</select>
 	
 
-
 	<insert id="addCarts" parameterType="cart">
 		insert into cart values (mypro_no_seq.nextval,#{userId},#{proCode},#{proPrice},#{proDiscount},#{myproCnt})
-	</insert>-->
+	</insert>
 	
-
 
 	<update id="addCart" parameterType="cart">
 	 MERGE INTO cart
@@ -51,7 +49,6 @@
 	 when not matched then insert ( mypro_no, user_id, pro_code, pro_price, pro_discount, mypro_cnt)
 	    values(mypro_no_seq.nextval, #{userId }, #{proCode}, #{proPrice}, #{proDiscount}, #{myproCnt}); 
 	</update>
-
 
 	<select id="addCartCheck" parameterType="cart">
 		select count(*) count from cart where user_id=#{userId} and pro_code=#{proCode}

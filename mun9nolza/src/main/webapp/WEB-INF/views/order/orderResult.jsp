@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="confirmation_tittle">
-					<span>결제 결과 페이지</span>
+					<span style="font-size: 2.5rem; color: #86a41c;">결제 결과 페이지</span>
 				</div>
 			</div>
 			<div class="col-lg-12">
@@ -22,9 +22,9 @@
 								<th scope="col">합계</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="setTr">
 
-							<c:forEach var="order" items="${orderDetailList}">
+							<!--<c:forEach var="order" items="${orderDetailList}">
 								<tr>
 									<th><span>${order.proCode }</span></th>
 									<th><span>${order.orderNo }</span></th>
@@ -38,48 +38,49 @@
 								<th colspan="4"><span></span></th>
 								<th><span>배송비</span></th>
 								<th><span>$원</span></th>
-							</tr>
+							</tr>-->
+							
 						</tbody>
 						<tfoot>
 							<tr>
 								<th scope="col" colspan="4"></th>
-								<th scope="col">합계</th>
-								<th scope="col">원</th>
+								<th scope="col">총 합계</th>
+								<th scope="col" class="addFee">0 원</th>
 							</tr>
 						</tfoot>
 					</table>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="background: floralwhite;">
 			<div class="col-lg-6 col-lx-4">
-				<div class="single_confirmation_details">
+				<div class="single_confirmation_details" style="background: none;">
 					<h4>구매자 정보</h4>
-					<ul>
-						<li>
-							<p>구매자 :</p> <span></span>
+					<ul style="height: 5rem;">
+						<li style="height: 2rem;">
+							<p>구매자 : <span class="buyer"></span></p>
 						</li>
-						<li>
-							<p>연락처 :</p> <span></span>
+						<li style="height: 2rem;">
+							<p>연락처 : <span class="phoneNumber"></span></p>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-6 col-lx-4">
-				<div class="single_confirmation_details">
+				<div class="single_confirmation_details" style="background: none;">
 					<h4>받는 사람 정보</h4>
 					<ul>
-						<li>
-							<p>수령인</p> <span>:${orderInfo.orderRecipient}</span> 
+						<li style="padding-left: 20%;">
+							<p>수령인 :</p> <span>${orderInfo.orderRecipient}</span> 
 						</li>
-						<li>
-							<p>주소</p> <span>:${orderInfo.orderAddr}</span> 
+						<li style="padding-left: 20%;">
+							<p>주소 :</p> <span>${orderInfo.orderAddr}</span> 
 						</li>
-						<li>
-							<p>상세주소</p> <span>:${orderInfo.detailAddr}</span> 
+						<li style="padding-left: 20%;">
+							<p>상세주소 :</p> <span>${orderInfo.detailAddr}</span> 
 						</li>
-						<li>
-							<p>배송메모</p> <span>:${orderInfo.deliveryMemo}</span> 
+						<li style="padding-left: 20%;">
+							<p>배송메모 :</p> <span>${orderInfo.deliveryMemo}</span> 
 						</li>
 					</ul>
 				</div>
@@ -105,5 +106,10 @@
 			</div>
 		</div> -->
 		</div>
+		<div class="d-grid gap-2" style="text-align: center;">
+			<button type="button" class="btn btn-success" onclick="location.href='main.do'">확인</button>
+		</div>
 	</div>
 </section>
+
+<script src="js/orderjs/resultDetail.js"></script>

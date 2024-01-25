@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.mun9.cart.vo.CartVO;
 import com.mun9.common.DataSource;
 import com.mun9.orderdetail.mapper.OrderDetailMapper;
 import com.mun9.orderdetail.service.OrderDetailService;
@@ -15,12 +14,18 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	OrderDetailMapper mapper = session.getMapper(OrderDetailMapper.class);
 	
 	@Override
-	public OrderDetailVO addOrderDetail(CartVO vo) {
-		return mapper.insertOrderDetail(vo);
+	public boolean addOrderDetail(OrderDetailVO vo) {
+		return mapper.insertOrderDetail(vo) > 0;
 	}
 
 	@Override
-	public List<OrderDetailVO> selectOrderDetailList(String userId) {
-		return mapper.selectOrderDetailList(userId);
+	public List<OrderDetailVO> selectOrderDetailList(int orderNo) {
+		return mapper.selectOrderDetailList(orderNo);
+	}
+
+	@Override
+	public List<OrderDetailVO> orderResult() {
+		// TODO Auto-generated method stub
+		return mapper.selectOrderResult();
 	}
 }

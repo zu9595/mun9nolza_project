@@ -15,4 +15,6 @@ public interface CartMapper {
 	int addCartCheck(CartVO vo);
 	int setCartList(CartVO vo);
 	List<CartVO> selectOneCart2(CartVO vo);
+
 }
+

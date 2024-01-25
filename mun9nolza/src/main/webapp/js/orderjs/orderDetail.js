@@ -1,42 +1,52 @@
+setPrice();
+let fee = 0;
 
-/*console.log(orderSum);
-console.log(userId);
-
-let orderStatus = '준비중';
-let deliveryFee = 3000;
-let ordertel = $('#tel1').val() +'-'+ $('#tel2').val() +'-'+ $('#tel3').val();
-console.log(ordertel);
-	makeOrderData(userId, orderRecipient, orderAddr, detailAddr, ordertel, deliveryMemo, orderSum, deliveryFee, orderStatus);
-
-// Ajax
-function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone, deliveryMemo, totalPrice, deliveryFee, orderStatus){
-	fetch('orderResult.do', {
-		method: "POST",
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: 'userId=' + userId + '&orderRecipient=' + orderRecipient + '&orderAddr=' + orderAddr + '&detailAddr=' + detailAddr + '&orderPhone=' + orderPhone + '&deliveryMemo=' + deliveryMemo + '&totalPrice=' + totalPrice + '&deliveryFee=' + deliveryFee + '&orderStatus=' + orderStatus
-	})
-		.then(str => str.json())
-		.then(result => {
-			console.log(result);
+function setPrice(){
+	
+	fetch("orderDetailJson.do", {
+        method: "get",
+        headers: { "Content-Type": "application/json" }
+    })
+        .then(res => res.json())
+        .then(res => {
+			console.log(res)
+			let tr = ``;
+			res.list.forEach((val, idx) => {
+				console.log(val)
+				tr += `<tr>
+					<th><span>${val.proCode }</span></th>
+					<th><img src="img/${val.proImage }" alt="작은이미지" width="30px" height="30px"></th>
+					<th><span>${val.proName }</span></th>`
+			if(val.proDiscount != 0){
+				tr += `<th><span class="proDiscount">${val.proDiscount }원</span></th>`
+			}else{
+				tr += `<th><span class="proPrice">${val.proPrice }원</span></th>`;
+			}
+				tr += `<th>${val.myproCnt }개</th>`
+			if(val.proDiscount != 0){
+				tr += `<th><span class="orderprice">${val.proDiscount*val.myproCnt }원</span></th>
+					</tr>`
+			}else{
+				tr += `<th><span class="orderprice">${val.proPrice*val.myproCnt }원</span></th>
+					</tr>`
+			}
+			})
+			tr += `<tr>
+				<th colspan="4"><span></span></th>
+				<th><span>배송비</span></th>`
+			if(res.priceSum < 50000){
+				tr += `<th><span id="delifee">3000</span>원</th>
+					</tr>`
+				fee=3000;
+			}else{
+				tr += `<th><span id="delifee">0</span>원</th>
+					</tr>`
+				fee=0;
+			}
+			$('.setTr').append(tr);
+			console.log(fee)
+			$('.Fee').val(fee);
+			let sum = fee + Number(orderSum);
+			$('.addFee').text(sum+"원");
 		})
-		.catch(err => console.error(err));
-}*/
-
-
-
-/*function makeSaleLi(product = {}) {
-	let li =
-		`<div class="col-lg-3 col-sm-6">
-			<div class="single_product_item">
-				<img src="`+ product.proImage + `" alt="이미지">
-				<div class="single_product_text">
-					<h4>`+ product.proName + `</h4>
-					<h3>`+ product.proDiscount + `원</h3>
-					<a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세페이지로<i class="ti-heart"></i></a>
-				</div>
-			</div>
-		</div>`
-		return li;
-}*/
+}

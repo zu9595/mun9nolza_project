@@ -45,10 +45,9 @@ max-width: 100%;
 }
 
 </style>
-    
-    
   <!--================Single Product Area =================-->
   <div class="product_image_area section_padding">
+    <p></p>
     <div class="container">
       <div class="row s_product_inner justify-content-between">
         <div class="col-lg-7 col-xl-7 w">
@@ -102,10 +101,10 @@ max-width: 100%;
               <!-- 로그인 세션이 존재할때 -->
               <c:choose>
               <c:when test="${!empty userId }">
-              <a href="javascript:addCartList()" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니 추가</a>
+              <a href="javascript:addCartList(${vo.proCode })" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니 추가</a>
               </c:when>
               <c:otherwise>
-              <a href="addCartJson.do?userId=${userId}&proCode=${proCode}&proPrice=${proPrice}&proDiscount=${proDiscount}&myproCnt=${myproCnt}" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니<br>추가</a>
+              <a href="loginForm.do" class="btn_3" role = "button" style="padding: 4px 19px;">장바구니<br>추가</a>
               </c:otherwise>
               </c:choose>
             </div>

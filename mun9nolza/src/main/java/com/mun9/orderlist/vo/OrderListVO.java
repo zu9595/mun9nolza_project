@@ -19,6 +19,10 @@ public class OrderListVO {
 	private int deliveryFee;
 	private String deliveryMemo;
 	private String orderStatus;
+	private int myproCnt;
+	private int proCode;
+	private int proPrice;
+	
 	
 
 	

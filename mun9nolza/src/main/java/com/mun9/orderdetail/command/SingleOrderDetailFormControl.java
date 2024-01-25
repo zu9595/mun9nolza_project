@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mun9.cart.service.CartService;
+import com.mun9.cart.serviceImpl.CartServiceImpl;
 import com.mun9.cart.vo.CartVO;
 import com.mun9.common.Control;
 import com.mun9.member.service.MemberService;
@@ -35,14 +37,31 @@ public class SingleOrderDetailFormControl implements Control {
 		vo.setProDiscount(Integer.parseInt(proDiscount));
 		vo.setMyproCnt(Integer.parseInt(myproCnt));
 		
-		List<CartVO> clist = new ArrayList<CartVO>();
-		clist.add(vo);
+		CartService csvc = new CartServiceImpl();
+		if(csvc.addCartCheck(vo)) {
+			csvc.setCartList(vo);
+		}else {
+			csvc.addCartsList(vo);
+		}
+		
+		List<CartVO> clist = csvc.selectCartList(userId);
 		
 		MemberService msvc = new MemberServiceImpl();
 		MemberVO minfo = msvc.memInfo(userId);
 		
-		req.setAttribute("memberinfo", minfo);
-		req.setAttribute("singleList", clist);
+		int priceSum = 0;
+		for(CartVO singleCart : clist) {
+			if(singleCart.getProDiscount() == 0) {
+				priceSum += (singleCart.getProPrice()*singleCart.getMyproCnt());
+			} else {
+				priceSum += (singleCart.getProDiscount()*singleCart.getMyproCnt());
+			}
+		}
+		
+		req.setAttribute("userId", userId);
+		req.setAttribute("memberInfo", minfo);
+		req.setAttribute("cartList", clist);
+		req.setAttribute("orderSum", priceSum);
 		
 		//페이지이동
 		RequestDispatcher rd = req.getRequestDispatcher("order/orderDetail.tiles");
