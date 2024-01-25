@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mun9.cart.service.CartService;
+import com.mun9.cart.serviceImpl.CartServiceImpl;
+import com.mun9.cart.vo.CartVO;
 import com.mun9.common.Control;
 import com.mun9.orderdetail.service.OrderDetailService;
 import com.mun9.orderdetail.serviceImpl.OrderDetailServiceImpl;
@@ -28,8 +31,6 @@ public class OrderResultControl implements Control {
 		OrderListService lsvc = new OrderListServiceImpl();
 		String userId = (String) session.getAttribute("logId");
 		System.out.println(userId);
-//		LocalDate now = LocalDate.now();
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
 		Date orderDate = null;
 		
 		String orderRecipient = req.getParameter("orderRecipient");
@@ -66,26 +67,35 @@ public class OrderResultControl implements Control {
 				w = ovo.get(i).getOrderNo(); 
 			}
 		}
-		List<OrderDetailVO> list2 = lsvc.orderDetailBefore(userId,w);
-			
+		OrderDetailVO vo3 = new OrderDetailVO();
+		vo3.setUserId(userId);
+		vo3.setOrderNo(w);
+		
+		List<OrderDetailVO> list2 = lsvc.orderDetailBefore(vo3);
+			System.out.println(list2);
 			for(OrderDetailVO vo2 : list2) {
+				int Sum = ((vo2.getMyproPrice()) * (vo2.getMyproCnt()));
+				vo2.setDeProPrice(Sum);
 				svc.addOrderDetail(vo2);
 			}
 		
 		
 		List<OrderDetailVO> odlist = svc.selectOrderDetailList(w);
 		System.out.println(odlist.toString());
-		req.setAttribute("orderDetailList", odlist);
+		
+		//장바구니 삭제
+		CartService csvc = new CartServiceImpl();
+		csvc.resetCartList(userId);
+		
+		//req.setAttribute("orderDetailList", odlist);
 		req.setAttribute("orderInfo", vo);
+		//req.setAttribute("orderNo", w);
 		
 		// 페이지이동
 		RequestDispatcher rd = null;
 		try {
 			rd = req.getRequestDispatcher("order/orderResult.tiles");
 			rd.forward(req, resp);
-			//csvc.resetCartList(userId);
-//		}else {
-//			resp.sendRedirect("order/orderDetail.tiles");
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

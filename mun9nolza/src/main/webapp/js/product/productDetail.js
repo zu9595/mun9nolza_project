@@ -76,7 +76,7 @@ function cntIncrementEvent(){
 	})
 }
 
-// 단건 주문이동
+// 주문이동
 function singlePayForm(){
 	let myproCnt = document.querySelector('.prodCnt').value;
 		

@@ -16,5 +16,5 @@ public interface OrderListService {
 	
 	List<OrderListVO> orderListsDe(String userId);
 
-	List<OrderDetailVO> orderDetailBefore(String userId,int orderNo);
+	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
 }

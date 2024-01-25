@@ -56,7 +56,7 @@
  	select DISTINCT o.order_no from orderlist o,cart c where c.user_id = o.user_id and c.user_id=#{userId}
  </select>
  
- <select id="orderDetailBefore" resultType="orderdetailT">
- 	select o.order_no orderNo,o.user_id userId,c.mypro_cnt myproCnt,c.pro_code proCode,c.pro_price proPrice from orderlist o,cart c where c.user_id = o.user_id and o.user_id = #{userId} and o.order_no = #{orderNo}
+ <select id="orderDetailBefore" resultType="orderdetailT" parameterType="orderdetailT">
+ 	select o.order_no orderNo, o.user_id userId, c.mypro_cnt myproCnt, c.pro_code proCode, c.pro_price myproPrice from orderlist o, cart c where c.user_id = o.user_id and o.user_id = #{userId} and o.order_no = #{orderNo}
  </select>
 </mapper>

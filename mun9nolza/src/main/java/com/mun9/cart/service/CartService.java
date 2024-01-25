@@ -14,6 +14,6 @@ public interface CartService {
 	public boolean addCartCheck(CartVO vo);
 	public boolean setCartList(CartVO vo);
 	public boolean changeMyproCnt(CartVO vo);
-	public List<CartVO> resetCartList(String userId);
+	public boolean resetCartList(String userId);
 	public List<CartVO> selectOneCart2(CartVO vo);
 }

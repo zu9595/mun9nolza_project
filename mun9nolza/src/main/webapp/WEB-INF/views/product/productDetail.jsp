@@ -15,8 +15,7 @@ display: flex;
 padding: 5px 0px;
 }
 
-.product_description_area .contai
-ner .btn1,.product_description_area .container .btn2{
+.product_description_area .container .btn1,.product_description_area .container .btn2{
 border: 1px solid #dddddd;
 border-radius: 40%;
 padding: 5px 8px;

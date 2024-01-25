@@ -47,8 +47,8 @@ public class CartServiceImpl implements CartService{
 
 	}
   @Override
-	public List<CartVO> resetCartList(String userId) {
-		return mapper.resetCartList(userId);
+	public boolean resetCartList(String userId) {
+		return mapper.resetCartList(userId) > 0;
 	}
 
 	@Override

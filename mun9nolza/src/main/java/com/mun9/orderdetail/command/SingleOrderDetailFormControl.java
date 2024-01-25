@@ -59,7 +59,7 @@ public class SingleOrderDetailFormControl implements Control {
 		}
 		
 		req.setAttribute("userId", userId);
-		req.setAttribute("memberinfo", minfo);
+		req.setAttribute("memberInfo", minfo);
 		req.setAttribute("cartList", clist);
 		req.setAttribute("orderSum", priceSum);
 		

@@ -10,6 +10,8 @@ public class OrderDetailVO {
 	private String proName;
 	private int deProCnt;
 	private int deProPrice;
+	private String userId;
+	private int orderNo;
 	
 	
 	

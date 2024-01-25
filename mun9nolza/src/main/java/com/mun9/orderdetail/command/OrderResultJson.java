@@ -11,35 +11,33 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mun9.cart.service.CartService;
-import com.mun9.cart.serviceImpl.CartServiceImpl;
-import com.mun9.cart.vo.CartVO;
 import com.mun9.common.Control;
+import com.mun9.member.service.MemberService;
+import com.mun9.member.serviceImpl.MemberServiceImpl;
+import com.mun9.member.vo.MemberVO;
+import com.mun9.orderdetail.service.OrderDetailService;
+import com.mun9.orderdetail.serviceImpl.OrderDetailServiceImpl;
+import com.mun9.orderdetail.vo.OrderDetailVO;
 
-public class OrderDetailJson implements Control {
+public class OrderResultJson implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		
+		OrderDetailService svc = new OrderDetailServiceImpl();
+		List<OrderDetailVO> vo = svc.orderResult();
+		
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("logId");
 		
-		CartService csvc = new CartServiceImpl();
-		List<CartVO> clist = csvc.selectCartList(userId);
-		
-		int priceSum = 0;
-		for(CartVO singleCart : clist) {
-			if(singleCart.getProDiscount() == 0) {
-				priceSum += (singleCart.getProPrice()*singleCart.getMyproCnt());
-			} else {
-				priceSum += (singleCart.getProDiscount()*singleCart.getMyproCnt());
-			}
-		}
+		MemberService msvc = new MemberServiceImpl();
+		MemberVO mvo = msvc.memInfo(userId);
 		
 		Map<String, Object> map = new HashMap<>();
+		map.put("resultList", vo);
+		map.put("buyInfo", mvo);
 		
 		resp.setContentType("text/json;charset=utf-8");
-		map.put("list", clist);
-		map.put("priceSum", priceSum);
 		Gson gson = new GsonBuilder().create();
 		
 		try {
@@ -47,6 +45,7 @@ public class OrderDetailJson implements Control {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		
 	}
 

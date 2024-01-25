@@ -43,9 +43,9 @@ public class OrderListServiceImpl implements OrderListService{
 	}
 
 	@Override
-	public List<OrderDetailVO> orderDetailBefore(String userId, int orderNo) {
+	public List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.orderDetailBefore(userId,orderNo);
+		return mapper.orderDetailBefore(vo);
 	}
 
 	

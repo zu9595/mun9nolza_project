@@ -18,5 +18,5 @@ public interface OrderListMapper {
 	int selectOrderReview(String userId);
 	
 	List<OrderListVO> orderListsDe(String userId);
-	List<OrderDetailVO> orderDetailBefore(String userId,int orderNo);
+	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
 }
