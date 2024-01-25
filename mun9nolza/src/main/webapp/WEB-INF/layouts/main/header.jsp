@@ -49,7 +49,9 @@
                 		<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0;"><i class="fas fa-user fa-fw"></i></a>
 							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="javascript:listView('${logId}')">관리자로그인&ensp;</a></li>
+                        <li><a class="dropdown-item" href="javascript:listView('${logId}')">관리자페이지&ensp;</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="myOrderList.do">마이페이지</a></li>
                         <li><hr class="dropdown-divider" /></li>
 						 <li><a class="dropdown-item" href="logout.do" onclick="javascript:kakaoLogout()">로그아웃</a></li>
                         </ul>

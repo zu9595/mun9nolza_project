@@ -35,9 +35,10 @@ function imgdiv(res){
     return div;
 }
 
-function addCartList(){
+function addCartList(proCode){
 	let myproCnt = document.querySelector('.prodCnt').value;
 	console.log(myproCnt)
+	if(userId != null){
 	fetch(`addCartJson.do?userId=${userId}&proCode=${proCode}&proPrice=${proPrice}&proDiscount=${proDiscount}&myproCnt=${myproCnt}`,{
         method: "get",
 		headers: {"Content-Type": "application/json"}
@@ -51,6 +52,9 @@ function addCartList(){
 			}
 		})
 		.catch(res => console.log(res));
+		}else{
+			alert('로그인후 이용해주세요');
+		}
 }
 
 // 체크박스 수량 업태그
@@ -72,7 +76,7 @@ function cntIncrementEvent(){
 	})
 }
 
-// 단건 주문이동
+// 주문이동
 function singlePayForm(){
 	let myproCnt = document.querySelector('.prodCnt').value;
 		

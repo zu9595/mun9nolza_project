@@ -17,10 +17,6 @@
 						<td colspan="3">${vo.inqNo }</td>
 					</tr>
 					<tr>
-						<td>상품이름</td>
-						<td colspan="3">${vo.prodName }</td>
-					</tr>
-					<tr>
 						<td>제목</td>
 						<td colspan="3">${vo.inqTitle }</td>
 					</tr>
