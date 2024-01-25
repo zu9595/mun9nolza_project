@@ -57,8 +57,8 @@
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-5 mx-auto">
 				<div class="img-logo">
-					<a href="http://localhost/mun9nolza/"> <img
-						src="http://localhost/mun9nolza/img/logo.png" alt="logo">
+					<a href="/mun9nolza/"> <img
+						src="/mun9nolza/img/logo.png" alt="logo">
 					</a>
 				</div>
 				<!-- 서버로 정보전송 -->

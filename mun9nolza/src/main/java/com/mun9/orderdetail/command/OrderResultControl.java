@@ -27,6 +27,7 @@ public class OrderResultControl implements Control {
 		OrderDetailService svc = new OrderDetailServiceImpl();
 		OrderListService lsvc = new OrderListServiceImpl();
 		String userId = (String) session.getAttribute("logId");
+		System.out.println(userId);
 //		LocalDate now = LocalDate.now();
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
 		Date orderDate = null;

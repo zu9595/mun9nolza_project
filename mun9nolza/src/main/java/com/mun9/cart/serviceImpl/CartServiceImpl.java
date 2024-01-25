@@ -35,6 +35,11 @@ public class CartServiceImpl implements CartService{
 		// TODO Auto-generated method stub
 		return mapper.addCart(vo) == 1;
 	}
+	@Override
+	public boolean addCartsList(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.addCarts(vo) == 1;
+	}
 
 	@Override
 	public boolean selectOneCart(CartVO vo) {
@@ -57,6 +62,12 @@ public class CartServiceImpl implements CartService{
 		// TODO Auto-generated method stub
 		return mapper.setCartList(vo) ==1;
 
+	}
+
+	@Override
+	public List<CartVO> selectOneCart2(CartVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.selectOneCart2(vo);
 	}
 	
 

@@ -24,6 +24,41 @@ function makeOrderData(userId, orderRecipient, orderAddr, detailAddr, orderPhone
 		.catch(err => console.error(err));
 }*/
 
+// 상품별 가격 합산
+function makeSubTotal(idx,res){
+	
+	let proDiscount = $(`.proDiscount${idx}`).text();
+	if(proDiscount == 0){
+		proDiscount = $(`.proPrice${idx}`).text();
+	}
+	console.log(proDiscount);
+	let myproCnt = $(`.myproCnt${idx}`).val();
+	
+	//console.log(proDiscount);
+	//console.log(myproCnt);
+	
+	$(`.subTotal${idx}`).text(proDiscount * myproCnt);	
+	//makeFeeTotal(res);
+}
+
+// 배송비, 총금액 계산
+function makeFeeTotal(){
+	let preTotal = 0;
+	
+	$('tbody input:checked').each((idx,cart) => {
+		let subTotal = parseInt(document.querySelector('.subTotal'+idx).innerHTML);
+		preTotal += subTotal;
+		console.log(preTotal);
+	})
+	if(preTotal < 50000 ){
+		document.querySelector('.delieveryFee').innerHTML = '+3000 원';
+		document.querySelector('.total').innerHTML = preTotal + 3000 +'원';
+	}else{
+		document.querySelector('.delieveryFee').innerHTML = '무료';
+		document.querySelector('.total').innerHTML = preTotal +'원';
+	}
+}
+
 
 
 /*function makeSaleLi(product = {}) {

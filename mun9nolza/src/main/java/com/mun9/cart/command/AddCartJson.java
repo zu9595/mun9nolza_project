@@ -44,7 +44,7 @@ public class AddCartJson implements Control {
 				map.put("retCode", "NG");
 			}
 		}else {
-			if(svc.addCartList(vo)) {
+			if(svc.addCartsList(vo)) {
 				map.put("retCode", "OK");
 			}else {
 				map.put("retCode", "NG");

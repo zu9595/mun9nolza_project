@@ -26,12 +26,19 @@
 						</thead>
 						<tbody>
 
-							<c:forEach var="order" items="${cartList }">
+							<c:forEach var="order" begin="0" step="1" items="${cartList }" varStatus="status">
 							<tr>
 								<th><span>${order.proCode }</span></th>
-								<th><img src="${order.proImage }" alt="작은이미지" width="30px" height="30px"></th>
+								<th><img src="img/${order.proImage }" alt="작은이미지" width="30px" height="30px"></th>
 								<th><span>${order.proName }</span></th>
-								<th><span>${order.proPrice }</span></th>
+								<c:choose>
+								<c:when test="${order.proDiscount} > 0">
+								<th><span class="proDiscount${status.count }">${order.proDiscount }</span></th>
+								</c:when>
+								<c:otherwise>
+								<th><span class="proPrice${status.count }">${order.proPrice }</span></th>
+								</c:otherwise>
+								</c:choose>
 								<th>${order.myproCnt }</th>
 								<th><span class="orderprice">${order.proPrice*order.myproCnt }</span></th>
 							</tr>
@@ -71,7 +78,6 @@
 			</div> -->
 			<form method="post" action="orderResult.do">
 				<input type="hidden" name="totalPrice" value="${orderSum }">
-				<input type="hidden" id="orderPhone" name="orderPhone" value="">
 				<input type="hidden" name="deliveryFee" value="2500">
 				<input type="hidden" name="orderStatus" value="준비중">
 				<input type="hidden" name="orderNo" value="준비중">
@@ -80,7 +86,7 @@
 					<h4>배송 정보 입력</h4>
 					<ul>
 						<li>
-							<p>수령인	:</p> <span><input name="orderRecipient" type="text" size="20" value="홍길동"></span>
+							<p>수령인	:</p> <span><input name="orderRecipient" type="text" size="20" value="${memberInfo.userName} "></span>
 						</li>
 						<li>
 							<p>주소	:</p> <span><input name="orderAddr" type="text" size="40" value="주소"></span>
@@ -89,7 +95,7 @@
 							<p>상세주소	:</p> <span><input name="detailAddr" type="text" size="70" value="상세주소"></span>
 						</li>
 						<li>
-							<p>연락처	:</p> <span><input id="tel1" type="text" size="5" value="010"> - <input id="tel2" type="text" size="5" value="112"> - <input id="tel3" type="text" size="5" value="1234"></span>
+							<p>연락처	:</p> <span><input name="orderPhone" type="text" size="10" value="${memberInfo.phoneNum}" placeholder="???-????-???? 형태로 입력해 주세요"></span>
 						</li>
 						<li>
 							<p>배송메모	:</p> <span><input name="deliveryMemo" type="text" size="70" value="배송메모"></span>
@@ -122,7 +128,4 @@
 		</div>
 	</div>
 </section>
-<script>
-$('#orderPhone').val($('#tel1').val() +'-'+ $('#tel2').val() +'-'+ $('#tel3').val());
-</script>  
 <script src="js/orderjs/orderDetail.js"></script>
