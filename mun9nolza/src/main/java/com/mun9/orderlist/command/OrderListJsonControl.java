@@ -21,6 +21,7 @@ public class OrderListJsonControl implements Control {
 		
 		
 		String id = req.getParameter("userId");
+		
 		OrderListService svc = new OrderListServiceImpl();
 		
 		List<OrderListVO> list =  svc.getMyOrderList(id);

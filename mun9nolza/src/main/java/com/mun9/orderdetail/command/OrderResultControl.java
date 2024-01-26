@@ -67,6 +67,7 @@ public class OrderResultControl implements Control {
 				w = ovo.get(i).getOrderNo(); 
 			}
 		}
+		System.out.println(w);
 		OrderDetailVO vo3 = new OrderDetailVO();
 		vo3.setUserId(userId);
 		vo3.setOrderNo(w);
@@ -74,11 +75,15 @@ public class OrderResultControl implements Control {
 		List<OrderDetailVO> list2 = lsvc.orderDetailBefore(vo3);
 			System.out.println(list2);
 			for(OrderDetailVO vo2 : list2) {
-				int Sum = ((vo2.getMyproPrice()) * (vo2.getMyproCnt()));
+				int Sum = 0;
+				if(vo2.getDeProPrice() == 0) {
+					Sum = ((vo2.getMyproPrice()) * (vo2.getMyproCnt()));
+				}else {
+					Sum = ((vo2.getDeProPrice()) * (vo2.getMyproCnt()));
+				}
 				vo2.setDeProPrice(Sum);
 				svc.addOrderDetail(vo2);
 			}
-		
 		
 		List<OrderDetailVO> odlist = svc.selectOrderDetailList(w);
 		System.out.println(odlist.toString());

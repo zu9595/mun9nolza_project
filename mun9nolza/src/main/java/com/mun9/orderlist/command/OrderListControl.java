@@ -32,7 +32,6 @@ public class OrderListControl implements Control {
 		
 		List<OrderListVO> list = svc.getMyOrderList(userId);
 		req.setAttribute("orderList", list);
-		req.setAttribute("vo", vo);
 
 		
 		//페이지이동

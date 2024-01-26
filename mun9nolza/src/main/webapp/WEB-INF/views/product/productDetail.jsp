@@ -43,9 +43,9 @@ font-size: 1rem;
 .product_description_area .col-lg-6{
 max-width: 100%;
 }
-
 </style>
   <!--================Single Product Area =================-->
+<p>${vo.proDiscount}</p>
   <div class="product_image_area section_padding">
     <p></p>
     <div class="container">
@@ -68,10 +68,10 @@ max-width: 100%;
             <h3>${vo.proName }</h3>
             <c:choose>
             <c:when test="${vo.proDiscount eq 0 } ">
-            <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span><span>${vo.proDiscount }원</span></h2>
+            <h2>${vo.proPrice }원</h2>
             </c:when>
             <c:otherwise>
-            <h2>${vo.proPrice }원</h2>
+            <h2><span style="text-decoration: line-through; font-size: 20px; opacity: 0.5;">${vo.proPrice }원</span><span>${vo.proDiscount }원</span></h2>
             </c:otherwise>
             </c:choose>
             <ul class="list">
