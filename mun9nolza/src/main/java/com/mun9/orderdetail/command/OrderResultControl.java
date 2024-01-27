@@ -53,15 +53,13 @@ public class OrderResultControl implements Control {
 		vo.setDetailAddr(detailAddr);
 		vo.setOrderPhone(orderPhone);
 		vo.setDeliveryMemo(deliveryMemo);
-		vo.setOrderDate(new Date());
 		if(totalPrice!="") {
 			vo.setTotalPrice(Integer.parseInt(totalPrice));
 		}
 		vo.setDeliveryFee(Integer.parseInt(deliveryFee));
 		vo.setOrderStatus(orderStatus);
-		System.out.println(totalPrice);
 		
-		if(totalPrice != "") {
+		if(Integer.parseInt(totalPrice) != 0) {
 		//orderList 추가
 		lsvc.addOrderList(vo);
 		

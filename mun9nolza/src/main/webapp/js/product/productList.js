@@ -62,17 +62,19 @@
 	
 function makeLi(product = {}) {
     
-const li = `<div class="col-lg-4 col-sm-6 listsize">
+let li = `<div class="col-lg-4 col-sm-6 listsize">
     <div class="single_product_item">
     <img src="img/`+product.proImage+`" alt="이미지">
     <div class="single_product_text">
         <h4>`+product.proName+`</h4>
-        <h3>`+product.proPrice+`원</h3>
-        <h3>할인가 `+product.proDiscount+`원</h3>
-        <a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세보기</a>
-    </div>
-</div>
-</div>`
+        <h3>`+product.proPrice+`원</h3>`
+        if(product.proDiscount != 0){
+        	li += `<h3>할인가 `+product.proDiscount+`원</h3>`;
+		}
+      li += `<a href="productDetail.do?pcode=`+product.proCode+`" class="add_cart">상세보기</a>
+    			</div>
+					</div>
+						</div>`
 // console.log(product.proName);
 return li;
 }

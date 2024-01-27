@@ -45,7 +45,6 @@ max-width: 100%;
 }
 </style>
   <!--================Single Product Area =================-->
-<p>${vo.proDiscount}</p>
   <div class="product_image_area section_padding">
     <p></p>
     <div class="container">
@@ -62,12 +61,10 @@ max-width: 100%;
           </div>
         </div>
         <div class="col-lg-5 col-xl-4">
-        
           <div class="s_product_text">
-            <h5></h5>
             <h3>${vo.proName }</h3>
             <c:choose>
-            <c:when test="${vo.proDiscount eq 0 } ">
+            <c:when test="${vo.proDiscount == 0 }">
             <h2>${vo.proPrice }원</h2>
             </c:when>
             <c:otherwise>

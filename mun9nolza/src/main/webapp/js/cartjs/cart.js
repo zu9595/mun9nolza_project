@@ -248,16 +248,24 @@ function makeTr(cart,idx){
                       <a href="productDetail.do?pcode=${cart.proCode}" text-decoration:none>${cart.proName}</a>
                     </div>
                   </div>
-                </td>
+                </td>`
+                if(cart.proDiscount ==0){
+     				newTr += `<td>
+              					<h5><span class="proPrice${idx}" style="text-decoration:none;">${cart.proPrice}</span></h5>
+            				</td>
+            				<td>
+              					<h5><span class="proDiscount proDiscount${idx}" style="visibility:hidden;">${cart.proDiscount}</span></h5>
+            				</td>`       
+				}else{
+					newTr += `<td>
+              					<h5><span class="proPrice${idx}">${cart.proPrice}</span></h5>
+            				</td>
+            				<td>
+              					<h5><span class="proDiscount proDiscount${idx}">${cart.proDiscount}</span></h5>
+            				</td>`  
+				}
                 
-                <td>
-                  <h5><span class="proPrice${idx}">${cart.proPrice}</span></h5>
-                </td>
-                
-                <td>
-                  <h5><span class="proDiscount proDiscount${idx}">${cart.proDiscount}</span></h5>
-                </td>
-                
+        newTr += `        
                 <td>
                   <div class="product_count">
                     <span class="input-number-decrement ti-angle-down deinput${idx}"></span>
