@@ -1,6 +1,9 @@
 package com.mun9.orderdetail.command;
 
 import java.io.IOException;
+import java.text.*;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.scripting.xmltags.WhereSqlNode;
 
 import com.mun9.cart.service.CartService;
 import com.mun9.cart.serviceImpl.CartServiceImpl;
@@ -31,7 +36,6 @@ public class OrderResultControl implements Control {
 		OrderListService lsvc = new OrderListServiceImpl();
 		String userId = (String) session.getAttribute("logId");
 		System.out.println(userId);
-		Date orderDate = null;
 		
 		String orderRecipient = req.getParameter("orderRecipient");
 		String orderAddr = req.getParameter("orderAddr");
@@ -44,18 +48,20 @@ public class OrderResultControl implements Control {
 		
 		OrderListVO vo = new OrderListVO();
 		vo.setUserId(userId);
-		vo.setOrderDate(orderDate);
 		vo.setOrderRecipient(orderRecipient);
 		vo.setOrderAddr(orderAddr);
 		vo.setDetailAddr(detailAddr);
 		vo.setOrderPhone(orderPhone);
 		vo.setDeliveryMemo(deliveryMemo);
+		vo.setOrderDate(new Date());
 		if(totalPrice!="") {
 			vo.setTotalPrice(Integer.parseInt(totalPrice));
 		}
 		vo.setDeliveryFee(Integer.parseInt(deliveryFee));
 		vo.setOrderStatus(orderStatus);
+		System.out.println(totalPrice);
 		
+		if(totalPrice != "") {
 		//orderList 추가
 		lsvc.addOrderList(vo);
 		
@@ -103,6 +109,18 @@ public class OrderResultControl implements Control {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
+		}
+		}else {
+			// 페이지이동
+			try {
+				resp.setContentType("text/html; charset=utf-8");
+				PrintWriter w = resp.getWriter();
+				w.write("<script>alert(`등록된 상품이 없습니다.`);location.href='main.do';</script>");
+				w.flush();
+				w.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
