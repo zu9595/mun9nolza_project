@@ -38,7 +38,7 @@
  <!-- 마이페이지(주문내역조회): 로그인아이디-최근주문순 -->
  <select id="selectMyOrderList" resultMap="selectDetailMap" parameterType="String">
  	select o.order_date, o.order_no, p.pro_image, p.pro_code, p.pro_name, od.de_pro_cnt, od.de_pro_price, o.total_price, o.order_status,
- 	       o.order_recipient, o.order_phone, o.order_addr, o.detail_addr, o.delivery_fee
+ 	       o.order_recipient, o.order_phone, o.order_addr, o.detail_addr, o.delivery_fee, p.pro_price, p.pro_discount
 	from orderlist o, product p, orderdetail od
 	where o.order_no = od.order_no
 	and od.pro_code = p.pro_code

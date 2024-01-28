@@ -21,7 +21,6 @@ public class OrderListVO {
 	private String orderStatus;
 	private int myproCnt;
 	private int proCode;
-	private int proPrice;
 	
 	
 
