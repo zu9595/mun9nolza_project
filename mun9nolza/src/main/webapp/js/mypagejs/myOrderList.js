@@ -1,7 +1,6 @@
 /**
  * myOrderList.js
  */
-//makeTr();
 //상세조회
 function detailView() {
 	$(event.target).closest('tr').next().toggle('orderHidden');
@@ -37,34 +36,3 @@ function removeOrder(orderNo) {
 		}
 	})
 }
-/*
-function makeTr(){
-	fetch("myOrderListJson.do", {
-		method: "post",
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: 'userId='+userId
-	})
-	.then(str => str.json())
-	.then(res => {
-		console.log(res)
-	})
-	
-	let tr = ``;
-		tr += `<tr>
-	 		     <td>`
-	 	if(result.proImage != null){
-			tr += `<img width="150px" src="img/${result.proImage}">`
-		}  
-		tr += `</td>
-				<td>${result.proCode }</td>
-				<td>${result.proName }</td>
-				<td>${result.deProCnt }개</td>`
-		if(""){
-			tr += `<td>${result.deProPrice}원</td>
-	 		    </tr>`
-		}else{
-			tr += `<td>${result.deProPrice}원</td>
-	 		    </tr>`
-		}
-}*/

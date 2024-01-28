@@ -18,9 +18,10 @@ function memberList() {
         .then(res => {
             console.log(res);
             $(res).each((idx, member) => {
+				console.log(member)
 				// tr생성. td생성
 				let tr = '';
-				if(userId == member.userId){
+				if(member.status == 'admin'){
 					tr = $('<tr />').addClass('del').append($('<td />').attr('id','id').text(member.userId),
 						$('<td />').attr('id','pw').text(member.userPw),
 						$('<td />').text(member.userName),
@@ -54,7 +55,7 @@ async function memberDel(userId, userPw) {
 			memberList();
 						
 		}else if(json.retCode == 'NG'){
-			alert('삭제중 애러');
+			alert('삭제불가');
 		}
 	}catch(err){
 		console.error('예외 => ',err);

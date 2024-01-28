@@ -19,4 +19,6 @@ public interface OrderListMapper {
 	
 	List<OrderListVO> orderListsDe(String userId);
 	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
+	
+	List<OrderListVO> selectAdminOrderList();
 }

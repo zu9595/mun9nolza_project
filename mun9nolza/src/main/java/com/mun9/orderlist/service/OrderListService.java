@@ -17,4 +17,6 @@ public interface OrderListService {
 	List<OrderListVO> orderListsDe(String userId);
 
 	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
+	
+	List<OrderListVO> orderListAdmin();
 }

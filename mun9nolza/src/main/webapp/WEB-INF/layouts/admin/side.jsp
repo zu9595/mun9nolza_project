@@ -24,7 +24,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="adminProductListForm.do">상품 목록</a>
                                     <a class="nav-link" href="adminProductAddForm.do">상품 등록</a>
-                                    <a class="nav-link" href="#">상품 결제내역</a>
+                                    <a class="nav-link" href="orderListAdminForm.do">상품 결제내역</a>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Q&A</div>

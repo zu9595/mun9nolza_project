@@ -52,6 +52,8 @@ import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.OrderResultJson;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
+import com.mun9.orderlist.command.OrderListAdminControl;
+import com.mun9.orderlist.command.OrderListAdminFormControl;
 import com.mun9.orderlist.command.OrderListControl;
 import com.mun9.orderlist.command.OrderListJsonControl;
 import com.mun9.product.command.AdminProductAddControl;
@@ -219,6 +221,10 @@ public class FrontController extends HttpServlet {
 		map.put("/productMod.do", new AdminProductModControl());
 		// admin Product 추가
 		map.put("/productAdd.do", new AdminProductAddControl());
+		// admin 주문목록 이동
+		map.put("/orderListAdminForm.do", new OrderListAdminFormControl());
+		// admin 주문목록(Json)
+		map.put("/orderListAdmin.do", new OrderListAdminControl());
 
 	}
 

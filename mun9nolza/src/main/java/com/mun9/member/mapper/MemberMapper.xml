@@ -48,7 +48,7 @@
  	</select>
  	
  	<delete id="deleteMember">
- 		delete from member where user_id=#{userId} and user_pw=#{userPw}
+ 		delete from member where user_id=#{userId} and user_pw=#{userPw} and status = 'user'
  	</delete>
  	
  	<select id="kakaoSelectMember" resultType="member" parameterType="String">

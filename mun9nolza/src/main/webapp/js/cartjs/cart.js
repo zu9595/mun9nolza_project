@@ -258,7 +258,7 @@ function makeTr(cart,idx){
             				</td>`       
 				}else{
 					newTr += `<td>
-              					<h5><span class="proPrice${idx}">${cart.proPrice}</span></h5>
+              					<h5><span class="proPrice${idx}" style="text-decoration:line-through;">${cart.proPrice}</span></h5>
             				</td>
             				<td>
               					<h5><span class="proDiscount proDiscount${idx}">${cart.proDiscount}</span></h5>
@@ -269,7 +269,7 @@ function makeTr(cart,idx){
                 <td>
                   <div class="product_count">
                     <span class="input-number-decrement ti-angle-down deinput${idx}"></span>
-                    <input class="input-number myproCnt${idx}" type="text" value="${cart.myproCnt}" min="0" max="10">
+                    <input class="input-number myproCnt${idx}" type="text" value="${cart.myproCnt}" min="0" max="10" readonly>
                     <span class="input-number-increment ti-angle-up ininput${idx}"></span>
                   </div>
                 </td>
