@@ -163,7 +163,7 @@ max-width: 100%;
           <!-- 베스트 목록 -->
           <c:forEach var="item" items="${bestList}" begin="0" end="7" step="1">
                 	<div class="single_product_item">
-                		<img src="img/${item.proImage }" alt="이미지">
+                		<img src="img/${item.proImage }" alt="이미지" onclick="location.href='productDetail.do?pcode=${item.proCode}'">
                         <div class="single_product_text">
                             <h4>${item.proName} </h4>
                             <h3>${item.proPrice}원</h3>

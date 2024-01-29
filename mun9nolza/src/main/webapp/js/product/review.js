@@ -9,7 +9,8 @@ let paging = document.querySelector('.pageination');
 let star = 0;
 
 $(document).ready(function(){
-	reviewList(pageInfo, proCode);
+	proDescBtn1();
+	//reviewList(pageInfo, proCode);
 	btn1();
 	btn2();
 	addReview(proCode);
@@ -17,6 +18,7 @@ $(document).ready(function(){
     delLi();
 });
 
+//리뷰리스트 목록
 function reviewList(page, proCode){
 	fetch('reviewList.do?page='+ page +'&proCode='+ proCode)
 		.then(str => str.json())
@@ -33,7 +35,24 @@ function reviewList(page, proCode){
 		.catch(reject => console.log(reject));
 }
 
+//초기 페이지 상품설명 화면
+function proDescBtn1(){
+	const con2 = `<div class="homes" id="home" style="display: flex;align-items: center; flex-direction: column;">
+          <p style="padding: 3rem 40%; max-width: 100%; margin: 0 auto; text-align: center;">
+            ${proDesc }
+          </p>
+          <div class="imgDetail">
+          </div>
+        </div>`
+        $('.tab3').children().remove();
+		$('.pageination').children().first().remove();
+		$('.tab3').siblings().eq(1).remove();
+		console.log($('.tab3').siblings().eq(1))
+		tab3.insertAdjacentHTML('afterbegin',con2);
+		imgDetails();
+}
 
+// 상품설명 버튼 이벤트
 function btn1(){
 	const con2 = `<div class="homes" id="home" style="display: flex;align-items: center; flex-direction: column;">
           <p style="padding: 3rem 40%; max-width: 100%; margin: 0 auto; text-align: center;">
@@ -52,6 +71,7 @@ function btn1(){
 });
 }
 
+//상품설명 리스트
 function imgDetails(){
 	fetch('prodDetailImg2.do?proCode='+ proCode, {
 		method: "get"
@@ -70,7 +90,7 @@ function imgDetails(){
 		})	
 }
 
-
+// 리뷰 버튼 이벤트
 function btn2(){
 	
 $(`.tab2`).on('click', function(e){
@@ -83,6 +103,7 @@ $(`.tab2`).on('click', function(e){
 });
 }
 
+//리뷰 목록 html
 function makeLis(rev = {}) {
 	let starssd = ``;
 for(let i =1;i<=rev.reRate;i++){
@@ -106,6 +127,7 @@ const li = `<div class="11" style="padding: 2% 18%;height: 10rem; margin-bottom:
 return li;
 }
 
+//페이징처리
 function pagingList(result){
             paging.innerHTML = ''; 
             let ul = document.createElement('ul');
@@ -152,6 +174,7 @@ function pagingList(result){
 			}
 	}
 
+//페이징 버튼
 function pageList(e){
         e.preventDefault();
 		pageInfo = this.getAttribute("href");
@@ -159,6 +182,7 @@ function pageList(e){
        	reviewList(pageInfo,proCode);
 }
 
+//리뷰 html
 function consts2(){
 	const con3 = `<!-- 리뷰페이지 번호 -->
             <div class="col-lg-6" style="padding: 0px 18%; margin-top: 5rem;">
@@ -202,6 +226,7 @@ function consts2(){
         return con3;
 }
 
+//리뷰 등록
 function addReview(proCode){
 	$('.product_description_area').on('click','.btn_3',function(e){
 		let reTitle = $(e.target).parent().siblings('.col-md-12').find('#reTitle').val();
@@ -239,6 +264,8 @@ function addReview(proCode){
 		
 	})
 }
+
+//리뷰삭제
 function delLi(){
 	$(".tab3").on("click",".delPoint",function(e){
 		//console.log($(e.target).parent().find('i').length)
@@ -264,8 +291,5 @@ function delLi(){
 		})
 	})
 }
-
-
-
 
 

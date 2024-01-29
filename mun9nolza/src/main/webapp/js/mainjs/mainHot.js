@@ -22,7 +22,7 @@ function makeCategoryHotList(product = {}) {
                     <p>`+product.category+`</p>
                     <h3>`+product.proName+`</h3>
                     <a href="productDetail.do?pcode=`+product.proCode+`" class="feature_btn">상세페이지로 <i class="fas fa-play"></i></a>
-                    <img src="img/`+product.proImage+`" alt="이미지"style="width: 19rem;height: 17rem;">
+                    <img src="img/`+product.proImage+`" alt="이미지"style="width: 19rem;height: 17rem;" onclick="location.href='productDetail.do?pcode=${product.proCode}'">
                 </div>`
 	return li;
 }

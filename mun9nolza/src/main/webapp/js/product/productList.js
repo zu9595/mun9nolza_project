@@ -64,7 +64,7 @@ function makeLi(product = {}) {
     
 let li = `<div class="col-lg-4 col-sm-6 listsize">
     <div class="single_product_item">
-    <img src="img/`+product.proImage+`" alt="이미지">
+    <img src="img/`+product.proImage+`" alt="이미지" onclick="location.href='productDetail.do?pcode=${product.proCode}'">
     <div class="single_product_text">
         <h4>`+product.proName+`</h4>
         <h3>`+product.proPrice+`원</h3>`
