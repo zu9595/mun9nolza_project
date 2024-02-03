@@ -68,4 +68,10 @@
 	where o.order_no = od.order_no
 	and od.pro_code = p.pro_code order by user_id,order_no,order_date
  </select>
+ 
+ <update id="adminOrderMod" parameterType="orderlist">
+ 	update orderlist 
+ 	set order_recipient = #{orderRecipient}, order_status = #{orderStatus}, total_price = #{totalPrice}, delivery_fee = #{deliveryFee}, order_addr = #{orderAddr}, detail_addr = #{detailAddr}, order_phone = #{orderPhone}
+ 	where user_id = #{userId} and order_no = #{orderNo}
+ </update>
 </mapper>

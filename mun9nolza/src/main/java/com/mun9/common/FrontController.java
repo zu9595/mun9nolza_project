@@ -52,6 +52,7 @@ import com.mun9.orderdetail.command.OrderResultControl;
 import com.mun9.orderdetail.command.OrderResultJson;
 import com.mun9.orderdetail.command.SingleOrderDetailFormControl;
 import com.mun9.orderlist.command.ModifyOrderJsonControl;
+import com.mun9.orderlist.command.OrderDelAdminControl;
 import com.mun9.orderlist.command.OrderListAdminControl;
 import com.mun9.orderlist.command.OrderListAdminFormControl;
 import com.mun9.orderlist.command.OrderListControl;
@@ -228,6 +229,8 @@ public class FrontController extends HttpServlet {
 		map.put("/orderListAdmin.do", new OrderListAdminControl());
 		// admin 주문목록수정(Json)
 		map.put("/orderModAdmin.do", new OrderModAdminControl());
+		// admin 주문목록삭제(Json)
+		map.put("/orderDelAdmin.do", new OrderDelAdminControl());
 
 	}
 

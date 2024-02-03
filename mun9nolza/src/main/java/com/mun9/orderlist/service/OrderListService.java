@@ -19,4 +19,6 @@ public interface OrderListService {
 	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
 	
 	List<OrderListVO> orderListAdmin();
+	
+	boolean modOrder(OrderListVO vo);
 }

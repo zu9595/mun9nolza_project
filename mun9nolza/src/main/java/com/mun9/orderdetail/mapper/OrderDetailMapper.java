@@ -8,4 +8,6 @@ public interface OrderDetailMapper {
 	int insertOrderDetail(OrderDetailVO vo);
 	List<OrderDetailVO> selectOrderResult();
 	List<OrderDetailVO> selectOrderDetailList(int orderNo);
+	
+	int adminOrderDetailMod(OrderDetailVO vo);
 }

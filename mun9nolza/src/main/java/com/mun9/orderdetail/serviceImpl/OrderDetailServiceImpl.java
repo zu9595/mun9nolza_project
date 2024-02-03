@@ -28,4 +28,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		// TODO Auto-generated method stub
 		return mapper.selectOrderResult();
 	}
+
+	@Override
+	public boolean modOrderDetail(OrderDetailVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.adminOrderDetailMod(vo) > 0;
+	}
 }

@@ -51,6 +51,11 @@ public class OrderListServiceImpl implements OrderListService{
 		// TODO Auto-generated method stub
 		return mapper.orderDetailBefore(vo);
 	}
+	@Override
+	public boolean modOrder(OrderListVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.adminOrderMod(vo) > 0;
+	}
 
 	
 }

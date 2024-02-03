@@ -16,6 +16,8 @@ import com.mun9.orderdetail.vo.OrderDetailVO;
 import com.mun9.orderlist.service.OrderListService;
 import com.mun9.orderlist.serviceImpl.OrderListServiceImpl;
 import com.mun9.orderlist.vo.OrderListVO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class OrderModAdminControl implements Control {
 
@@ -25,41 +27,57 @@ public class OrderModAdminControl implements Control {
 		OrderListService osvc = new OrderListServiceImpl();
 		OrderDetailService odsvc = new OrderDetailServiceImpl();
 		
-		String userId = req.getParameter("userId"); //o 수정불가
-		int orderNo = Integer.parseInt(req.getParameter("orderNo")); //o 수정불가
-		int proCode = Integer.parseInt(req.getParameter("proCode")); //p 수정불가
-		String proName = req.getParameter("proName"); //p 수정불가
-		String orderDate = req.getParameter("orderDate"); //o 수정불가
-		String orderRecipient = req.getParameter("orderRecipient"); //o 
-		String deProCnt = req.getParameter("deProCnt"); //od
-		String proImage = req.getParameter("proImage"); //p
-		String deProPrice = req.getParameter("deProPrice"); //od
-		String totalPrice = req.getParameter("totalPrice"); //o
-		String deliveryFee = req.getParameter("deliveryFee"); //o
-		String orderStatus = req.getParameter("orderStatus"); //o
-		String orderPhone = req.getParameter("orderPhone"); //o
-		String orderAddr = req.getParameter("orderAddr"); //o
-		String detailAddr = req.getParameter("detailAddr"); //o
+		String saveLoc = req.getServletContext().getRealPath("img");
+		int maxSize = 1024 * 1024 * 5;
+		MultipartRequest mr = null;
+		//만약에 파일 수정을 할수도 있어서 멀티파트 형식으로 저장
+		try {
+		mr = new MultipartRequest(req, saveLoc, maxSize, "utf-8", new DefaultFileRenamePolicy());
+		
+		String userId = mr.getParameter("userId"); //o 수정불가
+		int proCode = Integer.parseInt(mr.getParameter("proCode")); //p 수정불가
+		int orderNo = Integer.parseInt(mr.getParameter("orderNo")); //o 수정불가
+		String orderRecipient = mr.getParameter("orderRecipient"); //o 
+		int deProCnt = Integer.parseInt(mr.getParameter("deProCnt")); //od
+		int deProPrice = Integer.parseInt(mr.getParameter("deProPrice")); //od
+		int totalPrice = Integer.parseInt(mr.getParameter("totalPrice")); //o
+		int deliveryFee = Integer.parseInt(mr.getParameter("deliveryFee")); //o
+		String orderStatus = mr.getParameter("orderStatus"); //o
+		String orderPhone = mr.getParameter("orderPhone"); //o
+		String orderAddr = mr.getParameter("orderAddr"); //o
+		String detailAddr = mr.getParameter("detailAddr"); //o
 		
 		
 		OrderListVO ovo = new OrderListVO();
-		OrderDetailVO odvo = new OrderDetailVO();
+		ovo.setUserId(userId);
+		ovo.setOrderNo(orderNo);
+		ovo.setOrderRecipient(orderRecipient);
+		ovo.setTotalPrice(totalPrice);
+		ovo.setDeliveryFee(deliveryFee);
+		ovo.setOrderStatus(orderStatus);
+		ovo.setOrderAddr(orderAddr);
+		ovo.setDetailAddr(detailAddr);
+		ovo.setOrderPhone(orderPhone);
 		
+		OrderDetailVO odvo = new OrderDetailVO();
+		odvo.setProCode(proCode);
+		odvo.setOrderNo(orderNo);
+		odvo.setDeProCnt(deProCnt);
+		odvo.setDeProPrice(deProPrice);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		
+		if(osvc.modOrder(ovo)) {
+			map.put("listModCode", "OK");
+		}else {
+			map.put("listModCode", "NG");
+		}
 		
-//			if(osvc.modOrder(ovo)) {
-//				map.put("retCode", "OK");
-//			}else {
-//				map.put("retCode", "NG");
-//		
-//			if(odsvc.modOrderDetail(odvo)) {
-//				map.put("retCode", "OK");
-//			}else {
-//				map.put("retCode", "NG");
-//			}
-		
+		if(odsvc.modOrderDetail(odvo)) {
+			map.put("detailModCode", "OK");
+		}else {
+			map.put("detailModCode", "NG");
+		}
 		
 		Gson gson = new GsonBuilder().create();
 		
@@ -67,6 +85,9 @@ public class OrderModAdminControl implements Control {
 			resp.getWriter().print(gson.toJson(map));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

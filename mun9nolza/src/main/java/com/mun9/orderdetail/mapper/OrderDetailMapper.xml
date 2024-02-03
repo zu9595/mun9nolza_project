@@ -21,4 +21,11 @@
 		and order_no = (select Max(order_no) maxNo from orderdetail) 
 		order by 1
 </select>
+
+<update id="adminOrderDetailMod" parameterType="orderdetailT">
+	update orderdetail 
+ 	set de_pro_cnt = #{deProCnt}, de_pro_price = #{deProPrice}
+ 	where pro_code = #{proCode} and order_no = #{orderNo}
+</update>
+
 </mapper>

@@ -21,4 +21,6 @@ public interface OrderListMapper {
 	List<OrderDetailVO> orderDetailBefore(OrderDetailVO vo);
 	
 	List<OrderListVO> selectAdminOrderList();
+	
+	int adminOrderMod(OrderListVO vo);
 }

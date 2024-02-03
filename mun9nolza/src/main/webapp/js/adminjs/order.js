@@ -4,6 +4,8 @@
 $(document).ready(function(){
 list1();
 EAprice();
+modOrderList();
+
 })
 
 //목록만들기
@@ -35,7 +37,7 @@ EAprice();
 				<td><input type="text" value="${val.proName}" readonly></td>
 				<td><input type="number" value="${ncnt}" readonly></td>
 				<td><input type="number" value="${val.deProCnt}" class="cnt"></td>
-				<td><input type="number" value="${val.deProPrice}" readonly></td>
+				<td><input type="number" value="${val.deProPrice}" class="dpp" readonly></td>
 				<td><button type="button" class="modOrder">수정</button></td>
 				<td><button type="button" class="delOrder">삭제</button></td>
 			   </tr>`
@@ -45,26 +47,75 @@ EAprice();
  
 //수정
 function modOrderList(){
-	//데이터 찾아줘야함
-	let formData = new FormData();
-	
-	fetch("orderModAdmin.do",{
+	$(document).on("click",".modOrder",function(e){
+		let proCode = $(e.target).closest('tr').find('td').eq(0).find('input').val()
+		let deProCnt = $(e.target).closest('tr').find('td').eq(4).find('input').val()
+		let deProPrice = $(e.target).closest('tr').find('td').eq(5).find('input').val()
+		let userId = $(e.target).closest('table').closest('tr').prev().find('td').eq(0).find('input').val()
+		let orderNo = $(e.target).closest('table').closest('tr').prev().find('td').eq(1).find('input').val()
+		let orderRecipient = $(e.target).closest('table').closest('tr').prev().find('td').eq(2).find('input').val()
+		let deliveryFee = $(e.target).closest('table').closest('tr').prev().find('td').eq(3).find('input').val()
+		let orderStatus = $(e.target).closest('table').closest('tr').prev().find('td').eq(4).find('input').val()
+		let orderPhone = $(e.target).closest('table').closest('tr').prev().find('td').eq(5).find('input').val()
+		let orderAddr = $(e.target).closest('table').closest('tr').prev().find('td').eq(6).find('input').val()
+		let detailAddr = $(e.target).closest('table').closest('tr').prev().find('td').eq(7).find('input').val()
+		let totalPrice = $(e.target).closest('table').closest('tr').prev().find('td').eq(9).find('input').val()
+		
+		//form 양식 만들기
+		let formData = new FormData();
+		formData.append('userId',userId)
+		formData.append('proCode',proCode)
+		formData.append('orderNo',orderNo)
+		formData.append('orderRecipient',orderRecipient)
+		formData.append('deProCnt',deProCnt)
+		formData.append('deProPrice',deProPrice)
+		formData.append('totalPrice',totalPrice)
+		formData.append('deliveryFee',deliveryFee)
+		formData.append('orderStatus',orderStatus)
+		formData.append('orderPhone',orderPhone)
+		formData.append('orderAddr',orderAddr)
+		formData.append('detailAddr',detailAddr)
+		
+		fetch("orderModAdmin.do",{
 		 	method: "post",
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body:{
-				formData
-			}
-	 })
-	 .then(res => res.json())
-	 .then(res => {
-		 
-	 })
+			body: formData
+			})
+	 		.then(res => res.json())
+	 		.then(res => {
+				if(res.detailModCode == "OK" && res.listModCode == "OK"){
+					alert('회원주문 수정완료');
+				}else if(res.detailModCode == "NG"){
+					alert('주문목록상세 수정실패');
+				}else if(res.detailModCode == "NG"){
+					alert('주문목록 수정실패');
+				}
+		 		console.log(res)
+	 		})
+	})
+	
 }
 
 //삭제
+//수정필요
 function delOrderList(){
-	
+	$(document).on("click",".delOrder",function(e){
+		let proCode = $(e.target).closest('tr').find('td').eq(0).find('input').val()
+		let orderNo = $(e.target).closest('table').closest('tr').prev().find('td').eq(1).find('input').val()
+		let userId = $(e.target).closest('table').closest('tr').prev().find('td').eq(0).find('input').val()
+		
+		fetch('orderDelAdmin.do?proCode=' + proCode + '&orderNo=' + orderNo + '&userId=' + userId)
+	 		.then(res => res.json())
+	 		.then(res => {
+		 		console.log(res)
+				if(res.detailModCode == "OK" && res.listModCode == "OK"){
+					alert('주문 삭제완료');
+				}else if(res.detailDelCode == "NG"){
+					alert('주문목록상세 수정실패');
+				}else if(res.detailDelCode == "NG"){
+					alert('주문목록 수정실패');
+				}
+	 		})
+	})
 }
  
 //토탈가격 자동수정
@@ -76,6 +127,21 @@ function delOrderList(){
 	 	let count = Number(e.target.value);
 	 	//console.log(price)
 	 	$(e.target).closest('td').next().find('input').val(ncnt * count);
+	 	
+	 	//console.log($(e.target).closest('table').closest('tr').prev().find('td').eq(9).find('input').val())
+// 주문전체가격,배송비 자동수정
+	 	let trLength = $(e.target).closest('tbody').find('tr').length
+	 	let totalNum = 0;
+	 	for(let i =1; i < trLength;i++){
+			 totalNum += Number($(e.target).closest('tbody').find('tr').eq(i).find('td').eq(5).find('input').val())
+		 }
+		let fee = 3000;
+		if(totalNum >= 50000){
+			fee = 0;
+		}
+		totalNum += fee
+		$(e.target).closest('table').closest('tr').prev().find('td').eq(3).find('input').val(fee)
+	 	$(e.target).closest('table').closest('tr').prev().find('td').eq(9).find('input').val(totalNum)
 	 })
  }
  
@@ -133,3 +199,4 @@ function delOrderList(){
 
     return `${year}/${month}/${day}`;
  }
+ 
