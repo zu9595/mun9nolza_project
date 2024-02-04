@@ -11,4 +11,5 @@ public interface OrderDetailService {
 	List<OrderDetailVO> selectOrderDetailList(int orderNo);
 	
 	boolean modOrderDetail(OrderDetailVO vo);
+	boolean delOrderDetail(OrderDetailVO vo);
 }

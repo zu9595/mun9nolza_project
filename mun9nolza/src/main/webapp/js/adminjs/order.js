@@ -5,7 +5,7 @@ $(document).ready(function(){
 list1();
 EAprice();
 modOrderList();
-
+delOrderList();
 })
 
 //목록만들기
@@ -22,7 +22,7 @@ modOrderList();
 		 	$('#list').append(table1(val,idx));
 		 	for(let i=0;i<val.detailList.length;i++){
 				 $(`.lists${idx}`).append(table2(val.detailList[i]));
-		 
+		 		
 			 }
 		 })
 	 })
@@ -90,13 +90,14 @@ function modOrderList(){
 					alert('주문목록 수정실패');
 				}
 		 		console.log(res)
+		 		$('#list').empty();
+				list1();
 	 		})
 	})
 	
 }
 
 //삭제
-//수정필요
 function delOrderList(){
 	$(document).on("click",".delOrder",function(e){
 		let proCode = $(e.target).closest('tr').find('td').eq(0).find('input').val()
@@ -107,13 +108,18 @@ function delOrderList(){
 	 		.then(res => res.json())
 	 		.then(res => {
 		 		console.log(res)
-				if(res.detailModCode == "OK" && res.listModCode == "OK"){
-					alert('주문 삭제완료');
+				if(res.detailDelCode == "OK"){
+					alert('주문목록상세 1건 삭제완료');
 				}else if(res.detailDelCode == "NG"){
-					alert('주문목록상세 수정실패');
-				}else if(res.detailDelCode == "NG"){
-					alert('주문목록 수정실패');
+					alert('주문목록상세 삭제실패');
 				}
+				if(res.listDelCode == "OK"){
+					alert('주문건이 존재하지 않아 주문목록을 삭제하였습니다.');
+				}else if(res.detailDelCode == "NG"){
+					alert('주문목록 삭제실패');
+				}
+				$('#list').empty();
+				list1();
 	 		})
 	})
 }

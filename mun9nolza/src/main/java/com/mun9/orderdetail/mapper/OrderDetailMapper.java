@@ -10,4 +10,5 @@ public interface OrderDetailMapper {
 	List<OrderDetailVO> selectOrderDetailList(int orderNo);
 	
 	int adminOrderDetailMod(OrderDetailVO vo);
+	int adminOrderDetailDel(OrderDetailVO vo);
 }

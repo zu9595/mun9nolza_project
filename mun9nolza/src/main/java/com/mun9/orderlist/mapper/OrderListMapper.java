@@ -23,4 +23,5 @@ public interface OrderListMapper {
 	List<OrderListVO> selectAdminOrderList();
 	
 	int adminOrderMod(OrderListVO vo);
+	int adminOrderDel(OrderListVO vo);
 }

@@ -21,4 +21,5 @@ public interface OrderListService {
 	List<OrderListVO> orderListAdmin();
 	
 	boolean modOrder(OrderListVO vo);
+	boolean delOrder(OrderListVO vo);
 }

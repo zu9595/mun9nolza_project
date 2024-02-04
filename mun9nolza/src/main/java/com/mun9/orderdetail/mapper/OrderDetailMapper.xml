@@ -28,4 +28,9 @@
  	where pro_code = #{proCode} and order_no = #{orderNo}
 </update>
 
+<delete id="adminOrderDetailDel" parameterType="orderdetailT">
+	delete from orderdetail
+	where pro_code = #{proCode} and order_no = #{orderNo}
+</delete>
+
 </mapper>

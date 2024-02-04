@@ -74,4 +74,8 @@
  	set order_recipient = #{orderRecipient}, order_status = #{orderStatus}, total_price = #{totalPrice}, delivery_fee = #{deliveryFee}, order_addr = #{orderAddr}, detail_addr = #{detailAddr}, order_phone = #{orderPhone}
  	where user_id = #{userId} and order_no = #{orderNo}
  </update>
+ 
+ <delete id="adminOrderDel" parameterType="orderlist">
+ 	delete from orderlist where user_id = #{userId} and order_no = #{orderNo}
+ </delete>
 </mapper>
