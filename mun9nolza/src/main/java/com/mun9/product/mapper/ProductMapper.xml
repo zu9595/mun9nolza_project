@@ -8,6 +8,10 @@
   <select id="getProduct" resultType="product" parameterType="int">
   	select * from product where pro_code = #{pcode}
   </select>
+  
+  <select id="getProductName" resultType="product" parameterType="String">
+  	select pro_code from product where pro_name = #{pname}
+  </select>
 
   <select id="selectProductList" resultType="product">
     select * from product order by 1
@@ -40,6 +44,9 @@
 	<where>
 	<if test="category != null and category != ''">
 		category = #{category}
+	</if>
+	<if test="search != null and search != ''">
+		INSTR(pro_name, #{search}) > 0 
 	</if>
     </where>
     <choose>

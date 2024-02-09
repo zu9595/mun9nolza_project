@@ -232,6 +232,7 @@
 		if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=13){
 			let search = this.value;
 			let index=-1;
+			let ul = document.createElement('ul');
 			fetch('search.do?search='+search)
 			.then(res=>res.json())
 			.then(res=>{
@@ -239,7 +240,6 @@
 				
 				//삭제하는부분 필요
 				div.find('li').remove();
-				
 				//li 태그 생성
 				res.forEach(data=>{
 					let li = document.createElement('li');
@@ -249,24 +249,35 @@
 					let a = document.createElement('a');
 					a.setAttribute('href','#')
 					a.setAttribute('style','display=block;')
-					li.append(a)	
+					li.append(a)
 					li.addEventListener('click',function(){
-						location.href="#";
+						console.log($(this).text())
+						fetch('productGetCode.do?pname='+ $(this).text())
+						.then(res=>res.json())
+						.then(res=>{
+							console.log(res)
+							search ='';
+							location.href='productDetail.do?pcode=' + res.proCode;
+						})
 					});
-					div.append(li);
+					ul.append(li);
 				})
+					div.append(ul);
 			})
 			.catch(err=>console.log(err));
-    	} else if(e.keyCode==13){
-			let input = $("#search_input_box").find('.search-inner').children().value;
-			console.log(input);
-			fetch("search.do?search="+ input)
+    	} 
+    	// 검색모음 찾기 필요
+    	/*else if(e.keyCode==13){
+			let search = this.value;
+			console.log(search);
+			fetch("search.do?search="+ search)
 			.then(res=>res.json())
 			.then(res=>{
+				console.log(res)
 				location.href="searchList.do?search="+res.search;
 			})
 			.catch(err=>console.log(err));
-		}
+		}*/
 		})
   
   

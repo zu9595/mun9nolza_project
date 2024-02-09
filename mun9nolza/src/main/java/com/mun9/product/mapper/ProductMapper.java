@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import com.mun9.product.vo.ProductVO;
 
 public interface ProductMapper {
-	//충돌일어남
 	public ProductVO getProduct(int pcode);
+	public ProductVO getProductName(String pname);
 
 	public List<ProductVO> productListPaging(ProductVO vo);
 

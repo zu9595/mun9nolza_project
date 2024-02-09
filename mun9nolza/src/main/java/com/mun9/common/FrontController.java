@@ -66,6 +66,7 @@ import com.mun9.product.command.AdminProductModControl;
 import com.mun9.product.command.MainCategoryHotListJson;
 import com.mun9.product.command.MainSaleListJson;
 import com.mun9.product.command.ProductDetailControl;
+import com.mun9.product.command.ProductGetCodeJson;
 import com.mun9.product.command.ProductListFormControl;
 import com.mun9.product.command.ProductMenuListControl;
 import com.mun9.product.command.ProductPagingListControl;
@@ -103,6 +104,7 @@ public class FrontController extends HttpServlet {
 		//상품 검색
 		map.put("/search.do",  new searchControl());//상품 검색해서 json생성
 		map.put("/searchList.do",  new searchListControl());//검색 결과 페이지로 이동
+		map.put("/productGetCode.do",  new ProductGetCodeJson());//검색 결과 페이지로 이동
 		
 		//map.put("/mainBest.do", new mainBestProductList()); // 미사용
 		

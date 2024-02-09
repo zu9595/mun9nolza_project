@@ -79,4 +79,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> mainCategoryHotList() {
 		return mapper.mainCategoryHotList();
 	}
+
+	@Override
+	public ProductVO getProductName(String pname) {
+		// TODO Auto-generated method stub
+		return mapper.getProductName(pname);
+	}
 }

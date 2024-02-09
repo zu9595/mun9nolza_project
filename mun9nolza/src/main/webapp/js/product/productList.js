@@ -5,14 +5,13 @@
  	let products = document.querySelector('.productlist');
 	let pageInfo = 1;
     let category = categorys;
-    console.log(categorys)
+    let search = searchs;
     let option = '';
     let paging = document.querySelector('.pageination');
     let select = document.querySelector('.otp');
 
-
     //showList(pageInfo,''); 
-    showList(pageInfo,category,option);
+    showList(pageInfo,category,option,search);
     
     
     $(".product_top_bar .otp").on("click",".option",function(e){
@@ -30,18 +29,18 @@
 		}else{
 			option = ''
 		}
-        showList(pageInfo,category,option); 
+        showList(pageInfo,category,option,search); 
     })
     
 	$('.category').on('click', function(e){            
         category = e.target.innerText;
         console.log(category);
-        showList(1, category,'');
+        showList(1, category,'',search);
     });
     
     //Ajax호출.
-    function showList(page, category,option){
-        fetch('productPagingList.do?page='+ page +'&category='+ category +'&option='+ option)
+    function showList(page, category,option,search){
+        fetch('productPagingList.do?page='+ page +'&category='+ category +'&option='+ option +'&search='+ search)
 		.then(str => str.json())
 		.then(result => {
             let ul = ``;
@@ -133,5 +132,5 @@ return li;
         e.preventDefault();
 		pageInfo = this.getAttribute("href");
         // console.log(pageInfo);
-       	showList(pageInfo, category, option);
+       	showList(pageInfo, category, option, search);
 	}

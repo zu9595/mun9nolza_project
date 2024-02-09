@@ -169,5 +169,11 @@ if(`${category}` != null){
 }else{
 	categorys ='';
 }
+let searchs = '';
+if(`${search}` != null){
+	searchs = `${search}`;
+}else{
+	searchs ='';
+}
 </script>
 <script src="js/product/productList.js"></script>

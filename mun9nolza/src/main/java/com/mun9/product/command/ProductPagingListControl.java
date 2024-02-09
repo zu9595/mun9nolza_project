@@ -25,6 +25,7 @@ public class ProductPagingListControl implements Control {
 		String category = req.getParameter("category");
 		String option = req.getParameter("option");
 		String page = req.getParameter("page");
+		String search = req.getParameter("search");
 		String proName = null; 
 		
 		//페이지 값이 없으면 1
@@ -32,6 +33,7 @@ public class ProductPagingListControl implements Control {
 		ProductVO vo = new ProductVO();
 		vo.setPage(Integer.parseInt(page));
 		vo.setCategory(category);
+		vo.setSearch(search);
 		
 		if(option.equals("proName")) {
 			vo.setProName("이름");

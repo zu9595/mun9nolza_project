@@ -7,6 +7,7 @@ import com.mun9.product.vo.ProductVO;
 public interface ProductService {
 	//충돌일어남
 	public ProductVO getProduct(int pcode);
+	public ProductVO getProductName(String pname);
 	public List<ProductVO> productListPaging(ProductVO vo);
 
 	public List<ProductVO> productList();
